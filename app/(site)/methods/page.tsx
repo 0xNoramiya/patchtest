@@ -110,10 +110,11 @@ export default function MethodsPage() {
 
       <Section id="raw" title="Why we decide on raw_score">
         <p>
-          YouCam returns two numbers per concern. Its own documentation describes{" "}
-          <code className="font-mono text-xs">ui_score</code> as adjusted to be more favourable, as a
-          psychological motivator. A tool whose job is to say no cannot decide on a number designed
-          to encourage.
+          YouCam returns two numbers for every concern because they do two different jobs.{" "}
+          <code className="font-mono text-xs">ui_score</code> is documented as a motivator, the
+          number you show someone to keep them going. <code className="font-mono text-xs">raw_score</code>{" "}
+          is the measurement. Both are useful. They are useful for different things, and a tool
+          deciding what not to sell needs the second one.
         </p>
         <p>
           On our recorded scans the adjustment is not a flat lift, it is a compression toward the

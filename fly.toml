@@ -6,14 +6,15 @@ primary_region = "sin"
 [env]
   PORT = "3000"
   DATA_DIR = "/data"
-  # Live scanning is on so judges can see a real call, but the caps are tighter
-  # than in development. Judging runs to 20 Nov, so a generous daily cap would
-  # empty the allowance in a few days. The hard stop is the real ceiling: with
-  # 198 units already spent it permits about 31 more live scans in total, ever.
+  # Live scanning is on so judges can see a real call. The hard stop is the
+  # ceiling that actually binds: with 198 units already spent it permits about 31
+  # more live scans in total, ever, across every day of judging. The daily cap
+  # only smooths that out so one day cannot consume the lot, and it counts
+  # successful scans alone, because a rejected photo costs nothing.
   DEMO_MODE = "live"
   UNIT_BUDGET_TOTAL = "1000"
   UNIT_HARD_STOP = "900"
-  LIVE_SCAN_DAILY_CAP = "3"
+  LIVE_SCAN_DAILY_CAP = "5"
   HIGH_ACID_PCT = "20"
 
 # The unit ledger and the scan cache live here so the daily cap survives

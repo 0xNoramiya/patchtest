@@ -164,11 +164,11 @@ export function ScanPanel({ result }: { result: AdviseResult }) {
           </dl>
 
           <p className="mt-4 rounded-lg bg-sunken p-3 text-xs leading-relaxed text-muted">
-            The solid bar is the <span className="font-medium text-ink">measured</span>{" "}
-            <code className="font-mono">raw_score</code>. The ring is what YouCam{" "}
-            <span className="font-medium text-ink">shows shoppers</span>, its{" "}
-            <code className="font-mono">ui_score</code>, which its own documentation describes as
-            adjusted to be more favourable.
+            YouCam returns two numbers per concern, for two different jobs. The solid bar is the{" "}
+            <span className="font-medium text-ink">measured</span>{" "}
+            <code className="font-mono">raw_score</code>. The ring is the{" "}
+            <code className="font-mono">ui_score</code>, documented as a{" "}
+            <span className="font-medium text-ink">motivator</span>, the number most apps show you.
             {biggestGap && biggestGap.gap >= 8 ? (
               <>
                 {" "}

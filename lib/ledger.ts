@@ -99,10 +99,18 @@ export function spent(entries: LedgerEntry[]): number {
   return entries.reduce((total, e) => total + (e.status === "success" ? e.units : 0), 0);
 }
 
-/** Distinct scans started on a given UTC day, successful or not. */
+/**
+ * Distinct scans that actually cost units on a given UTC day.
+ *
+ * Only successes count. A rejected photo, no face, bad lighting, a blurry
+ * selfie, is free: YouCam charges nothing for a failed task. Counting failures
+ * against the cap bought no protection and let three bad photos from three
+ * different people close the live path for everyone for the rest of the UTC day.
+ * The ceiling that actually matters is UNIT_HARD_STOP, which is absolute.
+ */
 export function scansOn(entries: LedgerEntry[], day = new Date().toISOString().slice(0, 10)): number {
   const ids = new Set(
-    entries.filter((e) => e.ts.startsWith(day) && e.status !== "refused").map((e) => e.scan_id),
+    entries.filter((e) => e.ts.startsWith(day) && e.status === "success").map((e) => e.scan_id),
   );
   return ids.size;
 }

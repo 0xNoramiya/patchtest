@@ -1,153 +1,175 @@
 # PatchTest, demo video script
 
-**Target length 2:50.** Screen recording with voiceover. No music, or a silent
-track. No real brand, logo or product appears at any point. Every face shown is AI
+**Target length 2:45.** The rules cap it at three minutes, so this leaves fifteen
+seconds of margin. Screen recording with voiceover. No music, or a silent track.
+No real brand, logo or product appears at any point. Every face shown is AI
 generated and the video says so on screen.
 
 Record at 1280x800 so text stays readable when Devpost scales it down.
 
+## Timing, and why it is written this way
+
+An earlier draft listed section timings that its own narration could not fit: read
+at a normal pace it ran close to four minutes, which would have cut off the
+limitations and the live URL, the two things worth protecting most.
+
+Every block below is budgeted in **words**, at roughly **165 words per minute**,
+which is an unhurried narration pace. Keep to the counts and it lands at 2:45. If
+a block needs more words, take them from another block, not from the runtime.
+
+| Block | Runs | Budget | Words |
+|---|---|---|---|
+| Hook | 0:00–0:10 | 10s | 27 |
+| Three carts | 0:10–0:57 | 47s | 113 |
+| It works on other shops | 0:57–1:20 | 23s | 58 |
+| How it works | 1:20–1:42 | 22s | 54 |
+| The numbers | 1:42–2:35 | 53s | 141 |
+| Limits, then the card | 2:35–2:45 | 10s | 24 |
+| | | **2:45** | **417** |
+
+417 words at 165 wpm is 152 seconds of speech. The remaining thirteen seconds are
+the pauses the visuals need: the mask overlay landing, the scroll to the scan
+panel, and the final card.
+
+Numbers spoken aloud are checked against `eval/results.json`. If that file is
+regenerated, re-check this script before recording.
+
 ---
 
-## 0:00 to 0:15, the hook
+## 0:00 to 0:10, the hook
 
-**On screen:** black card, white text, one line at a time.
+**On screen:** black card, white text, both lines at once so it can be read in
+four seconds.
 
-> The top-viewed children's skincare routines on TikTok
-> average **11 potentially irritating active ingredients**.
->
-> Only **26%** of daytime routines include sunscreen.
+> The top-viewed children's skincare routines on TikTok average
+> **11 potentially irritating active ingredients**.
+> Only **26%** include sunscreen.
 >
 > *Pediatrics, 2025*
 
-Cut to the landing page hero.
+Cut to the landing page hero on the last sentence.
 
-**Voiceover:**
-> Skincare shopping has an advice problem. The fix everyone reaches for is a
-> chatbot. But a chatbot is built to be helpful, and sometimes the helpful answer
-> is no.
+**Voiceover (27 words):**
+> Skincare shopping has an advice problem. The usual fix is a chatbot. But a
+> chatbot is built to be helpful, and sometimes the helpful answer is no.
 
 ---
 
-## 0:15 to 1:30, three carts
+## 0:10 to 0:57, three carts
 
-Three presets, roughly 25 seconds each. Click from the landing page each time so
-the one-click flow is visible.
+Three presets, roughly sixteen seconds each. Click each from the landing page so
+the one-click flow is visible. **Let the screen do the work. Do not narrate what
+is already legible.**
 
-### Preset 1, "Eight weeks pregnant, breaking out" (0:15 to 0:40)
+### Preset 1, "Eight weeks pregnant, breaking out" (0:10–0:26)
 
-Click the preset. Let the results load. Scroll to the adapalene line and pause on
-the expanded verdict.
+Click it. Scroll to the adapalene line, pause on the expanded verdict.
 
 **On screen, highlight:** the **Not for you right now** badge, rule `R-PREG-01`,
-the quote, and **Try Azelaic Acid 10% Cream instead**.
+the quote, and **Try instead: Azelaic Acid 10% Cream**.
 
-**Voiceover:**
-> She put the retinoid back in her cart. It was working for her before. PatchTest
-> blocks it, says why in plain English, shows the guideline it is quoting, and
-> offers the thing she can actually use. The adapalene stays visible. She is told
-> why, instead of it quietly disappearing.
+**Voiceover (37 words):**
+> She is eight weeks pregnant and put the retinoid back in her cart. PatchTest
+> blocks it, quotes the guideline it is reading, and offers the thing she can
+> actually use. It does not just refuse. It re-routes.
 
-### Preset 2, "Dark patches and a 30% peel" (0:40 to 1:05)
+### Preset 2, "Dark patches and a 30% peel" (0:26–0:42)
 
-Click the preset. Pause on the peel verdict, then scroll to the scan panel and
-click the **Texture** row so the mask overlays the face.
+Click it. Pause on the peel verdict, then scroll to the scan panel and click the
+**Texture** row so the mask overlays the face.
 
-**On screen, highlight:** `R-FITZ-01`, then the score table showing
-**texture 17.8 measured / 53 shown**.
+**On screen, highlight:** `R-FITZ-01`, then the score track showing
+**17.6 measured, 53 shown**.
 
-**Voiceover:**
-> Her scan comes back Fitzpatrick five. A thirty percent at-home peel on deeper
-> skin is a common way to end up with marks that outlast the thing you were
-> treating, so it is blocked and the retinol is adjusted rather than refused.
-> Now look at the scores. This API returns two numbers for every concern. The
-> measured one is seventeen point eight. The one it shows shoppers is fifty three.
-> Perfect Corp documents that second number as a psychological motivator.
-> PatchTest decides on the measured one, and shows you both.
+**Voiceover (40 words):**
+> Her scan comes back Fitzpatrick five, so the at-home peel is blocked and the
+> retinol is adjusted. Now the scores. This API returns two numbers per concern,
+> and they do two different jobs. Most integrations never notice there are two.
 
-### Preset 3, "Painful lumps that leave marks" (1:05 to 1:30)
+### Preset 3, "Painful lumps that leave marks" (0:42–0:57)
 
-Click the preset. Pause on the blue referral panel at the top, then show the two
-blocked items underneath.
+Click it. Pause on the blue referral panel, then the two blocked items beneath.
 
-**On screen, highlight:** **Worth showing a professional**, rule `R-REF-01`, and
-the AAD and NHS source links.
+**On screen, highlight:** **Worth showing a professional**, `R-REF-01`, the AAD and
+NHS links.
 
-**Voiceover:**
-> This one is the whole point. She described deep painful lumps that scar, and
-> asked for the strongest things in the shop. PatchTest does not sell them to her.
-> It refers her, cites the guideline, and holds back the strong actives while
-> leaving the gentle basics and the sunscreen in her cart. This is the moment a
-> shop normally takes the money.
+**Voiceover (36 words):**
+> She described deep painful lumps that scar, and asked for the strongest things
+> in the shop. PatchTest refers her instead, and holds the strong actives back.
+> This is the moment a shop normally takes the money.
 
 ---
 
-## 1:30 to 1:55, it works on other people's shops
+## 0:57 to 1:20, it works on other people's shops
 
-Cut to **https://patchtest.fly.dev/store**, the fictional Verdant Row cart, with
-the extension installed. Let the verdicts appear on load.
+Cut to **patchtest.fly.dev/store**, the fictional Verdant Row cart, extension
+installed. Let the verdicts appear on load.
 
-**On screen, highlight:** the two **Not for you right now** badges sitting inside
-somebody else's cart, each with its rule id and source link.
+**On screen, highlight:** two **Not for you right now** badges inside somebody
+else's cart, each with a rule id and a source link.
 
-**Voiceover:**
-> That is PatchTest inside the web app. But the moment before checkout usually
-> happens on somebody else's website. So it also ships as a browser extension.
-> This is a different shop, with products that are not in our catalogue at all.
-> It reads the cart the shop already publishes for search engines, pulls the
-> active ingredient and the strength straight out of each product title, and
-> applies the same twenty four rules. Same verdicts, same sources, somebody
-> else's checkout.
+**Voiceover (58 words):**
+> That is the web app. But checkout usually happens on somebody else's website, so
+> PatchTest also ships as a browser extension. This is a different shop, selling
+> products that are not in our catalogue. It reads the structured data the shop
+> already publishes, pulls the ingredient and the strength out of each title, and
+> applies the same rules.
 
 ---
 
-## 1:55 to 2:25, how it works
+## 1:20 to 1:42, how it works
 
-Cut to the Methods page. Scroll slowly through the YouCam table, then the rules
-list, expanding one rule to show the quote and the source link.
+Cut to the Methods page. Scroll the YouCam table, then the rules list, expanding
+one rule to show its quote and source.
 
 **On screen, as a persistent lower third for this whole section:**
 
 > **YouCam AI Skin Analysis API**
 > **YouCam AI Fitzpatrick Skin Type Analysis API**
 
-**Voiceover:**
-> One photo, two APIs. The YouCam AI Skin Analysis API measures eight concerns at
-> the SD tier for twelve units. The YouCam AI Fitzpatrick Skin Type Analysis API
-> reads skin tone for ten. Twenty two units a scan, charged only when the task
-> succeeds, and every call is written to a ledger with a hash of the image and
-> never the image itself.
->
-> Then a language model proposes a routine. It never sets a verdict. Twenty four
-> rules, held as data with a source and a quote on each, decide what the shopper
-> is allowed to buy. When the rules reject something, it goes back to the model to
-> revise, and the rules still have the last word.
->
-> We read all twenty one sources rather than remembering them. Fourteen support
-> their rule outright. Seven say less than the rule claims, and those seven say so
-> on this page.
+**Voiceover (54 words):**
+> One photo, two APIs. Skin Analysis measures eight concerns, Fitzpatrick reads
+> skin tone. Twenty-two units a scan, charged only on success. Then a language
+> model proposes a routine. It never sets a verdict. Twenty-four rules, each
+> carrying a source and a quote, decide what the shopper may buy. The rules have
+> the last word.
 
 ---
 
-## 2:25 to 2:50, the numbers and the limits
+## 1:42 to 2:35, the numbers
 
 Cut to the Eval page. Pause on the amber "Read this before the numbers" panel,
-then on the results table.
+then the results table.
 
-**Voiceover:**
-> Here is the part most demos skip. We built the comparison arm with the same
-> model, the same prompt and the same inputs, differing only in the guardrail.
-> Across two hundred and forty runs it recommended nothing our labels call unsafe.
-> A good model with a careful prompt is mostly safe, and we are reporting that
-> rather than hiding it.
+**Voiceover (141 words):**
+> Here is the part most demos skip. The comparison arm is the same model, the same
+> prompt, the same inputs, differing only in the guardrail. Across a hundred and
+> twenty runs it recommended nothing our labels call unsafe. A good model with a
+> careful prompt is mostly safe, and we are reporting that rather than hiding it.
 >
-> What it did do was leave things unsaid. It sold items needing a usage caveat with
-> no caveat in forty four percent of applicable runs, against eleven percent here.
-> And it gave the same shopper a different cart forty percent of the time.
+> What it did was leave things sitting. An item our labels call unsafe stayed in
+> the cart in twenty-two and a half percent of runs. Not recommended. Just not
+> removed. And of the items that needed a usage caveat, it attached one to none of
+> them. A hundred percent went out bare, against eleven percent here.
 >
-> The labels come from one physician. The thresholds were calibrated on nine AI
-> generated faces. It is not a medical device and it does not diagnose anything.
+> The guardrail did not make the model consistent. Both arms gave the same shopper
+> a different cart a third of the time. What it made it was accountable.
+
+---
+
+## 2:35 to 2:45, the limits, then the card
+
+**On screen, as a list, held long enough to read.** This is faster to read than to
+narrate, which is why it is not spoken in full.
+
+> One clinician wrote the labels. No external validation.
+> Thresholds calibrated on nine AI generated faces.
+> Twenty-four rules is finite coverage.
+> Not a medical device. It does not diagnose anything.
+
+**Voiceover (24 words):**
 > All of that is on the page, because a tool that tells people when to stop
-> shopping should be the first to say what it does not know.
+> shopping should say what it does not know.
 
 **Final card:**
 
@@ -159,19 +181,21 @@ then on the results table.
 > Built with the YouCam AI Skin Analysis API
 > and the YouCam AI Fitzpatrick Skin Type Analysis API
 >
-> Every face shown is AI generated. "Lumen & Leaf" is a fictional store.
+> Every face and product image shown is AI generated.
+> "Lumen & Leaf" and "Verdant Row" are fictional stores.
 > https://patchtest.fly.dev
 
 ---
 
 ## Shot list checklist
 
-- [ ] No real brand name, logo or product visible, including in browser tabs and bookmarks
+- [ ] Every spoken number re-checked against `eval/results.json` on the day
+- [ ] Runtime under 3:00, ideally 2:45
+- [ ] No real brand name, logo or product visible, including browser tabs and bookmarks
 - [ ] Browser in a clean profile, no personal bookmarks bar
 - [ ] No music, or a silent/public-domain track only
 - [ ] Both YouCam API names on screen as text, not only spoken
-- [ ] The synthetic-faces disclosure appears at least once
-- [ ] Final card shows the live URL
-- [ ] Total runtime between 1:00 and 3:00
 - [ ] The extension is shown annotating the Verdant Row cart, not just described
 - [ ] Verdant Row is visibly a different shop, not PatchTest with a new header
+- [ ] The synthetic-faces disclosure appears at least once
+- [ ] Final card shows the live URL

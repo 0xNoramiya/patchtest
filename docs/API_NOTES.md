@@ -1,7 +1,15 @@
-# YouCam API: what the docs say and what the API actually returns
+# YouCam API field notes
 
-Recorded from a real call on 2026-10-30. One image, 8 SD concerns plus Fitzpatrick,
-22 units. The raw responses are in `fixtures/scans/synthetic-01/`.
+Notes for the next person integrating the YouCam AI Skin Analysis and AI
+Fitzpatrick Skin Type APIs, written while doing it. Thirteen places where the
+published spec and a real response differ, each with the response that proves it.
+
+If you are about to write this integration, reading this first is worth about a
+day. If you work on these docs, every item below is a one-line fix and we would
+be glad to see them land upstream.
+
+Recorded from a real call on 2026-10-30. One image, 8 SD concerns plus
+Fitzpatrick, 22 units. The raw responses are in `fixtures/scans/synthetic-01/`.
 
 Where the documentation and a real response disagree, PatchTest follows the real
 response. Each difference below changed code.
@@ -38,19 +46,21 @@ Consequence: a parser written from the spec breaks on the first response, becaus
 `skin_type` items have no `raw_score` and the three extra item types are unexpected.
 See `lib/youcam/parse.ts`.
 
-## 4. The overall score is built from the flattered numbers
+## 4. The overall score is built from the ui_score values
 
 The `all` item returned `79.14285714285714`. That is exactly the mean of the seven
 `ui_score` values (554 / 7). The mean of the seven `raw_score` values is
 `72.77124433858054`.
 
-So the single headline number the API hands you is an average of the scores YouCam
-documents as deliberately adjusted upward, not of the measured ones.
+So the single headline number is an average of the presentation scores, not of the
+measured ones. That is a reasonable default for a product meant to encourage
+someone. It is worth knowing before you build a decision on top of it.
 
 ## 5. `ui_score` compresses the scale toward the middle
 
-YouCam's documentation describes `ui_score` as adjusted to be more favorable, as a
-psychological motivator. What it actually does on our fixture is squeeze the range:
+The two numbers do two jobs. `ui_score` is documented as a motivator, the number
+you show someone. `raw_score` is the measurement. What the transform does on our
+fixture is squeeze the range toward the middle:
 
 | Concern | raw_score | ui_score | Difference |
 |---|---|---|---|
@@ -62,13 +72,13 @@ psychological motivator. What it actually does on our fixture is squeeze the ran
 | acne | 100.00 | 99 | -1.0 |
 | redness | 100.00 | 99 | -1.0 |
 
-Poor scores are lifted a long way. Good scores are nudged down slightly. The
-practical effect is the one that matters for a safety tool: the worst finding on
-this face, texture at 17.8 out of 100, is presented to the shopper as 53, which
-reads as unremarkable.
+Poor scores are lifted a long way, good scores nudged down slightly. For a product
+designed to keep someone engaged that is sensible. For a tool deciding what not to
+sell it is the wrong input: the worst finding on this face, texture at 17.8 out of
+100, presents as 53.
 
-This is why PatchTest decides on `raw_score` and shows both numbers side by side,
-labelled.
+So PatchTest reads the measurement and shows the motivator, side by side and
+labelled. Both numbers are useful. They are just useful for different things.
 
 ## 6. `skin_age` is an estimate, and we do not gate on it
 

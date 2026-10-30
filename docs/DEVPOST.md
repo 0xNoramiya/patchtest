@@ -48,10 +48,12 @@ shop's own page and applies the same rules there. It is
 
 Three decisions shape the whole thing.
 
-**It decides on `raw_score`, never `ui_score`.** YouCam returns two numbers per
-concern and documents `ui_score` as adjusted to be more favourable, a
-psychological motivator. A tool whose job is to say no cannot decide on a number
-designed to encourage. We show both, labelled.
+**It decides on `raw_score`, and shows `ui_score`.** Perfect Corp returns two
+numbers for every concern because they do two different jobs. `ui_score` is
+documented as a motivator, the number you show someone to keep them engaged.
+`raw_score` is the measurement. Most integrations never notice there are two.
+PatchTest is built on the distinction: it shows the motivator and decides on the
+measurement, side by side and labelled, so the shopper can see both.
 
 **It never reads age off a face.** The API returns a `skin_age`. We display it and
 no rule touches it. Age bands drive blocking rules, and a blocking rule should not
@@ -79,7 +81,7 @@ recorded scan, saying so on screen. Total spend building this was 198 units.
 **The rules.** 24 rules live in a YAML file as data: conditions, message, swap,
 source URLs, a quote of 25 words or less, the access date, and an evidence class of
 guideline, label, review or heuristic. The engine is a pure TypeScript function
-over that file. 96 tests cover a positive and a negative case for every rule. One
+over that file. 130 tests cover a positive and a negative case for every rule. One
 test replaces every `ui_score` with nonsense and asserts the verdicts come back
 byte for byte identical, so "the rules never read the flattering number" is
 enforced rather than claimed.
@@ -105,18 +107,25 @@ it. Violations go back and it revises, at most twice. The engine always computes
 the final verdicts. Anything the model writes in prose passes a claim filter that
 rewrites or drops diagnostic language before a shopper sees it.
 
+**The revision loop fired zero times in a hundred and twenty runs.** The model
+never proposed anything the rules reject, so it was never asked to revise. We are
+leaving the loop in, tested, because it is the correct shape for a weaker or
+cheaper model, but the honest reading is that the engine's real work is on the
+cart the shopper walked in with, not on the model's output. That is the same
+finding as the baseline result, from the other direction.
+
 ## Challenges
 
-**The documentation and the API disagree, ten times.** Writing a parser from the
+**The documentation and the API disagree, thirteen times.** Writing a parser from the
 OpenAPI spec produces code that breaks on the first real response. Eight requested
 concerns come back as thirteen output items: seven scored ones with no `region`
 key despite the spec promising one, three `skin_type` entries carrying a label and
 no scores at all, and three undocumented extras (`all`, `skin_age`,
 `resize_image`). `format` defaults to `zip`, so asking for JSON means saying so.
 Fitzpatrick rejects a request without a `version` field the guide page never
-mentions. Mask URLs are signed for two hours, not the documented 24. All ten are
-written up in `docs/API_NOTES.md`, and we trusted the response over the docs every
-time.
+mentions. Mask URLs are signed for two hours, not the documented 24. All thirteen are
+written up in `docs/API_NOTES.md` as field notes for the next integrator, and we
+trusted the response over the docs every time.
 
 **`ui_score` is a compression, not a lift.** We expected it to be uniformly
 flattering. What it actually does is squeeze the scale toward the middle: on one
@@ -170,9 +179,19 @@ Across 40 scenarios covering all 24 rules, both arms, three runs each:
   someone on isotretinoin wanted, the thirty percent peel a twelve-year-old wanted.
   **A shop assistant who does not recommend the peel, and also does not stop you
   buying it, has not helped.**
-- It gave **the same shopper a different cart on 35% of repeated runs**.
-- The guardrail costs the store about **eight dollars per cart**: mean cart value
-  fell from $90.61 to $82.50. That is the price of not selling things.
+- **Neither arm is consistent.** Both gave the same shopper a different cart on
+  35% of repeated runs. The guardrail does not make a language model deterministic
+  and we are not claiming it does. What it makes it is *accountable*: the verdict
+  on whatever gets proposed is a pure function, and a test asserts identical
+  output for identical input.
+- **It re-routes carts rather than emptying them.** Of the eleven rules that can
+  remove an item, five carry a swap that resolves to a real product, and the six
+  that do not are exactly the cases where offering a substitute would be wrong:
+  the four referrals, the hydroquinone rule that says ask your prescriber, and
+  waxing on isotretinoin. Every block that *should* offer an alternative does.
+  Mean cart size goes 4.2 to 3.8 while R-SPF-01 puts the sunscreen in. Mean cart
+  value goes $90.99 to $82.70, and that difference is concentrated in the items
+  that come back as returns, bad reviews and chargebacks.
 
 Also: 198 units of a 1,000 unit budget, with the rest left for judges.
 
@@ -198,6 +217,10 @@ to 10%) that we would otherwise have guessed at.
 - Expose the same guardrail as an MCP tool, `check_cart(intake, scan, cart)`, so
   any beauty agent, including one using YouCam's own beauty MCP server, can call
   it before selling. The HTTP endpoint the extension uses is already that shape.
+- Hand `docs/API_NOTES.md` to Perfect Corp's docs team. Thirteen places where the
+  published spec and a real response differ, each with the response that proves
+  it, is a day of work for whoever writes the next integration and we would rather
+  nobody repeated it.
 - A Bahasa Indonesia interface. The pregnancy and skin tone rules matter at least
   as much in a market where hydroquinone cosmetics are banned and sold anyway.
 - More clinicians on the gold labels. One physician is a starting point, not a
