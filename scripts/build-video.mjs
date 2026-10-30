@@ -249,7 +249,8 @@ const MG = {
           <p class="punch u1">The rules have the <em>last word</em>.</p>`,
 
   numbers: () => `
-          <p class="kicker k1">The part most demos skip</p>
+          <p class="kicker k1">The eval</p>
+          <p class="headline hl1">Here is the part most demos skip.</p>
           <div class="same sa1">
             ${[["the same model", 1], ["the same prompt", 1], ["the same inputs", 1], ["the guardrail", 0]]
               .map(([l, same], i) => `<div class="srow2 s2${i}"><span class="sl">${l}</span><span class="sv ${same ? "eq" : "ne"}">${same ? "identical" : "the only difference"}</span></div>`).join("\n            ")}
@@ -472,7 +473,7 @@ const MGT = {
     L.push(T.in("#mg-refer .k1", a - 0.1, { y: 14, d: 0.5 }));
     L.push(T.in("#mg-refer .t0", a + 0.4, { y: 18, d: 0.45 }));
     L.push(T.in("#mg-refer .t1", a + 1.1, { y: 18, d: 0.45 }));
-    for (let i = 0; i < 3; i++) L.push(T.in(`#mg-refer .hc${i}`, a + 3.0 + i * 0.28, { y: 44, d: 0.55, ease: "expo.out" }));
+    for (let i = 0; i < 3; i++) L.push(T.in(`#mg-refer .hc${i}`, a + 2.5 + i * 0.26, { y: 44, d: 0.55, ease: "expo.out" }));
     L.push(T.pop("#mg-refer .rf1", a + 5.7, { d: 0.6, from: 1.18 }));
     for (let i = 0; i < 3; i++) L.push(`      tl.to("#mg-refer .hc${i}", { opacity: 0.3, scale: 0.97, duration: 0.5, ease: "power2.out" }, ${(a + 7.4 + i * 0.12).toFixed(2)});`);
     for (let i = 0; i < 3; i++) L.push(T.fade(`#mg-refer .hc${i} .htag`, a + 7.6 + i * 0.12, 0.4));
@@ -482,8 +483,8 @@ const MGT = {
 
   ext: (s) => {
     const a = s.audioStart, L = [];
-    L.push(T.in("#mg-ext .k1", a + 1.5, { y: 14, d: 0.5 }));
-    L.push(T.in("#mg-ext .sh1", a + 1.9, { y: 40, scale: 0.97, d: 0.7, ease: "expo.out" }));
+    L.push(T.in("#mg-ext .k1", a + 0.1, { y: 14, d: 0.5 }));
+    L.push(T.in("#mg-ext .sh1", a + 0.9, { y: 40, scale: 0.97, d: 0.7, ease: "expo.out" }));
     L.push(T.pop("#ext-pin", a + 4.8, { from: 1.6 }));
     L.push(`      tl.to("#ext-pin", { scale: 0.86, duration: 0.12, ease: "power2.in", yoyo: true, repeat: 1 }, ${(a + 6.9).toFixed(2)});`);
     for (let i = 0; i < 4; i++) L.push(T.pop(`#mg-ext .cb${i}`, a + 7.5 + i * 0.3, { d: 0.45, from: 1.5 }));
@@ -497,9 +498,9 @@ const MGT = {
   pipeline: (s) => {
     const a = s.audioStart, L = [];
     L.push(T.in("#mg-pipeline .k1", a - 0.1, { y: 14, d: 0.5 }));
-    L.push(T.in("#mg-pipeline .ap0", a + 1.4, { x: -50, y: 0, d: 0.6, ease: "expo.out" }));
-    L.push(T.in("#mg-pipeline .ap1", a + 1.7, { x: 50, y: 0, d: 0.6, ease: "expo.out" }));
-    F.concerns.forEach((_, i) => L.push(T.pop(`#mg-pipeline .ad${i}`, a + 2.6 + i * 0.12, { d: 0.35, from: 0.4 })));
+    L.push(T.in("#mg-pipeline .ap0", a + 0.5, { x: -50, y: 0, d: 0.6, ease: "expo.out" }));
+    L.push(T.in("#mg-pipeline .ap1", a + 0.8, { x: 50, y: 0, d: 0.6, ease: "expo.out" }));
+    F.concerns.forEach((_, i) => L.push(T.pop(`#mg-pipeline .ad${i}`, a + 2.2 + i * 0.12, { d: 0.35, from: 0.4 })));
     for (let i = 0; i < 6; i++) L.push(T.pop(`#mg-pipeline .rs${i}`, a + 4.4 + i * 0.1, { d: 0.35, from: 0.5 }));
     L.push(T.in("#mg-pipeline .un1", a + 6.6, { y: 20, d: 0.5 }));
     L.push(T.count("unit-n", a + 6.8, F.units, 0.9));
@@ -519,7 +520,9 @@ const MGT = {
   numbers: (s) => {
     const a = s.audioStart, L = [];
     L.push(T.in("#mg-numbers .k1", a - 0.1, { y: 16, d: 0.5 }));
-    for (let i = 0; i < 4; i++) L.push(T.in(`#mg-numbers .s2${i}`, a + 3.0 + i * 1.1, { x: -34, y: 0, d: 0.5 }));
+    L.push(T.in("#mg-numbers .hl1", a + 0.25, { y: 26, d: 0.6, ease: "expo.out" }));
+    L.push(T.out("#mg-numbers .hl1", a + 11.9, 0.45));
+    for (let i = 0; i < 4; i++) L.push(T.in(`#mg-numbers .s2${i}`, a + [1.6, 3.6, 4.9, 7.6][i], { x: -34, y: 0, d: 0.5 }));
     L.push(T.in("#mg-numbers .ru1", a + 9.9, { y: 22, d: 0.5 }));
     L.push(T.count("runs-n", a + 10.1, 120, 1.3));
     L.push(T.out("#mg-numbers .sa1", a + 11.9, 0.45));
@@ -721,18 +724,18 @@ function css() {
       .gsub { margin-top: 8px; font-size: 26px; color: var(--faint); }
       .gnote { margin-top: 32px; font-size: 36px; }
 
-      .chips { margin-top: 26px; display: flex; gap: 16px; }
+      .chips { margin-top: 20px; display: flex; gap: 16px; }
       .chip.tag { background: var(--sunken); border-color: transparent; }
-      .hold { margin-top: 40px; display: flex; gap: 24px; }
-      .hcard { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 32px; }
-      .hname { font-size: 34px; line-height: 1.22; min-height: 84px; }
+      .hold { margin-top: 26px; display: flex; gap: 24px; }
+      .hcard { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px 28px; }
+      .hname { font-size: 32px; line-height: 1.22; min-height: 68px; }
       .hprice { margin-top: 14px; font-size: 30px; color: var(--faint); }
       .htag { margin-top: 16px; font-size: 22px; letter-spacing: 0.1em; text-transform: uppercase;
         color: var(--block); font-weight: 500; opacity: 0; }
-      .refer { margin-top: 40px; background: var(--refer-soft); border: 1px solid rgb(43 85 121 / 0.22);
-        border-radius: 20px; padding: 38px 48px; }
-      .rlabel { font-family: "Source Serif 4", Georgia, serif; font-size: 60px; color: var(--refer); letter-spacing: -0.02em; }
-      .rtext { margin-top: 14px; font-size: 31px; line-height: 1.34; color: var(--muted); max-width: 1320px; }
+      .refer { margin-top: 26px; background: var(--refer-soft); border: 1px solid rgb(43 85 121 / 0.22);
+        border-radius: 20px; padding: 28px 44px; }
+      .rlabel { font-family: "Source Serif 4", Georgia, serif; font-size: 52px; color: var(--refer); letter-spacing: -0.02em; }
+      .rtext { margin-top: 12px; font-size: 28px; line-height: 1.32; color: var(--muted); max-width: 1320px; }
 
       .shop { margin-top: 32px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
         box-shadow: 0 2px 4px rgb(0 0 0 / 0.05), 0 20px 46px rgb(0 0 0 / 0.08); }
@@ -786,7 +789,9 @@ function css() {
       .farrow::after { content: ""; position: absolute; right: -2px; top: -7px;
         border-left: 14px solid rgb(25 28 26 / 0.22); border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
 
-      .same { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; max-width: 1320px; }
+      .headline { margin-top: 20px; font-family: "Source Serif 4", Georgia, serif;
+        font-size: 76px; letter-spacing: -0.025em; line-height: 1.1; }
+      .same { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; max-width: 1320px; }
       .srow2 { display: flex; align-items: center; gap: 30px; background: var(--surface);
         border: 1px solid var(--line); border-radius: 14px; padding: 25px 36px; }
       .sl { flex: 1; font-size: 38px; }

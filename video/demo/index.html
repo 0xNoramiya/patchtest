@@ -120,18 +120,18 @@
       .gsub { margin-top: 8px; font-size: 26px; color: var(--faint); }
       .gnote { margin-top: 32px; font-size: 36px; }
 
-      .chips { margin-top: 26px; display: flex; gap: 16px; }
+      .chips { margin-top: 20px; display: flex; gap: 16px; }
       .chip.tag { background: var(--sunken); border-color: transparent; }
-      .hold { margin-top: 40px; display: flex; gap: 24px; }
-      .hcard { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 32px; }
-      .hname { font-size: 34px; line-height: 1.22; min-height: 84px; }
+      .hold { margin-top: 26px; display: flex; gap: 24px; }
+      .hcard { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px 28px; }
+      .hname { font-size: 32px; line-height: 1.22; min-height: 68px; }
       .hprice { margin-top: 14px; font-size: 30px; color: var(--faint); }
       .htag { margin-top: 16px; font-size: 22px; letter-spacing: 0.1em; text-transform: uppercase;
         color: var(--block); font-weight: 500; opacity: 0; }
-      .refer { margin-top: 40px; background: var(--refer-soft); border: 1px solid rgb(43 85 121 / 0.22);
-        border-radius: 20px; padding: 38px 48px; }
-      .rlabel { font-family: "Source Serif 4", Georgia, serif; font-size: 60px; color: var(--refer); letter-spacing: -0.02em; }
-      .rtext { margin-top: 14px; font-size: 31px; line-height: 1.34; color: var(--muted); max-width: 1320px; }
+      .refer { margin-top: 26px; background: var(--refer-soft); border: 1px solid rgb(43 85 121 / 0.22);
+        border-radius: 20px; padding: 28px 44px; }
+      .rlabel { font-family: "Source Serif 4", Georgia, serif; font-size: 52px; color: var(--refer); letter-spacing: -0.02em; }
+      .rtext { margin-top: 12px; font-size: 28px; line-height: 1.32; color: var(--muted); max-width: 1320px; }
 
       .shop { margin-top: 32px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
         box-shadow: 0 2px 4px rgb(0 0 0 / 0.05), 0 20px 46px rgb(0 0 0 / 0.08); }
@@ -185,7 +185,9 @@
       .farrow::after { content: ""; position: absolute; right: -2px; top: -7px;
         border-left: 14px solid rgb(25 28 26 / 0.22); border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
 
-      .same { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; max-width: 1320px; }
+      .headline { margin-top: 20px; font-family: "Source Serif 4", Georgia, serif;
+        font-size: 76px; letter-spacing: -0.025em; line-height: 1.1; }
+      .same { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; max-width: 1320px; }
       .srow2 { display: flex; align-items: center; gap: 30px; background: var(--surface);
         border: 1px solid var(--line); border-radius: 14px; padding: 25px 36px; }
       .sl { flex: 1; font-size: 38px; }
@@ -436,7 +438,8 @@
       <div class="scene" id="sc-numbers" style="z-index:11">
         <div class="clip mg mg-numbers" id="mg-numbers" data-start="109.86" data-duration="54.4" data-track-index="11">
 
-          <p class="kicker k1">The part most demos skip</p>
+          <p class="kicker k1">The eval</p>
+          <p class="headline hl1">Here is the part most demos skip.</p>
           <div class="same sa1">
             <div class="srow2 s20"><span class="sl">the same model</span><span class="sv eq">identical</span></div>
             <div class="srow2 s21"><span class="sl">the same prompt</span><span class="sv eq">identical</span></div>
@@ -759,9 +762,9 @@
       tl.fromTo("#mg-refer .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 49.32);
       tl.fromTo("#mg-refer .t0", { y: 18, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 49.82);
       tl.fromTo("#mg-refer .t1", { y: 18, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 50.52);
-      tl.fromTo("#mg-refer .hc0", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.42);
-      tl.fromTo("#mg-refer .hc1", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.70);
-      tl.fromTo("#mg-refer .hc2", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.98);
+      tl.fromTo("#mg-refer .hc0", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 51.92);
+      tl.fromTo("#mg-refer .hc1", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.18);
+      tl.fromTo("#mg-refer .hc2", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.44);
       tl.fromTo("#mg-refer .rf1", { scale: 1.18, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(2.2)" }, 55.12);
       tl.to("#mg-refer .hc0", { opacity: 0.3, scale: 0.97, duration: 0.5, ease: "power2.out" }, 56.82);
       tl.to("#mg-refer .hc1", { opacity: 0.3, scale: 0.97, duration: 0.5, ease: "power2.out" }, 56.94);
@@ -771,8 +774,8 @@
       tl.fromTo("#mg-refer .hc2 .htag", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 57.26);
       tl.fromTo("#mg-refer .u1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 59.12);
       tl.fromTo("#mg-ext", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 63.08);
-      tl.fromTo("#mg-ext .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 64.78);
-      tl.fromTo("#mg-ext .sh1", { y: 40, x: 0, scale: 0.97, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.7, ease: "expo.out" }, 65.18);
+      tl.fromTo("#mg-ext .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 63.38);
+      tl.fromTo("#mg-ext .sh1", { y: 40, x: 0, scale: 0.97, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.7, ease: "expo.out" }, 64.18);
       tl.fromTo("#ext-pin", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.2)" }, 68.08);
       tl.to("#ext-pin", { scale: 0.86, duration: 0.12, ease: "power2.in", yoyo: true, repeat: 1 }, 70.18);
       tl.fromTo("#mg-ext .cb0", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 70.78);
@@ -788,15 +791,15 @@
       tl.fromTo("#mg-ext .u1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 81.38);
       tl.fromTo("#mg-pipeline", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 84.72);
       tl.fromTo("#mg-pipeline .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 84.82);
-      tl.fromTo("#mg-pipeline .ap0", { y: 0, x: -50, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 86.32);
-      tl.fromTo("#mg-pipeline .ap1", { y: 0, x: 50, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 86.62);
-      tl.fromTo("#mg-pipeline .ad0", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.52);
-      tl.fromTo("#mg-pipeline .ad1", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.64);
-      tl.fromTo("#mg-pipeline .ad2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.76);
-      tl.fromTo("#mg-pipeline .ad3", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.88);
-      tl.fromTo("#mg-pipeline .ad4", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 88.00);
-      tl.fromTo("#mg-pipeline .ad5", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 88.12);
-      tl.fromTo("#mg-pipeline .ad6", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 88.24);
+      tl.fromTo("#mg-pipeline .ap0", { y: 0, x: -50, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 85.42);
+      tl.fromTo("#mg-pipeline .ap1", { y: 0, x: 50, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 85.72);
+      tl.fromTo("#mg-pipeline .ad0", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.12);
+      tl.fromTo("#mg-pipeline .ad1", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.24);
+      tl.fromTo("#mg-pipeline .ad2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.36);
+      tl.fromTo("#mg-pipeline .ad3", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.48);
+      tl.fromTo("#mg-pipeline .ad4", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.60);
+      tl.fromTo("#mg-pipeline .ad5", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.72);
+      tl.fromTo("#mg-pipeline .ad6", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.84);
       tl.fromTo("#mg-pipeline .rs0", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.32);
       tl.fromTo("#mg-pipeline .rs1", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.42);
       tl.fromTo("#mg-pipeline .rs2", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.52);
@@ -835,10 +838,12 @@
       tl.to("#mg-pipeline .fb1", { scale: 1.05, duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1 }, 104.72);
       tl.fromTo("#mg-numbers", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 109.86);
       tl.fromTo("#mg-numbers .k1", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 109.96);
-      tl.fromTo("#mg-numbers .s20", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 113.06);
-      tl.fromTo("#mg-numbers .s21", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 114.16);
-      tl.fromTo("#mg-numbers .s22", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 115.26);
-      tl.fromTo("#mg-numbers .s23", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 116.36);
+      tl.fromTo("#mg-numbers .hl1", { y: 26, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 110.31);
+      tl.to("#mg-numbers .hl1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 121.96);
+      tl.fromTo("#mg-numbers .s20", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 111.66);
+      tl.fromTo("#mg-numbers .s21", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 113.66);
+      tl.fromTo("#mg-numbers .s22", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 114.96);
+      tl.fromTo("#mg-numbers .s23", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 117.66);
       tl.fromTo("#mg-numbers .ru1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 119.96);
       tl.set("#runs-n", { textContent: 0 }, 120.16);
       tl.set("#runs-n", { textContent: 19 }, 120.23);
