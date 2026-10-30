@@ -1,9 +1,11 @@
 # PatchTest progress
 
-Updated: Sat Oct 31 2026, 01:10 UTC+8
+Updated: Sat Oct 31 2026, 01:45 UTC+8
 
 **Live:** https://patchtest.fly.dev
 **Repo:** https://github.com/0xNoramiya/patchtest
+**Extension:** https://github.com/0xNoramiya/patchtest/releases/latest
+**Demo shop for the extension:** https://patchtest.fly.dev/store
 
 ## Units spent
 
@@ -34,6 +36,14 @@ checked: 14 verified, 7 partial, 3 heuristic rules with no source by design. Nin
 disclosed synthetic faces scanned and recorded. Thresholds calibrated against the
 real distribution, which caught three bugs that would have shipped.
 
+**M3.** Browser extension, Manifest V3, downloadable from Releases. It reads a
+cart on any shop's page and applies the same 24 rules. `lib/match.ts` parses a
+product title into actives, percentages, tags, rinse-off and body area, with 24
+tests. Extraction prefers the schema.org data shops already publish. A title it
+cannot read returns UNKNOWN and says that is not a clearance.
+`scripts/test-extension.mjs` loads the packaged extension into a real browser and
+asserts it annotates the demo cart against production.
+
 **M2.** Agent loop with the fair baseline. Claim linter, build-time and runtime.
 40-scenario eval, both arms, three runs each. Full UI: landing, consent, intake,
 cart picker, scan selection, results with mask overlays, `/methods`, `/eval`.
@@ -46,8 +56,8 @@ volume.
 |---|---|---|
 | Sold an item the gold calls unsafe | **0%** | **22.5%** |
 | Sold an item needing a caveat, with none | 11.1% | 100% |
-| Same cart on all three runs | 62.5% | 65% |
-| Mean cart value | $82.50 | $90.61 |
+| Same cart on all three runs | 65% | 65% |
+| Mean cart value | $82.70 | $90.99 |
 
 23 of 24 rules fired exactly when they should and stayed quiet exactly when they
 should. The 24th is the sunscreen rule, which never needed to fire because the
@@ -71,9 +81,32 @@ advisor had already added sunscreen.
    chat.
 6. **The scan bank has no Fitzpatrick I.** Five of six types are covered.
 
+## Design and assets
+
+- 26 generated product images, unbranded with no text, and nine disclosed
+  synthetic faces. Every image in the project is generated.
+- Favicon is a patch test grid with one site reacting. No default Next.js assets
+  remain.
+- Design pass: alpha borders, layered shadows, a verdict colour rail on cart
+  rows, and the scan panel drawing the measured score against the one YouCam
+  shows so the compression is visible. The OK verdict no longer shares the brand
+  green, and the focus ring is neutral.
+
+## Fixed after review
+
+- **The pregnancy preset was showing a man.** The acne face was regenerated to
+  read as clearly adult and became male; nothing re-checked which scenarios
+  pointed at it. Four eval scenarios had the same fault. Both corrected, and two
+  tests now fail the build if it recurs.
+- **The eval page promised one thing and showed another.** Its "where the plain
+  advisor fell short" section printed our own gold rationale instead of what the
+  advisor did. It now names the product sold uncaveated and quotes what PatchTest
+  said about the same item.
+
 ## Not built
 
-- The MCP tool `check_cart`, which was a stretch goal.
+- The MCP tool `check_cart`, which was a stretch goal. The HTTP endpoint the
+  extension uses is already that shape, so it is a thin wrapper away.
 - A Bahasa Indonesia interface, also a stretch goal.
 - MediaPipe face detection in the browser. The pre-check uses resolution,
   brightness and framing instead. The reason is in `docs/API_NOTES.md`: YouCam
