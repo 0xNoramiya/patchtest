@@ -1,0 +1,28 @@
+{
+  "key": "4e77a579aae3a7c0faf2c8517e2db618",
+  "recorded_at": "2026-10-30T17:34:54.698Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S03-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "A 2.5% rinse-off wash is a gentler pick for oily, blemish-prone skin during pregnancy, so we chose it over the 5% strength."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle leave-on cream that helps with the look of uneven tone and visible blemishes without harsh actives."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the look of a comfortable, hydrated skin barrier and offsets wash dryness."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 gives daily sun protection that suits pregnancy and helps blemish marks look less noticeable."
+      }
+    ],
+    "routine_note": "Use the wash once a day in the evening, follow with the azelaic cream and moisturizer, and apply mineral SPF every morning. Since you are pregnant and the breakouts feel severe, please check any active product with your prenatal provider or a dermatologist, who can advise beyond what a shop can offer."
+  }
+}

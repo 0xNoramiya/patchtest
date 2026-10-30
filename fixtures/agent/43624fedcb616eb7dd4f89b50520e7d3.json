@@ -1,0 +1,28 @@
+{
+  "key": "43624fedcb616eb7dd4f89b50520e7d3",
+  "recorded_at": "2026-10-30T17:34:45.147Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S03-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser that removes excess oil without stripping oily skin that is also low on moisture."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle azelaic acid cream that helps even the look of redness and blemish-prone skin and is commonly considered suitable during pregnancy."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the skin barrier and comfort without feeling heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection that is gentle on blemish-prone, redness-prone skin."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, apply the azelaic acid cream and moisturizer in the evening, and finish with mineral SPF each morning. I left out the strongest benzoyl peroxide wash, retinoids and strong exfoliants because pregnancy calls for extra caution, so please check with your prenatal provider or a dermatologist about severe breakouts."
+  }
+}

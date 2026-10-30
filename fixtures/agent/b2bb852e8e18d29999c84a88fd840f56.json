@@ -1,0 +1,24 @@
+{
+  "key": "b2bb852e8e18d29999c84a88fd840f56",
+  "recorded_at": "2026-10-30T17:34:02.390Z",
+  "model": "claude-sonnet-5-5",
+  "label": "advise-synthetic-02-acne",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps skin clean without stripping or adding irritation."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple barrier moisturizer supports comfort, since your moisture score is on the lower side."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 helps keep the marks left behind from looking darker in the sun."
+      }
+    ],
+    "routine_note": "Deep, painful lumps along the jaw that leave marks are best looked at by a dermatologist, so I've held back the 5% benzoyl peroxide wash and the 30% peel, which are likely to irritate skin that is already sore. Use the cleanser morning and night, then moisturizer, and finish with SPF in the morning."
+  }
+}

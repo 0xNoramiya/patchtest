@@ -187,7 +187,10 @@ function renderPanel(data, items, hasProfile) {
   close.addEventListener("click", () => panel.remove());
   panel.append(close);
 
-  document.body.append(panel);
+  // Attached to the document element, not the body. A framework that hydrates
+  // after us owns the body's children and will happily remove anything it did
+  // not render.
+  document.documentElement.append(panel);
 }
 
 async function run() {
@@ -242,5 +245,12 @@ function looksLikeCart() {
   return /\b(subtotal|your bag|your cart|order summary|proceed to checkout)\b/i.test(text);
 }
 
+/** Wait for the page to settle, since a hydrating framework can wipe what we add. */
+function runWhenSettled() {
+  const start = () => setTimeout(run, 600);
+  if (document.readyState === "complete") start();
+  else window.addEventListener("load", start, { once: true });
+}
+
 syncProfileFromSite();
-if (looksLikeCart()) run();
+if (looksLikeCart()) runWhenSettled();

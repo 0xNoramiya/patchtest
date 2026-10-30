@@ -124,7 +124,7 @@ export function CartList({ result }: { result: AdviseResult }) {
               {/* A colour rail so the shape of the answer is scannable down the page. */}
               <span
                 aria-hidden
-                className={`absolute inset-y-0 left-0 w-1 ${VERDICT_RAIL[verdict]}`}
+                className={`pointer-events-none absolute inset-y-0 left-0 w-1 ${VERDICT_RAIL[verdict]}`}
               />
               <div className="px-4 py-4 pl-5 sm:px-6 sm:pl-7">
                 <div className="flex items-start gap-3 sm:gap-4">

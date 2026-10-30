@@ -1,0 +1,28 @@
+{
+  "key": "149b4dd35204b8dc5e8ef24019cee61d",
+  "recorded_at": "2026-10-30T17:35:00.499Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S05-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that suits oily, sensitive skin without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "A simple hydrating layer to support the moisture level your scan shows."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer that keeps sensitive skin comfortable and can help skin look smoother."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection, using a zinc oxide filter that is a common choice during pregnancy."
+      }
+    ],
+    "routine_note": "I've left out the 15% lactic acid serum because it is a high-strength exfoliant, so please check with your prenatal provider before using it. Use the cleanser, hyaluronic serum, moisturizer and SPF in the morning, then the cleanser, serum and moisturizer in the evening."
+  }
+}

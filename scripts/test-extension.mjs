@@ -9,7 +9,8 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 const base = process.argv[2] ?? "http://localhost:3000";
-const ext = path.resolve("extension");
+// EXT_DIR lets this run against an unzipped release artifact, not just the source.
+const ext = path.resolve(process.env.EXT_DIR ?? "extension");
 const profileDir = mkdtempSync(path.join(tmpdir(), "pt-ext-"));
 
 const context = await chromium.launchPersistentContext(profileDir, {

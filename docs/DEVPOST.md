@@ -43,7 +43,8 @@ source. Where something is blocked, it offers a swap.
 
 It also ships as a **browser extension**, because the moment before checkout
 usually happens on somebody else's website. The extension reads the cart on a
-shop's own page and applies the same rules there.
+shop's own page and applies the same rules there. It is
+[downloadable from Releases](https://github.com/0xNoramiya/patchtest/releases/latest) and loads unpacked in about thirty seconds.
 
 Three decisions shape the whole thing.
 

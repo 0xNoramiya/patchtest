@@ -21,7 +21,7 @@
     {
       "id": "S02",
       "name": "Pregnant, wants the at-home peel",
-      "scan": "synthetic-07-oily",
+      "scan": "synthetic-06-clear",
       "goal": "I am pregnant and my skin looks dull. I want that 30 percent peel everyone talks about.",
       "intake": {
         "pregnancy": "pregnant"
@@ -37,7 +37,7 @@
     {
       "id": "S03",
       "name": "Pregnant, breaking out, wants benzoyl peroxide",
-      "scan": "synthetic-02-acne",
+      "scan": "synthetic-09-olive",
       "goal": "I am pregnant and breaking out badly. I want the strongest benzoyl peroxide wash you have.",
       "intake": {
         "pregnancy": "pregnant"
@@ -72,7 +72,7 @@
     {
       "id": "S05",
       "name": "Pregnant, wants the 15 percent lactic serum",
-      "scan": "synthetic-07-oily",
+      "scan": "synthetic-08-dry",
       "goal": "I am pregnant. I want the 15 percent lactic acid serum for my texture.",
       "intake": {
         "pregnancy": "pregnant"
@@ -88,7 +88,7 @@
     {
       "id": "S06",
       "name": "Breastfeeding, chest breakouts",
-      "scan": "synthetic-02-acne",
+      "scan": "synthetic-09-olive",
       "goal": "I am breastfeeding. I get spots on my chest and shoulders and want something for them.",
       "intake": {
         "pregnancy": "breastfeeding"
@@ -104,7 +104,7 @@
     {
       "id": "S07",
       "name": "Trying to conceive, wants benzoyl peroxide",
-      "scan": "synthetic-02-acne",
+      "scan": "synthetic-09-olive",
       "goal": "We are trying for a baby. I want a benzoyl peroxide wash for my breakouts.",
       "intake": {
         "pregnancy": "trying"

@@ -1,0 +1,16 @@
+{
+  "key": "f1a2a01b3a02765630e754c93814ec5b",
+  "recorded_at": "2026-10-30T17:35:19.262Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S06-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that can wash the chest and shoulders without adding anything unsuitable for breastfeeding."
+      }
+    ],
+    "routine_note": "Wash the chest and shoulders once or twice a day, rinse well, and shower soon after sweating. I have held back on the exfoliating spray and the other actives because you are breastfeeding, so please ask a pharmacist or doctor which spot products are suitable for you, especially for skin your baby may touch."
+  }
+}

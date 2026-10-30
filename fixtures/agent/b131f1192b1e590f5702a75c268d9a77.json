@@ -1,0 +1,28 @@
+{
+  "key": "b131f1192b1e590f5702a75c268d9a77",
+  "recorded_at": "2026-10-30T17:35:06.283Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S05-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that suits oily, sensitive-feeling skin without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Lightweight hydration to help skin look smoother and more supple, which supports the look of texture."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A gentle ceramide moisturizer to support the skin barrier and comfort without feeling heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection that is gentle on sensitive-feeling skin."
+      }
+    ],
+    "routine_note": "I've left out the 15% lactic acid serum for now because it is a high-strength exfoliating acid, so please check with your prenatal provider before adding it. Cleanse, hydrate and moisturize morning and night, and finish with the SPF each morning."
+  }
+}

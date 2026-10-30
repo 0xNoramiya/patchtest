@@ -1,0 +1,24 @@
+{
+  "key": "43a4e6828fa989fff1a5a3c69d2f8028",
+  "recorded_at": "2026-10-30T17:35:53.204Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S07-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "The lower 2.5% strength is a rinse-off wash that helps clarify the look of breakouts and is gentler on oily skin."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light gel moisturizer that helps keep oily skin looking matte and comfortable while the wash dries the surface."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection, with no chemical filters."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, then moisturizer, and mineral SPF every morning. Because you are trying for a baby, please check this routine with your doctor or pharmacist, and skip retinoid products for now; I have left them out."
+  }
+}

@@ -186,9 +186,13 @@ export function LiveScan({
           </div>
 
           {preview ? (
-            <div className="mt-4 grid gap-4 sm:grid-cols-[160px_1fr]">
+            <div className="mt-4 grid gap-4 sm:grid-cols-[auto_1fr]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={preview} alt="The photo you chose" className="rounded-lg border border-line" />
+              <img
+                src={preview}
+                alt="The photo you chose"
+                className="aspect-[3/4] w-40 rounded-lg border border-line bg-sunken object-cover"
+              />
               <ul className="space-y-1.5 text-sm">
                 {checks.map((check) => (
                   <li key={check.message} className={check.ok ? "text-muted" : "text-adjust"}>

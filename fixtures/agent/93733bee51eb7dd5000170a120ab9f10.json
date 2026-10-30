@@ -1,0 +1,16 @@
+{
+  "key": "93733bee51eb7dd5000170a120ab9f10",
+  "recorded_at": "2026-10-30T17:35:37.174Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S06-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-124",
+        "reason": "A light 2% salicylic acid spray made for the chest, to help the look of spots on the chest and shoulders."
+      }
+    ],
+    "routine_note": "Use a thin layer once a day on the upper chest and shoulders only, keep it off the breast and nipple area, and let it dry fully before feeding or skin-to-skin contact. Since you are breastfeeding, check with your midwife, doctor or pharmacist before starting, and see a dermatologist if the spots persist or worsen."
+  }
+}

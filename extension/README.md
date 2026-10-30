@@ -9,12 +9,16 @@ answers it where people actually shop.
 ## Install it
 
 Chrome, Edge or any Chromium browser. It is not on the Web Store, so it loads
-unpacked.
+unpacked. Takes about thirty seconds.
 
-1. Download or clone this repo.
+1. **[Download the zip](https://github.com/0xNoramiya/patchtest/releases/latest/download/patchtest-extension-v1.0.0.zip)** from
+   [Releases](https://github.com/0xNoramiya/patchtest/releases/latest), and unzip it. Or clone this repo and use the
+   `extension/` folder directly.
 2. Open `chrome://extensions`.
 3. Turn on **Developer mode**, top right.
-4. Press **Load unpacked** and pick this `extension/` folder.
+4. Press **Load unpacked** and pick the unzipped folder.
+
+Nothing else to configure. It points at `https://patchtest.fly.dev` out of the box.
 
 ## Use it
 

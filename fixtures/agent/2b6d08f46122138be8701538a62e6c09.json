@@ -1,0 +1,28 @@
+{
+  "key": "2b6d08f46122138be8701538a62e6c09",
+  "recorded_at": "2026-10-30T17:34:25.841Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S02-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that keeps skin clean without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Hyaluronic acid adds a hydrated, plumper look, which helps skin look less dull."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a smooth, comfortable skin barrier and moisture that suits oilier skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Mineral zinc oxide SPF 50 protects daily and helps keep skin looking even and bright."
+      }
+    ],
+    "routine_note": "I've left out the 30% peel because strong peels with salicylic acid aren't a good fit during pregnancy, so please check any exfoliating or peel products with your doctor or a dermatologist first. Use the cleanser, serum and moisturizer morning and night, and apply the SPF last each morning."
+  }
+}

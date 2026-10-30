@@ -38,8 +38,10 @@ actives, percentages, tags, rinse-off versus leave-on and body area, with 24
 tests of its own. A title it cannot read gets no verdict and says so, rather than
 being presented as cleared.
 
-Install instructions are in [`extension/README.md`](extension/README.md). The
-demo shop is at [/store](https://patchtest.fly.dev/store).
+**[Download the extension zip](https://github.com/0xNoramiya/patchtest/releases/latest/download/patchtest-extension-v1.0.0.zip)**, unzip it, then load it unpacked from
+`chrome://extensions` with Developer mode on. Full instructions in
+[`extension/README.md`](extension/README.md). The demo shop to try it on is
+[/store](https://patchtest.fly.dev/store).
 
 ---
 
@@ -173,6 +175,7 @@ serve every preset, because the scans and the agent responses are recorded in
 | `pnpm record-presets` | Record agent responses for the demo presets |
 | `pnpm preview` | Production build, served locally with static assets in place |
 | `node scripts/test-extension.mjs` | Loads the extension into a real browser and asserts it annotates the demo cart |
+| `pnpm package:extension` | Builds the release zip into `dist/` |
 
 ---
 

@@ -70,7 +70,9 @@ export default function Home() {
                 <img
                   src={`/api/fixture/scans/${preset.scanLabel}/input.jpg`}
                   alt=""
-                  className="h-24 w-20 shrink-0 rounded-lg object-cover"
+                  width={80}
+                  height={96}
+                  className="h-24 w-20 shrink-0 rounded-lg bg-sunken object-cover"
                 />
                 <div className="min-w-0 flex-1">
                   <h3 className="font-display text-lg leading-snug">{preset.title}</h3>

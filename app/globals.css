@@ -95,7 +95,7 @@ p { text-wrap: pretty; }
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
   border-radius: 3px;
 }
@@ -104,7 +104,7 @@ p { text-wrap: pretty; }
 .press {
   transition: transform 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, opacity 150ms ease-out;
 }
-.press:active { transform: scale(0.985); }
+.press:active { transform: scale(0.96); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -1,0 +1,16 @@
+{
+  "key": "a80b86ea43ac2f05b815f3107449786b",
+  "recorded_at": "2026-10-30T17:35:29.248Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S06-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser to keep oily-feeling skin on the chest and shoulders clean without irritation."
+      }
+    ],
+    "routine_note": "Wash the chest and shoulders once or twice a day and after sweating, and rinse well, especially near areas your baby touches. Because you are breastfeeding I have left out acids, retinoids and peroxides, so if the spots persist or bother you, please check with a pharmacist or dermatologist before adding anything stronger."
+  }
+}

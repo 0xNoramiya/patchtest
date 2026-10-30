@@ -75,9 +75,13 @@ export function ScanPanel({ result }: { result: AdviseResult }) {
 
       <div className="grid gap-6 p-4 sm:p-6 md:grid-cols-[minmax(0,240px)_1fr]">
         <div>
-          <div className="relative overflow-hidden rounded-lg border border-line bg-paper">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-lg border border-line bg-sunken">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imagePath} alt="The photo that was analyzed" className="block w-full" />
+            <img
+              src={imagePath}
+              alt="The photo that was analyzed"
+              className="block h-full w-full object-cover"
+            />
             {maskSrc ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img

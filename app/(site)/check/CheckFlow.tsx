@@ -39,7 +39,8 @@ export function CheckFlow() {
   const params = useSearchParams();
   const presetId = params.get("preset");
 
-  const [step, setStep] = useState<Step>("consent");
+  // Starting on "consent" would flash that screen before the preset effect runs.
+  const [step, setStep] = useState<Step>(presetId ? "working" : "consent");
   const [intake, setIntake] = useState<Intake>(EMPTY_INTAKE);
   const [wanted, setWanted] = useState<string[]>([]);
   const [catalog, setCatalog] = useState<CatalogItem[]>([]);

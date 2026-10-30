@@ -466,3 +466,32 @@ describe("R-REF-01 holds the strong actives without over-blocking", () => {
     expect(r.items.find((i) => i.sku === sku)?.findings.some((f) => f.ruleId === "R-REF-01")).toBe(false);
   });
 });
+
+describe("demo fixtures are paired coherently", () => {
+  // These two faces read as men. A pregnancy, trying-to-conceive or
+  // breastfeeding scenario pointed at one of them looks like an obvious mistake
+  // to anyone who opens it, because it is one.
+  const MALE_FACES = ["synthetic-02-acne", "synthetic-07-oily"];
+  const GESTATIONAL = ["pregnant", "trying", "breastfeeding"];
+
+  it("never shows a pregnancy or breastfeeding preset on a face that reads as a man", async () => {
+    const { PRESETS } = await import("../presets");
+    for (const preset of PRESETS) {
+      if (preset.intake.pregnancy && GESTATIONAL.includes(preset.intake.pregnancy)) {
+        expect(MALE_FACES, `${preset.id} uses ${preset.scanLabel}`).not.toContain(preset.scanLabel);
+      }
+    }
+  });
+
+  it("never pairs a pregnancy or breastfeeding eval scenario with one either", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { scenarios } = JSON.parse(readFileSync("eval/scenarios.json", "utf8")) as {
+      scenarios: Array<{ id: string; scan: string; intake: { pregnancy?: string } }>;
+    };
+    for (const s of scenarios) {
+      if (s.intake.pregnancy && GESTATIONAL.includes(s.intake.pregnancy)) {
+        expect(MALE_FACES, `${s.id} uses ${s.scan}`).not.toContain(s.scan);
+      }
+    }
+  });
+});
