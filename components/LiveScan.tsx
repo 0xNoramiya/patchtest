@@ -141,7 +141,7 @@ export function LiveScan({
   const blocking = checks.filter((c) => !c.ok);
 
   return (
-    <div className="rounded-xl border border-line bg-surface p-4 sm:p-6">
+    <div className="rounded-xl border border-line bg-surface p-4 shadow-card sm:p-6">
       <h2 className="font-display text-xl">Run a live scan</h2>
       <p className="mt-1.5 text-sm leading-relaxed text-muted">
         This sends one photo to YouCam and spends {budget.unitsPerScan} units of our{" "}
@@ -170,7 +170,7 @@ export function LiveScan({
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
-              className="rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
+              className="press rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
             >
               {preview ? "Choose a different photo" : "Take or choose a photo"}
             </button>
@@ -178,7 +178,7 @@ export function LiveScan({
               <button
                 type="button"
                 onClick={start}
-                className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90"
+                className="press rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90"
               >
                 Scan it, {budget.unitsPerScan} units
               </button>

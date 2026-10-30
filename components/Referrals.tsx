@@ -10,7 +10,7 @@ export function Referrals({ result }: { result: AdviseResult }) {
       {referrals.map((finding) => (
         <section
           key={finding.ruleId}
-          className="rounded-xl border border-refer/25 bg-refer-soft p-4 sm:p-5"
+          className="rounded-xl border border-refer/25 bg-refer-soft p-4 shadow-card sm:p-5"
         >
           <h2 className="font-display text-lg text-refer">Worth showing a professional</h2>
           <p className="mt-1.5 text-sm leading-relaxed text-ink">{finding.message}</p>
@@ -30,7 +30,7 @@ export function Referrals({ result }: { result: AdviseResult }) {
       ))}
 
       {reported.map((finding) => (
-        <section key={finding.ruleId} className="rounded-xl border border-block/25 bg-block-soft p-4 sm:p-5">
+        <section key={finding.ruleId} className="rounded-xl border border-block/25 bg-block-soft p-4 shadow-card sm:p-5">
           <h2 className="font-display text-lg text-block">About something you already use</h2>
           <p className="mt-1.5 text-sm leading-relaxed text-ink">{finding.message}</p>
           <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs">
@@ -44,7 +44,7 @@ export function Referrals({ result }: { result: AdviseResult }) {
       ))}
 
       {suggestedQuestions.length > 0 && referrals.length === 0 ? (
-        <section className="rounded-xl border border-line bg-surface p-4 text-sm sm:p-5">
+        <section className="rounded-xl border border-line bg-surface p-4 text-sm shadow-card sm:p-5">
           <h2 className="font-display text-base">One thing worth asking</h2>
           {suggestedQuestions.map((q) => (
             <p key={q.ruleId} className="tnum mt-1.5 leading-relaxed text-muted">

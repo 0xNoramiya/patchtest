@@ -1,0 +1,118 @@
+/* Scoped and specific so a shop's own styles do not bleed in, and so ours do
+   not bleed out onto their page. */
+.pt-host { position: relative; }
+
+.pt-badge {
+  all: initial;
+  display: block;
+  box-sizing: border-box;
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(25, 28, 26, 0.12);
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Ubuntu Sans", Arial, sans-serif;
+  color: #191c1a;
+  box-shadow: 0 1px 1px rgba(25, 28, 26, 0.04), 0 4px 10px rgba(25, 28, 26, 0.05);
+  max-width: 520px;
+}
+
+.pt-badge-head {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.pt-badge-body {
+  all: initial;
+  display: block;
+  margin-top: 5px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a5159;
+}
+.pt-badge-link {
+  all: initial;
+  display: inline-block;
+  margin-top: 5px;
+  font-family: inherit;
+  font-size: 12px;
+  color: #2f5d4f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pt-block { border-left: 4px solid #a5342b; }
+.pt-block .pt-badge-head { color: #a5342b; }
+.pt-adjust { border-left: 4px solid #8a5a14; }
+.pt-adjust .pt-badge-head { color: #8a5a14; }
+.pt-unnecessary { border-left: 4px solid #4a5159; }
+.pt-unnecessary .pt-badge-head { color: #4a5159; }
+.pt-refer { border-left: 4px solid #2b5579; }
+.pt-refer .pt-badge-head { color: #2b5579; }
+.pt-unknown { border-left: 4px solid #a9aca8; }
+.pt-unknown .pt-badge-head { color: #6f756f; }
+.pt-ok { border-left: 4px solid #6f756f; }
+
+.pt-panel {
+  all: initial;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  box-sizing: border-box;
+  width: 310px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(25, 28, 26, 0.12);
+  background: #fbfaf7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Ubuntu Sans", Arial, sans-serif;
+  color: #191c1a;
+  box-shadow: 0 2px 4px rgba(25, 28, 26, 0.05), 0 12px 32px rgba(25, 28, 26, 0.12);
+}
+.pt-panel-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.pt-panel-body,
+.pt-panel-warn,
+.pt-panel-refer,
+.pt-panel-foot {
+  all: initial;
+  display: block;
+  margin-top: 6px;
+  font-family: inherit;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #4a5159;
+}
+.pt-panel-warn {
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: #fdf3e2;
+  color: #8a5a14;
+  font-size: 12px;
+}
+.pt-panel-refer {
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: #eaf1f8;
+  color: #2b5579;
+  font-size: 12px;
+}
+.pt-panel-foot { font-size: 11px; color: #6f756f; }
+.pt-panel-close {
+  all: initial;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1;
+  color: #6f756f;
+  cursor: pointer;
+}

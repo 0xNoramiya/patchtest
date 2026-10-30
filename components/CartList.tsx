@@ -1,7 +1,8 @@
 import type { AdviseResult } from "@/lib/advise";
 import type { Finding, Verdict } from "@/lib/rules/types";
+import { ProductImage } from "./ProductImage";
 import { VerdictBadge } from "./VerdictBadge";
-import { sourceName } from "./verdict";
+import { sourceName, VERDICT_RAIL } from "./verdict";
 
 const ORIGIN_LABEL: Record<string, string> = {
   shopper: "You added this",
@@ -15,23 +16,29 @@ function TriggerNote({ finding }: { finding: Finding }) {
 
   if (t.kind === "scan") {
     return (
-      <p className="tnum mt-1 text-xs text-faint">
-        Triggered by your measured {t.concern.replace("_", " ")} score of {t.raw.toFixed(1)}, which is{" "}
+      <p className="tnum mt-1.5 text-xs text-faint">
+        Triggered by your measured {t.concern.replace("_", " ")} score of{" "}
+        <span className="font-medium text-muted">{t.raw.toFixed(1)}</span>, which is{" "}
         {t.comparison === "below" ? "below" : "at or above"} our threshold of {t.threshold}.
       </p>
     );
   }
   if (t.kind === "scan_skin_type") {
     return (
-      <p className="mt-1 text-xs text-faint">
-        Triggered by the scan reporting your {t.region.replace("_", " ")} skin type as {t.label}.
+      <p className="mt-1.5 text-xs text-faint">
+        Triggered by the scan reporting your {t.region.replace("_", " ")} skin type as{" "}
+        <span className="font-medium text-muted">{t.label}</span>.
       </p>
     );
   }
   if (t.kind === "intake") {
     return (
-      <p className="mt-1 text-xs text-faint">
-        Triggered by what you told us: {t.field.replace(/_/g, " ")} is {t.value.replace(/_/g, " ")}.
+      <p className="mt-1.5 text-xs text-faint">
+        Triggered by what you told us:{" "}
+        <span className="font-medium text-muted">
+          {t.field.replace(/_/g, " ")} is {t.value.replace(/_/g, " ")}
+        </span>
+        .
       </p>
     );
   }
@@ -47,18 +54,18 @@ function FindingRow({
 }) {
   const swap = finding.swapHint ? catalogIndex[finding.swapHint] : undefined;
   return (
-    <li className="border-t border-line/60 pt-3 first:border-0 first:pt-0">
+    <li className="border-t border-line pt-3 first:border-0 first:pt-0">
       <div className="flex flex-wrap items-center gap-2">
         <VerdictBadge verdict={finding.verdict} />
         <code className="font-mono text-xs text-faint">{finding.ruleId}</code>
         {finding.evidence === "heuristic" ? (
-          <span className="rounded bg-paper px-1.5 py-0.5 text-xs text-faint">our heuristic</span>
+          <span className="rounded bg-surface px-1.5 py-0.5 text-xs text-faint">our heuristic</span>
         ) : null}
       </div>
-      <p className="mt-1.5 text-sm leading-relaxed">{finding.message}</p>
+      <p className="mt-2 text-sm leading-relaxed">{finding.message}</p>
       <TriggerNote finding={finding} />
       {finding.sourceQuote ? (
-        <blockquote className="mt-2 border-l-2 border-line pl-3 text-xs italic leading-relaxed text-muted">
+        <blockquote className="mt-2 border-l-2 border-line-strong pl-3 text-xs italic leading-relaxed text-muted">
           &ldquo;{finding.sourceQuote}&rdquo;
         </blockquote>
       ) : null}
@@ -74,28 +81,34 @@ function FindingRow({
             Source: {sourceName(url)}
           </a>
         ))}
-        {swap ? (
-          <span className="text-muted">
-            Try <span className="font-medium text-ink">{swap.name}</span> instead, ${swap.price}
-          </span>
-        ) : null}
       </div>
+      {swap ? (
+        <div className="mt-2.5 flex items-center gap-2.5 rounded-lg border border-accent/20 bg-accent-soft/60 p-2">
+          <ProductImage sku={finding.swapHint!} name={swap.name} size={36} />
+          <p className="text-xs leading-snug">
+            <span className="label text-accent">Try instead</span>
+            <span className="mt-0.5 block font-medium">{swap.name}</span>
+          </p>
+          <span className="tnum ml-auto pr-1 text-xs text-muted">${swap.price}</span>
+        </div>
+      ) : null}
     </li>
   );
 }
 
 export function CartList({ result }: { result: AdviseResult }) {
   const byS = new Map(result.evaluation.items.map((i) => [i.sku, i]));
-  const total = result.lines
-    .filter((l) => (byS.get(l.sku)?.verdict ?? "OK") !== "BLOCK")
-    .reduce((sum, l) => sum + l.product.price, 0);
+  const kept = result.lines.filter((l) => (byS.get(l.sku)?.verdict ?? "OK") !== "BLOCK");
+  const total = kept.reduce((sum, l) => sum + l.product.price, 0);
+  const removed = result.lines.length - kept.length;
 
   return (
-    <section className="rounded-xl border border-line bg-surface">
-      <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line p-4 sm:p-6">
+    <section className="overflow-hidden rounded-xl border border-line bg-surface shadow-card">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-4 py-4 sm:px-6">
         <h2 className="font-display text-xl">Your cart, checked</h2>
         <p className="text-sm text-muted">
-          <span className="tnum font-medium text-ink">${total}</span> after the blocked items come out
+          <span className="tnum font-medium text-ink">${total}</span>
+          {removed > 0 ? ` after ${removed} item${removed > 1 ? "s" : ""} came out` : ""}
         </p>
       </div>
 
@@ -104,32 +117,51 @@ export function CartList({ result }: { result: AdviseResult }) {
           const item = byS.get(line.sku);
           const verdict: Verdict = item?.verdict ?? "OK";
           const findings = item?.findings ?? [];
-          return (
-            <li key={line.sku} className="border-b border-line p-4 last:border-0 sm:p-6">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <p className="text-xs uppercase tracking-wide text-faint">
-                    {ORIGIN_LABEL[line.origin]}
-                  </p>
-                  <h3 className="mt-0.5 font-display text-lg leading-snug">{line.product.name}</h3>
-                  <p className="tnum text-sm text-muted">${line.product.price}</p>
-                </div>
-                <VerdictBadge verdict={verdict} />
-              </div>
+          const struck = findings.some((f) => f.verdict === "BLOCK");
 
-              {findings.length > 0 ? (
-                <ul className="mt-4 space-y-3 rounded-lg bg-paper p-3 sm:p-4">
-                  {findings.map((finding, i) => (
-                    <FindingRow
-                      key={`${finding.ruleId}-${i}`}
-                      finding={finding}
-                      catalogIndex={result.catalogIndex}
-                    />
-                  ))}
-                </ul>
-              ) : line.agentReason ? (
-                <p className="mt-2 text-sm leading-relaxed text-muted">{line.agentReason}</p>
-              ) : null}
+          return (
+            <li key={line.sku} className="relative border-b border-line last:border-0">
+              {/* A colour rail so the shape of the answer is scannable down the page. */}
+              <span
+                aria-hidden
+                className={`absolute inset-y-0 left-0 w-1 ${VERDICT_RAIL[verdict]}`}
+              />
+              <div className="px-4 py-4 pl-5 sm:px-6 sm:pl-7">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <ProductImage
+                    sku={line.sku}
+                    name={line.product.name}
+                    size={64}
+                    className={struck ? "opacity-60 grayscale" : ""}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="label text-faint">{ORIGIN_LABEL[line.origin]}</p>
+                    <h3
+                      className={`mt-0.5 font-display text-lg leading-snug ${struck ? "text-muted line-through decoration-block/40" : ""}`}
+                    >
+                      {line.product.name}
+                    </h3>
+                    <p className="tnum text-sm text-muted">${line.product.price}</p>
+                  </div>
+                  <VerdictBadge verdict={verdict} />
+                </div>
+
+                {findings.length > 0 ? (
+                  <ul className="mt-3.5 space-y-3 rounded-lg bg-sunken p-3 sm:ml-20 sm:p-4">
+                    {findings.map((finding, i) => (
+                      <FindingRow
+                        key={`${finding.ruleId}-${i}`}
+                        finding={finding}
+                        catalogIndex={result.catalogIndex}
+                      />
+                    ))}
+                  </ul>
+                ) : line.agentReason ? (
+                  <p className="mt-2 text-sm leading-relaxed text-muted sm:ml-20">
+                    {line.agentReason}
+                  </p>
+                ) : null}
+              </div>
             </li>
           );
         })}

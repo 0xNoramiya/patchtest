@@ -28,6 +28,8 @@ type Results = {
       baselineCart: string[];
       firedRules: string[];
       referrals: string[];
+      missedCaveats: Array<{ sku: string; name: string; guardrailSaid: string | null; ruleId: string | null }>;
+      unsafeLetThrough: Array<{ sku: string; name: string; guardrailSaid: string | null; ruleId: string | null }>;
       baseline: { unflaggedAdjust: string[]; unflaggedUnnecessary: string[] };
       guarded: { unflaggedAdjust: string[]; unflaggedUnnecessary: string[] };
     }>;
@@ -78,9 +80,14 @@ export default function EvalPage() {
   const g = results.metrics.guarded as Record<string, number>;
   const b = results.metrics.baseline as Record<string, number>;
 
-  const interesting = results.rows.filter((r) =>
-    r.runs.some((run) => run.baseline.unflaggedAdjust.length > 0 || run.baseline.unflaggedUnnecessary.length > 0),
-  );
+  // One row per scenario, showing what the plain advisor actually did with the
+  // shopper's cart rather than what our labels say about the scenario.
+  const letThrough = results.rows
+    .map((r) => ({ row: r, items: r.runs[0]?.unsafeLetThrough ?? [] }))
+    .filter((x) => x.items.length > 0);
+  const noCaveat = results.rows
+    .map((r) => ({ row: r, items: r.runs[0]?.missedCaveats ?? [] }))
+    .filter((x) => x.items.length > 0);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
@@ -130,7 +137,7 @@ export default function EvalPage() {
         <h2 className="font-display text-2xl">Results</h2>
         <table className="mt-4 w-full border-collapse text-left text-sm">
           <thead>
-            <tr className="border-b border-line text-xs uppercase tracking-wide text-faint">
+            <tr className="border-b border-line label text-faint">
               <th className="py-2 font-medium">Measure</th>
               <th className="py-2 text-right font-medium">With guardrail</th>
               <th className="py-2 text-right font-medium">Plain advisor</th>
@@ -212,28 +219,74 @@ export default function EvalPage() {
         </div>
       </section>
 
-      {interesting.length > 0 ? (
-        <section className="mt-10">
-          <h2 className="font-display text-2xl">Where the plain advisor fell short</h2>
-          <p className="mt-2 text-sm text-muted">
-            Every case below is one where it sold something that needed a caveat and gave none.
+      {letThrough.length > 0 ? (
+        <section className="mt-12">
+          <h2 className="font-display text-2xl">What the plain advisor let through</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+            In each of these the shopper had already put the item in their cart. The advisor did not
+            recommend it, and it did not remove it or say anything about it either. The quote is what
+            PatchTest said about the very same item.
           </p>
-          <ul className="mt-4 space-y-3">
-            {interesting.map((row) => {
-              const run = row.runs.find((r) => r.baseline.unflaggedAdjust.length > 0) ?? row.runs[0];
-              return (
-                <li key={row.id} className="rounded-xl border border-line bg-surface p-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <code className="font-mono text-xs text-faint">{row.id}</code>
-                    <span className="font-medium">{row.name}</span>
+          <ul className="mt-5 space-y-3">
+            {letThrough.map(({ row, items }) => (
+              <li key={row.id} className="overflow-hidden rounded-xl border border-line bg-surface shadow-card">
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-b border-line bg-sunken px-4 py-2.5">
+                  <code className="font-mono text-xs text-faint">{row.id}</code>
+                  <span className="text-sm font-medium">{row.name}</span>
+                </div>
+                {items.map((item) => (
+                  <div key={item.sku} className="flex gap-3 px-4 py-3.5">
+                    <span aria-hidden className="mt-1 h-full w-0.5 shrink-0 self-stretch rounded-full bg-block" />
+                    <div className="min-w-0">
+                      <p className="text-sm">
+                        <span className="label text-block">Sold anyway</span>{" "}
+                        <span className="font-medium">{item.name}</span>
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted">
+                        <span className="font-medium text-ink">PatchTest said:</span>{" "}
+                        {item.guardrailSaid}{" "}
+                        <code className="font-mono text-xs text-faint">{item.ruleId}</code>
+                      </p>
+                    </div>
                   </div>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{row.rationale}</p>
-                  <p className="mt-2 text-xs text-faint">
-                    Rules that fired with the guardrail: {run.firedRules.join(", ") || "none"}
-                  </p>
-                </li>
-              );
-            })}
+                ))}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {noCaveat.length > 0 ? (
+        <section className="mt-12">
+          <h2 className="font-display text-2xl">What it sold without a word</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+            Not unsafe, but incomplete. These are items that needed a usage caveat, sold with none.
+          </p>
+          <ul className="mt-5 space-y-3">
+            {noCaveat.map(({ row, items }) => (
+              <li key={row.id} className="overflow-hidden rounded-xl border border-line bg-surface shadow-card">
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 border-b border-line bg-sunken px-4 py-2.5">
+                  <code className="font-mono text-xs text-faint">{row.id}</code>
+                  <span className="text-sm font-medium">{row.name}</span>
+                </div>
+                {items.map((item) => (
+                  <div key={item.sku} className="flex gap-3 px-4 py-3.5">
+                    <span aria-hidden className="mt-1 h-full w-0.5 shrink-0 self-stretch rounded-full bg-adjust" />
+                    <div className="min-w-0">
+                      <p className="text-sm">
+                        <span className="label text-adjust">No caveat given</span>{" "}
+                        <span className="font-medium">{item.name}</span>
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted">
+                        <span className="font-medium text-ink">PatchTest said:</span>{" "}
+                        {item.guardrailSaid}{" "}
+                        <code className="font-mono text-xs text-faint">{item.ruleId}</code>
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </li>
+            ))}
           </ul>
         </section>
       ) : null}
@@ -247,7 +300,7 @@ export default function EvalPage() {
           </p>
           <table className="mt-4 w-full border-collapse text-left text-sm">
             <thead>
-              <tr className="border-b border-line text-xs uppercase tracking-wide text-faint">
+              <tr className="border-b border-line label text-faint">
                 <th className="py-2 font-medium">Rule</th>
                 <th className="py-2 text-right font-medium">Fired when it should</th>
                 <th className="py-2 text-right font-medium">Stayed quiet when it should</th>

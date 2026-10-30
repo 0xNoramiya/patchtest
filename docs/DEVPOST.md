@@ -41,6 +41,10 @@ Every verdict shows the rule that produced it, the measured score or the intake
 answer that triggered it, a 25-word quote from the source, and a link to that
 source. Where something is blocked, it offers a swap.
 
+It also ships as a **browser extension**, because the moment before checkout
+usually happens on somebody else's website. The extension reads the cart on a
+shop's own page and applies the same rules there.
+
 Three decisions shape the whole thing.
 
 **It decides on `raw_score`, never `ui_score`.** YouCam returns two numbers per
@@ -84,6 +88,16 @@ they back. 14 support it fully, 7 say less than the rule claims, and those 7 say
 in their own notes, which are shown on the Methods page. One link, the Ovid copy of
 the AAD 2024 acne guideline, returns HTTP 402, so it was replaced with the PubMed
 record carrying the same abstract.
+
+**Working outside our own catalogue.** The extension has to judge products we
+have never seen. It can, because the rules key on active classes and strengths,
+and skincare titles almost always carry both: "Retinol 0.5% Night Serum", "AHA
+30% + BHA 2% Peeling Solution". A parser turns a title into actives, percentages,
+tags, rinse-off versus leave-on and body area, and the same engine judges the
+result. Extraction from the page is layered, preferring schema.org structured
+data that shops already publish, with a heuristic as the last resort. A title the
+parser cannot read gets no verdict and says so on screen, because a missing
+verdict must never look like a clearance.
 
 **The agent.** The model proposes a cart as structured JSON. The engine evaluates
 it. Violations go back and it revises, at most twice. The engine always computes
@@ -180,9 +194,9 @@ to 10%) that we would otherwise have guessed at.
 
 ## What's next
 
-- Expose the guardrail as an MCP tool, `check_cart(intake, scan, cart)`, so any
-  beauty agent, including one using YouCam's own beauty MCP server, can call it
-  before selling.
+- Expose the same guardrail as an MCP tool, `check_cart(intake, scan, cart)`, so
+  any beauty agent, including one using YouCam's own beauty MCP server, can call
+  it before selling. The HTTP endpoint the extension uses is already that shape.
 - A Bahasa Indonesia interface. The pregnancy and skin tone rules matter at least
   as much in a market where hydroquinone cosmetics are banned and sold anyway.
 - More clinicians on the gold labels. One physician is a starting point, not a
@@ -198,6 +212,8 @@ to 10%) that we would otherwise have guessed at.
 - Thresholds were calibrated on nine AI generated faces. A generated face is not a
   sample of real skin, and the bank has no Fitzpatrick I.
 - 24 rules is finite coverage. A missing verdict is not a safety claim.
+- The extension's parser reads product titles, not full ingredient lists, so a
+  product that hides its actives behind a brand name gets no verdict.
 - English only.
 - Not a medical device. It does not diagnose anything.
 
@@ -208,5 +224,9 @@ age. "Lumen & Leaf" is a fictional store and every product in it is invented.
 ## Built with
 
 Next.js, TypeScript, Tailwind, Vitest, the Vercel AI SDK, Claude Sonnet 5.5,
-Fly.io, and the **YouCam AI Skin Analysis API** and **YouCam AI Fitzpatrick Skin
-Type Analysis API** from Perfect Corp.
+a Chrome Manifest V3 extension, Playwright, Fly.io, and the **YouCam AI Skin
+Analysis API** and **YouCam AI Fitzpatrick Skin Type Analysis API** from Perfect
+Corp.
+
+Every face in the demo and every product image is AI generated and disclosed as
+such. No real person was photographed and no real brand appears anywhere.

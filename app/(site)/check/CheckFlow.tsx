@@ -8,6 +8,7 @@ import { CartList } from "@/components/CartList";
 import { IntakeForm } from "@/components/Intake";
 import { Referrals } from "@/components/Referrals";
 import { LiveScan, type BudgetState } from "@/components/LiveScan";
+import { ProductImage } from "@/components/ProductImage";
 import { ScanPanel } from "@/components/ScanPanel";
 import type { AdviseResult } from "@/lib/advise";
 import { EMPTY_INTAKE, type Intake } from "@/lib/intake";
@@ -66,8 +67,26 @@ export function CheckFlow() {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error ?? "Something went wrong");
-        setResult(data as AdviseResult);
+        const advice = data as AdviseResult;
+        setResult(advice);
         setStep("results");
+
+        // Left here for the browser extension to pick up. It stays on this
+        // device: it is read by the extension's content script on this origin
+        // and never sent anywhere by the page itself.
+        try {
+          window.localStorage.setItem(
+            "patchtest.profile",
+            JSON.stringify({
+              intake: intakeToUse,
+              scanLabel,
+              fitzpatrick: advice.fitzpatrick.value,
+              savedAt: new Date().toISOString(),
+            }),
+          );
+        } catch {
+          // Blocked storage is not worth failing the page over.
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong");
         setStep("scan");
@@ -113,7 +132,7 @@ export function CheckFlow() {
           <Referrals result={result} />
           <CartList result={result} />
           {result.routineNote ? (
-            <section className="rounded-xl border border-line bg-surface p-4 sm:p-6">
+            <section className="rounded-xl border border-line bg-surface p-4 shadow-card sm:p-6">
               <h2 className="font-display text-lg">How to use it</h2>
               <p className="mt-1.5 text-sm leading-relaxed text-muted">{result.routineNote}</p>
               {result.claimsFiltered ? (
@@ -125,6 +144,32 @@ export function CheckFlow() {
           ) : null}
           <ScanPanel result={result} />
           <BaselineCompare result={result} />
+
+          <section className="rounded-xl border border-line bg-surface p-4 shadow-card sm:p-6">
+            <h2 className="font-display text-lg">Take this to other shops</h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">
+              PatchTest also ships as a browser extension. It reads the cart on a shop&rsquo;s own
+              page, matches each product title to its active ingredients and strengths, and applies
+              these same rules there. Your profile from this scan has been saved to this browser for
+              it to pick up.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href="/store"
+                className="press rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
+              >
+                Open the demo shop
+              </a>
+              <a
+                href="https://github.com/0xNoramiya/patchtest/tree/main/extension"
+                target="_blank"
+                rel="noreferrer"
+                className="press rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
+              >
+                How to install it
+              </a>
+            </div>
+          </section>
         </div>
       </div>
     );
@@ -161,7 +206,7 @@ export function CheckFlow() {
           <button
             type="button"
             onClick={() => setStep("intake")}
-            className="mt-7 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+            className="press mt-7 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white shadow-card hover:opacity-90"
           >
             I understand, continue
           </button>
@@ -181,7 +226,7 @@ export function CheckFlow() {
             <button
               type="button"
               onClick={() => setStep("cart")}
-              className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+              className="press rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white shadow-card hover:opacity-90"
             >
               Next
             </button>
@@ -205,7 +250,7 @@ export function CheckFlow() {
               return (
                 <li key={item.sku}>
                   <label
-                    className={`flex h-full cursor-pointer gap-3 rounded-lg border p-3 text-sm transition-colors ${
+                    className={`flex h-full cursor-pointer items-center gap-3 rounded-lg border p-2.5 text-sm transition-colors ${
                       checked ? "border-accent bg-accent-soft" : "border-line bg-surface hover:border-accent/40"
                     }`}
                   >
@@ -215,10 +260,11 @@ export function CheckFlow() {
                       onChange={() =>
                         setWanted(checked ? wanted.filter((s) => s !== item.sku) : [...wanted, item.sku])
                       }
-                      className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--accent)]"
+                      className="h-4 w-4 shrink-0 accent-[var(--accent)]"
                     />
-                    <span>
-                      <span className="block font-medium">{item.name}</span>
+                    <ProductImage sku={item.sku} name={item.name} size={40} />
+                    <span className="min-w-0">
+                      <span className="block font-medium leading-snug">{item.name}</span>
                       <span className="tnum block text-xs text-muted">${item.price}</span>
                     </span>
                   </label>
@@ -230,7 +276,7 @@ export function CheckFlow() {
             <button
               type="button"
               onClick={() => setStep("scan")}
-              className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+              className="press rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white shadow-card hover:opacity-90"
             >
               Next
             </button>
@@ -267,7 +313,7 @@ export function CheckFlow() {
             <button
               type="button"
               onClick={() => setLiveOpen(true)}
-              className="mt-5 rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
+              className="press mt-5 rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
             >
               Or run a live scan on your own photo
               {budget && !budget.liveAvailable ? (
@@ -281,7 +327,7 @@ export function CheckFlow() {
                 <button
                   type="button"
                   onClick={() => run(scan.label, intake, wanted)}
-                  className="block w-full overflow-hidden rounded-xl border border-line bg-surface text-left transition-colors hover:border-accent"
+                  className="press block w-full overflow-hidden rounded-xl border border-line bg-surface text-left shadow-card hover:border-accent/50 hover:shadow-raised"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={scan.imagePath} alt="" className="aspect-[3/4] w-full object-cover" />

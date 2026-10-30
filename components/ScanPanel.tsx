@@ -14,21 +14,66 @@ const CONCERN_LABEL: Record<string, string> = {
   texture: "Texture",
 };
 
+/** Lower raw_score means less healthy, so the bar gets more urgent as it shortens. */
+function toneFor(raw: number): { bar: string; text: string } {
+  if (raw < 40) return { bar: "bg-block", text: "text-block" };
+  if (raw < 70) return { bar: "bg-adjust", text: "text-adjust" };
+  return { bar: "bg-ok/35", text: "text-muted" };
+}
+
+function ScoreTrack({ raw, ui }: { raw: number; ui: number }) {
+  const gap = ui - raw;
+  const inflated = gap >= 8;
+  const tone = toneFor(raw);
+  const left = Math.min(raw, ui);
+  const width = Math.abs(gap);
+
+  return (
+    <div className="relative h-5">
+      <div className="absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-sunken" />
+      {/* The distance between what was measured and what gets shown. */}
+      {inflated ? (
+        <div
+          className="absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-adjust/25"
+          style={{ left: `${left}%`, width: `${width}%` }}
+        />
+      ) : null}
+      <div
+        className={`absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full ${tone.bar}`}
+        style={{ width: `${Math.max(raw, 1.5)}%` }}
+      />
+      {inflated ? (
+        <span
+          aria-hidden
+          className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-adjust bg-surface"
+          style={{ left: `${ui}%` }}
+        />
+      ) : null}
+    </div>
+  );
+}
+
 export function ScanPanel({ result }: { result: AdviseResult }) {
   const [active, setActive] = useState<string | null>(null);
   const { scan, maskPaths, imagePath } = result;
   const maskSrc = active ? maskPaths[active] : undefined;
 
+  const gaps = SCORED_CONCERNS.flatMap((c) => {
+    const s = scan.concerns[c];
+    return s ? [{ concern: c as string, gap: s.ui - s.raw, raw: s.raw, ui: s.ui }] : [];
+  }).sort((a, b) => b.gap - a.gap);
+  const biggestGap = gaps[0];
+
   return (
-    <section className="rounded-xl border border-line bg-surface p-4 sm:p-6">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
+    <section className="overflow-hidden rounded-xl border border-line bg-surface shadow-card">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line px-4 py-4 sm:px-6">
         <h2 className="font-display text-xl">Your scan</h2>
         <span className="rounded-full bg-accent-soft px-2.5 py-1 text-xs text-accent">
-          Replayed scan, recorded from a real YouCam API call
+          Replayed from a real YouCam API call
         </span>
       </div>
 
-      <div className="mt-5 grid gap-6 sm:grid-cols-[minmax(0,260px)_1fr]">
+      <div className="grid gap-6 p-4 sm:p-6 md:grid-cols-[minmax(0,240px)_1fr]">
         <div>
           <div className="relative overflow-hidden rounded-lg border border-line bg-paper">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -43,67 +88,60 @@ export function ScanPanel({ result }: { result: AdviseResult }) {
               />
             ) : null}
           </div>
-          <p className="mt-2 text-xs text-faint">
+          <p className="mt-2 text-xs leading-relaxed text-faint">
             {active
-              ? `Showing where the engine found ${CONCERN_LABEL[active]?.toLowerCase() ?? active}.`
-              : "Select a row to overlay what the engine measured."}
+              ? `Showing where the engine found ${(CONCERN_LABEL[active] ?? active).toLowerCase()}.`
+              : "Select a concern to overlay what the engine measured."}
           </p>
         </div>
 
         <div>
-          <table className="w-full text-sm">
-            <caption className="sr-only">Skin analysis scores, higher is healthier</caption>
-            <thead>
-              <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-faint">
-                <th scope="col" className="pb-2 font-medium">Concern</th>
-                <th scope="col" className="pb-2 text-right font-medium">
-                  Measured
-                  <span className="block font-normal normal-case tracking-normal">raw_score</span>
-                </th>
-                <th scope="col" className="pb-2 text-right font-medium">
-                  Shown by YouCam
-                  <span className="block font-normal normal-case tracking-normal">ui_score</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {SCORED_CONCERNS.map((concern) => {
-                const score = scan.concerns[concern];
-                if (!score) return null;
-                const isActive = active === concern;
-                const gap = score.ui - score.raw;
-                return (
-                  <tr key={concern} className="border-b border-line/60 last:border-0">
-                    <td className="py-2">
-                      <button
-                        type="button"
-                        onClick={() => setActive(isActive ? null : concern)}
-                        aria-pressed={isActive}
-                        className={`rounded px-1.5 py-0.5 text-left ${isActive ? "bg-accent-soft text-accent" : "hover:bg-paper"}`}
-                      >
-                        {CONCERN_LABEL[concern] ?? concern}
-                      </button>
-                    </td>
-                    <td className="tnum py-2 text-right font-medium">{score.raw.toFixed(1)}</td>
-                    <td className="tnum py-2 text-right text-muted">
-                      {score.ui}
-                      {gap >= 10 ? (
-                        <span className="ml-1.5 text-xs text-adjust">+{gap.toFixed(0)}</span>
-                      ) : null}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="mb-2 flex items-baseline justify-between gap-2 text-xs">
+            <span className="label text-faint">Concern</span>
+            <span className="label text-faint">Measured vs shown</span>
+          </div>
 
-          <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-line pt-4 text-sm">
+          <ul className="space-y-2.5">
+            {SCORED_CONCERNS.map((concern) => {
+              const score = scan.concerns[concern];
+              if (!score) return null;
+              const isActive = active === concern;
+              const gap = score.ui - score.raw;
+              const tone = toneFor(score.raw);
+              return (
+                <li key={concern}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(isActive ? null : concern)}
+                    aria-pressed={isActive}
+                    className={`press w-full rounded-lg px-2 py-1.5 text-left ${isActive ? "bg-accent-soft" : "hover:bg-sunken"}`}
+                  >
+                    <div className="flex items-baseline justify-between gap-3">
+                      <span className="text-sm">{CONCERN_LABEL[concern] ?? concern}</span>
+                      <span className="tnum text-sm">
+                        <span className={`font-medium ${tone.text}`}>{score.raw.toFixed(1)}</span>
+                        <span className="text-faint"> / {score.ui}</span>
+                        {gap >= 8 ? (
+                          <span className="ml-1 text-xs font-medium text-adjust">
+                            +{gap.toFixed(0)}
+                          </span>
+                        ) : null}
+                      </span>
+                    </div>
+                    <ScoreTrack raw={score.raw} ui={score.ui} />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+
+          <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-line pt-4 text-sm">
             <dt className="text-muted">Skin type label</dt>
-            <dd className="text-right">{scan.skinType.whole ?? "not returned"}</dd>
+            <dd className="text-right font-medium">{scan.skinType.whole ?? "not returned"}</dd>
             <dt className="text-muted">Fitzpatrick type</dt>
-            <dd className="text-right">
+            <dd className="text-right font-medium">
               {result.fitzpatrick.value ?? "not determined"}
-              <span className="ml-1 text-xs text-faint">
+              <span className="ml-1 font-normal text-xs text-faint">
                 {result.fitzpatrick.source === "self_reported" ? "you told us" : "from the photo"}
               </span>
             </dd>
@@ -111,14 +149,29 @@ export function ScanPanel({ result }: { result: AdviseResult }) {
               Skin age estimate
               <span className="block text-xs text-faint">display only, never used in a decision</span>
             </dt>
-            <dd className="text-right text-muted">{scan.skinAge ?? "not returned"}</dd>
+            <dd className="tnum text-right text-muted">{scan.skinAge ?? "not returned"}</dd>
           </dl>
 
-          <p className="mt-4 rounded-lg bg-paper p-3 text-xs leading-relaxed text-muted">
-            PatchTest decides on the measured <code className="font-mono">raw_score</code>. YouCam
-            documents <code className="font-mono">ui_score</code> as adjusted to be more favourable,
-            as a psychological motivator. Both are shown here so you can see the difference. These
-            are appearance scores, not a health assessment.
+          <p className="mt-4 rounded-lg bg-sunken p-3 text-xs leading-relaxed text-muted">
+            The solid bar is the <span className="font-medium text-ink">measured</span>{" "}
+            <code className="font-mono">raw_score</code>. The ring is what YouCam{" "}
+            <span className="font-medium text-ink">shows shoppers</span>, its{" "}
+            <code className="font-mono">ui_score</code>, which its own documentation describes as
+            adjusted to be more favourable.
+            {biggestGap && biggestGap.gap >= 8 ? (
+              <>
+                {" "}
+                Here the largest gap is{" "}
+                <span className="font-medium text-ink">
+                  {(CONCERN_LABEL[biggestGap.concern] ?? biggestGap.concern).toLowerCase()}
+                </span>
+                , measured at{" "}
+                <span className="tnum font-medium text-ink">{biggestGap.raw.toFixed(1)}</span> and
+                presented as <span className="tnum font-medium text-ink">{biggestGap.ui}</span>.
+              </>
+            ) : null}{" "}
+            PatchTest decides on the measured number. These are appearance scores, not a health
+            assessment.
           </p>
         </div>
       </div>

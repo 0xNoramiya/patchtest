@@ -1,19 +1,20 @@
 /**
- * Screenshots the running app so the UI can actually be looked at.
- *   pnpm start   (in another shell)
+ * Screenshots the running app for the README.
+ *   pnpm preview   (in another shell)
  *   node scripts/screenshot.mjs [outDir]
  */
 import { chromium } from "playwright";
 
-const out = process.argv[2] ?? "/tmp/patchtest-shots";
+const out = process.argv[2] ?? "docs/screenshots";
 const base = process.env.BASE_URL ?? "http://localhost:3000";
 
-const pages = [
-  ["landing", "/", 1280, 900, false],
-  ["preset-pregnant", "/check?preset=pregnant", 1280, 1100, true],
-  ["mobile-peel", "/check?preset=peel", 390, 844, true],
-  ["methods", "/methods", 1280, 900, true],
-  ["eval", "/eval", 1280, 900, true],
+const shots = [
+  { name: "landing", route: "/", width: 1280, height: 860, full: false },
+  { name: "results", route: "/check?preset=peel", width: 1180, height: 1400, full: false },
+  { name: "scan", route: "/check?preset=pregnant", width: 1180, height: 900, full: false, clip: ".font-display + div, section:has(h2)" },
+  { name: "eval", route: "/eval", width: 1180, height: 1250, full: false },
+  { name: "methods", route: "/methods", width: 1180, height: 1000, full: false },
+  { name: "mobile", route: "/check?preset=tiktok", width: 390, height: 1100, full: false },
 ];
 
 // Use whatever chromium this machine already has rather than downloading one.
@@ -22,16 +23,20 @@ const browser = await chromium.launch({
   ...(executablePath ? { executablePath } : {}),
   args: ["--no-sandbox", "--disable-dev-shm-usage"],
 });
-for (const [name, route, width, height, fullPage] of pages) {
-  const page = await browser.newPage({ viewport: { width, height } });
+
+for (const shot of shots) {
+  const page = await browser.newPage({
+    viewport: { width: shot.width, height: shot.height },
+    deviceScaleFactor: 2,
+  });
   try {
-    await page.goto(base + route, { waitUntil: "domcontentloaded", timeout: 20000 });
+    await page.goto(base + shot.route, { waitUntil: "domcontentloaded", timeout: 25000 });
     await page.waitForLoadState("load").catch(() => {});
-    await page.waitForTimeout(2500);
-    await page.screenshot({ path: `${out}/${name}.png`, fullPage });
-    console.log("ok  ", name);
+    await page.waitForTimeout(3000);
+    await page.screenshot({ path: `${out}/${shot.name}.png`, fullPage: shot.full });
+    console.log("ok  ", shot.name);
   } catch (err) {
-    console.log("fail", name, err.message.split("\n")[0]);
+    console.log("fail", shot.name, err.message.split("\n")[0]);
   }
   await page.close();
 }

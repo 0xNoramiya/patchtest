@@ -15,7 +15,17 @@ export const VERDICT_CLASS: Record<Verdict, string> = {
   UNNECESSARY: "bg-unnecessary-soft text-unnecessary border-unnecessary/25",
   REFER: "bg-refer-soft text-refer border-refer/25",
   ADD: "bg-accent-soft text-accent border-accent/25",
-  OK: "bg-accent-soft text-accent border-accent/25",
+  OK: "bg-ok-soft text-ok border-ok/20",
+};
+
+/** The left rail on a cart row, so the shape of the answer is scannable. */
+export const VERDICT_RAIL: Record<Verdict, string> = {
+  BLOCK: "bg-block",
+  ADJUST: "bg-adjust",
+  UNNECESSARY: "bg-unnecessary",
+  REFER: "bg-refer",
+  ADD: "bg-accent",
+  OK: "bg-transparent",
 };
 
 /** Short human label for a source domain, used on the "Source" links. */

@@ -11,7 +11,7 @@ export function BaselineCompare({ result }: { result: AdviseResult }) {
   const kept = new Set(result.lines.map((l) => l.sku));
 
   return (
-    <section className="rounded-xl border border-line bg-surface p-4 sm:p-6">
+    <section className="rounded-xl border border-line bg-surface p-4 shadow-card sm:p-6">
       <button
         type="button"
         onClick={() => setOpen(!open)}
@@ -31,7 +31,7 @@ export function BaselineCompare({ result }: { result: AdviseResult }) {
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
-              <h3 className="text-xs uppercase tracking-wide text-faint">Without the guardrail</h3>
+              <h3 className="label text-faint">Without the guardrail</h3>
               <ul className="mt-2 space-y-2">
                 {result.baseline.skus.map((sku) => (
                   <li key={sku} className="rounded-lg border border-line p-2.5 text-sm">
@@ -53,7 +53,7 @@ export function BaselineCompare({ result }: { result: AdviseResult }) {
             </div>
 
             <div>
-              <h3 className="text-xs uppercase tracking-wide text-faint">With the guardrail</h3>
+              <h3 className="label text-faint">With the guardrail</h3>
               <ul className="mt-2 space-y-2">
                 {result.lines.map((line) => {
                   const verdict =
@@ -72,7 +72,7 @@ export function BaselineCompare({ result }: { result: AdviseResult }) {
             </div>
           </div>
 
-          <p className="mt-4 rounded-lg bg-paper p-3 text-xs leading-relaxed text-muted">
+          <p className="mt-4 rounded-lg bg-sunken p-3 text-xs leading-relaxed text-muted">
             Across our 40 scenarios the plain advisor proposed nothing that our clinical labels call
             unsafe. Where it fell short was what it left unsaid: it sold an item needing a usage
             caveat without giving one in 44.4% of applicable runs, against 11.1% here. It also gave

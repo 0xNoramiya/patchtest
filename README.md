@@ -19,6 +19,28 @@ the cart one of four verdicts:
 engine evaluates what the shopper put in their cart as well as what the model
 suggested, so an item that gets dropped is explained rather than silently removed.
 
+![The results page: a cart where each item carries a verdict, the score that triggered it, a quote from the source and a swap suggestion](docs/screenshots/results.webp)
+
+---
+
+## It also works on other people's shops
+
+PatchTest ships as a **browser extension**. It reads the cart on a shop's own
+page, parses each product title into active ingredients and strengths, and
+applies the same 24 rules there.
+
+![The extension annotating a third-party shop's cart with blocked verdicts and sources](docs/screenshots/extension.webp)
+
+That works because the rules key on **active classes and percentages**, and
+skincare titles almost always carry both: "Retinol 0.5% Night Serum", "AHA 30% +
+BHA 2% Peeling Solution". [`lib/match.ts`](lib/match.ts) turns a title into
+actives, percentages, tags, rinse-off versus leave-on and body area, with 24
+tests of its own. A title it cannot read gets no verdict and says so, rather than
+being presented as cleared.
+
+Install instructions are in [`extension/README.md`](extension/README.md). The
+demo shop is at [/store](https://patchtest.fly.dev/store).
+
 ---
 
 ## For judges, in 60 seconds
@@ -39,8 +61,16 @@ that really was run through both YouCam APIs, paired with a declared intake:
 On any result, open **"What a plain AI advisor would have sold you"** for the
 side-by-side, and the **scan panel** to see `raw_score` against `ui_score`.
 
-**Then read** [https://patchtest.fly.dev/methods](https://patchtest.fly.dev/methods) for every rule with its source and
-quote, and [https://patchtest.fly.dev/eval](https://patchtest.fly.dev/eval) for the honest numbers.
+**Then read** [/methods](https://patchtest.fly.dev/methods) for every rule with
+its source and quote, and [/eval](https://patchtest.fly.dev/eval) for the honest
+numbers.
+
+| | |
+|---|---|
+| ![Landing page](docs/screenshots/landing.webp) | ![The scan panel showing measured versus shown scores](docs/screenshots/scan.webp) |
+| The landing page, with five one-click presets | Measured `raw_score` against the `ui_score` YouCam shows shoppers |
+| ![The eval page](docs/screenshots/eval.webp) | ![The methods page](docs/screenshots/methods.webp) |
+| `/eval`, including what the plain advisor let through | `/methods`, every rule with its quote and source |
 
 ### Where the YouCam APIs are used
 
@@ -63,6 +93,9 @@ quote, and [https://patchtest.fly.dev/eval](https://patchtest.fly.dev/eval) for 
 | 96 tests, a positive and a negative case per rule | [`lib/rules/engine.test.ts`](lib/rules/engine.test.ts) |
 | The agent loop and the fair baseline | [`lib/agent/run.ts`](lib/agent/run.ts) |
 | Claim linter, build-time and runtime | [`lib/claims.ts`](lib/claims.ts) |
+| Product title to actives, for carts outside our catalogue | [`lib/match.ts`](lib/match.ts) |
+| The browser extension | [`extension/`](extension/) |
+| The cross-origin API the extension calls | [`app/api/check-cart/route.ts`](app/api/check-cart/route.ts) |
 
 ---
 
@@ -70,6 +103,8 @@ quote, and [https://patchtest.fly.dev/eval](https://patchtest.fly.dev/eval) for 
 
 ```mermaid
 flowchart TD
+    X[Browser extension<br/>on any shop's cart] -->|product titles| Y[lib/match.ts<br/>title to actives + %]
+    Y --> K
     A[Shopper: intake + cart] --> B[Consent]
     B --> C[Photo]
     C --> D[Normalize to one JPEG<br/>lib/image.ts]
@@ -136,6 +171,8 @@ serve every preset, because the scans and the agent responses are recorded in
 | `pnpm calibrate` | Print the score distribution across recorded scans |
 | `pnpm eval` | Score both arms over 40 scenarios. `--live` to record new responses |
 | `pnpm record-presets` | Record agent responses for the demo presets |
+| `pnpm preview` | Production build, served locally with static assets in place |
+| `node scripts/test-extension.mjs` | Loads the extension into a real browser and asserts it annotates the demo cart |
 
 ---
 

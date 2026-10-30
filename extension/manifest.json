@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "PatchTest, a patch test for your cart",
+  "version": "1.0.0",
+  "description": "Checks the skincare in your cart against what you told PatchTest about your skin, before you pay for it.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://patchtest.fly.dev/*", "http://localhost:3000/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": { "32": "icons/icon32.png", "128": "icons/icon128.png" }
+  },
+  "icons": { "32": "icons/icon32.png", "128": "icons/icon128.png" },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

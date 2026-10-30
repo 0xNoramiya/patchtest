@@ -62,7 +62,7 @@ export default function MethodsPage() {
       <Section id="youcam" title="Which YouCam APIs are used, and where">
         <table className="w-full border-collapse text-left text-sm">
           <thead>
-            <tr className="border-b border-line text-xs uppercase tracking-wide text-faint">
+            <tr className="border-b border-line label text-faint">
               <th className="py-2 font-medium">API</th>
               <th className="py-2 font-medium">What we take from it</th>
               <th className="py-2 font-medium">Units</th>
@@ -150,7 +150,7 @@ export default function MethodsPage() {
         </p>
         <table className="w-full border-collapse text-left text-sm">
           <thead>
-            <tr className="border-b border-line text-xs uppercase tracking-wide text-faint">
+            <tr className="border-b border-line label text-faint">
               <th className="py-2 font-medium">Threshold</th>
               <th className="py-2 font-medium">Value</th>
               <th className="py-2 font-medium">What it does and how it was set</th>
@@ -187,7 +187,7 @@ export default function MethodsPage() {
         </p>
         <div className="mt-4 space-y-3">
           {rules.map((rule) => (
-            <details key={rule.id} className="rounded-xl border border-line bg-surface p-4">
+            <details key={rule.id} className="rounded-xl border border-line bg-surface p-4 shadow-card">
               <summary className="cursor-pointer list-none">
                 <div className="flex flex-wrap items-center gap-2">
                   <code className="font-mono text-xs text-faint">{rule.id}</code>

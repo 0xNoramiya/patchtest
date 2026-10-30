@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "vitest run && next build",
-    "start": "next start",
     "lint": "eslint",
     "units": "tsx scripts/units.ts",
     "test": "vitest run",
@@ -15,7 +14,8 @@
     "agent": "tsx scripts/agent-demo.ts",
     "eval": "tsx scripts/eval.ts",
     "record-presets": "tsx scripts/record-presets.ts",
-    "build:next": "next build"
+    "build:next": "next build",
+    "preview": "next build && cp -r public .next/standalone/ && mkdir -p .next/standalone/.next && cp -r .next/static .next/standalone/.next/ && node .next/standalone/server.js"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.92",

@@ -62,6 +62,8 @@ async function main() {
     const perRun: Array<{
       run: number;
       firedRules: string[];
+      missedCaveats: Array<{ sku: string; name: string; baselineSaid: string | null; guardrailSaid: string | null; ruleId: string | null }>;
+      unsafeLetThrough: Array<{ sku: string; name: string; guardrailSaid: string | null; ruleId: string | null }>;
       guarded: ScenarioScore;
       baseline: ScenarioScore;
       guardedCart: string[];
@@ -113,6 +115,8 @@ async function main() {
       );
       const baselineFlagged = (cue: RegExp) =>
         [...baselineText.entries()].filter(([, text]) => cue.test(text)).map(([sku]) => sku);
+      const baselineFlaggedAdjust = baselineFlagged(ADJUST_CUES);
+      const baselineFlaggedUnnecessary = baselineFlagged(UNNECESSARY_CUES);
 
       const firedRules = [
         ...new Set([
@@ -123,9 +127,58 @@ async function main() {
         ]),
       ];
 
+      // What the plain advisor sold without a word, and what the guardrail said
+      // about the very same item. This is the comparison the eval page shows.
+      const missedCaveats = baselineCart
+        .filter((sku) => {
+          const product = productBySku(catalog, sku);
+          return (
+            product &&
+            product.actives.some((a) => expected.adjust_classes.includes(a.class))
+          );
+        })
+        .map((sku) => {
+          const item = unionEval.items.find((i) => i.sku === sku);
+          const finding = item?.findings.find(
+            (f) => f.verdict === "ADJUST" || f.verdict === "BLOCK",
+          );
+          return {
+            sku,
+            name: productBySku(catalog, sku)?.name ?? sku,
+            baselineSaid: baseline.rounds[0].proposed.items.find((i) => i.sku === sku)?.reason ?? null,
+            guardrailSaid: finding?.message ?? null,
+            ruleId: finding?.ruleId ?? null,
+          };
+        })
+        // Kept only when the plain advisor said nothing about it and the
+        // guardrail did. That is the gap the page is reporting.
+        .filter((m) => m.guardrailSaid !== null && !baselineFlaggedAdjust.includes(m.sku));
+
+      const unsafeLetThrough = baselineCart
+        .filter((sku) => {
+          const product = productBySku(catalog, sku);
+          return (
+            product &&
+            (expected.block_skus.includes(sku) ||
+              product.actives.some((a) => expected.block_classes.includes(a.class)))
+          );
+        })
+        .map((sku) => {
+          const item = unionEval.items.find((i) => i.sku === sku);
+          const finding = item?.findings.find((f) => f.verdict === "BLOCK");
+          return {
+            sku,
+            name: productBySku(catalog, sku)?.name ?? sku,
+            guardrailSaid: finding?.message ?? null,
+            ruleId: finding?.ruleId ?? null,
+          };
+        });
+
       perRun.push({
         run,
         firedRules,
+        missedCaveats,
+        unsafeLetThrough,
         guarded: scoreArm(
           {
             cart: guardedCart,
@@ -143,8 +196,8 @@ async function main() {
             referred: baselineReferred,
             removed: [],
             revisionRounds: 0,
-            flaggedUnnecessary: baselineFlagged(UNNECESSARY_CUES),
-            flaggedAdjust: baselineFlagged(ADJUST_CUES),
+            flaggedUnnecessary: baselineFlaggedUnnecessary,
+            flaggedAdjust: baselineFlaggedAdjust,
           },
           expected, catalog,
         ),

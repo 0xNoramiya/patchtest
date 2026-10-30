@@ -3,12 +3,24 @@
 :root {
   --paper: #fbfaf7;
   --surface: #ffffff;
+  --sunken: #f5f3ee;
   --ink: #191c1a;
   --muted: #5f6660;
   --faint: #6f756f;
-  --line: #e5e3dd;
+
+  /* Alpha, not a solid hex, so the border recedes into the surface
+     instead of sitting on top of it. */
+  --line: rgb(25 28 26 / 0.09);
+  --line-strong: rgb(25 28 26 / 0.16);
+
   --accent: #2f5d4f;
   --accent-soft: #edf4f0;
+
+  /* The brand is green, so "it's fine" must not also be green or the shopper
+     cannot tell a primary action from a passing verdict. A passing item is the
+     absence of a problem, so it recedes. */
+  --ok: #6f756f;
+  --ok-soft: #f3f2ee;
 
   --block: #a5342b;
   --block-soft: #fbedeb;
@@ -18,17 +30,28 @@
   --unnecessary-soft: #f1f2f3;
   --refer: #2b5579;
   --refer-soft: #eaf1f8;
+
+  /* Layered rather than one big drop, so a raised surface reads as physical. */
+  --shadow-sm: 0 1px 1px rgb(25 28 26 / 0.04), 0 2px 4px rgb(25 28 26 / 0.03);
+  --shadow-md:
+    0 1px 1px rgb(25 28 26 / 0.04),
+    0 4px 8px rgb(25 28 26 / 0.04),
+    0 12px 24px rgb(25 28 26 / 0.05);
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
   --color-block: var(--block);
   --color-block-soft: var(--block-soft);
   --color-adjust: var(--adjust);
@@ -40,6 +63,8 @@
   --font-sans: var(--font-geist-sans);
   --font-display: var(--font-display);
   --font-mono: var(--font-geist-mono);
+  --shadow-card: var(--shadow-sm);
+  --shadow-raised: var(--shadow-md);
 }
 
 body {
@@ -52,10 +77,22 @@ body {
 h1, h2, h3 {
   font-family: var(--font-display), ui-serif, Georgia, serif;
   letter-spacing: -0.015em;
+  font-kerning: normal;
+  text-wrap: balance;
 }
 
-/* Numbers in score tables line up. */
+p { text-wrap: pretty; }
+
+/* Numbers in score tables and price columns line up. */
 .tnum { font-variant-numeric: tabular-nums; }
+
+/* Uppercase at label size is cramped at default tracking. */
+.label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -63,9 +100,16 @@ h1, h2, h3 {
   border-radius: 3px;
 }
 
+/* A button with no pressed state feels dead. */
+.press {
+  transition: transform 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, opacity 150ms ease-out;
+}
+.press:active { transform: scale(0.985); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  .press:active { transform: none; }
 }
