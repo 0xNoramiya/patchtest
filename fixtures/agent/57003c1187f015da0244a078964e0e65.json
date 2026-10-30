@@ -1,0 +1,28 @@
+{
+  "key": "57003c1187f015da0244a078964e0e65",
+  "recorded_at": "2026-10-30T15:45:07.089Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S02-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser keeps skin fresh without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Hyaluronic acid adds a hydrated, plumper look that can make dull-looking skin appear brighter."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports a smoother, more even-looking surface without feeling heavy on oily skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 helps keep skin looking even and protects day to day, and mineral filters are a common choice during pregnancy."
+      }
+    ],
+    "routine_note": "I've left out the 30% peel because strong at-home peels with high-strength acids aren't a good fit during pregnancy, so please check with your doctor or a dermatologist before using any exfoliating acid. Cleanse and moisturize morning and night, adding the hyaluronic serum before moisturizer and sunscreen as the last step each morning."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "2826154baf4a365ff78b23697ac1aa3a",
+  "recorded_at": "2026-10-30T15:47:34.911Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S21-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser keeps the routine comfortable for oily-looking skin while you start an exfoliating product."
+      },
+      {
+        "sku": "LL-109",
+        "reason": "One glycolic toner at night suits the uneven texture in your scan without stacking several strong actives."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A lightweight barrier moisturizer helps balance moisture and offsets dryness from exfoliating."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Glycolic acid can make skin more sun-sensitive, so a daily mineral SPF 50 is essential alongside it."
+      }
+    ],
+    "routine_note": "Start the toner 2 nights a week at night, then build up slowly as your skin tolerates it, and wear SPF every morning. I left out the retinol and benzoyl peroxide wash because using all three together tends to irritate and won't speed up results, and your acne and wrinkle scores already look healthy; if you want retinol later, add it on different nights from the toner."
+  }
+}

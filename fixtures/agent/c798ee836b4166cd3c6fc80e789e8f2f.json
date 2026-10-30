@@ -1,0 +1,28 @@
+{
+  "key": "c798ee836b4166cd3c6fc80e789e8f2f",
+  "recorded_at": "2026-10-30T15:53:17.624Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S05-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser keeps oily-looking skin fresh without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Hyaluronic acid adds lightweight hydration, which can make skin look smoother and help with the lower moisture score."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the skin's comfort and softness without feeling heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is a gentle daily sunscreen choice that suits pregnancy and helps protect skin's look and tone."
+      }
+    ],
+    "routine_note": "I've left out the 15% lactic acid serum because it is a high-strength leave-on exfoliant, so please check with your prenatal provider before using it; this simple routine is a gentler way to work on the look of texture in the meantime. Use the cleanser, hyaluronic serum and moisturizer morning and night, adding the mineral SPF as the last morning step."
+  }
+}

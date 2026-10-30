@@ -1,0 +1,24 @@
+{
+  "key": "60da224f0e24b8a211dfc3a95e267eaa",
+  "recorded_at": "2026-10-30T15:49:42.792Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S37-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser that won't strip skin that already looks dry."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support a comfortable, hydrated-looking skin barrier."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Tinted mineral sunscreen with iron oxides helps keep the look of dark patches from deepening and suits deeper skin tones without a white cast."
+      }
+    ],
+    "routine_note": "A mole on your cheek that has grown and darkened over the year should be checked by a dermatologist soon, before you add any brightening products, and nothing we sell is meant for that. Until then, keep to a gentle cleanse, moisturizer and a tinted SPF every morning, reapplying if you're outdoors."
+  }
+}

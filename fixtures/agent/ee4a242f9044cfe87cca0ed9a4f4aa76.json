@@ -1,0 +1,24 @@
+{
+  "key": "ee4a242f9044cfe87cca0ed9a4f4aa76",
+  "recorded_at": "2026-10-30T15:49:18.346Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S34-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-102",
+        "reason": "A 2% salicylic acid cleanser helps keep pores looking clearer and the T-zone looking less shiny, without adding another step."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light, mattifying niacinamide moisturizer keeps your skin comfortable and looking balanced without a heavy feel."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides protects your skin each day and blends well on a deeper skin tone."
+      }
+    ],
+    "routine_note": "Use the cleanser once a day at first, then up to twice daily if your skin feels comfortable, followed by the moisturizer, and apply the SPF every morning as the last step. If the spots become painful, widespread or leave marks that worry you, a dermatologist is the right person to ask."
+  }
+}

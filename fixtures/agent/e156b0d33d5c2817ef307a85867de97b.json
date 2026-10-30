@@ -1,0 +1,28 @@
+{
+  "key": "e156b0d33d5c2817ef307a85867de97b",
+  "recorded_at": "2026-10-30T16:01:01.429Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S38-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free cleanse that keeps skin feeling comfortable without stripping it."
+      },
+      {
+        "sku": "LL-113",
+        "reason": "Niacinamide helps the look of uneven texture and visible redness, and is gentle enough to start with."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light barrier moisturizer to help with the look of low moisture and keep skin feeling smooth."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 gives daily sun protection and a soft, even-looking finish that can help you feel more comfortable going out."
+      }
+    ],
+    "routine_note": "Cleanse, then apply niacinamide and moisturizer morning and evening, and finish the morning with the tinted SPF. Because how your skin looks is affecting your mood and your willingness to go out, please consider talking with a dermatologist or doctor, since they can offer support that a shop cannot."
+  }
+}

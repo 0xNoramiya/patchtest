@@ -1,0 +1,28 @@
+{
+  "key": "4d2c78f5b6fda03a7e1c4cbea84e921f",
+  "recorded_at": "2026-10-30T15:59:31.454Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S31-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser keeps skin clean without stripping it while it adjusts to a retinol."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A 0.3% retinol is a sensible starting point for smoother-looking texture and softer-looking fine lines, since you aren't using any actives yet."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your moisture score is low, and a ceramide moisturizer helps skin feel comfortable and supported alongside a retinol."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily sunscreen is needed with a retinol, and a mineral fluid is a light option for oily-looking skin."
+      }
+    ],
+    "routine_note": "I started you on the 0.3% retinol rather than the 1% serum or both retinol products together, because layering two strong retinoids on skin new to them often brings dryness and irritation, and the eye cream can be added later once your skin is comfortable. Use the retinol at night just 2 evenings a week, build up slowly, follow with moisturizer, and wear sunscreen every morning."
+  }
+}

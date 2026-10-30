@@ -33,6 +33,7 @@ export type ItemPredicate = {
   active_pct_gt?: { class: string; pct: number };
   active_pct_gte_threshold?: { class: string; threshold: string | number };
   tag_any?: string[];
+  not_tag_any?: string[];
   leave_on?: boolean;
   area_in?: string[];
   targets_any?: string[];
@@ -49,6 +50,7 @@ const itemPredicate: z.ZodType<ItemPredicate> = z.lazy(() =>
       .object({ class: z.string(), threshold: z.union([z.string(), z.number()]) })
       .optional(),
     tag_any: stringList.optional(),
+    not_tag_any: stringList.optional(),
     leave_on: z.boolean().optional(),
     area_in: stringList.optional(),
     targets_any: stringList.optional(),

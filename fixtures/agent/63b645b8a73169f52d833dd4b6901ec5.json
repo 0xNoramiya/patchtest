@@ -1,0 +1,28 @@
+{
+  "key": "63b645b8a73169f52d833dd4b6901ec5",
+  "recorded_at": "2026-10-30T16:01:10.869Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S38-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanser that keeps skin clean without stripping it, which suits lower moisture."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle leave-on cream to help visibly calm uneven tone and redness and smooth the look of rough texture."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the look of a comfortable, hydrated skin barrier."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 that softly evens the look of redness and protects skin each morning."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, use the azelaic cream at night every other night at first, follow with moisturizer, and finish every morning with the tinted SPF. Because your skin is affecting your mood and keeping you indoors, please consider talking with a dermatologist or doctor who can look at your skin and support you properly."
+  }
+}

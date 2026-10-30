@@ -1,0 +1,24 @@
+{
+  "key": "e10d550357c786cbc5a83270552a3b63",
+  "recorded_at": "2026-10-30T15:40:32.992Z",
+  "model": "claude-sonnet-5-5",
+  "label": "synthetic-01",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that cleans without stripping skin that looks dry and flaky."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream to soften the look of flakiness and support a comfortable skin barrier."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily morning use, since skin can be more sun-sensitive while you are on isotretinoin."
+      }
+    ],
+    "routine_note": "Because you mentioned isotretinoin, I left out the wax strips, glycolic toner and vitamin C serum, as they can be too harsh on dry, flaky skin, so please ask your prescriber or a dermatologist about safe hair removal and about the flaking. Cleanse gently morning and night, apply the cream after cleansing, and finish with the SPF in the morning."
+  }
+}

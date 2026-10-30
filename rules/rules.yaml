@@ -433,7 +433,11 @@ rules:
     when:
       item:
         any_of:
+          # Sunscreen, cleanser and plain basics are never called unnecessary on
+          # the strength of a scan score. Sunscreen in particular is the one
+          # thing the scan can never argue against.
           - all_targets_healthy: true
+            not_tag_any: [spf, cleanser, basic]
           - skin_type_contradicts: true
     message: >-
       You don't need this. The scan does not show anything for it to work on.

@@ -1,0 +1,24 @@
+{
+  "key": "8d37e11ec41d85f8e7007da3f6c1424b",
+  "recorded_at": "2026-10-30T15:52:14.642Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S01-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser suits oily, sensitive-leaning skin without stripping it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports the skin's comfort and moisture while you skip retinol."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is the most useful everyday step for keeping the look of fine lines from getting worse, and zinc oxide is a gentle choice for fair, sensitive skin."
+      }
+    ],
+    "routine_note": "I've left out every retinol and retinoid product, since they are best avoided during pregnancy and breastfeeding, and your prenatal provider can advise on what is right for you. Cleanse morning and night, moisturize, and apply the SPF every morning, reapplying if you are outdoors."
+  }
+}

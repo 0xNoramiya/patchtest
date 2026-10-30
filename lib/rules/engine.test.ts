@@ -436,3 +436,20 @@ describe("verdict precedence", () => {
     expect(r.items[0].findings.some((f) => f.ruleId === "R-PREG-01" && f.verdict === "BLOCK")).toBe(true);
   });
 });
+
+describe("sunscreen and basics are never called unnecessary", () => {
+  const allHealthy = makeScan({
+    acne: 99, redness: 99, oiliness: 99, moisture: 99, age_spot: 99, wrinkle: 99, texture: 99,
+  });
+
+  it.each(["LL-121", "LL-122", "LL-123", "LL-101"])(
+    "leaves %s alone even when every score is healthy",
+    (sku) => {
+      expect(verdictOf(run({ cart: [sku], scan: allHealthy }), sku)).not.toBe("UNNECESSARY");
+    },
+  );
+
+  it("still calls a rich cream out on oily skin", () => {
+    expect(verdictOf(run({ cart: ["LL-115"], scan: makeScan({}, "Oily") }), "LL-115")).toBe("UNNECESSARY");
+  });
+});

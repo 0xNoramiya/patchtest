@@ -1,0 +1,24 @@
+{
+  "key": "2a6b8d0de07f9c392dd59ea148de6a68",
+  "recorded_at": "2026-10-30T16:00:10.081Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S34-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-102",
+        "reason": "A 2% salicylic acid cleanser gives a simple, rinse-off way to keep oily skin looking clearer and smoother."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light mattifying gel with niacinamide helps balance shine and keeps skin comfortably moisturized without feeling heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 protects skin each morning and helps keep the look of post-blemish marks from darkening, which matters for deeper skin tones."
+      }
+    ],
+    "routine_note": "Use the cleanser once a day in the evening to start (twice daily only if skin stays comfortable), then apply the gel moisturizer morning and night, and SPF last each morning. If skin feels dry or stingy, cut back the cleanser to every other day, and if spots become painful, widespread or leave marks, a dermatologist is the better person to ask."
+  }
+}

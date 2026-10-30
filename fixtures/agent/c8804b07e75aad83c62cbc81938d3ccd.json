@@ -1,0 +1,28 @@
+{
+  "key": "c8804b07e75aad83c62cbc81938d3ccd",
+  "recorded_at": "2026-10-30T15:59:04.805Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S29-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-light cleanse that won't strip skin that already looks low on moisture."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "The mattifying gel you asked for, with a light finish that helps keep shine down."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "A lightweight hydrating serum to add moisture under the gel without adding a greasy feel."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides for daily protection that blends well on deeper skin tones."
+      }
+    ],
+    "routine_note": "Morning: cleanse, apply the hydrating serum, then the mattifying gel, and finish with the tinted SPF; at night, repeat without the SPF. Skip scrubs and strong exfoliants for now so skin stays comfortable while it adjusts."
+  }
+}

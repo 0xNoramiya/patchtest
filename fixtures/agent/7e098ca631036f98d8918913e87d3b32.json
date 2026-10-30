@@ -1,0 +1,28 @@
+{
+  "key": "7e098ca631036f98d8918913e87d3b32",
+  "recorded_at": "2026-10-30T15:57:10.644Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S21-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser keeps your routine comfortable while you start a new active."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A starter-strength retinol night serum suits your texture score and is gentler than the 1% option."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports your moisture score and cushions skin against retinol dryness."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 is needed with retinol, and it suits skin that tends toward oily."
+      }
+    ],
+    "routine_note": "Using the retinol, glycolic toner and benzoyl peroxide wash together is likely to leave skin dry and irritated and won't speed up results, so I've started you with the retinol only (2-3 nights a week, then more often as skin allows) and left the toner and wash out since your acne score looks healthy. Wear the sunscreen every morning, and consider adding the glycolic toner on separate nights once your skin is settled."
+  }
+}

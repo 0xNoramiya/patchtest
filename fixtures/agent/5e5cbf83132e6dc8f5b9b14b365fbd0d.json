@@ -1,0 +1,24 @@
+{
+  "key": "5e5cbf83132e6dc8f5b9b14b365fbd0d",
+  "recorded_at": "2026-10-30T15:55:18.188Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S14-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps your skin feeling clean without stripping it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple ceramide moisturizer supports your skin's comfort and moisture balance."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is the most useful habit for keeping skin looking its best as you get older."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, moisturize, and apply sunscreen every morning, reapplying if you are outside for long. We left out vitamin C and firming creams because they aren't needed at 15, and this simple routine is easier to stick with."
+  }
+}

@@ -36,13 +36,22 @@ export function fixtureDir(label: string): string {
   return path.join(process.cwd(), "fixtures", "scans", label);
 }
 
-/** Returns the stored fixture when this exact image was already scanned. */
-export async function cachedScan(label: string, hash: string): Promise<ScanFixture | null> {
+/**
+ * Returns the stored fixture for this label if there is one. Keyed on the label
+ * rather than the image hash on purpose: re-encoding an image changes its hash,
+ * and nobody should be able to spend 22 units by accident just by touching a
+ * file. A hash mismatch is reported, not silently re-scanned. Pass `force` to
+ * scan again deliberately.
+ */
+export async function cachedScan(
+  label: string,
+  hash: string,
+): Promise<{ fixture: ScanFixture; hashMatches: boolean } | null> {
   try {
     const existing = JSON.parse(
       await readFile(path.join(fixtureDir(label), "fixture.json"), "utf8"),
     ) as ScanFixture;
-    return existing.image?.hash === hash ? existing : null;
+    return { fixture: existing, hashMatches: existing.image?.hash === hash };
   } catch {
     return null;
   }
@@ -51,6 +60,8 @@ export async function cachedScan(label: string, hash: string): Promise<ScanFixtu
 export type RunScanOptions = {
   imagePath: string;
   label: string;
+  /** Spend units again even though a fixture for this label already exists. */
+  force?: boolean;
   onProgress?: (step: string) => void;
 };
 
@@ -68,18 +79,19 @@ export async function runScan(opts: RunScanOptions): Promise<{ fixture: ScanFixt
   const hash = imageHash(image.bytes, SD_CONCERNS);
 
   const cached = await cachedScan(label, hash);
-  if (cached) {
-    log("cached, no units spent");
-    if (!cached.summary) {
+  if (cached && !opts.force) {
+    log(cached.hashMatches ? "cached, no units spent" : "cached (image changed, pass --force to rescan)");
+    const fixture = cached.fixture;
+    if (!fixture.summary) {
       // Fixtures recorded before the parser existed get a summary without paying again.
-      cached.summary = parseSkinAnalysis(
-        cached.skin_analysis as Parameters<typeof parseSkinAnalysis>[0],
-        (cached.fitzpatrick as { results?: { fitzpatrick_scale?: string } })?.results
+      fixture.summary = parseSkinAnalysis(
+        fixture.skin_analysis as Parameters<typeof parseSkinAnalysis>[0],
+        (fixture.fitzpatrick as { results?: { fitzpatrick_scale?: string } })?.results
           ?.fitzpatrick_scale as Parameters<typeof parseSkinAnalysis>[1],
       );
-      await writeFile(path.join(fixtureDir(label), "fixture.json"), stringifyWithoutSignatures(cached));
+      await writeFile(path.join(fixtureDir(label), "fixture.json"), stringifyWithoutSignatures(fixture));
     }
-    return { fixture: cached, cached: true };
+    return { fixture, cached: true };
   }
 
   const outDir = fixtureDir(label);

@@ -1,0 +1,28 @@
+{
+  "key": "ffba80e99a46271aa7e509342ac1e740",
+  "recorded_at": "2026-10-30T15:49:33.133Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S36-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that won't strip dry, sensitive-looking skin."
+      },
+      {
+        "sku": "LL-117",
+        "reason": "A soothing gel that gives a calming feel to skin that looks red when warm."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the skin barrier and ease the low moisture score."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF that shields against sun and heat exposure and softens the look of visible redness."
+      }
+    ],
+    "routine_note": "Cleanse, then apply the soothing gel and moisturizer morning and night, adding the tinted SPF last in the morning. Because the flushing keeps coming back with heat and wine, please also have a dermatologist look at it, as no cosmetic product can substitute for that advice."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "key": "ab41836b8d25ec2d7114d3cc3d3fed94",
+  "recorded_at": "2026-10-30T15:40:44.058Z",
+  "model": "claude-sonnet-5-5",
+  "label": "synthetic-04-pigment",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanser that cleans without stripping skin that already looks low in moisture."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle option used in the morning to help dark-looking patches appear more even over time."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a kinder starting point for smoother-looking skin than the 1% serum."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide cream to add comfort and cushion to dry-looking skin, especially on retinol nights."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides helps keep dark patches from looking deeper and is needed with retinol."
+      }
+    ],
+    "routine_note": "I've left out the 30% peel and the 1% retinol because very strong products can irritate dry skin and, on deeper skin tones, can leave darker marks behind. Use azelaic acid and SPF each morning, start the retinol just twice a week at night over a thin layer of cream, and add nights slowly only if skin feels comfortable.}"
+  }
+}

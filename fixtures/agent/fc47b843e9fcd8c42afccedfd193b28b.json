@@ -1,0 +1,24 @@
+{
+  "key": "fc47b843e9fcd8c42afccedfd193b28b",
+  "recorded_at": "2026-10-30T15:56:31.802Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S19-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser keeps oily, sensitive-looking skin clean without stripping it."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light mattifying gel with 4% niacinamide helps balance shine and supports the look of smoother texture without being heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 suits easily flushed, fair skin and helps protect the look of even tone."
+      }
+    ],
+    "routine_note": "I left out the 30% peel because it is a very strong, high-strength product for skin that looks sensitive and has no exfoliant history, so begin with this gentle routine and use the SPF every morning. If you want more exfoliation for texture later, add a milder option slowly once your skin is comfortable."
+  }
+}

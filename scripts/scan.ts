@@ -9,7 +9,7 @@
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 import { budget, readLedger, SCAN_UNIT_COST, spent } from "../lib/ledger";
-import { cachedScan, runScan } from "../lib/scan-runner";
+import { runScan } from "../lib/scan-runner";
 
 process.loadEnvFile(path.join(process.cwd(), ".env.local"));
 
@@ -57,6 +57,7 @@ async function main() {
     try {
       const { fixture, cached } = await runScan({
         ...target,
+        force: args.includes("--force"),
         onProgress: (step) => process.stdout.write(`\r${prefix}: ${step}`.padEnd(70)),
       });
       const s = fixture.summary;

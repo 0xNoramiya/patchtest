@@ -1,0 +1,20 @@
+{
+  "key": "49ed934605f93e1d0eca81a8f4d06b95",
+  "recorded_at": "2026-10-30T15:46:25.095Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S13-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free gentle cleanser is all a young face needs to wash away the day."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple ceramide moisturizer helps keep skin comfortable after washing without any active ingredients."
+      }
+    ],
+    "routine_note": "Wash your face gently with lukewarm water once or twice a day, pat dry, then smooth on a small amount of moisturizer. Skip exfoliating products and strong actives at this age, and ask a parent to help choose a sunscreen for sunny days."
+  }
+}

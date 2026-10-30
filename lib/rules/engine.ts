@@ -130,6 +130,7 @@ function matchItem(p: ItemPredicate, product: Product, ctx: Ctx): boolean {
     if (!hit) return false;
   }
   if (p.tag_any && !product.tags.some((t) => p.tag_any!.includes(t))) return false;
+  if (p.not_tag_any && product.tags.some((t) => p.not_tag_any!.includes(t))) return false;
   if (p.leave_on !== undefined && product.leave_on !== p.leave_on) return false;
   if (p.area_in && !p.area_in.includes(product.area)) return false;
   if (p.targets_any && !product.targets.some((t) => p.targets_any!.includes(t))) return false;

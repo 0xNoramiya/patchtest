@@ -1,0 +1,24 @@
+{
+  "key": "3a0036546417851b74a02cc1388f9c3e",
+  "recorded_at": "2026-10-30T15:53:51.172Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S07-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "The lower 2.5% strength is a gentler way to keep up with the breakout-prone look you mentioned, and it is the one to start with."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps with the lower moisture score and any dryness from a benzoyl peroxide wash."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 protects skin during the day and suits sensitive, redness-prone skin."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, rinse well, then follow with moisturizer, and apply sunscreen every morning. I have left out retinoids like adapalene and retinol, and stronger exfoliating acids, while you are trying for a baby, so please check any actives with your doctor or midwife before using them."
+  }
+}

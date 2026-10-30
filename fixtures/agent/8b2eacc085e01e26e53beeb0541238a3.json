@@ -1,0 +1,24 @@
+{
+  "key": "8b2eacc085e01e26e53beeb0541238a3",
+  "recorded_at": "2026-10-30T15:54:41.490Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S11-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps oily-looking skin feeling clean without stripping it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the look of a comfortable, balanced skin barrier and helps with the lower moisture score."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 protects skin that may still be sensitive and is needed before any exfoliating acid is added later."
+      }
+    ],
+    "routine_note": "I've left out the glycolic toner for now. Skin can stay sensitive for a while after isotretinoin, so please check with your dermatologist or prescriber about when exfoliating acids are right for you. Until then, use the cleanser morning and night, the moisturizer after cleansing, and the SPF every morning."
+  }
+}

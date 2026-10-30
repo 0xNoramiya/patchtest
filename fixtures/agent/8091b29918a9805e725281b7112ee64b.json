@@ -1,0 +1,28 @@
+{
+  "key": "8091b29918a9805e725281b7112ee64b",
+  "recorded_at": "2026-10-30T15:56:01.044Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S17-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps dry-looking skin from being stripped before a retinol."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "The lower-strength 0.3% retinol is a sensible starting point for smoother-looking texture and more even-looking tone."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "Your scan shows low moisture, so a rich ceramide cream helps cushion skin and keep it comfortable while it adjusts to retinol."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Retinol needs daily sunscreen, and this tinted mineral SPF with iron oxides blends well on deeper skin tones and helps keep tone looking even."
+      }
+    ],
+    "routine_note": "Use the retinol at night, 2 nights a week at first, and build up slowly only if skin feels comfortable, following it with the moisturizer. Wear the SPF every morning, and skip other exfoliating acids for now so skin isn't overloaded."
+  }
+}

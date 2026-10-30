@@ -1,0 +1,24 @@
+{
+  "key": "6da1476031f200ccf17868a372feebdc",
+  "recorded_at": "2026-10-30T15:56:16.296Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S18-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "This is the 5% benzoyl peroxide wash you asked for, and it helps reduce the look of breakouts along the jaw."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps keep skin comfortable and looking balanced while the wash may be drying."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF in the morning helps keep the look of post-breakout marks from deepening on your skin tone."
+      }
+    ],
+    "routine_note": "Start by using the wash once a day on the jaw area, leave it on for about a minute before rinsing, and build up only if your skin stays comfortable (it can bleach towels and pillowcases). Follow with moisturizer, and add sunscreen every morning; if breakouts persist or feel painful after a couple of months, a dermatologist is the best next step."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "464022bcc23afdb60466a31be7d0ade2",
+  "recorded_at": "2026-10-30T15:49:08.311Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S33-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser keeps the skin clean without stripping or adding irritation to tender areas."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple barrier moisturizer supports comfort and the look of dry, tight skin without any strong actives."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 helps keep the look of marks from appearing darker or more noticeable in the sun."
+      }
+    ],
+    "routine_note": "Big, painful lumps under the skin that leave marks are best looked at in person by a dermatologist, so we are not recommending anything stronger from our shop. Until then, use the cleanser morning and night, the moisturizer after cleansing, and the SPF every morning, and avoid scrubs or picking."
+  }
+}

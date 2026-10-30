@@ -1,0 +1,28 @@
+{
+  "key": "8e0225ecb1d3d5f68f7c5562250dfe69",
+  "recorded_at": "2026-10-30T15:55:51.196Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S16-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps dry-feeling skin comfortable while the routine settles in."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle azelaic acid cream that helps the look of uneven tone without the irritation risk of a strong peel or retinol."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide cream to support a low-moisture, dry-feeling skin barrier."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides helps shield the look of dark patches from daily sun and visible light."
+      }
+    ],
+    "routine_note": "I've left out the 30% peel and the 1% retinol because strong exfoliation and high-strength actives can cause irritation that leaves deeper skin tones looking darker and more uneven, so start gently, use the azelaic cream at night, and wear sunscreen every morning. Since dark patches on your cheeks are a persistent concern, a dermatologist is the best person to assess them and guide any stronger step."
+  }
+}

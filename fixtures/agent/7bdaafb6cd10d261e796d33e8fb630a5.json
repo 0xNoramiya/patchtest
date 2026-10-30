@@ -1,0 +1,24 @@
+{
+  "key": "7bdaafb6cd10d261e796d33e8fb630a5",
+  "recorded_at": "2026-10-30T15:45:00.014Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S01-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that suits oily, sensitive-looking skin without stripping it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer to support comfort and a smoother look while moisture scores are mid-range."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Mineral SPF 50 is the most useful daily step for keeping the look of fine lines from deepening, and it is gentle on sensitive skin."
+      }
+    ],
+    "routine_note": "I've left out retinol and other retinoids because they aren't recommended during pregnancy, so please check with your doctor or midwife before adding any active. Meanwhile, cleanse gently morning and night, moisturize, and apply mineral SPF every morning."
+  }
+}

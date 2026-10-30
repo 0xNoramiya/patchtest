@@ -1,0 +1,28 @@
+{
+  "key": "61906a47dfd4c345ec873374d04275e1",
+  "recorded_at": "2026-10-30T15:47:00.471Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S17-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free style cleanse that won't strip already dry-feeling skin while you start a retinol."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "The lower 0.3% strength is a sensible starting point for smoother-looking texture and a more even-looking tone."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream to add comfort and moisture, since your scan shows low moisture."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Retinol makes skin more sun-sensitive, and this tinted mineral SPF with iron oxides gives daily protection that suits deeper skin tones."
+      }
+    ],
+    "routine_note": "Use the retinol at night just 2 evenings a week, applied after cleansing and followed by the cream, then slowly add nights as your skin feels comfortable. Apply the SPF every morning, and pause the retinol and check in with a dermatologist if skin becomes very sore, dark-looking or stays irritated."
+  }
+}

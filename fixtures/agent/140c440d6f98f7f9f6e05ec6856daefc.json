@@ -1,0 +1,32 @@
+{
+  "key": "140c440d6f98f7f9f6e05ec6856daefc",
+  "recorded_at": "2026-10-30T15:48:16.366Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S26-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the base of your routine simple and kind to skin that is a little low on moisture."
+      },
+      {
+        "sku": "LL-113",
+        "reason": "A beginner-friendly active for the morning that suits an oily-labelled skin type and helps skin look more balanced."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a sensible first night active for smoother-looking skin over time."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports your skin's moisture and cushions the retinol as you start."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is essential every morning when using a retinol, and it suits your skin tone."
+      }
+    ],
+    "routine_note": "Mornings: cleanse, niacinamide, moisturizer, then SPF. Evenings: cleanse, moisturizer, then retinol on just 2 nights a week at first and build up slowly if skin feels comfortable, always finishing with moisturizer."
+  }
+}

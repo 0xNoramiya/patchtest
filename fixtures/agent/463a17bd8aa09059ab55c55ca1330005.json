@@ -1,0 +1,28 @@
+{
+  "key": "463a17bd8aa09059ab55c55ca1330005",
+  "recorded_at": "2026-10-30T15:57:38.597Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S23-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "This is the adapalene gel you asked for, and it is used at night on skin prone to breakouts."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the routine simple and avoids stacking extra irritation on top of adapalene."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your moisture score is on the lower side, and a ceramide moisturizer helps keep skin comfortable while it adjusts to adapalene."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Adapalene makes skin more sun-sensitive, so a mineral SPF 50 each morning is an essential partner."
+      }
+    ],
+    "routine_note": "Start adapalene with a thin layer 2 to 3 nights a week after cleansing, then moisturize, and build up as skin feels comfortable. Use sunscreen every morning and skip other exfoliating acids or scrubs while you start, and if skin becomes very irritated or breakouts are painful or persistent, a dermatologist is the best person to see."
+  }
+}

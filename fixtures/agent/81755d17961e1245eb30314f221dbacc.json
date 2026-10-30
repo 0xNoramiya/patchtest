@@ -1,0 +1,24 @@
+{
+  "key": "81755d17961e1245eb30314f221dbacc",
+  "recorded_at": "2026-10-30T15:49:01.359Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S32-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a sensible first step for softening the look of fine lines."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a comfortable, hydrated look and helps skin adjust to a new retinol."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily mineral SPF 50 is needed alongside retinol, which makes skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Use a pea-sized amount of the retinol at night on clean, dry skin two nights a week, then add nights slowly as skin feels comfortable, followed by the moisturizer. Apply the SPF every morning and reapply when outdoors."
+  }
+}

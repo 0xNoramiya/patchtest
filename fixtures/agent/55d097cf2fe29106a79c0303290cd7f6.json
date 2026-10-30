@@ -1,0 +1,24 @@
+{
+  "key": "55d097cf2fe29106a79c0303290cd7f6",
+  "recorded_at": "2026-10-30T15:54:30.953Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S10-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that cleans without stripping already dry, flaky-looking skin."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream to comfort dry-looking skin and support the look of a healthy moisture barrier."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides gives daily sun protection and blends well on deeper skin tones."
+      }
+    ],
+    "routine_note": "I left out the glycolic toner and vitamin C serum because strong exfoliating acids and high-strength actives can be too harsh on skin while you are on isotretinoin, so please check with your prescriber or a dermatologist before adding any actives. Cleanse and moisturize morning and night, and apply the SPF each morning as the last step."
+  }
+}

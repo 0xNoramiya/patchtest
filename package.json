@@ -11,7 +11,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "scan": "tsx scripts/scan.ts",
-    "calibrate": "tsx scripts/calibrate.ts"
+    "calibrate": "tsx scripts/calibrate.ts",
+    "agent": "tsx scripts/agent-demo.ts",
+    "eval": "tsx scripts/eval.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.92",

@@ -1,0 +1,24 @@
+{
+  "key": "4f10de5b35d76060cd7f1e971142afb1",
+  "recorded_at": "2026-10-30T15:47:08.319Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S18-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "This is the 5% benzoyl peroxide wash you asked for, a rinse-off option for jawline breakouts."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps keep skin comfortable while the wash is new, and your moisture score is mid-range."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 each morning helps protect skin and keeps marks from looking darker in the sun."
+      }
+    ],
+    "routine_note": "Start with the wash once a day or every other day on damp skin for 1 to 2 minutes, rinse well, then moisturize, and use sunscreen every morning; it can bleach towels and fabrics. If skin feels dry or stinging, cut back, and if breakouts are painful, deep, scarring or don't improve in about 8 weeks, a dermatologist is the better next step."
+  }
+}

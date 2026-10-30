@@ -1,0 +1,20 @@
+{
+  "key": "f33538c46c7679978260f1a3b39dbf39",
+  "recorded_at": "2026-10-30T15:55:04.627Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S13-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that is gentle enough for a first face-washing habit."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for mornings keeps daily sun protection simple and easy on young skin."
+      }
+    ],
+    "routine_note": "Wash your face gently with lukewarm water once or twice a day, and apply sunscreen in the morning before going outside. Skip scrubs, acids and anti-aging products at this age, and ask a parent or a dermatologist if you have any concerns about your skin."
+  }
+}

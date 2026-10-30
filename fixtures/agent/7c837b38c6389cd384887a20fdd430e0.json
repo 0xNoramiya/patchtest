@@ -1,0 +1,16 @@
+{
+  "key": "7c837b38c6389cd384887a20fdd430e0",
+  "recorded_at": "2026-10-30T15:53:35.145Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S06-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-124",
+        "reason": "A light salicylic acid spray made for the chest that helps keep the look of congested, bumpy skin clearer, without retinoids."
+      }
+    ],
+    "routine_note": "Use it once a day on clean, dry skin on the chest only, keep it away from the breast and nipple area, and stop if skin feels irritated. Because you are breastfeeding, check with your midwife, pharmacist or doctor first, and see a dermatologist if the spots are painful, spreading or not settling."
+  }
+}

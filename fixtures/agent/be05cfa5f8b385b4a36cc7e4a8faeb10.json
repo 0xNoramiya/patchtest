@@ -1,0 +1,28 @@
+{
+  "key": "be05cfa5f8b385b4a36cc7e4a8faeb10",
+  "recorded_at": "2026-10-30T15:45:15.300Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S03-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that keeps skin feeling clean without stripping it."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle leave-on cream that helps with the look of uneven tone and visible blemishes."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light barrier moisturizer to support comfort, since the scan shows lower moisture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection that suits pregnancy-conscious routines."
+      }
+    ],
+    "routine_note": "Because your breakouts feel severe and you are pregnant, please ask your OB or a dermatologist about benzoyl peroxide before using any, so I have left it out rather than choosing the strongest one. Cleanse morning and night, apply the azelaic cream at night then moisturizer, and finish your morning with the mineral SPF."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "7fbe44144d71842cd12983fadf4694b0",
+  "recorded_at": "2026-10-30T15:56:40.238Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S19-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser keeps oily, sensitive-looking skin comfortable day to day."
+      },
+      {
+        "sku": "LL-102",
+        "reason": "A gentler, rinse-off way to smooth the look of texture, used a few nights a week instead of a strong peel."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light mattifying gel moisturizer to balance shine and support moisture without feeling heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is a gentle daily choice for fair, sensitive-looking skin and protects while you smooth texture."
+      }
+    ],
+    "routine_note": "I left out the 30% peel because it is very strong to start with when skin looks sensitive and has never used exfoliants; begin with LL-102 two nights a week, then build up only if skin stays comfortable. Use the cleanser LL-101 otherwise, apply the gel moisturizer morning and night, and wear sunscreen every morning."
+  }
+}

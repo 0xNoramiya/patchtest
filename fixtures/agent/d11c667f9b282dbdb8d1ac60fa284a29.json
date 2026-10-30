@@ -1,0 +1,28 @@
+{
+  "key": "d11c667f9b282dbdb8d1ac60fa284a29",
+  "recorded_at": "2026-10-30T15:52:32.227Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S02-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps skin fresh without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Hyaluronic serum adds a hydrated, plumper-looking glow to skin that looks dull."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a smoother, more comfortable-looking skin surface."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 protects skin each morning and helps keep tone looking even."
+      }
+    ],
+    "routine_note": "I left out the 30% peel because strong exfoliating acids aren't a good fit while pregnant, so please check with your prenatal provider before adding any peel or exfoliant. Use the cleanser, serum and moisturizer morning and night, and finish with the SPF every morning."
+  }
+}

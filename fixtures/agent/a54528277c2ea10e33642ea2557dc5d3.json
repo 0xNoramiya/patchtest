@@ -1,0 +1,24 @@
+{
+  "key": "a54528277c2ea10e33642ea2557dc5d3",
+  "recorded_at": "2026-10-30T15:49:26.225Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S35-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that cleans without stripping skin that looks dry and sensitive."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the look of a comfortable, well-cushioned skin barrier, since the scan shows low moisture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is a gentle daily choice for fair skin that looks easily reddened."
+      }
+    ],
+    "routine_note": "Flushing, lasting redness, bumps and gritty eyes are better assessed by a dermatologist (and an eye professional for the grittiness) than by anything a shop can sell, so we skipped strong actives, which could aggravate sensitive-looking skin. Until then, cleanse and moisturize morning and night, and apply the mineral sunscreen each morning."
+  }
+}

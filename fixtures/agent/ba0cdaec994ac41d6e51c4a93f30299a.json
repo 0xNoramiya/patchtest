@@ -1,0 +1,24 @@
+{
+  "key": "ba0cdaec994ac41d6e51c4a93f30299a",
+  "recorded_at": "2026-10-30T15:50:00.529Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S40-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the everyday routine simple and won't strip oilier skin."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light mattifying gel moisturizer adds hydration while helping control shine on oily-looking skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 fluid gives daily sun protection in a lightweight finish that suits oilier skin."
+      }
+    ],
+    "routine_note": "Cleanse morning and evening, then apply the moisturizer; in the morning finish with sunscreen and reapply if you're outdoors for long. Keep it to these three steps for a few weeks before considering anything extra."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "003da6ae5586ef0b9c7335cac38577d2",
+  "recorded_at": "2026-10-30T15:54:35.988Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S11-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser keeps your skin comfortable while you wait on exfoliating acids."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports your skin's moisture barrier, and your moisture score of 57 leaves room for it."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 protects skin that may still be sensitive after your recent course."
+      }
+    ],
+    "routine_note": "Because you stopped isotretinoin only eight months ago, I've left the glycolic toner out for now, and please ask your dermatologist or prescriber when it's right to add exfoliating acids. Until then, cleanse and moisturize morning and night and apply sunscreen every morning."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "061a3b425872bab1eb3937611c06888c",
+  "recorded_at": "2026-10-30T15:59:09.730Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S30-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser removes surface oil without stripping skin, which keeps the routine easy to follow."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "The Oil Control Mattifying Gel you asked for gives a shine-free finish and lightweight moisture for oily-looking skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 fluid protects skin every morning and suits a routine for shine-prone skin."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, then apply the mattifying gel, and finish with sunscreen in the morning. Start with just these three and add anything else only if you feel you need it."
+  }
+}

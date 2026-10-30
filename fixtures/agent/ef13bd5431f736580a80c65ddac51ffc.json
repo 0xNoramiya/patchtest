@@ -1,0 +1,20 @@
+{
+  "key": "ef13bd5431f736580a80c65ddac51ffc",
+  "recorded_at": "2026-10-30T15:47:59.591Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S24-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free-style ceramide moisturizer that comforts a tight, dry feel without being as heavy as a rich cream, which suits skin that leans oily and sensitive."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser that cleans without stripping, so skin is less likely to feel tight afterwards."
+      }
+    ],
+    "routine_note": "Cleanse morning and evening, then apply the moisturizer to slightly damp skin. If you head outdoors during the day, a daily sunscreen is a good extra step, and you can add one whenever you like."
+  }
+}

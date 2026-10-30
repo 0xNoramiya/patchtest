@@ -1,0 +1,28 @@
+{
+  "key": "1d4a3a232fa833895826965644c94805",
+  "recorded_at": "2026-10-30T15:56:49.283Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S20-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps oily skin feeling clean without stripping sensitive skin."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A low-strength 0.3% retinol is a sensible starting point for softening the look of fine lines on sensitive skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the skin barrier and helps keep retinol comfortable without feeling heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is needed every morning with retinol, and mineral formulas tend to suit sensitive, fair skin."
+      }
+    ],
+    "routine_note": "Use the retinol at night on dry skin, 2 nights a week to begin, then add nights slowly as your skin settles, and follow it with moisturizer. In the morning, cleanse, moisturize and apply sunscreen, and don't layer other exfoliating acids or scrubs with the retinol at first."
+  }
+}

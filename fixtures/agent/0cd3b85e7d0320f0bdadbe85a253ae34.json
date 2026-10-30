@@ -1,0 +1,24 @@
+{
+  "key": "0cd3b85e7d0320f0bdadbe85a253ae34",
+  "recorded_at": "2026-10-30T15:49:57.517Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S39-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the face clean without adding to any dryness or irritation."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the skin barrier and comfort, which suits the lower moisture score."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 gives daily sun protection and is gentle on skin showing some redness."
+      }
+    ],
+    "routine_note": "Use the cleanser and moisturizer morning and night, with sunscreen last each morning. Since three months of chemist products haven't changed how your skin looks, please book a visit with a dermatologist or doctor rather than adding more products from a shop."
+  }
+}

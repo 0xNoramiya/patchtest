@@ -1,0 +1,24 @@
+{
+  "key": "89e5636f5e2fd0744df705a1967ff502",
+  "recorded_at": "2026-10-30T15:49:51.647Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S38-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanse that leaves skin feeling comfortable and doesn't add irritation to uneven-looking texture."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the look of a smooth, comfortable barrier, since moisture reads on the lower side."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 each morning helps keep the look of redness and uneven tone in check."
+      }
+    ],
+    "routine_note": "Cleanse and moisturize morning and night, and apply the SPF last each morning. Because how your skin looks is affecting your mood and your willingness to go out, please also talk to a dermatologist or doctor, as that goes beyond anything a shop can offer."
+  }
+}

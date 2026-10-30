@@ -1,0 +1,24 @@
+{
+  "key": "e6024b134258c6b4d1c9d69e4fae64be",
+  "recorded_at": "2026-10-30T15:53:42.638Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S07-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "The lower 2.5% strength is the gentler way to get the benzoyl peroxide wash you asked for, aimed at the look of breakouts."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps support the look of comfortable, balanced skin, since your scan shows moisture on the low side."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF suits daytime use while you are trying for a baby and helps keep skin tone looking even."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, then moisturizer, and add sunscreen in the morning. Because you are trying to conceive, check any active product with your doctor or midwife first, and I have left out retinoids and strong peels for now."
+  }
+}

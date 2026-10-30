@@ -1,0 +1,28 @@
+{
+  "key": "8a4d13823ccac17d2c05041ad14a82e8",
+  "recorded_at": "2026-10-30T15:47:25.797Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S20-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps oily, sensitive-looking skin comfortable while it gets used to retinol."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength 0.3% retinol is a sensible starting point for softening the look of fine lines on sensitive skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports the skin barrier and helps with comfort and moisture alongside retinol."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is a gentle daily option for sensitive skin, and daytime sun protection matters when using retinol."
+      }
+    ],
+    "routine_note": "Start retinol at night just 2 times a week, then slowly build up as your skin allows, applying moisturizer after it and skipping other exfoliating products. Use the mineral SPF every morning, and pause the retinol if skin feels stinging or very dry."
+  }
+}

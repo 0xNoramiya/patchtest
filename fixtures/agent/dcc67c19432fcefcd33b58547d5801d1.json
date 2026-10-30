@@ -1,0 +1,28 @@
+{
+  "key": "dcc67c19432fcefcd33b58547d5801d1",
+  "recorded_at": "2026-10-30T15:48:39.154Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S29-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanser that cleans without stripping, which suits skin that looks low in moisture."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "A light, water-based hydrating layer to help skin look more supple without adding a shiny finish."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "The mattifying gel you asked for, with a light niacinamide 4% formula to help skin look less shiny through the day."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides helps protect deeper skin tones from visible sun-related darkening and blends better than a chalky mineral formula."
+      }
+    ],
+    "routine_note": "Morning: cleanse, apply the hydrating serum to damp skin, then the mattifying gel, then sunscreen. Evening: cleanse, then hydrating serum and mattifying gel, and skip strong exfoliants for now while skin looks uneven and low in moisture."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "f3174538c061bf195df7045ba434e682",
+  "recorded_at": "2026-10-30T15:55:44.470Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S16-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser that won't strip skin that already looks dry."
+      },
+      {
+        "sku": "LL-113",
+        "reason": "A gentle serum that helps skin look more even in tone without the irritation of strong exfoliants."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream to support comfort and moisture in dry-looking skin."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides to help protect the look of dark patches from getting more noticeable."
+      }
+    ],
+    "routine_note": "We've left out the 30% peel and the strongest retinol because they can be too harsh for deeper skin tones and may leave patches looking darker, and dark patches on the cheeks are best looked at in person by a dermatologist. Use the cleanser, niacinamide and cream morning and evening, and finish every morning with the tinted SPF."
+  }
+}

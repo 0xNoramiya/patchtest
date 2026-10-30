@@ -1,0 +1,24 @@
+{
+  "key": "abab5370ee6262d08669ec96e3f60d84",
+  "recorded_at": "2026-10-30T15:59:57.733Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S33-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser keeps skin feeling clean without adding to the irritation that can come with stronger products."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple ceramide moisturizer supports the look of a comfortable skin barrier, since your moisture score reads on the lower side."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF helps keep the look of marks from darkening further and is gentle on sensitive-looking skin."
+      }
+    ],
+    "routine_note": "Deep, painful lumps that leave marks are best looked at by a dermatologist, so I haven't picked the strongest actives here because nothing in a shop is a substitute for that visit. In the meantime, cleanse gently morning and night, moisturize, and wear SPF every morning."
+  }
+}

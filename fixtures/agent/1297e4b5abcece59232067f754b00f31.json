@@ -1,0 +1,24 @@
+{
+  "key": "1297e4b5abcece59232067f754b00f31",
+  "recorded_at": "2026-10-30T16:00:53.426Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S37-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral sunscreen with iron oxides helps keep the look of dark patches from deepening and covers visible light."
+      },
+      {
+        "sku": "LL-113",
+        "reason": "A gentle brightening serum that can help even the look of dull, uneven-looking areas without strong exfoliation."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your moisture score is low, so this barrier moisturizer adds comfort and softness to dry-looking skin."
+      }
+    ],
+    "routine_note": "Please have the mole on your cheek that has grown and darkened looked at by a dermatologist soon, as that is beyond what any product here can address, and I have kept this routine small and gentle until then. Use the serum, then moisturizer, then sunscreen each morning, and moisturizer alone at night."
+  }
+}

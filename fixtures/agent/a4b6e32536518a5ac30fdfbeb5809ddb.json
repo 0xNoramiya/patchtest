@@ -1,0 +1,28 @@
+{
+  "key": "a4b6e32536518a5ac30fdfbeb5809ddb",
+  "recorded_at": "2026-10-30T15:48:29.540Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S28-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser keeps skin comfortable while the scan shows very low moisture."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A starter-strength retinol serum for the night is a well-known cosmetic choice to help soften the look of lines and improve the look of firmness."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream supports the look of plumper, more comfortable skin where moisture reads low."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 each morning is needed with retinol and helps protect the look of skin from further visible signs of aging."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, then apply sunscreen after moisturizer in the morning. Start the retinol 2 nights a week, followed by the cream, and increase slowly as your skin feels comfortable."
+  }
+}

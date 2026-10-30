@@ -1,0 +1,24 @@
+{
+  "key": "02ade47a953a6c4ba74abc16f57f6b08",
+  "recorded_at": "2026-10-30T15:47:44.686Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S22-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "The lower 2.5% strength is a gentler way to add a morning wash alongside your night tretinoin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps support a skin barrier that can feel dry or tight with a retinoid and a wash, and your scan shows lower moisture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 is important with tretinoin, which makes skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Use the wash in the morning only, rinse well, then apply moisturizer and sunscreen, and keep your tretinoin at night as your dermatologist directed. Skip extra exfoliating acids, scrubs or other retinoids, and check with your dermatologist if you notice lasting dryness or irritation."
+  }
+}

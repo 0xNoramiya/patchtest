@@ -1,0 +1,32 @@
+{
+  "key": "d6ee4875876d6fc76072d81df7e03086",
+  "recorded_at": "2026-10-30T15:58:14.694Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S26-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanser keeps the base of your routine simple while you add actives."
+      },
+      {
+        "sku": "LL-113",
+        "reason": "Niacinamide 10% suits skin labelled oily and helps the look of shine and an even-looking tone in the morning."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A low-strength retinol is a sensible first active for smoother-looking skin over time, and your scores show no need for something stronger."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports a comfortable skin barrier and helps your moisture score while you ease into retinol."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily mineral SPF 50 is essential alongside retinol, which makes skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Mornings: cleanse, niacinamide, moisturizer, then SPF 50 every day. Evenings: cleanse, apply a pea-sized amount of retinol 2 nights a week and build slowly to every other night as comfortable, then moisturize."
+  }
+}

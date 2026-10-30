@@ -1,0 +1,24 @@
+{
+  "key": "648905ff942950ac9bebe03ec28ab945",
+  "recorded_at": "2026-10-30T15:48:45.602Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S30-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser clears away daytime oil without stripping skin, which can leave it looking shinier later."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "The Oil Control Mattifying Gel you asked for is a lightweight, niacinamide-based moisturizer that helps skin look matte through the day."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 fluid protects skin in daylight and is light enough to wear over a mattifying gel."
+      }
+    ],
+    "routine_note": "Morning: cleanse, apply the mattifying gel, then finish with sunscreen. Evening: cleanse and apply the gel again, and add a little more only if skin feels tight."
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "version": 1,
+  "status": "DRAFT, NOT YET REVIEWED BY A CLINICIAN",
+  "author": "Drafted by the build agent from the rule intent, not from running the engine. Every entry carries needs_clinician_review: true until Rifqi signs it off.",
+  "note": "These are the expected answers the eval scores against. They are deliberately written from clinical intent rather than from the engine's behaviour, so that a gap between the two shows up as a miss rather than being hidden.",
+  "labels": {
+    "S01": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "retinoid"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Pregnancy guidance is consistent on topical retinoids, including over the counter ones."
+    },
+    "S02": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "aha"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "A 30 percent AHA peel is well above the 10 percent ceiling the literature treats as safe in pregnancy."
+    },
+    "S03": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "bpo"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "AAD files benzoyl peroxide under use sparingly in pregnancy, not under avoid."
+    },
+    "S04": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": true
+      },
+      "rationale": "Hydroquinone is not in the catalogue. The shopper reported using it, so the warning is about what they already have."
+    },
+    "S05": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "aha"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "15 percent leave-on AHA is above the 10 percent safe ceiling, but a strength adjustment is proportionate rather than a block."
+    },
+    "S06": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "bha"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Breastfeeding, product applied to the chest. Keep it off the nipple and areola."
+    },
+    "S07": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. Trying to conceive is not pregnancy. Benzoyl peroxide needs sunscreen alongside it."
+    },
+    "S08": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "hair_removal"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "The FDA isotretinoin label names waxing directly, during treatment and for six months after."
+    },
+    "S09": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "aha"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Three months after stopping is inside the six month window the label sets."
+    },
+    "S10": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "aha",
+          "vitamin_c"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "On isotretinoin these add irritation to skin that is already dry and fragile."
+    },
+    "S11": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. Eight months after stopping is outside the six month window."
+    },
+    "S12": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "retinoid",
+          "aha",
+          "bha",
+          "vitamin_c"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Under 13. There is nothing for these to work on and irritation is the likely outcome."
+    },
+    "S13": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. A cleanser for a child is fine. Nothing here should be blocked."
+    },
+    "S14": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [
+          "vitamin_c",
+          "peptide"
+        ],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Anti-aging actives have nothing to work on at 15. Unnecessary rather than unsafe."
+    },
+    "S15": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. A 16 year old buying something for acne is appropriate. Sunscreen goes alongside it."
+    },
+    "S16": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "aha"
+        ],
+        "adjust_classes": [
+          "retinoid"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "At-home peel on deeper skin carries a real pigmentation risk. The retinoid is fine at low strength, every other night."
+    },
+    "S17": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "retinoid"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Start low and slow on deeper skin tones, because irritation leaves marks."
+    },
+    "S18": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "bpo"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Start at 2.5 percent rather than 5 percent on deeper skin tones."
+    },
+    "S19": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Control at Fitzpatrick II.",
+      "flag_for_rifqi": "Our rules let a 30 percent at-home peel through for Fitzpatrick II. Is that acceptable, or should a peel that strength carry an ADJUST for everyone?"
+    },
+    "S20": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. A retinoid at Fitzpatrick II needs no tone-specific adjustment."
+    },
+    "S21": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "retinoid",
+          "aha",
+          "bpo"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Three strong actives at once. Stagger them or drop one."
+    },
+    "S22": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "bpo"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Reported tretinoin plus benzoyl peroxide. Separate them or prefer adapalene."
+    },
+    "S23": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "A retinoid with no sunscreen. Sunscreen is part of the routine, not an upsell."
+    },
+    "S24": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. A moisturizer on its own needs no caveat and nothing should be blocked."
+    },
+    "S25": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [
+          "vitamin_c",
+          "aha"
+        ],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Redness raw_score of 7.1 is the lowest in the bank. Settle the barrier before stacking actives."
+    },
+    "S26": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. Calm skin, actives are reasonable."
+    },
+    "S27": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [
+          "peptide",
+          "retinoid"
+        ],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Wrinkle raw_score of 92.8 at 24. There is nothing for an anti-aging product to work on."
+    },
+    "S28": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Wrinkle raw_score of 1.1. Anti-aging products have plenty to work on here, so nothing is unnecessary."
+    },
+    "S29": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [
+          "LL-116"
+        ],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "The scan reports dry skin. A mattifying gel works against that."
+    },
+    "S30": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. The scan reports oily skin, so a mattifying gel matches."
+    },
+    "S31": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [
+          "retinoid"
+        ],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Two leave-on retinoids do the same job. One comes out."
+    },
+    "S32": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. One retinoid is not a duplicate."
+    },
+    "S33": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "retinoid",
+          "aha",
+          "bha",
+          "bpo",
+          "vitamin_c"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": true,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Deep painful lumps with scarring. This needs prescription treatment, and scarring is easier to prevent than to fix. Keep gentle basics and sunscreen only."
+    },
+    "S34": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. A low acne score is a reason to ask the question, never a reason to refer on its own. The shopper reported no symptoms."
+    },
+    "S35": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [
+          "aha",
+          "bha",
+          "retinoid",
+          "bpo"
+        ],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": true,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Flushing with persistent redness, bumps and eye involvement. Worth a proper look before acids or retinoids go anywhere near it."
+    },
+    "S36": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. Flushing alone does not meet the referral bar.",
+      "flag_for_rifqi": "Redness raw_score is 7.1 here, so the reactive-skin rule fires and adds caveats. Is that right for someone who only flushes with warmth and wine?"
+    },
+    "S37": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": true,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "A mole that has changed is not a skincare question. Refer, and do not let the cart distract from it."
+    },
+    "S38": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": true,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Acne affecting mood is an explicit NHS reason to see a doctor."
+    },
+    "S39": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": true,
+        "require_spf": true,
+        "reported_use_warning": false
+      },
+      "rationale": "Months of over the counter products with no change is an explicit NHS reason to see a doctor."
+    },
+    "S40": {
+      "needs_clinician_review": true,
+      "expected": {
+        "block_classes": [],
+        "adjust_classes": [],
+        "unnecessary_classes": [],
+        "block_skus": [],
+        "unnecessary_skus": [],
+        "referral": false,
+        "require_spf": false,
+        "reported_use_warning": false
+      },
+      "rationale": "Control. No symptoms, simple request, nothing should be blocked."
+    }
+  }
+}

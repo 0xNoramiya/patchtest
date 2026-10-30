@@ -1,0 +1,24 @@
+{
+  "key": "394bd5d8c6953d5d22c190f2c32a1292",
+  "recorded_at": "2026-10-30T15:48:09.996Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S25-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that keeps dry, sensitive-looking skin comfortable."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the look of a smooth, comfortable skin barrier and add moisture."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF that softly camouflages the look of redness and protects skin during the day."
+      }
+    ],
+    "routine_note": "I've left out the glycolic toner and 15% vitamin C serum for now because strong acids often sting skin that looks red and feels sensitive, so start with this simple morning and evening routine and wear the SPF daily. Since you say your face is always red, it's worth showing it to a dermatologist, as that is better assessed in person than by anything we sell."
+  }
+}

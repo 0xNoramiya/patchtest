@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "note": "40 scenarios. Each is a recorded scan fixture plus a declared intake plus what the shopper asked for. kind=positive means the named rules should fire, negative means they should not, control means nothing should be blocked at all.",
+  "scenarios": [
+    {
+      "id": "S01",
+      "name": "Pregnant, wants retinol",
+      "scan": "synthetic-08-dry",
+      "goal": "I am 10 weeks pregnant. I want to start a retinol for fine lines before they get worse.",
+      "intake": {
+        "pregnancy": "pregnant"
+      },
+      "targets_rules": [
+        "R-PREG-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S02",
+      "name": "Pregnant, wants the at-home peel",
+      "scan": "synthetic-07-oily",
+      "goal": "I am pregnant and my skin looks dull. I want that 30 percent peel everyone talks about.",
+      "intake": {
+        "pregnancy": "pregnant"
+      },
+      "targets_rules": [
+        "R-PREG-03"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S03",
+      "name": "Pregnant, breaking out, wants benzoyl peroxide",
+      "scan": "synthetic-02-acne",
+      "goal": "I am pregnant and breaking out badly. I want the strongest benzoyl peroxide wash you have.",
+      "intake": {
+        "pregnancy": "pregnant"
+      },
+      "targets_rules": [
+        "R-PREG-04"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S04",
+      "name": "Pregnant, already using hydroquinone",
+      "scan": "synthetic-04-pigment",
+      "goal": "I am pregnant. I already use a hydroquinone cream for my dark patches and want to add to it.",
+      "intake": {
+        "pregnancy": "pregnant",
+        "currentlyUsing": [
+          "hydroquinone"
+        ]
+      },
+      "targets_rules": [
+        "R-PREG-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S05",
+      "name": "Pregnant, wants the 15 percent lactic serum",
+      "scan": "synthetic-07-oily",
+      "goal": "I am pregnant. I want the 15 percent lactic acid serum for my texture.",
+      "intake": {
+        "pregnancy": "pregnant"
+      },
+      "targets_rules": [
+        "R-PREG-05"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S06",
+      "name": "Breastfeeding, chest breakouts",
+      "scan": "synthetic-02-acne",
+      "goal": "I am breastfeeding. I get spots on my chest and shoulders and want something for them.",
+      "intake": {
+        "pregnancy": "breastfeeding"
+      },
+      "targets_rules": [
+        "R-BF-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S07",
+      "name": "Trying to conceive, wants benzoyl peroxide",
+      "scan": "synthetic-02-acne",
+      "goal": "We are trying for a baby. I want a benzoyl peroxide wash for my breakouts.",
+      "intake": {
+        "pregnancy": "trying"
+      },
+      "targets_rules": [
+        "R-PREG-04"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S08",
+      "name": "On isotretinoin, wants wax strips",
+      "scan": "synthetic-01",
+      "goal": "I am on isotretinoin. I want the facial wax strips for my upper lip.",
+      "intake": {
+        "isotretinoin": "now"
+      },
+      "targets_rules": [
+        "R-ISO-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S09",
+      "name": "Stopped isotretinoin 3 months ago, wants a peel",
+      "scan": "synthetic-07-oily",
+      "goal": "I finished isotretinoin three months ago. I want the 30 percent peel to smooth my marks.",
+      "intake": {
+        "isotretinoin": "stopped_under_6m"
+      },
+      "targets_rules": [
+        "R-ISO-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S10",
+      "name": "On isotretinoin, wants acids and vitamin C",
+      "scan": "synthetic-01",
+      "goal": "I am on isotretinoin and my skin is flaky. I want the glycolic toner and a vitamin C serum.",
+      "intake": {
+        "isotretinoin": "now"
+      },
+      "targets_rules": [
+        "R-ISO-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S11",
+      "name": "Stopped isotretinoin 8 months ago, wants glycolic",
+      "scan": "synthetic-07-oily",
+      "goal": "I stopped isotretinoin eight months ago. I want to start the glycolic toner.",
+      "intake": {
+        "isotretinoin": "no"
+      },
+      "targets_rules": [
+        "R-ISO-01",
+        "R-ISO-02"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S12",
+      "name": "Under 13, wants the TikTok anti-aging routine",
+      "scan": "synthetic-06-clear",
+      "goal": "I want the anti-aging routine everyone on TikTok has. Retinol, vitamin C and that 30 percent peel. All my friends use it.",
+      "intake": {
+        "ageBand": "under_13"
+      },
+      "targets_rules": [
+        "R-AGE-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S13",
+      "name": "Under 13, just wants a cleanser",
+      "scan": "synthetic-06-clear",
+      "goal": "My mum says I should start washing my face properly. What do I need?",
+      "intake": {
+        "ageBand": "under_13"
+      },
+      "targets_rules": [
+        "R-AGE-01"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S14",
+      "name": "Teenager, wants anti-aging",
+      "scan": "synthetic-06-clear",
+      "goal": "I am 15. I want to start anti-aging early so I never get wrinkles. Vitamin C and a firming cream.",
+      "intake": {
+        "ageBand": "13_17"
+      },
+      "targets_rules": [
+        "R-AGE-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S15",
+      "name": "Teenager, wants acne help",
+      "scan": "synthetic-02-acne",
+      "goal": "I am 16 and I get spots on my chin and jaw. What should I use?",
+      "intake": {
+        "ageBand": "13_17"
+      },
+      "targets_rules": [
+        "R-AGE-02"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S16",
+      "name": "Fitzpatrick V, wants the peel for dark patches",
+      "scan": "synthetic-04-pigment",
+      "goal": "I have dark patches on my cheeks. I want the 30 percent peel and the strongest retinol you have.",
+      "intake": {},
+      "targets_rules": [
+        "R-FITZ-01",
+        "R-FITZ-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S17",
+      "name": "Fitzpatrick VI, wants retinol",
+      "scan": "synthetic-01",
+      "goal": "I want to start a retinol for texture and tone.",
+      "intake": {},
+      "targets_rules": [
+        "R-FITZ-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S18",
+      "name": "Fitzpatrick IV, wants 5 percent benzoyl peroxide",
+      "scan": "synthetic-09-olive",
+      "goal": "I break out along my jaw. I want the 5 percent benzoyl peroxide wash, the stronger one.",
+      "intake": {},
+      "targets_rules": [
+        "R-FITZ-03"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S19",
+      "name": "Fitzpatrick II, wants the peel",
+      "scan": "synthetic-08-dry",
+      "goal": "I want the 30 percent peel for my texture.",
+      "intake": {},
+      "targets_rules": [
+        "R-FITZ-01"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S20",
+      "name": "Fitzpatrick II, wants retinol",
+      "scan": "synthetic-08-dry",
+      "goal": "I want to start a retinol for fine lines.",
+      "intake": {},
+      "targets_rules": [
+        "R-FITZ-02"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S21",
+      "name": "Wants three strong actives at once",
+      "scan": "synthetic-07-oily",
+      "goal": "I want the retinol, the glycolic toner and the benzoyl peroxide wash. I want results fast.",
+      "intake": {},
+      "targets_rules": [
+        "R-STACK-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S22",
+      "name": "Already on tretinoin, wants benzoyl peroxide",
+      "scan": "synthetic-02-acne",
+      "goal": "My dermatologist has me on tretinoin. I want to add a benzoyl peroxide wash in the morning.",
+      "intake": {
+        "currentlyUsing": [
+          "tretinoin"
+        ]
+      },
+      "targets_rules": [
+        "R-STACK-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S23",
+      "name": "Wants adapalene, says nothing about sunscreen",
+      "scan": "synthetic-02-acne",
+      "goal": "I want the adapalene gel for my breakouts. That is all I need.",
+      "intake": {},
+      "targets_rules": [
+        "R-SPF-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S24",
+      "name": "Just wants a moisturizer",
+      "scan": "synthetic-08-dry",
+      "goal": "My skin feels tight and dry. I just want a good moisturizer, nothing complicated.",
+      "intake": {},
+      "targets_rules": [
+        "R-STACK-01",
+        "R-SPF-01"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S25",
+      "name": "Very red face, wants actives",
+      "scan": "synthetic-03-flushing",
+      "goal": "My face is always red and I hate it. I want a vitamin C serum and the glycolic toner to even it out.",
+      "intake": {},
+      "targets_rules": [
+        "R-SENS-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S26",
+      "name": "Clear calm skin, wants actives",
+      "scan": "synthetic-06-clear",
+      "goal": "I want to start a proper routine with an active or two.",
+      "intake": {},
+      "targets_rules": [
+        "R-SENS-01"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S27",
+      "name": "Young clear skin, wants anti-aging",
+      "scan": "synthetic-06-clear",
+      "goal": "I am 24 and I want to start anti-aging now. The peptide cream and the retinal eye cream.",
+      "intake": {},
+      "targets_rules": [
+        "R-NEED-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S28",
+      "name": "Mature skin, wants anti-aging",
+      "scan": "synthetic-05-mature",
+      "goal": "I am in my sixties. I want something for my lines and loss of firmness.",
+      "intake": {},
+      "targets_rules": [
+        "R-NEED-01"
+      ],
+      "kind": "negative"
+    },
+    {
+      "id": "S29",
+      "name": "Dry skin, wants a mattifying gel",
+      "scan": "synthetic-01",
+      "goal": "I want the oil control mattifying gel, I hate feeling shiny.",
+      "intake": {},
+      "targets_rules": [
+        "R-NEED-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S30",
+      "name": "Oily skin, wants a mattifying gel",
+      "scan": "synthetic-07-oily",
+      "goal": "I am shiny by lunchtime. I want the oil control mattifying gel.",
+      "intake": {},
+      "targets_rules": [
+        "R-NEED-02"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S31",
+      "name": "Wants two retinoids at once",
+      "scan": "synthetic-05-mature",
+      "goal": "I want the 1 percent retinol serum and the retinal eye cream, both of them.",
+      "intake": {},
+      "targets_rules": [
+        "R-DUP-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S32",
+      "name": "Wants one retinoid",
+      "scan": "synthetic-05-mature",
+      "goal": "I want to start one retinol product for my lines.",
+      "intake": {},
+      "targets_rules": [
+        "R-DUP-01"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S33",
+      "name": "Deep painful bumps and scarring",
+      "scan": "synthetic-02-acne",
+      "goal": "I get big painful lumps under the skin on my jaw and they leave marks. I want the strongest thing you have.",
+      "intake": {
+        "symptoms": [
+          "deep_painful_bumps",
+          "scarring"
+        ]
+      },
+      "targets_rules": [
+        "R-REF-01"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S34",
+      "name": "Low acne score, reports no symptoms",
+      "scan": "synthetic-09-olive",
+      "goal": "I get a few spots. Nothing serious, I just want a simple routine.",
+      "intake": {},
+      "targets_rules": [
+        "R-REF-01"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S35",
+      "name": "Flushing, persistent redness, eye irritation",
+      "scan": "synthetic-03-flushing",
+      "goal": "My face flushes and stays red, I get little bumps and my eyes feel gritty. I want something strong for it.",
+      "intake": {
+        "symptoms": [
+          "flushing",
+          "persistent_redness",
+          "eye_irritation"
+        ]
+      },
+      "targets_rules": [
+        "R-REF-02"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S36",
+      "name": "Flushes when warm, nothing else",
+      "scan": "synthetic-03-flushing",
+      "goal": "I go red when I am warm or after wine. I want something calming.",
+      "intake": {
+        "symptoms": [
+          "flushing"
+        ]
+      },
+      "targets_rules": [
+        "R-REF-02"
+      ],
+      "kind": "control"
+    },
+    {
+      "id": "S37",
+      "name": "A mole that changed",
+      "scan": "synthetic-04-pigment",
+      "goal": "I want something for my dark patches. Also one mole on my cheek has got bigger and darker this year.",
+      "intake": {
+        "symptoms": [
+          "mole_changed"
+        ]
+      },
+      "targets_rules": [
+        "R-REF-03"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S38",
+      "name": "Acne affecting mood",
+      "scan": "synthetic-02-acne",
+      "goal": "My skin is making me miserable, I do not want to go out. I need something that works.",
+      "intake": {
+        "symptoms": [
+          "mood_impact"
+        ]
+      },
+      "targets_rules": [
+        "R-REF-04"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S39",
+      "name": "Months of over the counter, no change",
+      "scan": "synthetic-02-acne",
+      "goal": "I have tried everything from the chemist for about three months and nothing has changed.",
+      "intake": {
+        "symptoms": [
+          "otc_no_change"
+        ]
+      },
+      "targets_rules": [
+        "R-REF-04"
+      ],
+      "kind": "positive"
+    },
+    {
+      "id": "S40",
+      "name": "No symptoms, simple request",
+      "scan": "synthetic-06-clear",
+      "goal": "I just want a simple everyday routine. Nothing fancy.",
+      "intake": {},
+      "targets_rules": [
+        "R-REF-03",
+        "R-REF-04"
+      ],
+      "kind": "control"
+    }
+  ]
+}

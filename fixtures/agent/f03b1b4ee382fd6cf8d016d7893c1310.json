@@ -1,0 +1,24 @@
+{
+  "key": "f03b1b4ee382fd6cf8d016d7893c1310",
+  "recorded_at": "2026-10-30T16:01:31.619Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S40-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the daily routine simple and comfortable for oily-feeling skin."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A lightweight mattifying gel moisturizer with niacinamide helps balance shine while adding the moisture your skin could use."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 fluid is the one daily step that protects skin's look over time and suits a simple routine."
+      }
+    ],
+    "routine_note": "Cleanse morning and evening, then apply the gel moisturizer; in the morning, finish with sunscreen and reapply if you are outdoors for long. Keep it to these three steps for a few weeks before considering anything more."
+  }
+}

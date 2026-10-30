@@ -1,0 +1,24 @@
+{
+  "key": "4470b61cf5dca4fc4eb6445875746af7",
+  "recorded_at": "2026-10-30T16:01:18.546Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S39-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps skin comfortable while you pause adding new products."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports a barrier that scans a bit low on moisture, without feeling heavy on oily skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 protects skin every morning and is gentle on skin that looks a little red."
+      }
+    ],
+    "routine_note": "Since three months of store-bought products hasn't changed things, please book a visit with a dermatologist rather than adding more products from us. Until then, cleanse and moisturize morning and night and apply sunscreen each morning."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "2510e045c47f4c6fea8425be00e3a913",
+  "recorded_at": "2026-10-30T15:58:51.792Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S28-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanse that won't strip skin that already looks dry and dull."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A beginner-friendly retinol strength to help soften the look of fine lines and improve the look of firmness over time."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream to comfort skin that scans as low in moisture and to cushion the retinol."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 is needed with retinol and helps keep lines from looking deeper."
+      }
+    ],
+    "routine_note": "Mornings: cleanse, moisturizer, then sunscreen. Evenings: cleanse, then retinol just 2 nights a week with moisturizer on top, building up slowly as skin feels comfortable, and pause it if skin feels stinging or tight."
+  }
+}

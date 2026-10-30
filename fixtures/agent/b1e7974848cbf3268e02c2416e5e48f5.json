@@ -1,0 +1,28 @@
+{
+  "key": "b1e7974848cbf3268e02c2416e5e48f5",
+  "recorded_at": "2026-10-30T15:46:53.423Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S16-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-stripping cleanser suits dry skin with low moisture."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle brightening cream that helps the look of uneven tone on the cheeks without the irritation risk of a strong peel."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide cream to support comfort and moisture in dry skin."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Tinted mineral SPF with iron oxides helps protect the look of uneven tone from sun and visible light."
+      }
+    ],
+    "routine_note": "Use the cleanser and tinted SPF in the morning, then the azelaic cream and rich cream at night (or under SPF in the morning if comfortable), and reapply SPF through the day. I left out the 30% peel and the 1% retinol because strong actives can irritate dry skin and leave deeper skin tones looking darker, and if the patches persist or change, a dermatologist is the right person to ask."
+  }
+}

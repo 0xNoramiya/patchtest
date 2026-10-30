@@ -1,0 +1,24 @@
+{
+  "key": "36a66ac422b01d17c8a11845158fe981",
+  "recorded_at": "2026-10-30T15:59:13.822Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S30-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-116",
+        "reason": "The oil control mattifying gel you asked for suits oily skin and helps reduce shine through the day while doubling as a light moisturizer."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-stripping cleanser keeps the surface fresh without drying skin out and prompting extra shine."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A lightweight mineral SPF fluid protects skin each morning and layers neatly over the gel."
+      }
+    ],
+    "routine_note": "Morning: cleanse, apply the mattifying gel, then finish with the SPF; at night, cleanse and use the gel again. Start with this simple routine for a few weeks before considering anything else."
+  }
+}
