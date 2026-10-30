@@ -1,0 +1,323 @@
+{
+  "01-the-hook": [
+    {
+      "text": "Skincare shopping has an advice problem.",
+      "start": 0,
+      "end": 2.72
+    },
+    {
+      "text": "The usual fix is a chatbot.",
+      "start": 2.72,
+      "end": 5.12
+    },
+    {
+      "text": "But a chatbot is built to be helpful,",
+      "start": 5.12,
+      "end": 7.44
+    },
+    {
+      "text": "and sometimes the helpful answer is no.",
+      "start": 7.44,
+      "end": 10.24
+    }
+  ],
+  "02-preset-1-eight-weeks-pregnant-breaking-out": [
+    {
+      "text": "She is eight weeks pregnant and put the",
+      "start": 0,
+      "end": 1.92
+    },
+    {
+      "text": "retinoid back in her cart.",
+      "start": 1.92,
+      "end": 3.92
+    },
+    {
+      "text": "PatchTest blocks it, quotes the guideline it is",
+      "start": 3.92,
+      "end": 6.96
+    },
+    {
+      "text": "reading, and offers the thing she can actually use.",
+      "start": 6.96,
+      "end": 10.45
+    },
+    {
+      "text": "It does not just refuse. It re-routes.",
+      "start": 10.24,
+      "end": 12.93
+    }
+  ],
+  "03-preset-2-dark-patches-and-a-30-peel": [
+    {
+      "text": "Her scan comes back Fitzpatrick 5,,",
+      "start": 0,
+      "end": 2.72
+    },
+    {
+      "text": "so the at-home peel is blocked and the",
+      "start": 2.72,
+      "end": 5.04
+    },
+    {
+      "text": "retinol is adjusted.",
+      "start": 5.04,
+      "end": 6.88
+    },
+    {
+      "text": "Now the scores.",
+      "start": 6.88,
+      "end": 8.64
+    },
+    {
+      "text": "This API returns two numbers per concern,",
+      "start": 8.64,
+      "end": 11.84
+    },
+    {
+      "text": "and they do two different jobs.",
+      "start": 11.84,
+      "end": 13.92
+    },
+    {
+      "text": "Most integrations never notice there are two.",
+      "start": 13.92,
+      "end": 16.88
+    }
+  ],
+  "04-preset-3-painful-lumps-that-leave-marks": [
+    {
+      "text": "She described deep painful lumps that scar,",
+      "start": 0,
+      "end": 3.36
+    },
+    {
+      "text": "and asked for the strongest things in the shop.",
+      "start": 3.36,
+      "end": 6.21
+    },
+    {
+      "text": "PatchTest refers her instead, and holds the strong",
+      "start": 6.08,
+      "end": 9.36
+    },
+    {
+      "text": "actives back.",
+      "start": 9.36,
+      "end": 10.72
+    },
+    {
+      "text": "This is the moment a shop normally takes the money.",
+      "start": 10.72,
+      "end": 13.889999999999999
+    }
+  ],
+  "05-it-works-on-other-people-s-shops": [
+    {
+      "text": "That is the web app.",
+      "start": 0,
+      "end": 1.44
+    },
+    {
+      "text": "But checkout usually happens on somebody else's",
+      "start": 1.44,
+      "end": 4.24
+    },
+    {
+      "text": "website, so PatchTest also ships as a browser extension.",
+      "start": 4.24,
+      "end": 8.72
+    },
+    {
+      "text": "This is a different shop,",
+      "start": 8.72,
+      "end": 10.4
+    },
+    {
+      "text": "selling products that are not in our catalogue.",
+      "start": 10.4,
+      "end": 13.04
+    },
+    {
+      "text": "It reads the structured data the shop already",
+      "start": 13.04,
+      "end": 15.68
+    },
+    {
+      "text": "publishes, pulls the ingredient and the strength",
+      "start": 15.68,
+      "end": 18.56
+    },
+    {
+      "text": "out of each title, and applies the same rules.",
+      "start": 18.56,
+      "end": 21.73
+    }
+  ],
+  "06-how-it-works": [
+    {
+      "text": "One photo, two APIs.",
+      "start": 0,
+      "end": 2.64
+    },
+    {
+      "text": "Skin Analysis measures eight concerns,",
+      "start": 2.64,
+      "end": 5.52
+    },
+    {
+      "text": "Fitzpatrick reads skin tone.",
+      "start": 5.52,
+      "end": 8.08
+    },
+    {
+      "text": "22 units a scan, charged only on success.",
+      "start": 8.08,
+      "end": 12.16
+    },
+    {
+      "text": "Then a language model proposes a routine.",
+      "start": 12.16,
+      "end": 15.2
+    },
+    {
+      "text": "It never sets a verdict.",
+      "start": 15.2,
+      "end": 17.2
+    },
+    {
+      "text": "Twenty-four rules, each carrying a source and a",
+      "start": 17.2,
+      "end": 20.24
+    },
+    {
+      "text": "quote, decide what the shopper may buy.",
+      "start": 20.24,
+      "end": 22.96
+    },
+    {
+      "text": "The rules have the last word.",
+      "start": 22.96,
+      "end": 25.12
+    }
+  ],
+  "07-the-numbers": [
+    {
+      "text": "Here is the part most demos skip.",
+      "start": 0,
+      "end": 2.56
+    },
+    {
+      "text": "The comparison arm is the same model,",
+      "start": 2.56,
+      "end": 5.2
+    },
+    {
+      "text": "the same prompt, the same inputs,",
+      "start": 5.2,
+      "end": 7.6
+    },
+    {
+      "text": "differing only in the guardrail.",
+      "start": 7.6,
+      "end": 9.92
+    },
+    {
+      "text": "Across 120 runs it recommended nothing our labels",
+      "start": 9.92,
+      "end": 14
+    },
+    {
+      "text": "call unsafe.",
+      "start": 14,
+      "end": 15.6
+    },
+    {
+      "text": "A good model with a careful prompt is",
+      "start": 15.6,
+      "end": 18
+    },
+    {
+      "text": "mostly safe, and we are reporting that rather",
+      "start": 18,
+      "end": 20.8
+    },
+    {
+      "text": "than hiding it.",
+      "start": 20.8,
+      "end": 22.08
+    },
+    {
+      "text": "What it did was leave things sitting.",
+      "start": 22.08,
+      "end": 24.64
+    },
+    {
+      "text": "An item our labels call unsafe stayed in",
+      "start": 24.64,
+      "end": 27.92
+    },
+    {
+      "text": "the cart in 22.5% of runs. Not recommended.",
+      "start": 27.92,
+      "end": 32.48
+    },
+    {
+      "text": "Just not removed.",
+      "start": 32.48,
+      "end": 34.08
+    },
+    {
+      "text": "And of the items that needed a usage",
+      "start": 34.08,
+      "end": 36.24
+    },
+    {
+      "text": "caveat, it attached one to none of them.",
+      "start": 36.24,
+      "end": 39.44
+    },
+    {
+      "text": "100% went out bare, against 11% here.",
+      "start": 39.44,
+      "end": 43.68
+    },
+    {
+      "text": "The guardrail did not make the model consistent.",
+      "start": 43.68,
+      "end": 46.88
+    },
+    {
+      "text": "Both arms gave the same shopper a different",
+      "start": 46.88,
+      "end": 49.44
+    },
+    {
+      "text": "cart a third of the time.",
+      "start": 49.44,
+      "end": 51.36
+    },
+    {
+      "text": "What it made it was accountable.",
+      "start": 51.36,
+      "end": 53.76
+    }
+  ],
+  "08-the-limits-then-the-card": [
+    {
+      "text": "All of that is on the page,",
+      "start": 0,
+      "end": 1.92
+    },
+    {
+      "text": "because a tool that tells people when to",
+      "start": 1.92,
+      "end": 4
+    },
+    {
+      "text": "stop shopping should say what it does not know.",
+      "start": 4,
+      "end": 7.489999999999999
+    }
+  ]
+}

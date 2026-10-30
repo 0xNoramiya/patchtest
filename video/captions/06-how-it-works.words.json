@@ -1,0 +1,332 @@
+[
+  {
+    "id": "w0",
+    "text": "One",
+    "start": 0,
+    "end": 0.4
+  },
+  {
+    "id": "w1",
+    "text": "photo,",
+    "start": 0.4,
+    "end": 0.88
+  },
+  {
+    "id": "w2",
+    "text": "two",
+    "start": 1.04,
+    "end": 1.2
+  },
+  {
+    "id": "w3",
+    "text": "APIs.",
+    "start": 1.44,
+    "end": 2.64
+  },
+  {
+    "id": "w4",
+    "text": "Skin",
+    "start": 2.64,
+    "end": 3.04
+  },
+  {
+    "id": "w5",
+    "text": "analysis",
+    "start": 3.04,
+    "end": 3.76
+  },
+  {
+    "id": "w6",
+    "text": "measures",
+    "start": 3.76,
+    "end": 4.24
+  },
+  {
+    "id": "w7",
+    "text": "eight",
+    "start": 4.24,
+    "end": 4.56
+  },
+  {
+    "id": "w8",
+    "text": "concerns.",
+    "start": 4.56,
+    "end": 5.52
+  },
+  {
+    "id": "w9",
+    "text": "Fitzpatrick",
+    "start": 5.52,
+    "end": 6.48
+  },
+  {
+    "id": "w10",
+    "text": "reads",
+    "start": 6.48,
+    "end": 6.72
+  },
+  {
+    "id": "w11",
+    "text": "skin",
+    "start": 6.88,
+    "end": 7.2
+  },
+  {
+    "id": "w12",
+    "text": "tone.",
+    "start": 7.36,
+    "end": 8.08
+  },
+  {
+    "id": "w13",
+    "text": "22",
+    "start": 8.08,
+    "end": 8.72
+  },
+  {
+    "id": "w14",
+    "text": "units",
+    "start": 8.72,
+    "end": 9.12
+  },
+  {
+    "id": "w15",
+    "text": "a",
+    "start": 9.2,
+    "end": 9.44
+  },
+  {
+    "id": "w16",
+    "text": "scan,",
+    "start": 9.44,
+    "end": 10.08
+  },
+  {
+    "id": "w17",
+    "text": "charged",
+    "start": 10.08,
+    "end": 10.64
+  },
+  {
+    "id": "w18",
+    "text": "only",
+    "start": 10.64,
+    "end": 10.96
+  },
+  {
+    "id": "w19",
+    "text": "on",
+    "start": 10.96,
+    "end": 11.2
+  },
+  {
+    "id": "w20",
+    "text": "success.",
+    "start": 11.2,
+    "end": 12.16
+  },
+  {
+    "id": "w21",
+    "text": "Then",
+    "start": 12.16,
+    "end": 12.48
+  },
+  {
+    "id": "w22",
+    "text": "a",
+    "start": 12.56,
+    "end": 12.72
+  },
+  {
+    "id": "w23",
+    "text": "language",
+    "start": 12.72,
+    "end": 13.28
+  },
+  {
+    "id": "w24",
+    "text": "model",
+    "start": 13.28,
+    "end": 13.6
+  },
+  {
+    "id": "w25",
+    "text": "proposes",
+    "start": 13.68,
+    "end": 14.24
+  },
+  {
+    "id": "w26",
+    "text": "a",
+    "start": 14.24,
+    "end": 14.4
+  },
+  {
+    "id": "w27",
+    "text": "routine.",
+    "start": 14.4,
+    "end": 15.2
+  },
+  {
+    "id": "w28",
+    "text": "It",
+    "start": 15.2,
+    "end": 15.44
+  },
+  {
+    "id": "w29",
+    "text": "never",
+    "start": 15.44,
+    "end": 15.84
+  },
+  {
+    "id": "w30",
+    "text": "sets",
+    "start": 15.84,
+    "end": 16.16
+  },
+  {
+    "id": "w31",
+    "text": "a",
+    "start": 16.16,
+    "end": 16.32
+  },
+  {
+    "id": "w32",
+    "text": "verdict.",
+    "start": 16.32,
+    "end": 17.2
+  },
+  {
+    "id": "w33",
+    "text": "Twenty",
+    "start": 17.2,
+    "end": 17.68
+  },
+  {
+    "id": "w34",
+    "text": "four",
+    "start": 17.68,
+    "end": 17.92
+  },
+  {
+    "id": "w35",
+    "text": "rules,",
+    "start": 17.92,
+    "end": 18.64
+  },
+  {
+    "id": "w36",
+    "text": "each",
+    "start": 18.64,
+    "end": 18.96
+  },
+  {
+    "id": "w37",
+    "text": "carrying",
+    "start": 18.96,
+    "end": 19.36
+  },
+  {
+    "id": "w38",
+    "text": "a",
+    "start": 19.36,
+    "end": 19.52
+  },
+  {
+    "id": "w39",
+    "text": "source",
+    "start": 19.52,
+    "end": 19.92
+  },
+  {
+    "id": "w40",
+    "text": "and",
+    "start": 19.92,
+    "end": 20.08
+  },
+  {
+    "id": "w41",
+    "text": "a",
+    "start": 20.08,
+    "end": 20.24
+  },
+  {
+    "id": "w42",
+    "text": "quote,",
+    "start": 20.24,
+    "end": 20.88
+  },
+  {
+    "id": "w43",
+    "text": "decide",
+    "start": 20.88,
+    "end": 21.28
+  },
+  {
+    "id": "w44",
+    "text": "what",
+    "start": 21.28,
+    "end": 21.44
+  },
+  {
+    "id": "w45",
+    "text": "the",
+    "start": 21.44,
+    "end": 21.6
+  },
+  {
+    "id": "w46",
+    "text": "shopper",
+    "start": 21.6,
+    "end": 22.16
+  },
+  {
+    "id": "w47",
+    "text": "may",
+    "start": 22.16,
+    "end": 22.4
+  },
+  {
+    "id": "w48",
+    "text": "buy.",
+    "start": 22.4,
+    "end": 22.96
+  },
+  {
+    "id": "w49",
+    "text": "The",
+    "start": 22.96,
+    "end": 23.12
+  },
+  {
+    "id": "w50",
+    "text": "rules",
+    "start": 23.12,
+    "end": 23.68
+  },
+  {
+    "id": "w51",
+    "text": "have",
+    "start": 23.68,
+    "end": 23.84
+  },
+  {
+    "id": "w52",
+    "text": "the",
+    "start": 23.84,
+    "end": 24.08
+  },
+  {
+    "id": "w53",
+    "text": "last",
+    "start": 24.08,
+    "end": 24.4
+  },
+  {
+    "id": "w54",
+    "text": "word.",
+    "start": 24.4,
+    "end": 25.12
+  }
+]

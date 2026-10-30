@@ -162,9 +162,7 @@ export function CheckFlow() {
                 Open the demo shop
               </a>
               <a
-                href="https://github.com/0xNoramiya/patchtest/tree/main/extension"
-                target="_blank"
-                rel="noreferrer"
+                href="/extension"
                 className="press rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
               >
                 How to install it

@@ -10,6 +10,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           </Link>
           <span className="hidden text-faint sm:inline">a patch test for your cart</span>
           <div className="ml-auto flex items-center gap-5">
+            <Link href="/extension" className="text-muted hover:text-ink">
+              Extension
+            </Link>
             <Link href="/eval" className="text-muted hover:text-ink">
               Eval
             </Link>

@@ -42,10 +42,13 @@ actives, percentages, tags, rinse-off versus leave-on and body area, with 24
 tests of its own. A title it cannot read gets no verdict and says so, rather than
 being presented as cleared.
 
-**[Download the extension zip](https://github.com/0xNoramiya/patchtest/releases/latest/download/patchtest-extension-v1.0.0.zip)**, unzip it, then load it unpacked from
-`chrome://extensions` with Developer mode on. Full instructions in
-[`extension/README.md`](extension/README.md). The demo shop to try it on is
+**[Install it from the site](https://patchtest.fly.dev/extension)** &mdash; the
+download, the five steps and the troubleshooting are all on that page, so nobody
+has to read a repo to get it running. The demo shop to try it on is
 [/store](https://patchtest.fly.dev/store).
+
+The source for it is in [`extension/`](extension/) if you would rather read it
+before running it.
 
 ---
 

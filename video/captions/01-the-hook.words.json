@@ -1,0 +1,164 @@
+[
+  {
+    "id": "w0",
+    "text": "Skincare",
+    "start": 0,
+    "end": 0.72
+  },
+  {
+    "id": "w1",
+    "text": "shopping",
+    "start": 0.72,
+    "end": 1.2
+  },
+  {
+    "id": "w2",
+    "text": "has",
+    "start": 1.2,
+    "end": 1.36
+  },
+  {
+    "id": "w3",
+    "text": "an",
+    "start": 1.36,
+    "end": 1.52
+  },
+  {
+    "id": "w4",
+    "text": "advice",
+    "start": 1.52,
+    "end": 2.08
+  },
+  {
+    "id": "w5",
+    "text": "problem.",
+    "start": 2.08,
+    "end": 2.72
+  },
+  {
+    "id": "w6",
+    "text": "The",
+    "start": 2.72,
+    "end": 2.96
+  },
+  {
+    "id": "w7",
+    "text": "usual",
+    "start": 2.96,
+    "end": 3.36
+  },
+  {
+    "id": "w8",
+    "text": "fix",
+    "start": 3.36,
+    "end": 3.84
+  },
+  {
+    "id": "w9",
+    "text": "is",
+    "start": 3.84,
+    "end": 4
+  },
+  {
+    "id": "w10",
+    "text": "a",
+    "start": 4,
+    "end": 4.16
+  },
+  {
+    "id": "w11",
+    "text": "chatbot.",
+    "start": 4.16,
+    "end": 5.12
+  },
+  {
+    "id": "w12",
+    "text": "But",
+    "start": 5.12,
+    "end": 5.36
+  },
+  {
+    "id": "w13",
+    "text": "a",
+    "start": 5.36,
+    "end": 5.44
+  },
+  {
+    "id": "w14",
+    "text": "chatbot",
+    "start": 5.44,
+    "end": 6.08
+  },
+  {
+    "id": "w15",
+    "text": "is",
+    "start": 6.08,
+    "end": 6.24
+  },
+  {
+    "id": "w16",
+    "text": "built",
+    "start": 6.24,
+    "end": 6.56
+  },
+  {
+    "id": "w17",
+    "text": "to",
+    "start": 6.56,
+    "end": 6.64
+  },
+  {
+    "id": "w18",
+    "text": "be",
+    "start": 6.64,
+    "end": 6.8
+  },
+  {
+    "id": "w19",
+    "text": "helpful,",
+    "start": 6.8,
+    "end": 7.44
+  },
+  {
+    "id": "w20",
+    "text": "and",
+    "start": 7.44,
+    "end": 7.68
+  },
+  {
+    "id": "w21",
+    "text": "sometimes",
+    "start": 7.68,
+    "end": 8.32
+  },
+  {
+    "id": "w22",
+    "text": "the",
+    "start": 8.32,
+    "end": 8.48
+  },
+  {
+    "id": "w23",
+    "text": "helpful",
+    "start": 8.48,
+    "end": 9.04
+  },
+  {
+    "id": "w24",
+    "text": "answer",
+    "start": 9.04,
+    "end": 9.52
+  },
+  {
+    "id": "w25",
+    "text": "is",
+    "start": 9.52,
+    "end": 9.76
+  },
+  {
+    "id": "w26",
+    "text": "no.",
+    "start": 9.76,
+    "end": 10.24
+  }
+]

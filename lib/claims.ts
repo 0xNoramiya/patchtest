@@ -49,7 +49,7 @@ export function sanitizeClaims(text: string): { text: string; changed: boolean }
   let changed = false;
 
   for (const sentence of sentences) {
-    let working = sentence
+    const working = sentence
       .replace(new RegExp(`\\btreats?\\s+(?:your\\s+|the\\s+)?(${CONDITIONS})\\b`, "gi"), "is used for the look of $1")
       .replace(/\bclinically proven\b/gi, "formulated")
       .replace(new RegExp(`\\byou\\s+have\\s+(?:severe|moderate|mild)\\s+(${CONDITIONS})\\b`, "gi"), "your scan flagged $1-related signs");

@@ -8,15 +8,15 @@ answers it where people actually shop.
 
 ## Install it
 
-Chrome, Edge or any Chromium browser. It is not on the Web Store, so it loads
-unpacked. Takes about thirty seconds.
+**The instructions live on the site: https://patchtest.fly.dev/extension.** That
+page has the download, the steps with the detail that actually trips people up,
+and the troubleshooting. Send people there rather than here.
 
-1. **[Download the zip](https://github.com/0xNoramiya/patchtest/releases/latest/download/patchtest-extension-v1.0.0.zip)** from
-   [Releases](https://github.com/0xNoramiya/patchtest/releases/latest), and unzip it. Or clone this repo and use the
-   `extension/` folder directly.
-2. Open `chrome://extensions`.
-3. Turn on **Developer mode**, top right.
-4. Press **Load unpacked** and pick the unzipped folder.
+The short version, for anyone already in this folder: it is not on the Web Store,
+so it loads unpacked. Open `chrome://extensions`, turn on **Developer mode** top
+right, press **Load unpacked**, and pick this `extension/` folder. Or take the
+zip from [Releases](https://github.com/0xNoramiya/patchtest/releases/latest) and
+point it at the unzipped copy.
 
 Nothing else to configure. It points at `https://patchtest.fly.dev` out of the box.
 

@@ -13,6 +13,7 @@ import path from "node:path";
 import { promisify } from "node:util";
 
 const run = promisify(execFile);
+const CUES = JSON.parse(await readFile("video/captions/cues.json", "utf8"));
 const PROJECT = "video/demo";
 const LEAD = 0.2, TAIL = 0.15, XFADE = 0.65;
 
@@ -67,20 +68,23 @@ async function main() {
 
   place({ id: "logo", kind: "logo", duration: 2.9 });
 
+  // The address is shown in the frame, so a judge can see which surface each
+  // beat is on. "verdant-row.example" is the fictional second shop; .example is
+  // reserved by RFC 2606 and can never be a real domain.
   const screens = [
-    ["pregnant", "02", "preset-pregnant.mp4"],
-    ["peel", "03", "preset-peel.mp4"],
-    ["refer", "04", "preset-refer.mp4"],
-    ["extension", "05", "extension.mp4"],
-    ["methods", "06", "methods.mp4"],
-    ["evalpage", "07", "eval.mp4"],
+    ["pregnant", "02", "preset-pregnant.mp4", "patchtest.fly.dev"],
+    ["peel", "03", "preset-peel.mp4", "patchtest.fly.dev"],
+    ["refer", "04", "preset-refer.mp4", "patchtest.fly.dev"],
+    ["extension", "05", "extension.mp4", "verdant-row.example/cart"],
+    ["methods", "06", "methods.mp4", "patchtest.fly.dev/methods"],
+    ["evalpage", "07", "eval.mp4", "patchtest.fly.dev/eval"],
   ];
-  for (const [id, block, src] of screens) {
+  for (const [id, block, src, addr] of screens) {
     const v = vo(block);
     const avail = await probe(`media/clips/${src.replace(".mp4", "")}.mp4`);
     const want = LEAD + v.seconds + TAIL;
     if (avail < LEAD + v.seconds) throw new Error(`${src} is ${avail.toFixed(1)}s, too short for ${v.seconds.toFixed(1)}s of narration`);
-    place({ id, kind: "screen", src, duration: round(Math.min(want, avail)), audio: v.file, voSeconds: v.seconds, audioStart: round(t + LEAD) });
+    place({ id, kind: "screen", src, addr, duration: round(Math.min(want, avail)), audio: v.file, voSeconds: v.seconds, audioStart: round(t + LEAD) });
   }
 
   const v8 = vo("08");
@@ -128,8 +132,15 @@ function sceneMarkup(s, i) {
       </div>`;
   }
   if (s.kind === "screen") {
+    // The chrome is its own timed clip, not a wrapper around the video: an
+    // untimed opaque element would cover every scene after this one.
     return `      <div class="scene" id="sc-${s.id}" style="z-index:${z}">
-        <video id="v-${s.id}" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z}" src="assets/clips/${s.src}" muted playsinline></video>
+        <div class="clip chrome" id="ch-${s.id}" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z + 60}">
+          <div class="win">
+            <div class="bar"><i></i><i></i><i></i><span class="addr">${esc(s.addr)}</span></div>
+          </div>
+        </div>
+        <video class="framed" id="v-${s.id}" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z}" src="assets/clips/${s.src}" muted playsinline></video>
       </div>`;
   }
   return `      <div class="scene" id="sc-${s.id}" style="z-index:${z}">
@@ -158,6 +169,21 @@ function html(S, total, slams) {
     ...slams.map((s, i) =>
       `      <audio id="s-slam-${i}" data-start="${s.at}" data-duration="2.5" data-track-index="${50 + i}" src="assets/score/impact.mp3" data-volume="0.5"></audio>`),
   ];
+
+  // Captions. Timing is measured off the narration, wording comes from the
+  // script; see scripts/subtitles.mjs. One track, so two can never co-exist.
+  const cues = [];
+  for (const sc of S.filter((x) => x.audio)) {
+    const key = sc.audio.replace(/\.mp3$/, "");
+    for (const c of CUES[key] ?? []) {
+      const start = round2(sc.audioStart + c.start);
+      const duration = round2(Math.max(c.end - c.start - 0.01, 0.4));
+      cues.push({ id: `cue-${cues.length}`, start, duration, text: c.text });
+    }
+  }
+  const cueMarkup = cues.map((c) => `      <div class="scene" style="z-index:95">
+        <p class="clip cue" id="${c.id}" data-start="${c.start}" data-duration="${c.duration}" data-track-index="110">${esc(c.text)}</p>
+      </div>`);
 
   const slamMarkup = slams.map((s, i) => `      <div class="scene" style="z-index:90">
         <div class="clip slam" id="slam-${i}" data-start="${s.at}" data-duration="${s.duration}" data-track-index="${80 + i}">
@@ -194,6 +220,33 @@ function html(S, total, slams) {
       /* The grade is a filter on the footage, not an overlay element. An untimed
          overlay would darken the entire film, not just the b-roll. */
       video.broll { filter: saturate(0.82) contrast(1.06) brightness(0.86); }
+
+      /* --- browser frame for the screen captures -------------------------
+         Geometry is fixed so the footage keeps its 16:9 and is never squashed:
+         a 1640x922 content area, with the 44px bar above it, centred. */
+      .chrome { position: absolute; inset: 0;
+        background: radial-gradient(120% 120% at 50% 0%, #1d211e 0%, #0c0e0d 70%); }
+      .chrome .win { position: absolute; left: 140px; top: 57px; width: 1640px; height: 966px;
+        background: var(--paper); border-radius: 16px;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 0.3), 0 18px 40px rgb(0 0 0 / 0.38), 0 50px 110px rgb(0 0 0 / 0.42); }
+      .chrome .bar { position: absolute; inset: 0 0 auto 0; height: 44px; border-radius: 16px 16px 0 0;
+        background: #ecebe6; border-bottom: 1px solid rgb(25 28 26 / 0.09);
+        display: flex; align-items: center; gap: 9px; padding: 0 18px; }
+      .chrome .bar i { width: 11px; height: 11px; border-radius: 50%; background: #cfccc4; }
+      .chrome .addr { margin: 0 auto; transform: translateX(-28px);
+        font-size: 17px; color: var(--faint); letter-spacing: 0.01em;
+        background: #fbfaf7; border: 1px solid rgb(25 28 26 / 0.07);
+        border-radius: 7px; padding: 4px 20px; }
+      video.framed { position: absolute; left: 140px; top: 101px; width: 1640px; height: 922px;
+        object-fit: cover; border-radius: 0 0 16px 16px; }
+
+      /* --- captions -------------------------------------------------------
+         The app is warm paper, so white text needs its own dark plate to stay
+         readable; it is pinned to the bottom and never moves. */
+      .cue { position: absolute; left: 50%; bottom: 52px; transform: translateX(-50%);
+        max-width: 1480px; text-align: center; text-wrap: balance;
+        font-size: 37px; line-height: 1.26; color: #fbfaf7; letter-spacing: -0.003em;
+        background: rgb(12 14 13 / 0.72); padding: 11px 30px 14px; border-radius: 11px; }
 
       .beat { position: absolute; inset: 0; display: flex; flex-direction: column;
         justify-content: flex-end; padding: 130px 150px; gap: 18px; }
@@ -237,6 +290,8 @@ ${S.map(sceneMarkup).join("\n")}
 
 ${slamMarkup.join("\n")}
 
+${cueMarkup.join("\n")}
+
 ${audios.join("\n")}
 ${score.join("\n")}
     </div>
@@ -244,6 +299,7 @@ ${score.join("\n")}
       const tl = gsap.timeline({ paused: true });
 ${S.map((s, i) => tweens(s, i)).join("\n")}
 ${slams.map((s, i) => slamTweens(s, i)).join("\n")}
+${cues.map((c) => `      tl.fromTo("#${c.id}", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, ${c.start});`).join("\n")}
       window.__timelines["main"] = tl;
       tl.seek(0);
     </script>
