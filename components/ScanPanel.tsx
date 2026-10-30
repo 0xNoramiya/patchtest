@@ -21,32 +21,38 @@ function toneFor(raw: number): { bar: string; text: string } {
   return { bar: "bg-ok/35", text: "text-muted" };
 }
 
-function ScoreTrack({ raw, ui }: { raw: number; ui: number }) {
+function ScoreTrack({ raw, ui, index }: { raw: number; ui: number; index: number }) {
   const gap = ui - raw;
   const inflated = gap >= 8;
   const tone = toneFor(raw);
   const left = Math.min(raw, ui);
   const width = Math.abs(gap);
+  // Vertical placement uses top rather than a translate, so transform stays
+  // free for the scaleX that animates the bar.
+  const rail = { top: "calc(50% - 3px)" } as const;
+  const i = { "--i": index } as React.CSSProperties;
 
   return (
     <div className="relative h-5">
-      <div className="absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-sunken" />
-      {/* The distance between what was measured and what gets shown. */}
+      <div className="absolute inset-x-0 h-1.5 rounded-full bg-sunken" style={rail} />
+
       {inflated ? (
         <div
-          className="absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-adjust/25"
-          style={{ left: `${left}%`, width: `${width}%` }}
+          className="anim-fade absolute h-1.5 rounded-full bg-adjust/25"
+          style={{ ...rail, ...i, left: `${left}%`, width: `${width}%` }}
         />
       ) : null}
+
       <div
-        className={`absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full ${tone.bar}`}
-        style={{ width: `${Math.max(raw, 1.5)}%` }}
+        className={`anim-bar absolute left-0 h-1.5 w-full rounded-full ${tone.bar}`}
+        style={{ ...rail, ...i, transform: `scaleX(${Math.max(raw, 1.5) / 100})` }}
       />
+
       {inflated ? (
         <span
           aria-hidden
-          className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-adjust bg-surface"
-          style={{ left: `${ui}%` }}
+          className="anim-mark pointer-events-none absolute h-3 w-3 rounded-full border-2 border-adjust bg-surface"
+          style={{ ...i, top: "50%", left: `${ui}%`, transform: "translate(-50%, -50%)" }}
         />
       ) : null}
     </div>
@@ -85,10 +91,11 @@ export function ScanPanel({ result }: { result: AdviseResult }) {
             {maskSrc ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
+                key={maskSrc}
                 src={maskSrc}
                 alt=""
                 aria-hidden
-                className="pointer-events-none absolute inset-0 h-full w-full object-contain"
+                className="anim-fade pointer-events-none absolute inset-0 h-full w-full object-contain"
               />
             ) : null}
           </div>
@@ -106,7 +113,7 @@ export function ScanPanel({ result }: { result: AdviseResult }) {
           </div>
 
           <ul className="space-y-2.5">
-            {SCORED_CONCERNS.map((concern) => {
+            {SCORED_CONCERNS.map((concern, index) => {
               const score = scan.concerns[concern];
               if (!score) return null;
               const isActive = active === concern;
@@ -132,7 +139,7 @@ export function ScanPanel({ result }: { result: AdviseResult }) {
                         ) : null}
                       </span>
                     </div>
-                    <ScoreTrack raw={score.raw} ui={score.ui} />
+                    <ScoreTrack raw={score.raw} ui={score.ui} index={index} />
                   </button>
                 </li>
               );

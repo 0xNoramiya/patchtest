@@ -64,7 +64,7 @@ export default function Home() {
             <li key={preset.id}>
               <Link
                 href={`/check?preset=${preset.id}`}
-                className="press group flex h-full gap-4 rounded-xl border border-line bg-surface p-4 shadow-card hover:border-accent/50 hover:shadow-raised"
+                className="press group flex h-full gap-4 rounded-xl border border-line bg-surface p-4 shadow-card hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-raised"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

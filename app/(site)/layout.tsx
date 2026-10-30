@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-full flex-col">
+    <div className="site flex min-h-dvh flex-col">
       <header className="border-b border-line bg-surface">
         <nav className="mx-auto flex max-w-5xl items-center gap-6 px-4 py-3 text-sm">
           <Link href="/" className="font-display text-base font-semibold tracking-tight">

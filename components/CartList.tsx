@@ -113,14 +113,18 @@ export function CartList({ result }: { result: AdviseResult }) {
       </div>
 
       <ul>
-        {result.lines.map((line) => {
+        {result.lines.map((line, index) => {
           const item = byS.get(line.sku);
           const verdict: Verdict = item?.verdict ?? "OK";
           const findings = item?.findings ?? [];
           const struck = findings.some((f) => f.verdict === "BLOCK");
 
           return (
-            <li key={line.sku} className="relative border-b border-line last:border-0">
+            <li
+              key={line.sku}
+              className="anim-stagger relative border-b border-line last:border-0"
+              style={{ "--i": index } as React.CSSProperties}
+            >
               {/* A colour rail so the shape of the answer is scannable down the page. */}
               <span
                 aria-hidden

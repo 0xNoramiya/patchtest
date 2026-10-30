@@ -1,6 +1,6 @@
 # PatchTest, demo video script
 
-**Target length 2:30.** Screen recording with voiceover. No music, or a silent
+**Target length 2:50.** Screen recording with voiceover. No music, or a silent
 track. No real brand, logo or product appears at any point. Every face shown is AI
 generated and the video says so on screen.
 
@@ -81,7 +81,26 @@ the AAD and NHS source links.
 
 ---
 
-## 1:30 to 2:05, how it works
+## 1:30 to 1:55, it works on other people's shops
+
+Cut to **https://patchtest.fly.dev/store**, the fictional Verdant Row cart, with
+the extension installed. Let the verdicts appear on load.
+
+**On screen, highlight:** the two **Not for you right now** badges sitting inside
+somebody else's cart, each with its rule id and source link.
+
+**Voiceover:**
+> That is PatchTest inside the web app. But the moment before checkout usually
+> happens on somebody else's website. So it also ships as a browser extension.
+> This is a different shop, with products that are not in our catalogue at all.
+> It reads the cart the shop already publishes for search engines, pulls the
+> active ingredient and the strength straight out of each product title, and
+> applies the same twenty four rules. Same verdicts, same sources, somebody
+> else's checkout.
+
+---
+
+## 1:55 to 2:25, how it works
 
 Cut to the Methods page. Scroll slowly through the YouCam table, then the rules
 list, expanding one rule to show the quote and the source link.
@@ -109,7 +128,7 @@ list, expanding one rule to show the quote and the source link.
 
 ---
 
-## 2:05 to 2:30, the numbers and the limits
+## 2:25 to 2:50, the numbers and the limits
 
 Cut to the Eval page. Pause on the amber "Read this before the numbers" panel,
 then on the results table.
@@ -135,6 +154,8 @@ then on the results table.
 > **PatchTest**
 > A patch test for your cart.
 >
+> Web app, and a browser extension for everyone else's shop.
+>
 > Built with the YouCam AI Skin Analysis API
 > and the YouCam AI Fitzpatrick Skin Type Analysis API
 >
@@ -152,3 +173,5 @@ then on the results table.
 - [ ] The synthetic-faces disclosure appears at least once
 - [ ] Final card shows the live URL
 - [ ] Total runtime between 1:00 and 3:00
+- [ ] The extension is shown annotating the Verdant Row cart, not just described
+- [ ] Verdant Row is visibly a different shop, not PatchTest with a new header

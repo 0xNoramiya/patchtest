@@ -74,12 +74,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+/* Scoped to the PatchTest pages. /store renders as a different shop and must
+   not inherit our display face. */
+.site h1, .site h2, .site h3 {
   font-family: var(--font-display), ui-serif, Georgia, serif;
   letter-spacing: -0.015em;
   font-kerning: normal;
-  text-wrap: balance;
 }
+
+h1, h2, h3 { text-wrap: balance; }
 
 p { text-wrap: pretty; }
 
@@ -100,16 +103,77 @@ p { text-wrap: pretty; }
   border-radius: 3px;
 }
 
-/* A button with no pressed state feels dead. */
+/* ---------------------------------------------------------------- motion
+
+   Only transform and opacity, so nothing here touches layout or paint. Enters
+   use ease-out, because a fast start reads as a response to the click that
+   caused it. Nothing animates on first paint except content the shopper
+   navigated to: the landing page's cards are resting state and stay still. */
+
+/* A button with no pressed state feels dead. This uses the scale property
+   rather than transform so it composes with a hover translate instead of
+   overwriting it. */
 .press {
-  transition: transform 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, opacity 150ms ease-out;
+  transition:
+    scale 150ms ease-out,
+    translate 150ms ease-out,
+    background-color 150ms ease-out,
+    border-color 150ms ease-out,
+    box-shadow 150ms ease-out,
+    opacity 150ms ease-out;
 }
-.press:active { transform: scale(0.96); }
+.press:active { scale: 0.96; }
+
+@keyframes pt-rise {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes pt-fade {
+  from { opacity: 0; }
+}
+
+/* The score bar grows from its left edge. scaleX, never width. */
+@keyframes pt-grow-x {
+  from { transform: scaleX(0); }
+}
+
+@keyframes pt-mark {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+}
+
+/* Content the shopper navigated to. */
+.anim-rise {
+  animation: pt-rise 240ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.anim-fade {
+  animation: pt-fade 160ms ease-out both;
+}
+
+/* Cart rows arriving one after another reads as arrival rather than a flash.
+   The delay is capped so a long cart never keeps the shopper waiting. */
+.anim-stagger {
+  animation: pt-rise 260ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation-delay: calc(min(var(--i, 0), 7) * 45ms);
+}
+
+/* The measured bar, then its marker landing a beat later. */
+.anim-bar {
+  transform-origin: left center;
+  animation: pt-grow-x 420ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation-delay: calc(min(var(--i, 0), 7) * 35ms);
+}
+
+.anim-mark {
+  animation: pt-mark 240ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation-delay: calc(240ms + min(var(--i, 0), 7) * 35ms);
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
-  .press:active { transform: none; }
+  .press:active { scale: 1; }
 }

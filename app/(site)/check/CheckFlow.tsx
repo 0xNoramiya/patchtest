@@ -115,7 +115,7 @@ export function CheckFlow() {
 
   if (step === "results" && result) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-10">
+      <div className="anim-rise mx-auto max-w-3xl px-4 py-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="font-display text-3xl">What we found</h1>
           <Link href="/check" className="text-sm text-accent underline underline-offset-2">
@@ -181,7 +181,7 @@ export function CheckFlow() {
       <Progress step={step} />
 
       {step === "consent" ? (
-        <section>
+        <section className="anim-rise">
           <h1 className="font-display text-3xl">Before we start</h1>
           <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted">
             <p>
@@ -215,7 +215,7 @@ export function CheckFlow() {
       ) : null}
 
       {step === "intake" ? (
-        <section>
+        <section className="anim-rise">
           <h1 className="font-display text-3xl">About you</h1>
           <p className="mt-2 text-sm text-muted">
             This takes about 30 seconds. Everything here is what you tell us, not what we guess.
@@ -239,7 +239,7 @@ export function CheckFlow() {
       ) : null}
 
       {step === "cart" ? (
-        <section>
+        <section className="anim-rise">
           <h1 className="font-display text-3xl">What is in your cart?</h1>
           <p className="mt-2 text-sm text-muted">
             Pick anything you were already planning to buy. We will give each one a verdict, even if
@@ -289,7 +289,7 @@ export function CheckFlow() {
       ) : null}
 
       {step === "scan" ? (
-        <section>
+        <section className="anim-rise">
           <h1 className="font-display text-3xl">Choose a scan</h1>
           <p className="mt-2 text-sm leading-relaxed text-muted">
             Every one of these is a real result from the YouCam AI Skin Analysis and AI Fitzpatrick
@@ -350,7 +350,7 @@ export function CheckFlow() {
       ) : null}
 
       {step === "working" ? (
-        <section className="py-16 text-center">
+        <section className="anim-rise py-16 text-center">
           <p className="font-display text-2xl">Checking your cart</p>
           <p className="mt-2 text-sm text-muted">
             Reading the scan, running the advisor, then applying every rule.
