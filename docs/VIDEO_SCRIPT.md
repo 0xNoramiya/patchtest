@@ -17,6 +17,8 @@ generated and the end card says so.
 | Capture | 1280x800 | 1920x1080 — `recordVideo` captures at the CSS viewport and ignores `deviceScaleFactor`, so the viewport has to *be* the frame; readability comes from a 1.6x page zoom injected before load |
 | Opening | A static black card | A three-shot cold open over generated b-roll, with the two statistics as kinetic type |
 | Scenes | 6 | 12 |
+| Captions | none | 61 burned-in cues, timed by ASR over the narration, worded from this script |
+| Screen capture | full bleed | shown in a browser frame with the address visible |
 
 The composition is HTML. `scripts/build-video.mjs` generates
 `video/demo/index.html` from the probed duration of every asset, so the timeline
@@ -24,9 +26,15 @@ cannot drift out of sync with the audio — change a clip and the timings move w
 it. `scripts/record-clips.mjs` captures the screen footage, `scripts/narrate.ts`
 records the voiceover, and `scripts/score.ts` the music and effects.
 
-The b-roll was generated, not filmed. One of the five planned shots (a mirror
-turn) was refused twice by the image model, so that beat is the hover shot slowed
-2.35x rather than a sixth attempt.
+The b-roll was generated, not filmed.
+
+Captions are built by `scripts/subtitles.mjs`. Timing is measured by ASR over the
+recorded narration; the wording is taken from this file, which is what was sent to
+the voice API. Neither source is trusted alone: the ASR mishears the occasional
+word, and a wrong word burned into a subtitle is worse than no subtitle at all.
+But it writes spoken numbers as digits, and "22.5%" is both easier to read than
+"twenty-two and a half percent" and the same form the /eval page uses. So where
+the two disagree, a numeric token from the ASR wins and everything else loses.
 
 ## Timing, and why it is written this way
 
