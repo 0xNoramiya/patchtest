@@ -12,7 +12,8 @@ Checked against the rules on 2026-10-31.
 | English text description | **Done.** `docs/DEVPOST.md`, ready to paste |
 | YouTube demo, 1 to 3 minutes | **Not done.** Script ready at `docs/VIDEO_SCRIPT.md`. Paste the URL into this row once uploaded |
 | Video names the YouCam APIs used | Script puts both names on screen as a persistent lower third for the whole "how it works" section, and says them aloud |
-| Video runtime fits the cap | Script is budgeted at 417 spoken words, 152s at 165 wpm, landing at 2:45. Every block carries a word count |
+| Video runtime fits the cap | **Measured, not estimated.** The composition is 172.52s (2:53), 7.5s under the cap. Every clip length is probed with `ffprobe` by `scripts/build-video.mjs`, so the timeline cannot drift from the audio |
+| Narration | 163.9s of recorded voiceover across eight blocks, generated with ElevenLabs by `scripts/narrate.ts` and request-stitched so the blocks share one voice |
 | Every spoken number matches the site | Checked against `eval/results.json`: 120 runs per arm, 22.5% unsafe, 100% versus 11.1% uncaveated, 35% cart instability in both arms |
 
 ## Keeps working without babysitting until 20 Nov
@@ -32,8 +33,17 @@ Checked against the rules on 2026-10-31.
 ## No real brands
 
 - The store is fictional: "Lumen & Leaf". All 26 products and prices are invented.
+  The second shop the extension is demonstrated on, "Verdant Row", is also ours.
 - No real brand, logo or trademark appears in the UI, the fixtures, the catalogue
-  or the video script.
+  or the video.
+- **The video's b-roll is generated, not filmed.** Four shots: hands at a shelf of
+  unlabelled bottles, a mass of unlabelled bottles, a face lit by a phone, and a
+  fingertip over a screen. Every bottle in them is blank — checked frame by frame,
+  no legible text, mark or trade dress appears on any of them. The end card
+  discloses that every face, product and scene in the video is AI generated.
+- The statistic about children's skincare is placed over the bottles, never over
+  the face, and the generated face reads as an adult. No shot in the video implies
+  a real child was filmed.
 - Hydroquinone is deliberately absent from the catalogue.
 
 ## Secrets

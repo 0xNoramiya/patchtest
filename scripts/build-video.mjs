@@ -1,89 +1,171 @@
 /**
  * Writes video/demo/index.html from the real assets.
  *
- * Durations are read from the narration manifest and probed off the recorded
- * clips, never guessed, so the picture can never run out before the voice does.
- * Run after `pnpm narrate --generate` and `node scripts/record-clips.mjs`.
+ * Durations are read from the narration manifest and probed off the files,
+ * never guessed, so the picture can never run out before the voice does. The
+ * number slams are placed from silencedetect boundaries in the narration, so
+ * they land on the word rather than near it.
  */
 import { execFile } from "node:child_process";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { promisify } from "node:util";
 
 const run = promisify(execFile);
 const PROJECT = "video/demo";
-const LEAD = 0.3;   // beat before the voice starts
-const TAIL = 0.3;   // beat after it ends
-const XFADE = 0.5;  // crossfade overlap between scenes
+const LEAD = 0.2, TAIL = 0.15, XFADE = 0.65;
 
 const probe = async (f) =>
   Number((await run("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f])).stdout);
 
-/** Scene order, and which narration block and clip each one carries. */
-const SCENES = [
-  { id: "hook",      block: "01", kind: "card" },
-  { id: "pregnant",  block: "02", kind: "clip", clip: "preset-pregnant" },
-  { id: "peel",      block: "03", kind: "clip", clip: "preset-peel" },
-  { id: "refer",     block: "04", kind: "clip", clip: "preset-refer" },
-  { id: "extension", block: "05", kind: "clip", clip: "extension" },
-  { id: "methods",   block: "06", kind: "clip", clip: "methods" },
-  { id: "evalpage",  block: "07", kind: "clip", clip: "eval" },
-  { id: "endcard",   block: "08", kind: "card", hold: 3.2 },
-];
+/** The turn shot: the mirror if it generated, otherwise the hover macro slowed
+ *  to length. The hover is arguably the better read for "the helpful answer is
+ *  no" anyway, being the held moment before a tap. */
+const TURN = existsSync("media/broll/04-mirror.mp4") ? "04-mirror" : "04-turn-fallback";
+const BROLL = ["01-shelf", "02-pile", "03-scroll", TURN, "05-hover"];
 
 async function main() {
   const manifest = JSON.parse(await readFile("media/voiceover/manifest.json", "utf8"));
-  const narration = (block) => manifest.clips.find((c) => c.file.startsWith(block));
+  const vo = (block) => {
+    const c = manifest.clips.find((x) => x.file.startsWith(block));
+    if (!c) throw new Error(`No narration for block ${block}`);
+    return c;
+  };
 
-  await mkdir(`${PROJECT}/assets/audio`, { recursive: true });
-  await mkdir(`${PROJECT}/assets/clips`, { recursive: true });
-  await mkdir(`${PROJECT}/assets/img`, { recursive: true });
+  for (const d of ["audio", "clips", "broll", "score", "img"]) {
+    await mkdir(`${PROJECT}/assets/${d}`, { recursive: true });
+  }
+  const bring = async (from, to) => { await copyFile(from, to); return path.basename(to); };
 
+  for (const c of manifest.clips) await bring(`media/voiceover/${c.file}`, `${PROJECT}/assets/audio/${c.file}`);
+  for (const s of ["score", "riser", "impact", "whoosh"]) {
+    await bring(`media/score/${s}.mp3`, `${PROJECT}/assets/score/${s}.mp3`);
+  }
+  for (const b of BROLL) await bring(`media/broll/${b}.mp4`, `${PROJECT}/assets/broll/${b}.mp4`);
+  for (const c of ["preset-pregnant", "preset-peel", "preset-refer", "extension", "methods", "eval"]) {
+    await bring(`media/clips/${c}.mp4`, `${PROJECT}/assets/clips/${c}.mp4`);
+  }
+
+  const S = [];
   let t = 0;
-  const timeline = [];
-  for (const scene of SCENES) {
-    const vo = narration(scene.block);
-    if (!vo) throw new Error(`No narration recorded for block ${scene.block}`);
-    await copyFile(`media/voiceover/${vo.file}`, `${PROJECT}/assets/audio/${vo.file}`);
-
-    let duration = LEAD + vo.seconds + TAIL + (scene.hold ?? 0);
-    let clipFile = null;
-    if (scene.kind === "clip") {
-      const src = `media/clips/${scene.clip}.mp4`;
-      const available = await probe(src);
-      // The scene can never outlast its footage.
-      duration = Math.min(duration, available);
-      if (duration < LEAD + vo.seconds) {
-        throw new Error(`${scene.clip}.mp4 is ${available.toFixed(1)}s, too short for ${vo.seconds.toFixed(1)}s of narration`);
-      }
-      clipFile = `${scene.clip}.mp4`;
-      await copyFile(src, `${PROJECT}/assets/clips/${clipFile}`);
-    }
-
-    timeline.push({ ...scene, start: Math.round(t * 100) / 100, duration: Math.round(duration * 100) / 100,
-      audio: vo.file, audioStart: Math.round((t + LEAD) * 100) / 100, clipFile });
+  const place = (o) => {
+    const duration = round(o.duration);
+    S.push({ ...o, duration, start: round(t) });
     t += duration - XFADE;
+  };
+  const round = (n) => Math.round(n * 100) / 100;
+
+  // Cold open: three beats of b-roll carrying the statistic, no narration.
+  place({ id: "open-shelf",  kind: "broll", src: "01-shelf.mp4",  duration: 2.3, beat: "none" });
+  place({ id: "open-pile",   kind: "broll", src: "02-pile.mp4",   duration: 3.1, beat: "eleven" });
+  place({ id: "open-scroll", kind: "broll", src: "03-scroll.mp4", duration: 2.9, beat: "sunscreen" });
+
+  // The turn, over the mirror shot.
+  const v1 = vo("01");
+  place({ id: "turn", kind: "broll", src: `${TURN}.mp4`, duration: LEAD + v1.seconds + TAIL, audio: v1.file, voSeconds: v1.seconds, audioStart: round(t + LEAD) });
+
+  place({ id: "logo", kind: "logo", duration: 2.9 });
+
+  const screens = [
+    ["pregnant", "02", "preset-pregnant.mp4"],
+    ["peel", "03", "preset-peel.mp4"],
+    ["refer", "04", "preset-refer.mp4"],
+    ["extension", "05", "extension.mp4"],
+    ["methods", "06", "methods.mp4"],
+    ["evalpage", "07", "eval.mp4"],
+  ];
+  for (const [id, block, src] of screens) {
+    const v = vo(block);
+    const avail = await probe(`media/clips/${src.replace(".mp4", "")}.mp4`);
+    const want = LEAD + v.seconds + TAIL;
+    if (avail < LEAD + v.seconds) throw new Error(`${src} is ${avail.toFixed(1)}s, too short for ${v.seconds.toFixed(1)}s of narration`);
+    place({ id, kind: "screen", src, duration: round(Math.min(want, avail)), audio: v.file, voSeconds: v.seconds, audioStart: round(t + LEAD) });
   }
 
-  const total = Math.round((t + XFADE) * 100) / 100;
-  await copyFile("docs/screenshots/landing.webp", `${PROJECT}/assets/img/landing.webp`);
+  const v8 = vo("08");
+  place({ id: "endcard", kind: "card", duration: LEAD + v8.seconds + 1.9, audio: v8.file, voSeconds: v8.seconds, audioStart: round(t + LEAD) });
 
-  const html = render(timeline, total);
-  await writeFile(`${PROJECT}/index.html`, html);
+  const total = round(t + XFADE);
+  const evalScene = S.find((s) => s.id === "evalpage");
+  // From silencedetect on the narration: the 22.5% sentence runs 24.9s to 30.7s
+  // into that block, and the hundred-percent line 39.6s to 46.4s.
+  const slams = [
+    { at: round(evalScene.audioStart + 24.6), duration: 6.4, big: "22.5%", small: "of runs ended with an unsafe item still in the cart", foot: "without the guardrail" },
+    { at: round(evalScene.audioStart + 39.3), duration: 7.0, big: "100%", small: "of items needing a usage caveat went out without one", foot: "against 11.1% with the guardrail" },
+  ];
 
-  console.log(`${timeline.length} scenes, ${Math.floor(total / 60)}:${String(Math.round(total % 60)).padStart(2, "0")} (${total}s)\n`);
-  for (const s of timeline) {
-    console.log(`  ${String(s.start).padStart(6)}s  ${s.id.padEnd(10)} ${String(s.duration).padStart(5)}s  ${s.clipFile ?? "card"}`);
-  }
-  if (total > 180) console.log(`\n  OVER the three minute cap by ${(total - 180).toFixed(1)}s`);
-  else console.log(`\n  ${(180 - total).toFixed(1)}s under the three minute cap`);
+  await writeFile(`${PROJECT}/index.html`, html(S, total, slams));
+
+  console.log(`${S.length} scenes, ${Math.floor(total / 60)}:${String(Math.round(total % 60)).padStart(2, "0")} (${total}s)\n`);
+  for (const s of S) console.log(`  ${String(s.start).padStart(6)}s  ${s.id.padEnd(12)} ${String(s.duration).padStart(5)}s  ${s.kind}`);
+  console.log(total > 180 ? `\n  OVER the cap by ${(total - 180).toFixed(1)}s` : `\n  ${(180 - total).toFixed(1)}s under the three minute cap`);
 }
 
-function render(scenes, total) {
-  const scene = (s) => s.kind === "clip" ? clipScene(s) : cardScene(s);
-  const audio = (s, i) =>
-    `    <audio id="a-${s.id}" data-start="${s.audioStart}" data-duration="${scenes[i].kind === "card" ? "" : ""}" data-track-index="${20 + i}" src="assets/audio/${s.audio}" data-volume="1"></audio>`
-      .replace(' data-duration=""', "");
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+function sceneMarkup(s, i) {
+  const z = i + 1;
+  if (s.kind === "broll") {
+    // The beat text is its own timed clip. As an untimed child it would sit in
+    // the DOM for the whole film and cover every later scene.
+    const beat = s.beat === "eleven"
+      ? `<div class="beat clip" id="beat-eleven" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z + 20}"><p class="huge" id="beat-eleven-n">11</p><p class="beat-line" id="beat-eleven-l">potentially irritating active ingredients in the average top-viewed children&rsquo;s skincare video</p></div>`
+      : s.beat === "sunscreen"
+        ? `<div class="beat clip" id="beat-sun" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z + 20}"><p class="mid" id="beat-sun-t">Only <em>26%</em> of daytime routines included sunscreen.</p><p class="cite" id="beat-sun-c">Pediatrics, 2025</p></div>`
+        : "";
+    return `      <div class="scene" id="sc-${s.id}" style="z-index:${z}">
+        <video class="broll" id="v-${s.id}" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z}" src="assets/broll/${s.src}" muted playsinline></video>
+        ${beat}
+      </div>`;
+  }
+  if (s.kind === "logo") {
+    return `      <div class="scene" id="sc-${s.id}" style="z-index:${z}">
+        <div class="clip logo-card" id="logo-card" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z}">
+          <p class="wordmark" id="logo-word">Patch<span>Test</span></p>
+          <p class="logo-tag" id="logo-tag">a patch test for your cart</p>
+        </div>
+      </div>`;
+  }
+  if (s.kind === "screen") {
+    return `      <div class="scene" id="sc-${s.id}" style="z-index:${z}">
+        <video id="v-${s.id}" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z}" src="assets/clips/${s.src}" muted playsinline></video>
+      </div>`;
+  }
+  return `      <div class="scene" id="sc-${s.id}" style="z-index:${z}">
+        <div class="clip card endcard" id="end-card" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${z}">
+          <p class="wordmark" id="end-word">Patch<span>Test</span></p>
+          <p class="tagline" id="end-tag">A patch test for your cart.</p>
+          <p class="apis" id="end-apis">Web app, and a browser extension for everyone else&rsquo;s shop.<br />Built with the YouCam AI Skin Analysis API and the YouCam AI Fitzpatrick Skin Type Analysis API.</p>
+          <p class="url" id="end-url">patchtest.fly.dev</p>
+          <p class="smallprint" id="end-small">Every face, product and scene shown is AI generated. &ldquo;Lumen &amp; Leaf&rdquo; and &ldquo;Verdant Row&rdquo; are fictional stores. Not a medical device.</p>
+        </div>
+      </div>`;
+}
+
+function html(S, total, slams) {
+  const audios = S.filter((s) => s.audio).map((s, i) =>
+    `      <audio id="a-${s.id}" data-start="${s.audioStart}" data-duration="${round2(s.voSeconds)}" data-track-index="${40 + i}" src="assets/audio/${s.audio}" data-volume="1"></audio>`);
+
+  const logo = S.find((s) => s.id === "logo");
+  const score = [
+    `      <audio id="m-open" data-start="0" data-duration="${round2(logo.start + 1.2)}" data-track-index="30" src="assets/score/score.mp3" data-volume="0.46"></audio>`,
+    `      <audio id="m-body" data-start="${round2(logo.start + 1.2)}" data-duration="${round2(total - logo.start - 1.2)}" data-media-start="${round2(logo.start + 1.2)}" data-track-index="31" src="assets/score/score.mp3" data-volume="0.13"></audio>`,
+    `      <audio id="s-riser" data-start="${round2(logo.start - 3.1)}" data-duration="3.5" data-track-index="32" src="assets/score/riser.mp3" data-volume="0.5"></audio>`,
+    `      <audio id="s-impact" data-start="${round2(logo.start)}" data-duration="2.5" data-track-index="33" src="assets/score/impact.mp3" data-volume="0.62"></audio>`,
+    ...S.filter((s) => s.beat === "eleven" || s.beat === "sunscreen").map((s, i) =>
+      `      <audio id="s-wh-${i}" data-start="${s.start}" data-duration="1" data-track-index="${34 + i}" src="assets/score/whoosh.mp3" data-volume="0.4"></audio>`),
+    ...slams.map((s, i) =>
+      `      <audio id="s-slam-${i}" data-start="${s.at}" data-duration="2.5" data-track-index="${50 + i}" src="assets/score/impact.mp3" data-volume="0.5"></audio>`),
+  ];
+
+  const slamMarkup = slams.map((s, i) => `      <div class="scene" style="z-index:90">
+        <div class="clip slam" id="slam-${i}" data-start="${s.at}" data-duration="${s.duration}" data-track-index="${80 + i}">
+          <p class="slam-big" id="slam-big-${i}">${esc(s.big)}</p>
+          <p class="slam-small" id="slam-small-${i}">${esc(s.small)}</p>
+          <p class="slam-foot" id="slam-foot-${i}">${esc(s.foot)}</p>
+        </div>
+      </div>`);
 
   return `<!doctype html>
 <html lang="en">
@@ -92,83 +174,76 @@ function render(scenes, total) {
     <meta name="viewport" content="width=1920, height=1080" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
-      /* The real files, so the cards are set in the same faces as the product
-         the clips are showing. The clips carry their own fonts already. */
       @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
       @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-600.woff2") format("woff2"); font-weight: 600; font-display: block; }
       @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
       @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
 
-      /* Taken from the product's own tokens, see video/design.md. */
+      /* The product's own tokens. See video/design.md. */
       :root {
-        --paper: #fbfaf7;
-        --surface: #ffffff;
-        --ink: #191c1a;
-        --muted: #5f6660;
-        --faint: #6f756f;
-        --accent: #2f5d4f;
-        --block: #a5342b;
+        --paper: #fbfaf7; --ink: #191c1a; --muted: #5f6660; --faint: #6f756f;
+        --accent: #2f5d4f; --block: #a5342b;
       }
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body {
-        width: 1920px; height: 1080px; overflow: hidden;
-        background: var(--paper);
-        font-family: "Geist", "Inter", system-ui, sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0c0e0d;
+        font-family: "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
       #root { width: 100%; height: 100%; position: relative; }
-
       .scene { position: absolute; inset: 0; }
       .scene video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-      .card {
-        width: 100%; height: 100%;
-        display: flex; flex-direction: column; justify-content: center;
-        padding: 150px 190px; gap: 30px;
-        background: var(--paper);
-      }
-      .eyebrow {
-        font-size: 24px; letter-spacing: 0.14em; text-transform: uppercase;
-        font-weight: 500; color: var(--accent);
-      }
-      .stat {
-        font-family: "Source Serif 4", Georgia, serif;
-        font-size: 128px; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink);
-        max-width: 1480px;
-      }
-      .stat em { font-style: normal; color: var(--block); }
-      .sub { font-size: 34px; line-height: 1.45; color: var(--muted); max-width: 1280px; }
-      .cite { font-size: 24px; color: var(--faint); font-style: italic; }
+      /* The grade is a filter on the footage, not an overlay element. An untimed
+         overlay would darken the entire film, not just the b-roll. */
+      video.broll { filter: saturate(0.82) contrast(1.06) brightness(0.86); }
 
-      .endcard { align-items: flex-start; gap: 26px; }
-      .wordmark {
-        font-family: "Source Serif 4", Georgia, serif;
-        font-size: 104px; letter-spacing: -0.02em; color: var(--ink);
-      }
+      .beat { position: absolute; inset: 0; display: flex; flex-direction: column;
+        justify-content: flex-end; padding: 130px 150px; gap: 18px; }
+      .huge { font-family: "Source Serif 4", Georgia, serif; font-size: 400px; line-height: 0.82;
+        color: #fbfaf7; letter-spacing: -0.04em; }
+      .beat-line { font-size: 40px; line-height: 1.3; color: rgba(251,250,247,0.9); max-width: 1180px; }
+      .mid { font-family: "Source Serif 4", Georgia, serif; font-size: 118px; line-height: 1.05;
+        color: #fbfaf7; letter-spacing: -0.02em; max-width: 1350px; }
+      .mid em { font-style: normal; color: #e8a33d; }
+      .cite { font-size: 27px; color: rgba(251,250,247,0.72); font-style: italic; }
+
+      .logo-card { position: absolute; inset: 0; background: var(--paper);
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+      .wordmark { font-family: "Source Serif 4", Georgia, serif; font-size: 170px;
+        letter-spacing: -0.03em; color: var(--ink); }
       .wordmark span { color: var(--accent); }
-      .tagline { font-size: 40px; color: var(--ink); }
-      .apis { font-size: 27px; line-height: 1.6; color: var(--muted); }
-      .url { font-size: 34px; color: var(--accent); font-weight: 500; }
-      .smallprint { font-size: 21px; line-height: 1.6; color: var(--faint); }
+      .logo-tag { font-size: 34px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
 
-      .shot {
-        position: absolute; inset: 0;
-        display: flex; align-items: center; justify-content: center;
-        background: var(--paper);
-      }
-      .shot img { width: 78%; border-radius: 16px;
-        box-shadow: 0 2px 4px rgb(25 28 26 / 0.05), 0 18px 48px rgb(25 28 26 / 0.14); }
+      /* Starts hidden: the wrapper is full-frame and not a timed clip, so
+         without this it covers the film from the first frame. GSAP owns it. */
+      .slam { position: absolute; inset: 0; background: rgba(12,14,13,0.92);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 22px; padding: 0 160px; text-align: center; }
+      .slam-big { font-family: "Source Serif 4", Georgia, serif; font-size: 340px; line-height: 0.86;
+        color: #fbfaf7; letter-spacing: -0.04em; }
+      .slam-small { font-size: 44px; line-height: 1.3; color: rgba(251,250,247,0.92); max-width: 1320px; }
+      .slam-foot { font-size: 30px; color: #e8a33d; letter-spacing: 0.02em; }
+
+      .card { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center;
+        padding: 150px 190px; gap: 24px; background: var(--paper); }
+      .endcard { align-items: flex-start; }
+      .tagline { font-size: 44px; color: var(--ink); }
+      .apis { font-size: 28px; line-height: 1.6; color: var(--muted); }
+      .url { font-size: 38px; color: var(--accent); font-weight: 500; }
+      .smallprint { font-size: 22px; line-height: 1.6; color: var(--faint); max-width: 1400px; }
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="${total}" data-width="1920" data-height="1080">
-${scenes.map(scene).join("\n")}
+${S.map(sceneMarkup).join("\n")}
 
-${scenes.map(audio).join("\n")}
+${slamMarkup.join("\n")}
+
+${audios.join("\n")}
+${score.join("\n")}
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
-${scenes.map((s, i) => tweens(s, i, scenes)).join("\n")}
+${S.map((s, i) => tweens(s, i)).join("\n")}
+${slams.map((s, i) => slamTweens(s, i)).join("\n")}
       window.__timelines["main"] = tl;
       tl.seek(0);
     </script>
@@ -177,55 +252,58 @@ ${scenes.map((s, i) => tweens(s, i, scenes)).join("\n")}
 `;
 }
 
-const clipScene = (s) => `      <div class="scene" id="sc-${s.id}" style="z-index:${s.start | 0}">
-        <video id="v-${s.id}" data-start="${s.start}" data-duration="${s.duration}" data-track-index="${s.start | 0}" src="assets/clips/${s.clipFile}" muted playsinline></video>
-      </div>`;
-
-const cardScene = (s) =>
-  s.id === "hook"
-    ? `      <div class="scene" id="sc-hook" style="z-index:0">
-        <div id="hook-card" class="clip card" data-start="${s.start}" data-duration="${(s.duration * 0.62).toFixed(2)}" data-track-index="1">
-          <p class="eyebrow" id="hook-eyebrow">Pediatrics, 2025</p>
-          <h1 class="stat" id="hook-stat">The top-viewed children&rsquo;s skincare routines on TikTok average <em>11 potentially irritating active ingredients</em>.</h1>
-          <p class="sub" id="hook-sub">Only 26% include sunscreen.</p>
-        </div>
-        <div class="shot clip" id="hook-shot" data-start="${(s.start + s.duration * 0.6).toFixed(2)}" data-duration="${(s.duration * 0.42).toFixed(2)}" data-track-index="2">
-          <img src="assets/img/landing.webp" alt="" crossorigin="anonymous" />
-        </div>
-      </div>`
-    : `      <div class="scene" id="sc-${s.id}" style="z-index:99">
-        <div id="end-card" class="clip card endcard" data-start="${s.start}" data-duration="${s.duration}" data-track-index="3">
-          <h1 class="wordmark" id="end-wordmark">Patch<span>Test</span></h1>
-          <p class="tagline" id="end-tagline">A patch test for your cart.</p>
-          <p class="apis" id="end-apis">Web app, and a browser extension for everyone else&rsquo;s shop.<br />Built with the YouCam AI Skin Analysis API and the YouCam AI Fitzpatrick Skin Type Analysis API.</p>
-          <p class="url" id="end-url">patchtest.fly.dev</p>
-          <p class="smallprint" id="end-small">Every face and product image shown is AI generated. &ldquo;Lumen &amp; Leaf&rdquo; and &ldquo;Verdant Row&rdquo; are fictional stores. Not a medical device.</p>
-        </div>
-      </div>`;
+const round2 = (n) => Math.round(n * 100) / 100;
 
 /** Entrances only. The crossfade is the exit, except on the final scene. */
-function tweens(s, i, scenes) {
-  const lines = [];
+function tweens(s, i) {
+  const L = [];
   const el = `#sc-${s.id}`;
-  if (i === 0) {
-    lines.push(`      tl.from("#hook-eyebrow", { y: 26, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.25);`);
-    lines.push(`      tl.from("#hook-stat", { y: 48, opacity: 0, duration: 0.9, ease: "expo.out" }, 0.45);`);
-    lines.push(`      tl.from("#hook-sub", { y: 30, opacity: 0, duration: 0.7, ease: "power2.out" }, 0.95);`);
-    lines.push(`      tl.fromTo("#hook-shot", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, ${(s.start + s.duration * 0.6).toFixed(2)});`);
-  } else {
-    // Crossfade in over the scene before it.
-    lines.push(`      tl.fromTo("${el}", { opacity: 0 }, { opacity: 1, duration: ${XFADE}, ease: "power1.inOut" }, ${s.start.toFixed(2)});`);
+  const at = s.start.toFixed(2);
+  if (i > 0) L.push(`      tl.fromTo("${el}", { opacity: 0 }, { opacity: 1, duration: ${XFADE}, ease: "power1.inOut" }, ${at});`);
+
+  if (s.kind === "broll") {
+    // A slow push, so generated footage reads as photographed rather than looped.
+    L.push(`      tl.fromTo("#v-${s.id}", { scale: 1.06 }, { scale: 1.0, duration: ${(s.duration + 0.6).toFixed(2)}, ease: "none" }, ${at});`);
+    if (s.beat === "eleven") {
+      L.push(`      tl.fromTo("#beat-eleven-n", { y: 90, opacity: 0, scale: 1.14 }, { y: 0, opacity: 1, scale: 1, duration: 0.62, ease: "expo.out" }, ${(s.start + 0.15).toFixed(2)});`);
+      L.push(`      tl.fromTo("#beat-eleven-l", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, ${(s.start + 0.5).toFixed(2)});`);
+    }
+    if (s.beat === "sunscreen") {
+      L.push(`      tl.fromTo("#beat-sun-t", { y: 56, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, ${(s.start + 0.15).toFixed(2)});`);
+      L.push(`      tl.fromTo("#beat-sun-c", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, ${(s.start + 0.6).toFixed(2)});`);
+    }
   }
-  if (s.id === "endcard") {
-    lines.push(`      tl.from("#end-wordmark", { y: 34, opacity: 0, duration: 0.7, ease: "expo.out" }, ${(s.start + 0.35).toFixed(2)});`);
-    lines.push(`      tl.from("#end-tagline", { y: 24, opacity: 0, duration: 0.6, ease: "power3.out" }, ${(s.start + 0.6).toFixed(2)});`);
-    lines.push(`      tl.from("#end-apis", { opacity: 0, duration: 0.6, ease: "power2.out" }, ${(s.start + 0.85).toFixed(2)});`);
-    lines.push(`      tl.from("#end-url", { y: 18, opacity: 0, duration: 0.5, ease: "power3.out" }, ${(s.start + 1.05).toFixed(2)});`);
-    lines.push(`      tl.from("#end-small", { opacity: 0, duration: 0.5, ease: "power1.out" }, ${(s.start + 1.3).toFixed(2)});`);
-    // Final scene is the only one allowed to animate out.
-    lines.push(`      tl.to("#sc-endcard", { opacity: 0, duration: 0.7, ease: "power2.in" }, ${(s.start + s.duration - 0.75).toFixed(2)});`);
+
+  if (s.kind === "logo") {
+    L.push(`      tl.fromTo("#logo-word", { scale: 1.16, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, ${(s.start + 0.1).toFixed(2)});`);
+    L.push(`      tl.fromTo("#logo-tag", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, ${(s.start + 0.45).toFixed(2)});`);
   }
-  return lines.join("\n");
+
+  if (s.kind === "screen") {
+    L.push(`      tl.fromTo("#v-${s.id}", { scale: 1.03 }, { scale: 1.0, duration: ${(s.duration + 0.6).toFixed(2)}, ease: "none" }, ${at});`);
+  }
+
+  if (s.kind === "card") {
+    const b = s.start;
+    L.push(`      tl.fromTo("#end-word", { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, ${(b + 0.35).toFixed(2)});`);
+    L.push(`      tl.fromTo("#end-tag", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, ${(b + 0.6).toFixed(2)});`);
+    L.push(`      tl.fromTo("#end-apis", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, ${(b + 0.85).toFixed(2)});`);
+    L.push(`      tl.fromTo("#end-url", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, ${(b + 1.05).toFixed(2)});`);
+    L.push(`      tl.fromTo("#end-small", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, ${(b + 1.3).toFixed(2)});`);
+    L.push(`      tl.to("#sc-endcard", { opacity: 0, duration: 0.8, ease: "power2.in" }, ${(b + s.duration - 0.85).toFixed(2)});`);
+  }
+  return L.join("\n");
+}
+
+function slamTweens(s, i) {
+  const a = s.at;
+  return [
+    `      tl.fromTo("#slam-${i}", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power2.out" }, ${a.toFixed(2)});`,
+    `      tl.fromTo("#slam-big-${i}", { scale: 1.22, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.46, ease: "expo.out" }, ${(a + 0.06).toFixed(2)});`,
+    `      tl.fromTo("#slam-small-${i}", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, ${(a + 0.34).toFixed(2)});`,
+    `      tl.fromTo("#slam-foot-${i}", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.out" }, ${(a + 0.62).toFixed(2)});`,
+    `      tl.to("#slam-${i}", { opacity: 0, duration: 0.45, ease: "power2.in" }, ${(a + s.duration - 0.45).toFixed(2)});`,
+  ].join("\n");
 }
 
 main().catch((e) => { console.error(e.message); process.exitCode = 1; });

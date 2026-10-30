@@ -17,7 +17,8 @@
     "build:next": "next build",
     "preview": "next build && cp -r public .next/standalone/ && mkdir -p .next/standalone/.next && cp -r .next/static .next/standalone/.next/ && node .next/standalone/server.js",
     "package:extension": "node scripts/package-extension.mjs",
-    "narrate": "tsx scripts/narrate.ts"
+    "narrate": "tsx scripts/narrate.ts",
+    "score": "tsx scripts/score.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.92",

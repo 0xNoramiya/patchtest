@@ -1,11 +1,32 @@
 # PatchTest, demo video script
 
-**Target length 2:45.** The rules cap it at three minutes, so this leaves fifteen
-seconds of margin. Screen recording with voiceover. No music, or a silent track.
-No real brand, logo or product appears at any point. Every face shown is AI
-generated and the video says so on screen.
+**Target length 2:45. As built: 2:53.** The rules cap it at three minutes. No real
+brand, logo or product appears at any point. Every face, product and scene is AI
+generated and the end card says so.
 
-Record at 1280x800 so text stays readable when Devpost scales it down.
+> **This file is the script. For what actually shipped, read "As built" below** —
+> the finished video adds a cold open and a score, so the timings in the table
+> below are the plan, not the cut.
+
+## As built
+
+| | Planned | Shipped |
+|---|---|---|
+| Runtime | 2:45, estimated from word count | **2:53**, measured by `ffprobe` on every clip |
+| Audio | "No music, or a silent track" | ElevenLabs narration, a 182s score, and four SFX |
+| Capture | 1280x800 | 1920x1080 — `recordVideo` captures at the CSS viewport and ignores `deviceScaleFactor`, so the viewport has to *be* the frame; readability comes from a 1.6x page zoom injected before load |
+| Opening | A static black card | A three-shot cold open over generated b-roll, with the two statistics as kinetic type |
+| Scenes | 6 | 12 |
+
+The composition is HTML. `scripts/build-video.mjs` generates
+`video/demo/index.html` from the probed duration of every asset, so the timeline
+cannot drift out of sync with the audio — change a clip and the timings move with
+it. `scripts/record-clips.mjs` captures the screen footage, `scripts/narrate.ts`
+records the voiceover, and `scripts/score.ts` the music and effects.
+
+The b-roll was generated, not filmed. One of the five planned shots (a mirror
+turn) was refused twice by the image model, so that beat is the hover shot slowed
+2.35x rather than a sixth attempt.
 
 ## Timing, and why it is written this way
 
@@ -41,9 +62,9 @@ regenerated, re-check this script before recording.
 **On screen:** black card, white text, both lines at once so it can be read in
 four seconds.
 
-> The top-viewed children's skincare routines on TikTok average
+> The top-viewed children's skincare videos on TikTok average
 > **11 potentially irritating active ingredients**.
-> Only **26%** include sunscreen.
+> Only **26%** of daytime routines included sunscreen.
 >
 > *Pediatrics, 2025*
 
