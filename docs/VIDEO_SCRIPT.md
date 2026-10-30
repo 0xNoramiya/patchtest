@@ -18,7 +18,7 @@ generated and the end card says so.
 | Opening | A static black card | A three-shot cold open over generated b-roll, with the two statistics as kinetic type |
 | Scenes | 6 | 12 |
 | Captions | none | 61 burned-in cues, timed by ASR over the narration, worded from this script |
-| Screen capture | full bleed | shown in a browser frame with the address visible |
+| The narrative | screen recordings | **motion graphics**, built in HTML and GSAP |
 
 The composition is HTML. `scripts/build-video.mjs` generates
 `video/demo/index.html` from the probed duration of every asset, so the timeline
@@ -27,6 +27,20 @@ it. `scripts/record-clips.mjs` captures the screen footage, `scripts/narrate.ts`
 records the voiceover, and `scripts/score.ts` the music and effects.
 
 The b-roll was generated, not filmed.
+
+**Why the screen recordings went.** The first cut was a screen capture with a
+voiceover, and three things were wrong with it that no amount of polish fixes. A
+whole page of the app, scaled into a 1080p frame, is eight-pixel body text: the
+methods and eval sections were walls of type nobody could read. The extension
+beat — the strongest argument the project has — was twenty-five seconds of blank
+white, because the recorder picked the wrong video file. And a recording can only
+show what the page happens to look like, not what matters in it.
+
+The narrative is now drawn, not filmed, in `scripts/build-video.mjs`. Every
+figure, quote, price and rule id in it is read out of the repo at build time —
+`rules/rules.yaml`, `data/catalog.json`, the scan fixtures — so the film cannot
+drift from the thing it describes. Change the swap on R-PREG-01 and the video
+changes with it. The b-roll stays filmed, because that is what b-roll is for.
 
 Captions are built by `scripts/subtitles.mjs`. Timing is measured by ASR over the
 recorded narration; the wording is taken from this file, which is what was sent to

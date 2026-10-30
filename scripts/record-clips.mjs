@@ -119,7 +119,9 @@ async function recordExtension(seconds) {
     else apply();
   }, ZOOM);
 
-  const page = await context.newPage();
+  // Use the page the context already opened. newPage() would leave that first,
+  // blank page recording too, and convert() then has two videos to choose from.
+  const page = context.pages()[0] ?? (await context.newPage());
   await page.goto(`${BASE}/store`, { waitUntil: "domcontentloaded" });
   let [worker] = context.serviceWorkers();
   if (!worker) worker = await context.waitForEvent("serviceworker", { timeout: 15000 });
@@ -145,6 +147,25 @@ async function recordExtension(seconds) {
   return true;
 }
 
+/**
+ * A recording that came out blank is worse than a failed one, because it ships.
+ * signalstats gives the luma standard deviation per frame; a real page is never
+ * flat. This shipped once: the extension clip was 25s of white.
+ */
+async function assertNotBlank(mp4, seconds) {
+  const { stdout, stderr } = await run("ffmpeg", ["-nostdin", "-v", "info", "-i", mp4,
+    "-vf", "select='not(mod(n,60))',signalstats,metadata=print:key=lavfi.signalstats.YSTDEV",
+    "-vsync", "vfr", "-f", "null", "-"]).catch((e) => ({ stdout: "", stderr: String(e.stderr ?? e) }));
+  const devs = [...`${stdout}${stderr}`.matchAll(/YSTDEV=([\d.]+)/g)].map((m) => Number(m[1]));
+  if (devs.length === 0) return;
+  const lively = devs.filter((d) => d > 6).length;
+  if (lively / devs.length < 0.5) {
+    throw new Error(
+      `${mp4} looks blank: ${devs.length - lively} of ${devs.length} sampled frames are flat. ` +
+      `Something did not render. Check the page loaded before recording started.`);
+  }
+}
+
 async function main() {
   const only = process.argv.includes("--only") ? process.argv[process.argv.indexOf("--only") + 1] : null;
   const manifest = JSON.parse(await readFile("media/voiceover/manifest.json", "utf8"));
@@ -158,14 +179,19 @@ async function main() {
   });
 
   const convert = async (id, need) => {
+    const { stat } = await import("node:fs/promises");
     const webm = (await readdir(RAW)).filter((f) => f.endsWith(".webm")).map((f) => path.join(RAW, f));
-    const newest = webm.sort().at(-1);
+    if (webm.length === 0) throw new Error(`${id}: playwright wrote no video`);
+    const withTime = await Promise.all(webm.map(async (f) => ({ f, t: (await stat(f)).mtimeMs })));
+    const newest = withTime.sort((a, b) => a.t - b.t).at(-1).f;
     const mp4 = path.join(OUT, `${id}.mp4`);
     await run("ffmpeg", ["-y", "-i", newest, "-c:v", "libx264", "-preset", "medium", "-crf", "20",
       "-pix_fmt", "yuv420p", "-r", "30", "-an", mp4]);
-    await rm(newest);
+    for (const f of webm) await rm(f, { force: true });
     const { stdout } = await run("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", mp4]);
-    console.log(`  ${id.padEnd(18)} ${Number(stdout).toFixed(1)}s  (narration needs ${need.toFixed(1)}s)`);
+    const seconds = Number(stdout);
+    await assertNotBlank(mp4, seconds);
+    console.log(`  ${id.padEnd(18)} ${seconds.toFixed(1)}s  (narration needs ${need.toFixed(1)}s)`);
   };
 
   if (!only || only === "extension") {

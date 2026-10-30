@@ -10,10 +10,14 @@
       @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
       @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
 
-      /* The product's own tokens. See video/design.md. */
       :root {
-        --paper: #fbfaf7; --ink: #191c1a; --muted: #5f6660; --faint: #6f756f;
-        --accent: #2f5d4f; --block: #a5342b;
+        --paper: #fbfaf7; --surface: #ffffff; --sunken: #f3f2ee;
+        --ink: #191c1a; --muted: #5f6660; --faint: #6f756f;
+        --line: rgb(25 28 26 / 0.10); --accent: #2f5d4f;
+        --block: #a5342b; --block-soft: #fbedeb;
+        --adjust: #8a5a14; --adjust-soft: #fdf3e2;
+        --refer: #2b5579; --refer-soft: #eaf1f8;
+        --ok: #6f756f;
       }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0c0e0d;
@@ -21,37 +25,9 @@
       #root { width: 100%; height: 100%; position: relative; }
       .scene { position: absolute; inset: 0; }
       .scene video { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .tnum { font-variant-numeric: tabular-nums; }
 
-      /* The grade is a filter on the footage, not an overlay element. An untimed
-         overlay would darken the entire film, not just the b-roll. */
       video.broll { filter: saturate(0.82) contrast(1.06) brightness(0.86); }
-
-      /* --- browser frame for the screen captures -------------------------
-         Geometry is fixed so the footage keeps its 16:9 and is never squashed:
-         a 1640x922 content area, with the 44px bar above it, centred. */
-      .chrome { position: absolute; inset: 0;
-        background: radial-gradient(120% 120% at 50% 0%, #1d211e 0%, #0c0e0d 70%); }
-      .chrome .win { position: absolute; left: 140px; top: 57px; width: 1640px; height: 966px;
-        background: var(--paper); border-radius: 16px;
-        box-shadow: 0 2px 4px rgb(0 0 0 / 0.3), 0 18px 40px rgb(0 0 0 / 0.38), 0 50px 110px rgb(0 0 0 / 0.42); }
-      .chrome .bar { position: absolute; inset: 0 0 auto 0; height: 44px; border-radius: 16px 16px 0 0;
-        background: #ecebe6; border-bottom: 1px solid rgb(25 28 26 / 0.09);
-        display: flex; align-items: center; gap: 9px; padding: 0 18px; }
-      .chrome .bar i { width: 11px; height: 11px; border-radius: 50%; background: #cfccc4; }
-      .chrome .addr { margin: 0 auto; transform: translateX(-28px);
-        font-size: 17px; color: var(--faint); letter-spacing: 0.01em;
-        background: #fbfaf7; border: 1px solid rgb(25 28 26 / 0.07);
-        border-radius: 7px; padding: 4px 20px; }
-      video.framed { position: absolute; left: 140px; top: 101px; width: 1640px; height: 922px;
-        object-fit: cover; border-radius: 0 0 16px 16px; }
-
-      /* --- captions -------------------------------------------------------
-         The app is warm paper, so white text needs its own dark plate to stay
-         readable; it is pinned to the bottom and never moves. */
-      .cue { position: absolute; left: 50%; bottom: 52px; transform: translateX(-50%);
-        max-width: 1480px; text-align: center; text-wrap: balance;
-        font-size: 37px; line-height: 1.26; color: #fbfaf7; letter-spacing: -0.003em;
-        background: rgb(12 14 13 / 0.72); padding: 11px 30px 14px; border-radius: 11px; }
 
       .beat { position: absolute; inset: 0; display: flex; flex-direction: column;
         justify-content: flex-end; padding: 130px 150px; gap: 18px; }
@@ -61,108 +37,440 @@
       .mid { font-family: "Source Serif 4", Georgia, serif; font-size: 118px; line-height: 1.05;
         color: #fbfaf7; letter-spacing: -0.02em; max-width: 1350px; }
       .mid em { font-style: normal; color: #e8a33d; }
-      .cite { font-size: 27px; color: rgba(251,250,247,0.72); font-style: italic; }
+      .cite { font-size: 28px; color: rgba(251,250,247,0.62); letter-spacing: 0.02em; }
 
-      .logo-card { position: absolute; inset: 0; background: var(--paper);
+      .logo-card { position: absolute; inset: 0; background: var(--paper); opacity: 0;
         display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
-      .wordmark { font-family: "Source Serif 4", Georgia, serif; font-size: 170px;
-        letter-spacing: -0.03em; color: var(--ink); }
+      .wordmark { font-family: "Source Serif 4", Georgia, serif; font-size: 150px; color: var(--ink); letter-spacing: -0.03em; }
       .wordmark span { color: var(--accent); }
-      .logo-tag { font-size: 34px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+      .logo-tag { font-size: 36px; color: var(--muted); letter-spacing: 0.01em; }
 
-      /* Starts hidden: the wrapper is full-frame and not a timed clip, so
-         without this it covers the film from the first frame. GSAP owns it. */
-      .slam { position: absolute; inset: 0; background: rgba(12,14,13,0.92);
+      .mg { position: absolute; inset: 0; background: var(--paper); color: var(--ink); opacity: 0;
+        padding: 86px 130px; display: flex; flex-direction: column; }
+      .mg .kicker { font-size: 23px; text-transform: uppercase; letter-spacing: 0.14em;
+        color: var(--faint); font-weight: 500; }
+      .mg .punch { position: absolute; left: 130px; right: 130px; bottom: 148px;
+        font-family: "Source Serif 4", Georgia, serif; font-size: 74px; line-height: 1.12;
+        letter-spacing: -0.02em; }
+      .mg .punch em { font-style: normal; color: var(--accent); }
+      .chip { display: inline-flex; align-items: center; gap: 12px; font-size: 27px; color: var(--muted);
+        background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 13px 26px; }
+      .chip .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); }
+
+      .mg-verdict .c1 { margin-top: 26px; align-self: flex-start; }
+      .pcard { position: relative; margin-top: 36px; background: var(--surface);
+        border: 1px solid var(--line); border-radius: 18px; padding: 32px 40px;
+        display: flex; align-items: center; gap: 32px;
+        box-shadow: 0 2px 4px rgb(25 28 26 / 0.04), 0 16px 36px rgb(25 28 26 / 0.06); }
+      .pcard::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 5px;
+        border-radius: 3px; background: var(--block); opacity: var(--rail, 0); }
+      .pthumb { width: 82px; height: 82px; border-radius: 12px; background: var(--sunken); flex: none; }
+      .pmeta { flex: 1; }
+      .pname { font-size: 42px; letter-spacing: -0.01em; }
+      .pprice { font-size: 29px; color: var(--faint); margin-top: 7px; }
+      .stamp { font-size: 27px; font-weight: 500; padding: 14px 28px; border-radius: 999px; white-space: nowrap; }
+      .stamp.block { color: var(--block); background: var(--block-soft); border: 1px solid rgb(165 52 43 / 0.2); }
+      .quote { margin-top: 26px; background: var(--sunken); border-radius: 16px; padding: 30px 40px; }
+      .rid { font-size: 22px; letter-spacing: 0.1em; color: var(--faint); font-weight: 500; }
+      .qtext { margin-top: 12px; font-family: "Source Serif 4", Georgia, serif; font-size: 46px; line-height: 1.26; }
+      .qsrc { margin-top: 14px; font-size: 25px; color: var(--faint); }
+      .swap { margin-top: 24px; background: #eef4f1; border: 1px solid rgb(47 93 79 / 0.18);
+        border-radius: 16px; padding: 26px 40px; display: flex; align-items: center; gap: 26px; }
+      .slabel { font-size: 21px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+      .sname { font-size: 38px; flex: 1; }
+      .sprice { font-size: 32px; color: var(--muted); }
+
+      .fitz { margin-top: 44px; display: flex; align-items: center; gap: 16px; }
+      .fsw { width: 112px; height: 112px; border-radius: 16px; display: flex; align-items: flex-end;
+        justify-content: center; padding-bottom: 11px; font-size: 23px; color: rgb(255 255 255 / 0.85); }
+      .fsw0 { background: #f3d9c8; color: #8a6b58; } .fsw1 { background: #e8c3a7; color: #7d5c46; }
+      .fsw2 { background: #d2a079; } .fsw3 { background: #a9744f; }
+      .fsw4 { background: #71452c; } .fsw5 { background: #3d2318; }
+      .fsw[data-on] { outline: 5px solid var(--ink); outline-offset: 6px; }
+      .flabel { margin-left: 30px; font-family: "Source Serif 4", Georgia, serif; font-size: 58px; }
+      .flabel em { font-style: normal; color: var(--accent); }
+      .rows { margin-top: 44px; display: flex; flex-direction: column; gap: 18px; }
+      .vrow { display: flex; align-items: center; gap: 26px; background: var(--surface);
+        border: 1px solid var(--line); border-radius: 14px; padding: 26px 34px; }
+      .vn { flex: 1; font-size: 38px; }
+      .vb { font-size: 25px; font-weight: 500; padding: 11px 24px; border-radius: 999px; }
+      .vb.block { color: var(--block); background: var(--block-soft); }
+      .vb.adjust { color: var(--adjust); background: var(--adjust-soft); }
+      .scores { position: absolute; left: 130px; right: 130px; top: 190px; }
+      .scap { font-size: 30px; color: var(--muted); margin-bottom: 20px; }
+      .shead, .srow { display: grid; grid-template-columns: 290px 1fr 130px 150px; align-items: center; }
+      .shead { margin-bottom: 8px; }
+      .sh { text-align: right; font-size: 22px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+      .sh.ui { color: var(--faint); } .sh.raw { color: var(--accent); }
+      .srow { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .slab { font-size: 30px; color: var(--muted); }
+      .sbarwrap { height: 16px; background: var(--sunken); border-radius: 8px; margin-right: 34px; }
+      .sbar { display: block; height: 100%; border-radius: 8px; background: var(--accent); transform-origin: left center; }
+      .sui { text-align: right; font-size: 30px; color: var(--faint); }
+      .sraw { text-align: right; font-size: 33px; color: var(--ink); font-weight: 500; }
+      .gap { position: absolute; left: 130px; right: 130px; top: 265px; }
+      .gtitle { font-size: 32px; color: var(--muted); }
+      .gpair { margin-top: 24px; display: flex; gap: 46px; }
+      .gcol { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 42px 48px; }
+      .gcol.graw { border-color: rgb(47 93 79 / 0.3); background: #eef4f1; }
+      .gnum { font-family: "Source Serif 4", Georgia, serif; font-size: 150px; line-height: 0.95; letter-spacing: -0.03em; }
+      .gui .gnum { color: var(--faint); }
+      .graw .gnum { color: var(--accent); }
+      .glab { margin-top: 14px; font-size: 32px; font-weight: 500; }
+      .gsub { margin-top: 8px; font-size: 26px; color: var(--faint); }
+      .gnote { margin-top: 32px; font-size: 36px; }
+
+      .chips { margin-top: 26px; display: flex; gap: 16px; }
+      .chip.tag { background: var(--sunken); border-color: transparent; }
+      .hold { margin-top: 40px; display: flex; gap: 24px; }
+      .hcard { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 32px; }
+      .hname { font-size: 34px; line-height: 1.22; min-height: 84px; }
+      .hprice { margin-top: 14px; font-size: 30px; color: var(--faint); }
+      .htag { margin-top: 16px; font-size: 22px; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--block); font-weight: 500; opacity: 0; }
+      .refer { margin-top: 40px; background: var(--refer-soft); border: 1px solid rgb(43 85 121 / 0.22);
+        border-radius: 20px; padding: 38px 48px; }
+      .rlabel { font-family: "Source Serif 4", Georgia, serif; font-size: 60px; color: var(--refer); letter-spacing: -0.02em; }
+      .rtext { margin-top: 14px; font-size: 31px; line-height: 1.34; color: var(--muted); max-width: 1320px; }
+
+      .shop { margin-top: 32px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
+        box-shadow: 0 2px 4px rgb(0 0 0 / 0.05), 0 20px 46px rgb(0 0 0 / 0.08); }
+      .sbar2 { height: 54px; background: #e9e8e4; display: flex; align-items: center; gap: 10px; padding: 0 22px; }
+      .sdot { width: 12px; height: 12px; border-radius: 50%; background: #c9c6be; }
+      .surl { margin-left: 18px; font-size: 21px; color: var(--faint); background: #fff; border-radius: 7px; padding: 6px 26px; }
+      .spin { margin-left: auto; width: 38px; height: 38px; border-radius: 9px; background: var(--accent);
+        color: #fff; font-size: 17px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+      /* Deliberately not our typeface: this is somebody else's shop. */
+      .scart { background: #fff; font-family: Georgia, "Times New Roman", serif; }
+      .crow { display: flex; align-items: center; gap: 24px; padding: 22px 32px; border-top: 1px solid var(--line); }
+      .crow.cr0 { border-top: 0; }
+      .cthumb { width: 58px; height: 58px; border-radius: 8px; background: #f0efea; flex: none; }
+      .cname { flex: 1; font-size: 30px; }
+      .cprice { font-size: 26px; color: var(--faint); }
+      .cbadge { font-family: "Geist", sans-serif; font-size: 22px; font-weight: 500;
+        padding: 10px 20px; border-radius: 999px; white-space: nowrap; }
+      .cbadge.block { color: var(--block); background: var(--block-soft); }
+      .cbadge.ok { color: var(--ok); background: var(--sunken); }
+      .parse { margin-top: 28px; }
+      .pcap { font-size: 28px; color: var(--muted); }
+      .code { margin-top: 13px; font-family: ui-monospace, Menlo, monospace; font-size: 24px;
+        background: var(--sunken); border-radius: 12px; padding: 20px 26px; color: var(--muted); }
+      .code em { font-style: normal; color: var(--accent); font-weight: 500; }
+      .pchips { margin-top: 18px; display: flex; gap: 14px; }
+      .pchip { font-size: 25px; background: #eef4f1; color: var(--accent); border-radius: 999px;
+        padding: 12px 26px; border: 1px solid rgb(47 93 79 / 0.18); }
+
+      .apirow { margin-top: 44px; display: flex; gap: 34px; }
+      .api { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 40px 44px; }
+      .aname { font-size: 30px; color: var(--faint); line-height: 1.3; }
+      .aname em { font-style: normal; font-size: 47px; color: var(--ink); letter-spacing: -0.01em; }
+      .adesc { margin-top: 16px; font-size: 30px; color: var(--muted); }
+      .dots { margin-top: 24px; display: flex; gap: 11px; }
+      .adot { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); opacity: 0.85; }
+      .ramp { margin-top: 24px; display: flex; gap: 8px; }
+      .rsw { width: 56px; height: 30px; border-radius: 6px; }
+      .rs0 { background: #f3d9c8; } .rs1 { background: #e8c3a7; } .rs2 { background: #d2a079; }
+      .rs3 { background: #a9744f; } .rs4 { background: #71452c; } .rs5 { background: #3d2318; }
+      .units { margin-top: 34px; font-size: 40px; color: var(--muted); }
+      .units em { font-style: normal; color: var(--accent); }
+      .flow { position: absolute; left: 130px; right: 130px; top: 345px; display: flex; align-items: center; gap: 24px; }
+      .fbox { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+        padding: 48px 36px; text-align: center; }
+      .fbox.engine { border-color: rgb(47 93 79 / 0.35); background: #eef4f1; }
+      .ftitle { font-family: "Source Serif 4", Georgia, serif; font-size: 52px; letter-spacing: -0.02em; }
+      .fsub { margin-top: 12px; font-size: 27px; color: var(--muted); line-height: 1.3; }
+      .fnever { margin-top: 18px; font-size: 23px; font-weight: 500; letter-spacing: 0.06em;
+        text-transform: uppercase; color: var(--block); }
+      .farrow { width: 58px; height: 3px; background: var(--line); flex: none; position: relative; }
+      .farrow::after { content: ""; position: absolute; right: -2px; top: -7px;
+        border-left: 14px solid rgb(25 28 26 / 0.22); border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+
+      .same { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; max-width: 1320px; }
+      .srow2 { display: flex; align-items: center; gap: 30px; background: var(--surface);
+        border: 1px solid var(--line); border-radius: 14px; padding: 25px 36px; }
+      .sl { flex: 1; font-size: 38px; }
+      .sv { font-size: 25px; font-weight: 500; padding: 11px 24px; border-radius: 999px; }
+      .sv.eq { color: var(--ok); background: var(--sunken); }
+      .sv.ne { color: var(--accent); background: #eef4f1; }
+      .runs { margin-top: 40px; font-family: "Source Serif 4", Georgia, serif; font-size: 70px; letter-spacing: -0.02em; }
+      .metric { position: absolute; left: 130px; right: 130px; top: 320px; }
+      .mcap { font-size: 42px; margin-bottom: 40px; }
+      .mrow { display: grid; grid-template-columns: 420px 1fr 230px; align-items: center; margin-bottom: 34px; }
+      .mlab { font-size: 33px; color: var(--muted); }
+      .mbarwrap { height: 54px; background: var(--sunken); border-radius: 10px; margin-right: 36px; }
+      .mbar { display: block; height: 100%; border-radius: 10px; transform-origin: left center; }
+      .mbar.good { background: var(--accent); }
+      .mbar.bad { background: var(--block); }
+      .mbar.flat { background: #8d938c; }
+      .mval { text-align: right; font-family: "Source Serif 4", Georgia, serif; font-size: 70px; letter-spacing: -0.02em; }
+      .mnote { margin-top: 16px; font-size: 34px; color: var(--muted); }
+
+      .slam { position: absolute; inset: 0; background: rgba(12,14,13,0.94); opacity: 0;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
         gap: 22px; padding: 0 160px; text-align: center; }
-      .slam-big { font-family: "Source Serif 4", Georgia, serif; font-size: 340px; line-height: 0.86;
+      .slam-big { font-family: "Source Serif 4", Georgia, serif; font-size: 300px; line-height: 0.9;
         color: #fbfaf7; letter-spacing: -0.04em; }
-      .slam-small { font-size: 44px; line-height: 1.3; color: rgba(251,250,247,0.92); max-width: 1320px; }
+      .slam-small { font-size: 46px; color: rgba(251,250,247,0.92); max-width: 1400px; line-height: 1.25; }
       .slam-foot { font-size: 30px; color: #e8a33d; letter-spacing: 0.02em; }
 
-      .card { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center;
-        padding: 150px 190px; gap: 24px; background: var(--paper); }
-      .endcard { align-items: flex-start; }
-      .tagline { font-size: 44px; color: var(--ink); }
-      .apis { font-size: 28px; line-height: 1.6; color: var(--muted); }
-      .url { font-size: 38px; color: var(--accent); font-weight: 500; }
-      .smallprint { font-size: 22px; line-height: 1.6; color: var(--faint); max-width: 1400px; }
+      .card { position: absolute; inset: 0; background: var(--paper); opacity: 0; display: flex;
+        flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 0 160px; text-align: center; }
+      .tagline { font-size: 46px; color: var(--muted); }
+      .endcard .apis { margin-top: 22px; font-size: 30px; color: var(--faint); line-height: 1.5; }
+      .url { margin-top: 26px; font-size: 42px; color: var(--accent); }
+      /* Clear of the caption band, which sits at bottom: 52px. */
+      .smallprint { position: absolute; left: 160px; right: 160px; bottom: 158px;
+        font-size: 22px; color: var(--faint); line-height: 1.5; }
+
+      .cue { position: absolute; left: 50%; bottom: 52px; transform: translateX(-50%);
+        max-width: 1480px; text-align: center; text-wrap: balance;
+        font-size: 37px; line-height: 1.26; color: #fbfaf7; letter-spacing: -0.003em;
+        background: rgb(12 14 13 / 0.72); padding: 11px 30px 14px; border-radius: 11px; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="172.52" data-width="1920" data-height="1080">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="173.07" data-width="1920" data-height="1080" data-track-index="0">
       <div class="scene" id="sc-open-shelf" style="z-index:1">
         <video class="broll" id="v-open-shelf" data-start="0" data-duration="2.3" data-track-index="1" src="assets/broll/01-shelf.mp4" muted playsinline></video>
         
       </div>
       <div class="scene" id="sc-open-pile" style="z-index:2">
-        <video class="broll" id="v-open-pile" data-start="1.65" data-duration="3.1" data-track-index="2" src="assets/broll/02-pile.mp4" muted playsinline></video>
-        <div class="beat clip" id="beat-eleven" data-start="1.65" data-duration="3.1" data-track-index="22"><p class="huge" id="beat-eleven-n">11</p><p class="beat-line" id="beat-eleven-l">potentially irritating active ingredients in the average top-viewed children&rsquo;s skincare video</p></div>
+        <video class="broll" id="v-open-pile" data-start="1.7" data-duration="3.1" data-track-index="2" src="assets/broll/02-pile.mp4" muted playsinline></video>
+        <div class="beat clip" id="beat-eleven" data-start="1.7" data-duration="3.1" data-track-index="22"><p class="huge" id="beat-eleven-n">11</p><p class="beat-line" id="beat-eleven-l">potentially irritating active ingredients in the average top-viewed children&rsquo;s skincare video</p></div>
       </div>
       <div class="scene" id="sc-open-scroll" style="z-index:3">
-        <video class="broll" id="v-open-scroll" data-start="4.1" data-duration="2.9" data-track-index="3" src="assets/broll/03-scroll.mp4" muted playsinline></video>
-        <div class="beat clip" id="beat-sun" data-start="4.1" data-duration="2.9" data-track-index="23"><p class="mid" id="beat-sun-t">Only <em>26%</em> of daytime routines included sunscreen.</p><p class="cite" id="beat-sun-c">Pediatrics, 2025</p></div>
+        <video class="broll" id="v-open-scroll" data-start="4.2" data-duration="2.9" data-track-index="3" src="assets/broll/03-scroll.mp4" muted playsinline></video>
+        <div class="beat clip" id="beat-sun" data-start="4.2" data-duration="2.9" data-track-index="23"><p class="mid" id="beat-sun-t">Only <em>26%</em> of daytime routines included sunscreen.</p><p class="cite" id="beat-sun-c">Pediatrics, 2025</p></div>
       </div>
       <div class="scene" id="sc-turn" style="z-index:4">
-        <video class="broll" id="v-turn" data-start="6.35" data-duration="10.8" data-track-index="4" src="assets/broll/04-mirror.mp4" muted playsinline></video>
+        <video class="broll" id="v-turn" data-start="6.5" data-duration="10.8" data-track-index="4" src="assets/broll/04-mirror.mp4" muted playsinline></video>
         
       </div>
       <div class="scene" id="sc-logo" style="z-index:5">
-        <div class="clip logo-card" id="logo-card" data-start="16.5" data-duration="2.9" data-track-index="5">
+        <div class="clip logo-card" id="logo-card" data-start="16.7" data-duration="2.9" data-track-index="5">
           <p class="wordmark" id="logo-word">Patch<span>Test</span></p>
           <p class="logo-tag" id="logo-tag">a patch test for your cart</p>
         </div>
       </div>
-      <div class="scene" id="sc-pregnant" style="z-index:6">
-        <div class="clip chrome" id="ch-pregnant" data-start="18.75" data-duration="13.91" data-track-index="66">
-          <div class="win">
-            <div class="bar"><i></i><i></i><i></i><span class="addr">patchtest.fly.dev</span></div>
+      <div class="scene" id="sc-verdict" style="z-index:6">
+        <div class="clip mg mg-verdict" id="mg-verdict" data-start="19" data-duration="13.91" data-track-index="6">
+
+          <p class="kicker k1">The cart, checked</p>
+          <div class="chip c1"><span class="dot"></span>Declared &middot; 8 weeks pregnant</div>
+          <div class="pcard p1">
+            <div class="pthumb"></div>
+            <div class="pmeta">
+              <p class="pname">Retinol 0.3% Night Serum</p>
+              <p class="pprice tnum">$24</p>
+            </div>
+            <div class="stamp block s1">Not for you right now</div>
           </div>
+          <div class="quote q1">
+            <p class="rid">R-PREG-01</p>
+            <p class="qtext">&ldquo;It is generally recommended to avoid topical retinoid medications.&rdquo;</p>
+            <p class="qsrc">American Academy of Dermatology &middot; MotherToBaby</p>
+          </div>
+          <div class="swap w1">
+            <p class="slabel">Try instead</p>
+            <p class="sname">Azelaic Acid 10% Cream</p>
+            <p class="sprice tnum">$26</p>
+          </div>
+          <p class="punch u1">It does not just refuse. It <em>re-routes</em>.</p>
         </div>
-        <video class="framed" id="v-pregnant" data-start="18.75" data-duration="13.91" data-track-index="6" src="assets/clips/preset-pregnant.mp4" muted playsinline></video>
       </div>
-      <div class="scene" id="sc-peel" style="z-index:7">
-        <div class="clip chrome" id="ch-peel" data-start="32.01" data-duration="17.51" data-track-index="67">
-          <div class="win">
-            <div class="bar"><i></i><i></i><i></i><span class="addr">patchtest.fly.dev</span></div>
+      <div class="scene" id="sc-scan" style="z-index:7">
+        <div class="clip mg mg-scan" id="mg-scan" data-start="32.31" data-duration="17.51" data-track-index="7">
+
+          <p class="kicker k1">The scan</p>
+          <div class="fitz f1">
+            <div class="fsw fsw0"><span>I</span></div>
+            <div class="fsw fsw1"><span>II</span></div>
+            <div class="fsw fsw2"><span>III</span></div>
+            <div class="fsw fsw3"><span>IV</span></div>
+            <div class="fsw fsw4" data-on="1"><span>V</span></div>
+            <div class="fsw fsw5"><span>VI</span></div>
+            <p class="flabel">Fitzpatrick <em>V</em></p>
+          </div>
+          <div class="rows r1">
+            <div class="vrow vr0"><span class="vn">AHA 30% + BHA 2% Weekly Peel</span><span class="vb block">Not for you right now</span></div>
+            <div class="vrow vr1"><span class="vn">Retinol 0.3% Night Serum</span><span class="vb adjust">Adjust</span></div>
+          </div>
+          <div class="scores sc1">
+            <p class="scap">Every concern comes back twice</p>
+            <div class="shead"><span></span><span></span><span class="sh ui">ui_score</span><span class="sh raw">raw_score</span></div>
+            <div class="srow sr0">
+              <span class="slab">Moisture</span>
+              <span class="sbarwrap"><span class="sbar sb0"></span></span>
+              <span class="sui tnum">67</span><span class="sraw tnum">41.5</span>
+            </div>
+            <div class="srow sr1">
+              <span class="slab">Texture</span>
+              <span class="sbarwrap"><span class="sbar sb1"></span></span>
+              <span class="sui tnum">73</span><span class="sraw tnum">62.4</span>
+            </div>
+            <div class="srow sr2">
+              <span class="slab">Lines</span>
+              <span class="sbarwrap"><span class="sbar sb2"></span></span>
+              <span class="sui tnum">71</span><span class="sraw tnum">66.3</span>
+            </div>
+            <div class="srow sr3">
+              <span class="slab">Dark spots</span>
+              <span class="sbarwrap"><span class="sbar sb3"></span></span>
+              <span class="sui tnum">73</span><span class="sraw tnum">76.6</span>
+            </div>
+            <div class="srow sr4">
+              <span class="slab">Acne</span>
+              <span class="sbarwrap"><span class="sbar sb4"></span></span>
+              <span class="sui tnum">83</span><span class="sraw tnum">85.9</span>
+            </div>
+            <div class="srow sr5">
+              <span class="slab">Redness</span>
+              <span class="sbarwrap"><span class="sbar sb5"></span></span>
+              <span class="sui tnum">84</span><span class="sraw tnum">88</span>
+            </div>
+            <div class="srow sr6">
+              <span class="slab">Oiliness</span>
+              <span class="sbarwrap"><span class="sbar sb6"></span></span>
+              <span class="sui tnum">92</span><span class="sraw tnum">95.1</span>
+            </div>
+          </div>
+          <div class="gap g1">
+            <p class="gtitle">Moisture</p>
+            <div class="gpair">
+              <div class="gcol gui"><p class="gnum tnum">67</p><p class="glab">ui_score</p><p class="gsub">documented as a motivator</p></div>
+              <div class="gcol graw"><p class="gnum tnum">41.5</p><p class="glab">raw_score</p><p class="gsub">the measurement</p></div>
+            </div>
+            <p class="gnote">Every rule reads the one on the right.</p>
           </div>
         </div>
-        <video class="framed" id="v-peel" data-start="32.01" data-duration="17.51" data-track-index="7" src="assets/clips/preset-peel.mp4" muted playsinline></video>
       </div>
       <div class="scene" id="sc-refer" style="z-index:8">
-        <div class="clip chrome" id="ch-refer" data-start="48.87" data-duration="14.46" data-track-index="68">
-          <div class="win">
-            <div class="bar"><i></i><i></i><i></i><span class="addr">patchtest.fly.dev</span></div>
+        <div class="clip mg mg-refer" id="mg-refer" data-start="49.22" data-duration="14.46" data-track-index="8">
+
+          <p class="kicker k1">The strongest things in the shop</p>
+          <div class="chips ch1">
+            <div class="chip tag t0">deep painful lumps</div>
+            <div class="chip tag t1">scarring</div>
           </div>
+          <div class="hold h1">
+            <div class="hcard hc0"><p class="hname">Adapalene 0.1% Gel</p><p class="hprice tnum">$17</p><p class="htag">held back</p></div>
+            <div class="hcard hc1"><p class="hname">AHA 30% + BHA 2% Weekly Peel</p><p class="hprice tnum">$18</p><p class="htag">held back</p></div>
+            <div class="hcard hc2"><p class="hname">Benzoyl Peroxide 5% Wash</p><p class="hprice tnum">$13</p><p class="htag">held back</p></div>
+          </div>
+          <div class="refer rf1">
+            <p class="rlabel">Worth showing a professional</p>
+            <p class="rtext">What you described tends to need prescription treatment, and scarring is easier to prevent than to fix. We have kept the gentle basics and sunscreen in your cart and held the rest.</p>
+          </div>
+          <p class="punch u1">This is the moment a shop normally <em>takes the money</em>.</p>
         </div>
-        <video class="framed" id="v-refer" data-start="48.87" data-duration="14.46" data-track-index="8" src="assets/clips/preset-refer.mp4" muted playsinline></video>
       </div>
-      <div class="scene" id="sc-extension" style="z-index:9">
-        <div class="clip chrome" id="ch-extension" data-start="62.68" data-duration="22.24" data-track-index="69">
-          <div class="win">
-            <div class="bar"><i></i><i></i><i></i><span class="addr">verdant-row.example/cart</span></div>
+      <div class="scene" id="sc-ext" style="z-index:9">
+        <div class="clip mg mg-ext" id="mg-ext" data-start="63.08" data-duration="22.24" data-track-index="9">
+
+          <p class="kicker k1">Somebody else&rsquo;s shop</p>
+          <div class="shop sh1">
+            <div class="sbar2"><span class="sdot"></span><span class="sdot"></span><span class="sdot"></span><span class="surl">verdant-row.example/cart</span><span class="spin" id="ext-pin">PT</span></div>
+            <div class="scart">
+              <div class="crow cr0">
+                <span class="cthumb"></span>
+                <span class="cname">Overnight Retinol 0.5% Renewal Serum</span><span class="cprice tnum">$29</span>
+                <span class="cbadge block cb0">Not for you right now</span>
+              </div>
+              <div class="crow cr1">
+                <span class="cthumb"></span>
+                <span class="cname">AHA 30% + BHA 2% Weekly Peeling Solution</span><span class="cprice tnum">$18</span>
+                <span class="cbadge block cb1">Not for you right now</span>
+              </div>
+              <div class="crow cr2">
+                <span class="cthumb"></span>
+                <span class="cname">Ceramide Barrier Moisturiser</span><span class="cprice tnum">$22</span>
+                <span class="cbadge ok cb2">Fine for you</span>
+              </div>
+              <div class="crow cr3">
+                <span class="cthumb"></span>
+                <span class="cname">Mineral SPF 50 Fluid</span><span class="cprice tnum">$25</span>
+                <span class="cbadge ok cb3">Fine for you</span>
+              </div>
+            </div>
           </div>
+          <div class="parse pr1">
+            <p class="pcap">It reads what the shop already publishes</p>
+            <pre class="code">&lt;span itemprop="<em>name</em>"&gt;Overnight Retinol <em>0.5%</em> Renewal Serum&lt;/span&gt;</pre>
+            <div class="pchips">
+              <span class="pchip pc0">retinoid</span>
+              <span class="pchip pc1">0.5%</span>
+              <span class="pchip pc2">leave-on</span>
+              <span class="pchip pc3">R-PREG-01</span>
+            </div>
+          </div>
+          <p class="punch u1">The same 24 rules. Any shop.</p>
         </div>
-        <video class="framed" id="v-extension" data-start="62.68" data-duration="22.24" data-track-index="9" src="assets/clips/extension.mp4" muted playsinline></video>
       </div>
-      <div class="scene" id="sc-methods" style="z-index:10">
-        <div class="clip chrome" id="ch-methods" data-start="84.27" data-duration="25.74" data-track-index="70">
-          <div class="win">
-            <div class="bar"><i></i><i></i><i></i><span class="addr">patchtest.fly.dev/methods</span></div>
+      <div class="scene" id="sc-pipeline" style="z-index:10">
+        <div class="clip mg mg-pipeline" id="mg-pipeline" data-start="84.72" data-duration="25.74" data-track-index="10">
+
+          <p class="kicker k1">One photo, two APIs</p>
+          <div class="apirow a1">
+            <div class="api ap0">
+              <p class="aname">YouCam<br /><em>AI Skin Analysis</em></p>
+              <p class="adesc">measures eight concerns</p>
+              <div class="dots"><span class="adot ad0"></span><span class="adot ad1"></span><span class="adot ad2"></span><span class="adot ad3"></span><span class="adot ad4"></span><span class="adot ad5"></span><span class="adot ad6"></span></div>
+            </div>
+            <div class="api ap1">
+              <p class="aname">YouCam<br /><em>AI Fitzpatrick Skin Type</em></p>
+              <p class="adesc">reads skin tone</p>
+              <div class="ramp"><span class="rsw rs0"></span><span class="rsw rs1"></span><span class="rsw rs2"></span><span class="rsw rs3"></span><span class="rsw rs4"></span><span class="rsw rs5"></span></div>
+            </div>
           </div>
+          <p class="units un1"><span class="tnum" id="unit-n">0</span> units a scan &middot; <em>charged only on success</em></p>
+          <div class="flow fl1">
+            <div class="fbox fb0"><p class="ftitle">A language model</p><p class="fsub">proposes a routine</p><p class="fnever">never sets a verdict</p></div>
+            <div class="farrow fa0"></div>
+            <div class="fbox fb1 engine"><p class="ftitle">24 rules</p><p class="fsub">each with a source and a quote</p></div>
+            <div class="farrow fa1"></div>
+            <div class="fbox fb2"><p class="ftitle">Four verdicts</p><p class="fsub">block &middot; adjust &middot; unnecessary &middot; refer</p></div>
+          </div>
+          <p class="punch u1">The rules have the <em>last word</em>.</p>
         </div>
-        <video class="framed" id="v-methods" data-start="84.27" data-duration="25.74" data-track-index="10" src="assets/clips/methods.mp4" muted playsinline></video>
       </div>
-      <div class="scene" id="sc-evalpage" style="z-index:11">
-        <div class="clip chrome" id="ch-evalpage" data-start="109.36" data-duration="54.4" data-track-index="71">
-          <div class="win">
-            <div class="bar"><i></i><i></i><i></i><span class="addr">patchtest.fly.dev/eval</span></div>
+      <div class="scene" id="sc-numbers" style="z-index:11">
+        <div class="clip mg mg-numbers" id="mg-numbers" data-start="109.86" data-duration="54.4" data-track-index="11">
+
+          <p class="kicker k1">The part most demos skip</p>
+          <div class="same sa1">
+            <div class="srow2 s20"><span class="sl">the same model</span><span class="sv eq">identical</span></div>
+            <div class="srow2 s21"><span class="sl">the same prompt</span><span class="sv eq">identical</span></div>
+            <div class="srow2 s22"><span class="sl">the same inputs</span><span class="sv eq">identical</span></div>
+            <div class="srow2 s23"><span class="sl">the guardrail</span><span class="sv ne">the only difference</span></div>
           </div>
+          <p class="runs ru1"><span class="tnum" id="runs-n">0</span> runs per arm</p>
+          <div class="metric m0">
+            <p class="mcap">Recommended something our labels call unsafe</p>
+            <div class="mrow"><span class="mlab">With the guardrail</span><span class="mbarwrap"><span class="mbar good mb6"></span></span><span class="mval tnum">0%</span></div>
+            <div class="mrow"><span class="mlab">Without</span><span class="mbarwrap"><span class="mbar good mb7"></span></span><span class="mval tnum">0%</span></div>
+            <p class="mnote m0note">Both arms. We are reporting that, not hiding it.</p>
+          </div>
+          <div class="metric m1">
+            <p class="mcap">An unsafe item left sitting in the cart</p>
+            <div class="mrow"><span class="mlab">With the guardrail</span><span class="mbarwrap"><span class="mbar good mb0"></span></span><span class="mval tnum">0%</span></div>
+            <div class="mrow"><span class="mlab">Without</span><span class="mbarwrap"><span class="mbar bad mb1"></span></span><span class="mval tnum">22.5%</span></div>
+          </div>
+          <div class="metric m2">
+            <p class="mcap">Needed a usage caveat, went out without one</p>
+            <div class="mrow"><span class="mlab">With the guardrail</span><span class="mbarwrap"><span class="mbar good mb2"></span></span><span class="mval tnum">11.1%</span></div>
+            <div class="mrow"><span class="mlab">Without</span><span class="mbarwrap"><span class="mbar bad mb3"></span></span><span class="mval tnum">100%</span></div>
+          </div>
+          <div class="metric m3">
+            <p class="mcap">Gave the same shopper a different cart</p>
+            <div class="mrow"><span class="mlab">With the guardrail</span><span class="mbarwrap"><span class="mbar flat mb4"></span></span><span class="mval tnum">35%</span></div>
+            <div class="mrow"><span class="mlab">Without</span><span class="mbarwrap"><span class="mbar flat mb5"></span></span><span class="mval tnum">35%</span></div>
+            <p class="mnote">Identical. The guardrail did not make the model consistent.</p>
+          </div>
+          <p class="punch u1">It made it <em>accountable</em>.</p>
         </div>
-        <video class="framed" id="v-evalpage" data-start="109.36" data-duration="54.4" data-track-index="11" src="assets/clips/eval.mp4" muted playsinline></video>
       </div>
       <div class="scene" id="sc-endcard" style="z-index:12">
-        <div class="clip card endcard" id="end-card" data-start="163.11" data-duration="9.41" data-track-index="12">
+        <div class="clip card endcard" id="end-card" data-start="163.66" data-duration="9.41" data-track-index="12">
           <p class="wordmark" id="end-word">Patch<span>Test</span></p>
           <p class="tagline" id="end-tag">A patch test for your cart.</p>
           <p class="apis" id="end-apis">Web app, and a browser extension for everyone else&rsquo;s shop.<br />Built with the YouCam AI Skin Analysis API and the YouCam AI Fitzpatrick Skin Type Analysis API.</p>
@@ -172,14 +480,14 @@
       </div>
 
       <div class="scene" style="z-index:90">
-        <div class="clip slam" id="slam-0" data-start="134.16" data-duration="6.4" data-track-index="80">
+        <div class="clip slam" id="slam-0" data-start="134.66" data-duration="6.4" data-track-index="80">
           <p class="slam-big" id="slam-big-0">22.5%</p>
           <p class="slam-small" id="slam-small-0">of runs ended with an unsafe item still in the cart</p>
           <p class="slam-foot" id="slam-foot-0">without the guardrail</p>
         </div>
       </div>
       <div class="scene" style="z-index:90">
-        <div class="clip slam" id="slam-1" data-start="148.86" data-duration="7" data-track-index="81">
+        <div class="clip slam" id="slam-1" data-start="149.36" data-duration="7" data-track-index="81">
           <p class="slam-big" id="slam-big-1">100%</p>
           <p class="slam-small" id="slam-small-1">of items needing a usage caveat went out without one</p>
           <p class="slam-foot" id="slam-foot-1">against 11.1% with the guardrail</p>
@@ -187,312 +495,470 @@
       </div>
 
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-0" data-start="6.55" data-duration="2.71" data-track-index="110">Skincare shopping has an advice problem.</p>
+        <p class="clip cue" id="cue-0" data-start="6.7" data-duration="2.71" data-track-index="110">Skincare shopping has an advice problem.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-1" data-start="9.27" data-duration="2.39" data-track-index="110">The usual fix is a chatbot.</p>
+        <p class="clip cue" id="cue-1" data-start="9.42" data-duration="2.39" data-track-index="110">The usual fix is a chatbot.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-2" data-start="11.67" data-duration="2.31" data-track-index="110">But a chatbot is built to be helpful,</p>
+        <p class="clip cue" id="cue-2" data-start="11.82" data-duration="2.31" data-track-index="110">But a chatbot is built to be helpful,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-3" data-start="13.99" data-duration="2.79" data-track-index="110">and sometimes the helpful answer is no.</p>
+        <p class="clip cue" id="cue-3" data-start="14.14" data-duration="2.79" data-track-index="110">and sometimes the helpful answer is no.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-4" data-start="18.95" data-duration="1.91" data-track-index="110">She is eight weeks pregnant and put the</p>
+        <p class="clip cue" id="cue-4" data-start="19.2" data-duration="1.91" data-track-index="110">She is eight weeks pregnant and put the</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-5" data-start="20.87" data-duration="1.99" data-track-index="110">retinoid back in her cart.</p>
+        <p class="clip cue" id="cue-5" data-start="21.12" data-duration="1.99" data-track-index="110">retinoid back in her cart.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-6" data-start="22.87" data-duration="3.03" data-track-index="110">PatchTest blocks it, quotes the guideline it is</p>
+        <p class="clip cue" id="cue-6" data-start="23.12" data-duration="3.03" data-track-index="110">PatchTest blocks it, quotes the guideline it is</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-7" data-start="25.91" data-duration="3.27" data-track-index="110">reading, and offers the thing she can actually use.</p>
+        <p class="clip cue" id="cue-7" data-start="26.16" data-duration="3.27" data-track-index="110">reading, and offers the thing she can actually use.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-8" data-start="29.19" data-duration="2.68" data-track-index="110">It does not just refuse. It re-routes.</p>
+        <p class="clip cue" id="cue-8" data-start="29.44" data-duration="2.68" data-track-index="110">It does not just refuse. It re-routes.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-9" data-start="32.21" data-duration="2.71" data-track-index="110">Her scan comes back Fitzpatrick 5,,</p>
+        <p class="clip cue" id="cue-9" data-start="32.51" data-duration="2.71" data-track-index="110">Her scan comes back Fitzpatrick 5,,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-10" data-start="34.93" data-duration="2.31" data-track-index="110">so the at-home peel is blocked and the</p>
+        <p class="clip cue" id="cue-10" data-start="35.23" data-duration="2.31" data-track-index="110">so the at-home peel is blocked and the</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-11" data-start="37.25" data-duration="1.83" data-track-index="110">retinol is adjusted.</p>
+        <p class="clip cue" id="cue-11" data-start="37.55" data-duration="1.83" data-track-index="110">retinol is adjusted.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-12" data-start="39.09" data-duration="1.75" data-track-index="110">Now the scores.</p>
+        <p class="clip cue" id="cue-12" data-start="39.39" data-duration="1.75" data-track-index="110">Now the scores.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-13" data-start="40.85" data-duration="3.19" data-track-index="110">This API returns two numbers per concern,</p>
+        <p class="clip cue" id="cue-13" data-start="41.15" data-duration="3.19" data-track-index="110">This API returns two numbers per concern,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-14" data-start="44.05" data-duration="2.07" data-track-index="110">and they do two different jobs.</p>
+        <p class="clip cue" id="cue-14" data-start="44.35" data-duration="2.07" data-track-index="110">and they do two different jobs.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-15" data-start="46.13" data-duration="2.93" data-track-index="110">Most integrations never notice there are two.</p>
+        <p class="clip cue" id="cue-15" data-start="46.43" data-duration="2.95" data-track-index="110">Most integrations never notice there are two.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-16" data-start="49.07" data-duration="3.35" data-track-index="110">She described deep painful lumps that scar,</p>
+        <p class="clip cue" id="cue-16" data-start="49.42" data-duration="3.35" data-track-index="110">She described deep painful lumps that scar,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-17" data-start="52.43" data-duration="2.71" data-track-index="110">and asked for the strongest things in the shop.</p>
+        <p class="clip cue" id="cue-17" data-start="52.78" data-duration="2.71" data-track-index="110">and asked for the strongest things in the shop.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-18" data-start="55.15" data-duration="3.27" data-track-index="110">PatchTest refers her instead, and holds the strong</p>
+        <p class="clip cue" id="cue-18" data-start="55.5" data-duration="3.27" data-track-index="110">PatchTest refers her instead, and holds the strong</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-19" data-start="58.43" data-duration="1.35" data-track-index="110">actives back.</p>
+        <p class="clip cue" id="cue-19" data-start="58.78" data-duration="1.35" data-track-index="110">actives back.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-20" data-start="59.79" data-duration="3.08" data-track-index="110">This is the moment a shop normally takes the money.</p>
+        <p class="clip cue" id="cue-20" data-start="60.14" data-duration="3.13" data-track-index="110">This is the moment a shop normally takes the money.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-21" data-start="62.88" data-duration="1.43" data-track-index="110">That is the web app.</p>
+        <p class="clip cue" id="cue-21" data-start="63.28" data-duration="1.43" data-track-index="110">That is the web app.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-22" data-start="64.32" data-duration="2.79" data-track-index="110">But checkout usually happens on somebody else's</p>
+        <p class="clip cue" id="cue-22" data-start="64.72" data-duration="2.79" data-track-index="110">But checkout usually happens on somebody else's</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-23" data-start="67.12" data-duration="4.47" data-track-index="110">website, so PatchTest also ships as a browser extension.</p>
+        <p class="clip cue" id="cue-23" data-start="67.52" data-duration="4.47" data-track-index="110">website, so PatchTest also ships as a browser extension.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-24" data-start="71.6" data-duration="1.67" data-track-index="110">This is a different shop,</p>
+        <p class="clip cue" id="cue-24" data-start="72" data-duration="1.67" data-track-index="110">This is a different shop,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-25" data-start="73.28" data-duration="2.63" data-track-index="110">selling products that are not in our catalogue.</p>
+        <p class="clip cue" id="cue-25" data-start="73.68" data-duration="2.63" data-track-index="110">selling products that are not in our catalogue.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-26" data-start="75.92" data-duration="2.63" data-track-index="110">It reads the structured data the shop already</p>
+        <p class="clip cue" id="cue-26" data-start="76.32" data-duration="2.63" data-track-index="110">It reads the structured data the shop already</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-27" data-start="78.56" data-duration="2.87" data-track-index="110">publishes, pulls the ingredient and the strength</p>
+        <p class="clip cue" id="cue-27" data-start="78.96" data-duration="2.87" data-track-index="110">publishes, pulls the ingredient and the strength</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-28" data-start="81.44" data-duration="3.02" data-track-index="110">out of each title, and applies the same rules.</p>
+        <p class="clip cue" id="cue-28" data-start="81.84" data-duration="3.07" data-track-index="110">out of each title, and applies the same rules.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-29" data-start="84.47" data-duration="2.63" data-track-index="110">One photo, two APIs.</p>
+        <p class="clip cue" id="cue-29" data-start="84.92" data-duration="2.63" data-track-index="110">One photo, two APIs.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-30" data-start="87.11" data-duration="2.87" data-track-index="110">Skin Analysis measures eight concerns,</p>
+        <p class="clip cue" id="cue-30" data-start="87.56" data-duration="2.87" data-track-index="110">Skin Analysis measures eight concerns,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-31" data-start="89.99" data-duration="2.55" data-track-index="110">Fitzpatrick reads skin tone.</p>
+        <p class="clip cue" id="cue-31" data-start="90.44" data-duration="2.55" data-track-index="110">Fitzpatrick reads skin tone.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-32" data-start="92.55" data-duration="4.07" data-track-index="110">22 units a scan, charged only on success.</p>
+        <p class="clip cue" id="cue-32" data-start="93" data-duration="4.07" data-track-index="110">22 units a scan, charged only on success.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-33" data-start="96.63" data-duration="3.03" data-track-index="110">Then a language model proposes a routine.</p>
+        <p class="clip cue" id="cue-33" data-start="97.08" data-duration="3.03" data-track-index="110">Then a language model proposes a routine.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-34" data-start="99.67" data-duration="1.99" data-track-index="110">It never sets a verdict.</p>
+        <p class="clip cue" id="cue-34" data-start="100.12" data-duration="1.99" data-track-index="110">It never sets a verdict.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-35" data-start="101.67" data-duration="3.03" data-track-index="110">Twenty-four rules, each carrying a source and a</p>
+        <p class="clip cue" id="cue-35" data-start="102.12" data-duration="3.03" data-track-index="110">Twenty-four rules, each carrying a source and a</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-36" data-start="104.71" data-duration="2.71" data-track-index="110">quote, decide what the shopper may buy.</p>
+        <p class="clip cue" id="cue-36" data-start="105.16" data-duration="2.71" data-track-index="110">quote, decide what the shopper may buy.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-37" data-start="107.43" data-duration="2.12" data-track-index="110">The rules have the last word.</p>
+        <p class="clip cue" id="cue-37" data-start="107.88" data-duration="2.15" data-track-index="110">The rules have the last word.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-38" data-start="109.56" data-duration="2.55" data-track-index="110">Here is the part most demos skip.</p>
+        <p class="clip cue" id="cue-38" data-start="110.06" data-duration="2.55" data-track-index="110">Here is the part most demos skip.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-39" data-start="112.12" data-duration="2.63" data-track-index="110">The comparison arm is the same model,</p>
+        <p class="clip cue" id="cue-39" data-start="112.62" data-duration="2.63" data-track-index="110">The comparison arm is the same model,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-40" data-start="114.76" data-duration="2.39" data-track-index="110">the same prompt, the same inputs,</p>
+        <p class="clip cue" id="cue-40" data-start="115.26" data-duration="2.39" data-track-index="110">the same prompt, the same inputs,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-41" data-start="117.16" data-duration="2.31" data-track-index="110">differing only in the guardrail.</p>
+        <p class="clip cue" id="cue-41" data-start="117.66" data-duration="2.31" data-track-index="110">differing only in the guardrail.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-42" data-start="119.48" data-duration="4.07" data-track-index="110">Across 120 runs it recommended nothing our labels</p>
+        <p class="clip cue" id="cue-42" data-start="119.98" data-duration="4.07" data-track-index="110">Across 120 runs it recommended nothing our labels</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-43" data-start="123.56" data-duration="1.59" data-track-index="110">call unsafe.</p>
+        <p class="clip cue" id="cue-43" data-start="124.06" data-duration="1.59" data-track-index="110">call unsafe.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-44" data-start="125.16" data-duration="2.39" data-track-index="110">A good model with a careful prompt is</p>
+        <p class="clip cue" id="cue-44" data-start="125.66" data-duration="2.39" data-track-index="110">A good model with a careful prompt is</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-45" data-start="127.56" data-duration="2.79" data-track-index="110">mostly safe, and we are reporting that rather</p>
+        <p class="clip cue" id="cue-45" data-start="128.06" data-duration="2.79" data-track-index="110">mostly safe, and we are reporting that rather</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-46" data-start="130.36" data-duration="1.27" data-track-index="110">than hiding it.</p>
+        <p class="clip cue" id="cue-46" data-start="130.86" data-duration="1.27" data-track-index="110">than hiding it.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-47" data-start="131.64" data-duration="2.55" data-track-index="110">What it did was leave things sitting.</p>
+        <p class="clip cue" id="cue-47" data-start="132.14" data-duration="2.55" data-track-index="110">What it did was leave things sitting.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-48" data-start="134.2" data-duration="3.27" data-track-index="110">An item our labels call unsafe stayed in</p>
+        <p class="clip cue" id="cue-48" data-start="134.7" data-duration="3.27" data-track-index="110">An item our labels call unsafe stayed in</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-49" data-start="137.48" data-duration="4.55" data-track-index="110">the cart in 22.5% of runs. Not recommended.</p>
+        <p class="clip cue" id="cue-49" data-start="137.98" data-duration="4.55" data-track-index="110">the cart in 22.5% of runs. Not recommended.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-50" data-start="142.04" data-duration="1.59" data-track-index="110">Just not removed.</p>
+        <p class="clip cue" id="cue-50" data-start="142.54" data-duration="1.59" data-track-index="110">Just not removed.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-51" data-start="143.64" data-duration="2.15" data-track-index="110">And of the items that needed a usage</p>
+        <p class="clip cue" id="cue-51" data-start="144.14" data-duration="2.15" data-track-index="110">And of the items that needed a usage</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-52" data-start="145.8" data-duration="3.19" data-track-index="110">caveat, it attached one to none of them.</p>
+        <p class="clip cue" id="cue-52" data-start="146.3" data-duration="3.19" data-track-index="110">caveat, it attached one to none of them.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-53" data-start="149" data-duration="4.23" data-track-index="110">100% went out bare, against 11% here.</p>
+        <p class="clip cue" id="cue-53" data-start="149.5" data-duration="4.23" data-track-index="110">100% went out bare, against 11% here.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-54" data-start="153.24" data-duration="3.19" data-track-index="110">The guardrail did not make the model consistent.</p>
+        <p class="clip cue" id="cue-54" data-start="153.74" data-duration="3.19" data-track-index="110">The guardrail did not make the model consistent.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-55" data-start="156.44" data-duration="2.55" data-track-index="110">Both arms gave the same shopper a different</p>
+        <p class="clip cue" id="cue-55" data-start="156.94" data-duration="2.55" data-track-index="110">Both arms gave the same shopper a different</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-56" data-start="159" data-duration="1.91" data-track-index="110">cart a third of the time.</p>
+        <p class="clip cue" id="cue-56" data-start="159.5" data-duration="1.91" data-track-index="110">cart a third of the time.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-57" data-start="160.92" data-duration="2.39" data-track-index="110">What it made it was accountable.</p>
+        <p class="clip cue" id="cue-57" data-start="161.42" data-duration="2.39" data-track-index="110">What it made it was accountable.</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-58" data-start="163.31" data-duration="1.91" data-track-index="110">All of that is on the page,</p>
+        <p class="clip cue" id="cue-58" data-start="163.86" data-duration="1.91" data-track-index="110">All of that is on the page,</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-59" data-start="165.23" data-duration="2.07" data-track-index="110">because a tool that tells people when to</p>
+        <p class="clip cue" id="cue-59" data-start="165.78" data-duration="2.07" data-track-index="110">because a tool that tells people when to</p>
       </div>
       <div class="scene" style="z-index:95">
-        <p class="clip cue" id="cue-60" data-start="167.31" data-duration="3.48" data-track-index="110">stop shopping should say what it does not know.</p>
+        <p class="clip cue" id="cue-60" data-start="167.86" data-duration="3.48" data-track-index="110">stop shopping should say what it does not know.</p>
       </div>
 
-      <audio id="a-turn" data-start="6.55" data-duration="10.45" data-track-index="40" src="assets/audio/01-the-hook.mp3" data-volume="1"></audio>
-      <audio id="a-pregnant" data-start="18.95" data-duration="13.56" data-track-index="41" src="assets/audio/02-preset-1-eight-weeks-pregnant-breaking-out.mp3" data-volume="1"></audio>
-      <audio id="a-peel" data-start="32.21" data-duration="17.16" data-track-index="42" src="assets/audio/03-preset-2-dark-patches-and-a-30-peel.mp3" data-volume="1"></audio>
-      <audio id="a-refer" data-start="49.07" data-duration="14.11" data-track-index="43" src="assets/audio/04-preset-3-painful-lumps-that-leave-marks.mp3" data-volume="1"></audio>
-      <audio id="a-extension" data-start="62.88" data-duration="21.89" data-track-index="44" src="assets/audio/05-it-works-on-other-people-s-shops.mp3" data-volume="1"></audio>
-      <audio id="a-methods" data-start="84.47" data-duration="25.39" data-track-index="45" src="assets/audio/06-how-it-works.mp3" data-volume="1"></audio>
-      <audio id="a-evalpage" data-start="109.56" data-duration="54.05" data-track-index="46" src="assets/audio/07-the-numbers.mp3" data-volume="1"></audio>
-      <audio id="a-endcard" data-start="163.31" data-duration="7.31" data-track-index="47" src="assets/audio/08-the-limits-then-the-card.mp3" data-volume="1"></audio>
-      <audio id="m-open" data-start="0" data-duration="17.7" data-track-index="30" src="assets/score/score.mp3" data-volume="0.46"></audio>
-      <audio id="m-body" data-start="17.7" data-duration="154.82" data-media-start="17.7" data-track-index="31" src="assets/score/score.mp3" data-volume="0.13"></audio>
-      <audio id="s-riser" data-start="13.4" data-duration="3.5" data-track-index="32" src="assets/score/riser.mp3" data-volume="0.5"></audio>
-      <audio id="s-impact" data-start="16.5" data-duration="2.5" data-track-index="33" src="assets/score/impact.mp3" data-volume="0.62"></audio>
-      <audio id="s-wh-0" data-start="1.65" data-duration="1" data-track-index="34" src="assets/score/whoosh.mp3" data-volume="0.4"></audio>
-      <audio id="s-wh-1" data-start="4.1" data-duration="1" data-track-index="35" src="assets/score/whoosh.mp3" data-volume="0.4"></audio>
-      <audio id="s-slam-0" data-start="134.16" data-duration="2.5" data-track-index="50" src="assets/score/impact.mp3" data-volume="0.5"></audio>
-      <audio id="s-slam-1" data-start="148.86" data-duration="2.5" data-track-index="51" src="assets/score/impact.mp3" data-volume="0.5"></audio>
+      <audio id="a-turn" data-start="6.7" data-duration="10.45" data-track-index="40" src="assets/audio/01-the-hook.mp3" data-volume="1"></audio>
+      <audio id="a-verdict" data-start="19.2" data-duration="13.56" data-track-index="41" src="assets/audio/02-preset-1-eight-weeks-pregnant-breaking-out.mp3" data-volume="1"></audio>
+      <audio id="a-scan" data-start="32.51" data-duration="17.16" data-track-index="42" src="assets/audio/03-preset-2-dark-patches-and-a-30-peel.mp3" data-volume="1"></audio>
+      <audio id="a-refer" data-start="49.42" data-duration="14.11" data-track-index="43" src="assets/audio/04-preset-3-painful-lumps-that-leave-marks.mp3" data-volume="1"></audio>
+      <audio id="a-ext" data-start="63.28" data-duration="21.89" data-track-index="44" src="assets/audio/05-it-works-on-other-people-s-shops.mp3" data-volume="1"></audio>
+      <audio id="a-pipeline" data-start="84.92" data-duration="25.39" data-track-index="45" src="assets/audio/06-how-it-works.mp3" data-volume="1"></audio>
+      <audio id="a-numbers" data-start="110.06" data-duration="54.05" data-track-index="46" src="assets/audio/07-the-numbers.mp3" data-volume="1"></audio>
+      <audio id="a-endcard" data-start="163.86" data-duration="7.31" data-track-index="47" src="assets/audio/08-the-limits-then-the-card.mp3" data-volume="1"></audio>
+      <audio id="m-open" data-start="0" data-duration="17.9" data-track-index="30" src="assets/score/score.mp3" data-volume="0.46"></audio>
+      <audio id="m-body" data-start="17.9" data-duration="155.17" data-media-start="17.9" data-track-index="31" src="assets/score/score.mp3" data-volume="0.13"></audio>
+      <audio id="s-riser" data-start="13.6" data-duration="3.5" data-track-index="32" src="assets/score/riser.mp3" data-volume="0.5"></audio>
+      <audio id="s-impact" data-start="16.7" data-duration="2.5" data-track-index="33" src="assets/score/impact.mp3" data-volume="0.62"></audio>
+      <audio id="s-wh-0" data-start="1.7" data-duration="1" data-track-index="34" src="assets/score/whoosh.mp3" data-volume="0.4"></audio>
+      <audio id="s-wh-1" data-start="4.2" data-duration="1" data-track-index="35" src="assets/score/whoosh.mp3" data-volume="0.4"></audio>
+      <audio id="s-slam-0" data-start="134.66" data-duration="2.5" data-track-index="50" src="assets/score/impact.mp3" data-volume="0.5"></audio>
+      <audio id="s-slam-1" data-start="149.36" data-duration="2.5" data-track-index="51" src="assets/score/impact.mp3" data-volume="0.5"></audio>
     </div>
     <script>
+      window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo("#v-open-shelf", { scale: 1.06 }, { scale: 1.0, duration: 2.90, ease: "none" }, 0.00);
-      tl.fromTo("#sc-open-pile", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 1.65);
-      tl.fromTo("#v-open-pile", { scale: 1.06 }, { scale: 1.0, duration: 3.70, ease: "none" }, 1.65);
-      tl.fromTo("#beat-eleven-n", { y: 90, opacity: 0, scale: 1.14 }, { y: 0, opacity: 1, scale: 1, duration: 0.62, ease: "expo.out" }, 1.80);
-      tl.fromTo("#beat-eleven-l", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 2.15);
-      tl.fromTo("#sc-open-scroll", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 4.10);
-      tl.fromTo("#v-open-scroll", { scale: 1.06 }, { scale: 1.0, duration: 3.50, ease: "none" }, 4.10);
-      tl.fromTo("#beat-sun-t", { y: 56, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, 4.25);
-      tl.fromTo("#beat-sun-c", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 4.70);
-      tl.fromTo("#sc-turn", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 6.35);
-      tl.fromTo("#v-turn", { scale: 1.06 }, { scale: 1.0, duration: 11.40, ease: "none" }, 6.35);
-      tl.fromTo("#sc-logo", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 16.50);
-      tl.fromTo("#logo-word", { scale: 1.16, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 16.60);
-      tl.fromTo("#logo-tag", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 16.95);
-      tl.fromTo("#sc-pregnant", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 18.75);
-      tl.fromTo("#v-pregnant", { scale: 1.03 }, { scale: 1.0, duration: 14.51, ease: "none" }, 18.75);
-      tl.fromTo("#sc-peel", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 32.01);
-      tl.fromTo("#v-peel", { scale: 1.03 }, { scale: 1.0, duration: 18.11, ease: "none" }, 32.01);
-      tl.fromTo("#sc-refer", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 48.87);
-      tl.fromTo("#v-refer", { scale: 1.03 }, { scale: 1.0, duration: 15.06, ease: "none" }, 48.87);
-      tl.fromTo("#sc-extension", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 62.68);
-      tl.fromTo("#v-extension", { scale: 1.03 }, { scale: 1.0, duration: 22.84, ease: "none" }, 62.68);
-      tl.fromTo("#sc-methods", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 84.27);
-      tl.fromTo("#v-methods", { scale: 1.03 }, { scale: 1.0, duration: 26.34, ease: "none" }, 84.27);
-      tl.fromTo("#sc-evalpage", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 109.36);
-      tl.fromTo("#v-evalpage", { scale: 1.03 }, { scale: 1.0, duration: 55.00, ease: "none" }, 109.36);
-      tl.fromTo("#sc-endcard", { opacity: 0 }, { opacity: 1, duration: 0.65, ease: "power1.inOut" }, 163.11);
-      tl.fromTo("#end-word", { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 163.46);
-      tl.fromTo("#end-tag", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 163.71);
-      tl.fromTo("#end-apis", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 163.96);
-      tl.fromTo("#end-url", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 164.16);
-      tl.fromTo("#end-small", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 164.41);
-      tl.to("#sc-endcard", { opacity: 0, duration: 0.8, ease: "power2.in" }, 171.67);
-      tl.fromTo("#slam-0", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power2.out" }, 134.16);
-      tl.fromTo("#slam-big-0", { scale: 1.22, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.46, ease: "expo.out" }, 134.22);
-      tl.fromTo("#slam-small-0", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 134.50);
-      tl.fromTo("#slam-foot-0", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.out" }, 134.78);
-      tl.to("#slam-0", { opacity: 0, duration: 0.45, ease: "power2.in" }, 140.11);
-      tl.fromTo("#slam-1", { opacity: 0 }, { opacity: 1, duration: 0.26, ease: "power2.out" }, 148.86);
-      tl.fromTo("#slam-big-1", { scale: 1.22, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.46, ease: "expo.out" }, 148.92);
-      tl.fromTo("#slam-small-1", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 149.20);
-      tl.fromTo("#slam-foot-1", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.out" }, 149.48);
-      tl.to("#slam-1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 155.41);
-      tl.fromTo("#cue-0", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 6.55);
-      tl.fromTo("#cue-1", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 9.27);
-      tl.fromTo("#cue-2", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 11.67);
-      tl.fromTo("#cue-3", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 13.99);
-      tl.fromTo("#cue-4", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 18.95);
-      tl.fromTo("#cue-5", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 20.87);
-      tl.fromTo("#cue-6", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 22.87);
-      tl.fromTo("#cue-7", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 25.91);
-      tl.fromTo("#cue-8", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 29.19);
-      tl.fromTo("#cue-9", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 32.21);
-      tl.fromTo("#cue-10", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 34.93);
-      tl.fromTo("#cue-11", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 37.25);
-      tl.fromTo("#cue-12", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 39.09);
-      tl.fromTo("#cue-13", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 40.85);
-      tl.fromTo("#cue-14", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 44.05);
-      tl.fromTo("#cue-15", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 46.13);
-      tl.fromTo("#cue-16", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 49.07);
-      tl.fromTo("#cue-17", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 52.43);
-      tl.fromTo("#cue-18", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 55.15);
-      tl.fromTo("#cue-19", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 58.43);
-      tl.fromTo("#cue-20", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 59.79);
-      tl.fromTo("#cue-21", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 62.88);
-      tl.fromTo("#cue-22", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 64.32);
-      tl.fromTo("#cue-23", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 67.12);
-      tl.fromTo("#cue-24", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 71.6);
-      tl.fromTo("#cue-25", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 73.28);
-      tl.fromTo("#cue-26", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 75.92);
-      tl.fromTo("#cue-27", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 78.56);
-      tl.fromTo("#cue-28", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 81.44);
-      tl.fromTo("#cue-29", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 84.47);
-      tl.fromTo("#cue-30", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 87.11);
-      tl.fromTo("#cue-31", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 89.99);
-      tl.fromTo("#cue-32", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 92.55);
-      tl.fromTo("#cue-33", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 96.63);
-      tl.fromTo("#cue-34", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 99.67);
-      tl.fromTo("#cue-35", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 101.67);
-      tl.fromTo("#cue-36", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 104.71);
-      tl.fromTo("#cue-37", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 107.43);
-      tl.fromTo("#cue-38", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 109.56);
-      tl.fromTo("#cue-39", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 112.12);
-      tl.fromTo("#cue-40", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 114.76);
-      tl.fromTo("#cue-41", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 117.16);
-      tl.fromTo("#cue-42", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 119.48);
-      tl.fromTo("#cue-43", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 123.56);
-      tl.fromTo("#cue-44", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 125.16);
-      tl.fromTo("#cue-45", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 127.56);
-      tl.fromTo("#cue-46", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 130.36);
-      tl.fromTo("#cue-47", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 131.64);
-      tl.fromTo("#cue-48", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 134.2);
-      tl.fromTo("#cue-49", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 137.48);
-      tl.fromTo("#cue-50", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 142.04);
-      tl.fromTo("#cue-51", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 143.64);
-      tl.fromTo("#cue-52", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 145.8);
-      tl.fromTo("#cue-53", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 149);
-      tl.fromTo("#cue-54", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 153.24);
-      tl.fromTo("#cue-55", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 156.44);
-      tl.fromTo("#cue-56", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 159);
-      tl.fromTo("#cue-57", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 160.92);
-      tl.fromTo("#cue-58", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 163.31);
-      tl.fromTo("#cue-59", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 165.23);
-      tl.fromTo("#cue-60", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 167.31);
+      tl.fromTo("#v-open-shelf", { scale: 1.06 }, { scale: 1.0, duration: 2.90, ease: "none" }, 0);
+      tl.fromTo("#v-open-pile", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 1.7);
+      tl.fromTo("#v-open-pile", { scale: 1.06 }, { scale: 1.0, duration: 3.70, ease: "none" }, 1.7);
+      tl.fromTo("#beat-eleven-n", { y: 90, opacity: 0, scale: 1.14 }, { y: 0, opacity: 1, scale: 1, duration: 0.62, ease: "expo.out" }, 1.85);
+      tl.fromTo("#beat-eleven-l", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 2.20);
+      tl.fromTo("#v-open-scroll", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 4.2);
+      tl.fromTo("#v-open-scroll", { scale: 1.06 }, { scale: 1.0, duration: 3.50, ease: "none" }, 4.2);
+      tl.fromTo("#beat-sun-t", { y: 56, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, 4.35);
+      tl.fromTo("#beat-sun-c", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 4.80);
+      tl.fromTo("#v-turn", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 6.5);
+      tl.fromTo("#v-turn", { scale: 1.06 }, { scale: 1.0, duration: 11.40, ease: "none" }, 6.5);
+      tl.fromTo("#logo-card", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 16.7);
+      tl.fromTo("#logo-word", { scale: 1.16, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 16.80);
+      tl.fromTo("#logo-tag", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 17.15);
+      tl.fromTo("#mg-verdict", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 19);
+      tl.fromTo("#mg-verdict .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 19.10);
+      tl.fromTo("#mg-verdict .c1", { y: 18, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 19.50);
+      tl.fromTo("#mg-verdict .p1", { y: 40, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.65, ease: "expo.out" }, 20.80);
+      tl.fromTo("#mg-verdict .s1", { scale: 1.45, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.2)" }, 23.10);
+      tl.fromTo("#mg-verdict .p1", { "--rail": 0 }, { "--rail": 1, duration: 0.4, ease: "power2.out" }, 23.10);
+      tl.fromTo("#mg-verdict .q1", { y: 30, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" }, 24.40);
+      tl.fromTo("#mg-verdict .w1", { y: 34, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 26.60);
+      tl.fromTo("#mg-verdict .u1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 30.10);
+      tl.fromTo("#mg-scan", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 32.31);
+      tl.fromTo("#mg-scan .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 32.41);
+      tl.fromTo("#mg-scan .fsw0", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 32.76);
+      tl.fromTo("#mg-scan .fsw1", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 32.85);
+      tl.fromTo("#mg-scan .fsw2", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 32.94);
+      tl.fromTo("#mg-scan .fsw3", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 33.03);
+      tl.fromTo("#mg-scan .fsw4", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 33.12);
+      tl.fromTo("#mg-scan .fsw5", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)" }, 33.21);
+      tl.fromTo("#mg-scan .flabel", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 33.61);
+      tl.fromTo("#mg-scan .vr0", { y: 0, x: -40, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 35.21);
+      tl.fromTo("#mg-scan .vr1", { y: 0, x: -40, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 36.11);
+      tl.to("#mg-scan .f1", { opacity: 0, duration: 0.4, ease: "power2.in" }, 38.81);
+      tl.to("#mg-scan .r1", { opacity: 0, duration: 0.4, ease: "power2.in" }, 38.81);
+      tl.fromTo("#mg-scan .sc1", { y: 30, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 39.31);
+      tl.fromTo("#mg-scan .sr0", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 39.61);
+      tl.fromTo("#mg-scan .sb0", { scaleX: 0 }, { scaleX: 0.4150, duration: 0.7, ease: "power3.out" }, 39.71);
+      tl.fromTo("#mg-scan .sr1", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 39.71);
+      tl.fromTo("#mg-scan .sb1", { scaleX: 0 }, { scaleX: 0.6240, duration: 0.7, ease: "power3.out" }, 39.81);
+      tl.fromTo("#mg-scan .sr2", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 39.81);
+      tl.fromTo("#mg-scan .sb2", { scaleX: 0 }, { scaleX: 0.6630, duration: 0.7, ease: "power3.out" }, 39.91);
+      tl.fromTo("#mg-scan .sr3", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 39.91);
+      tl.fromTo("#mg-scan .sb3", { scaleX: 0 }, { scaleX: 0.7660, duration: 0.7, ease: "power3.out" }, 40.01);
+      tl.fromTo("#mg-scan .sr4", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 40.01);
+      tl.fromTo("#mg-scan .sb4", { scaleX: 0 }, { scaleX: 0.8590, duration: 0.7, ease: "power3.out" }, 40.11);
+      tl.fromTo("#mg-scan .sr5", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 40.11);
+      tl.fromTo("#mg-scan .sb5", { scaleX: 0 }, { scaleX: 0.8800, duration: 0.7, ease: "power3.out" }, 40.21);
+      tl.fromTo("#mg-scan .sr6", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 40.21);
+      tl.fromTo("#mg-scan .sb6", { scaleX: 0 }, { scaleX: 0.9510, duration: 0.7, ease: "power3.out" }, 40.31);
+      tl.fromTo("#mg-scan .shead", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 41.11);
+      tl.to("#mg-scan .sc1", { opacity: 0, duration: 0.4, ease: "power2.in" }, 43.51);
+      tl.fromTo("#mg-scan .g1", { y: 30, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 43.41);
+      tl.fromTo("#mg-scan .gui", { scale: 1.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.2)" }, 43.71);
+      tl.fromTo("#mg-scan .graw", { scale: 1.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.2)" }, 44.21);
+      tl.fromTo("#mg-scan .gnote", { y: 18, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 46.91);
+      tl.fromTo("#mg-refer", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 49.22);
+      tl.fromTo("#mg-refer .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 49.32);
+      tl.fromTo("#mg-refer .t0", { y: 18, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 49.82);
+      tl.fromTo("#mg-refer .t1", { y: 18, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 50.52);
+      tl.fromTo("#mg-refer .hc0", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.42);
+      tl.fromTo("#mg-refer .hc1", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.70);
+      tl.fromTo("#mg-refer .hc2", { y: 44, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 52.98);
+      tl.fromTo("#mg-refer .rf1", { scale: 1.18, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(2.2)" }, 55.12);
+      tl.to("#mg-refer .hc0", { opacity: 0.3, scale: 0.97, duration: 0.5, ease: "power2.out" }, 56.82);
+      tl.to("#mg-refer .hc1", { opacity: 0.3, scale: 0.97, duration: 0.5, ease: "power2.out" }, 56.94);
+      tl.to("#mg-refer .hc2", { opacity: 0.3, scale: 0.97, duration: 0.5, ease: "power2.out" }, 57.06);
+      tl.fromTo("#mg-refer .hc0 .htag", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 57.02);
+      tl.fromTo("#mg-refer .hc1 .htag", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 57.14);
+      tl.fromTo("#mg-refer .hc2 .htag", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 57.26);
+      tl.fromTo("#mg-refer .u1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 59.12);
+      tl.fromTo("#mg-ext", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 63.08);
+      tl.fromTo("#mg-ext .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 64.78);
+      tl.fromTo("#mg-ext .sh1", { y: 40, x: 0, scale: 0.97, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.7, ease: "expo.out" }, 65.18);
+      tl.fromTo("#ext-pin", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.2)" }, 68.08);
+      tl.to("#ext-pin", { scale: 0.86, duration: 0.12, ease: "power2.in", yoyo: true, repeat: 1 }, 70.18);
+      tl.fromTo("#mg-ext .cb0", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 70.78);
+      tl.fromTo("#mg-ext .cb1", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 71.08);
+      tl.fromTo("#mg-ext .cb2", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 71.38);
+      tl.fromTo("#mg-ext .cb3", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 71.68);
+      tl.fromTo("#mg-ext .pr1", { y: 34, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" }, 74.68);
+      tl.fromTo("#mg-ext .code", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 75.18);
+      tl.fromTo("#mg-ext .pc0", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: "back.out(2.2)" }, 78.08);
+      tl.fromTo("#mg-ext .pc1", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: "back.out(2.2)" }, 78.50);
+      tl.fromTo("#mg-ext .pc2", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: "back.out(2.2)" }, 78.92);
+      tl.fromTo("#mg-ext .pc3", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: "back.out(2.2)" }, 79.34);
+      tl.fromTo("#mg-ext .u1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 81.38);
+      tl.fromTo("#mg-pipeline", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 84.72);
+      tl.fromTo("#mg-pipeline .k1", { y: 14, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 84.82);
+      tl.fromTo("#mg-pipeline .ap0", { y: 0, x: -50, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 86.32);
+      tl.fromTo("#mg-pipeline .ap1", { y: 0, x: 50, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 86.62);
+      tl.fromTo("#mg-pipeline .ad0", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.52);
+      tl.fromTo("#mg-pipeline .ad1", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.64);
+      tl.fromTo("#mg-pipeline .ad2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.76);
+      tl.fromTo("#mg-pipeline .ad3", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 87.88);
+      tl.fromTo("#mg-pipeline .ad4", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 88.00);
+      tl.fromTo("#mg-pipeline .ad5", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 88.12);
+      tl.fromTo("#mg-pipeline .ad6", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 88.24);
+      tl.fromTo("#mg-pipeline .rs0", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.32);
+      tl.fromTo("#mg-pipeline .rs1", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.42);
+      tl.fromTo("#mg-pipeline .rs2", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.52);
+      tl.fromTo("#mg-pipeline .rs3", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.62);
+      tl.fromTo("#mg-pipeline .rs4", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.72);
+      tl.fromTo("#mg-pipeline .rs5", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 89.82);
+      tl.fromTo("#mg-pipeline .un1", { y: 20, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 91.52);
+      tl.set("#unit-n", { textContent: 0 }, 91.72);
+      tl.set("#unit-n", { textContent: 3 }, 91.77);
+      tl.set("#unit-n", { textContent: 7 }, 91.82);
+      tl.set("#unit-n", { textContent: 9 }, 91.87);
+      tl.set("#unit-n", { textContent: 12 }, 91.92);
+      tl.set("#unit-n", { textContent: 14 }, 91.97);
+      tl.set("#unit-n", { textContent: 15 }, 92.02);
+      tl.set("#unit-n", { textContent: 17 }, 92.07);
+      tl.set("#unit-n", { textContent: 18 }, 92.12);
+      tl.set("#unit-n", { textContent: 19 }, 92.17);
+      tl.set("#unit-n", { textContent: 20 }, 92.22);
+      tl.set("#unit-n", { textContent: 21 }, 92.27);
+      tl.set("#unit-n", { textContent: 21 }, 92.32);
+      tl.set("#unit-n", { textContent: 22 }, 92.37);
+      tl.set("#unit-n", { textContent: 22 }, 92.42);
+      tl.set("#unit-n", { textContent: 22 }, 92.47);
+      tl.set("#unit-n", { textContent: 22 }, 92.52);
+      tl.set("#unit-n", { textContent: 22 }, 92.57);
+      tl.set("#unit-n", { textContent: 22 }, 92.62);
+      tl.to("#mg-pipeline .a1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 94.32);
+      tl.to("#mg-pipeline .un1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 94.32);
+      tl.fromTo("#mg-pipeline .fb0", { y: 34, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 94.82);
+      tl.fromTo("#mg-pipeline .fa0", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 95.62);
+      tl.fromTo("#mg-pipeline .fnever", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.2)" }, 97.42);
+      tl.fromTo("#mg-pipeline .fb1", { y: 34, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 99.02);
+      tl.fromTo("#mg-pipeline .fa1", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 101.32);
+      tl.fromTo("#mg-pipeline .fb2", { y: 34, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 101.82);
+      tl.fromTo("#mg-pipeline .u1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 104.52);
+      tl.to("#mg-pipeline .fb1", { scale: 1.05, duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1 }, 104.72);
+      tl.fromTo("#mg-numbers", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 109.86);
+      tl.fromTo("#mg-numbers .k1", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 109.96);
+      tl.fromTo("#mg-numbers .s20", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 113.06);
+      tl.fromTo("#mg-numbers .s21", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 114.16);
+      tl.fromTo("#mg-numbers .s22", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 115.26);
+      tl.fromTo("#mg-numbers .s23", { y: 0, x: -34, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 116.36);
+      tl.fromTo("#mg-numbers .ru1", { y: 22, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 119.96);
+      tl.set("#runs-n", { textContent: 0 }, 120.16);
+      tl.set("#runs-n", { textContent: 19 }, 120.23);
+      tl.set("#runs-n", { textContent: 36 }, 120.30);
+      tl.set("#runs-n", { textContent: 51 }, 120.38);
+      tl.set("#runs-n", { textContent: 64 }, 120.45);
+      tl.set("#runs-n", { textContent: 75 }, 120.52);
+      tl.set("#runs-n", { textContent: 84 }, 120.59);
+      tl.set("#runs-n", { textContent: 93 }, 120.67);
+      tl.set("#runs-n", { textContent: 99 }, 120.74);
+      tl.set("#runs-n", { textContent: 105 }, 120.81);
+      tl.set("#runs-n", { textContent: 109 }, 120.88);
+      tl.set("#runs-n", { textContent: 113 }, 120.95);
+      tl.set("#runs-n", { textContent: 116 }, 121.03);
+      tl.set("#runs-n", { textContent: 117 }, 121.10);
+      tl.set("#runs-n", { textContent: 119 }, 121.17);
+      tl.set("#runs-n", { textContent: 119 }, 121.24);
+      tl.set("#runs-n", { textContent: 120 }, 121.32);
+      tl.set("#runs-n", { textContent: 120 }, 121.39);
+      tl.set("#runs-n", { textContent: 120 }, 121.46);
+      tl.to("#mg-numbers .sa1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 121.96);
+      tl.to("#mg-numbers .ru1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 121.96);
+      tl.fromTo("#mg-numbers .m0", { y: 30, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 122.46);
+      tl.fromTo("#mg-numbers .mb6", { scaleX: 0 }, { scaleX: 0.0080, duration: 0.6, ease: "power3.out" }, 123.46);
+      tl.fromTo("#mg-numbers .mb7", { scaleX: 0 }, { scaleX: 0.0080, duration: 0.6, ease: "power3.out" }, 124.16);
+      tl.fromTo("#mg-numbers .m0note", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 126.66);
+      tl.to("#mg-numbers .m0", { opacity: 0, duration: 0.5, ease: "power2.in" }, 131.66);
+      tl.to("#mg-numbers .k1", { opacity: 0, duration: 0.5, ease: "power2.in" }, 131.66);
+      tl.fromTo("#mg-numbers .m1", { y: 30, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 132.26);
+      tl.fromTo("#mg-numbers .mb0", { scaleX: 0 }, { scaleX: 0.0000, duration: 0.6, ease: "power3.out" }, 133.26);
+      tl.fromTo("#mg-numbers .mb1", { scaleX: 0 }, { scaleX: 0.2250, duration: 1.1, ease: "power3.out" }, 135.46);
+      tl.to("#mg-numbers .m1", { opacity: 0, duration: 0.5, ease: "power2.in" }, 143.46);
+      tl.fromTo("#mg-numbers .m2", { y: 30, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 144.06);
+      tl.fromTo("#mg-numbers .mb3", { scaleX: 0 }, { scaleX: 1.0000, duration: 1.2, ease: "power3.out" }, 149.66);
+      tl.fromTo("#mg-numbers .mb2", { scaleX: 0 }, { scaleX: 0.1110, duration: 0.8, ease: "power3.out" }, 151.06);
+      tl.to("#mg-numbers .m2", { opacity: 0, duration: 0.5, ease: "power2.in" }, 153.26);
+      tl.fromTo("#mg-numbers .m3", { y: 30, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 153.86);
+      tl.fromTo("#mg-numbers .mb4", { scaleX: 0 }, { scaleX: 0.3500, duration: 0.9, ease: "power3.out" }, 157.26);
+      tl.fromTo("#mg-numbers .mb5", { scaleX: 0 }, { scaleX: 0.3500, duration: 0.9, ease: "power3.out" }, 157.56);
+      tl.fromTo("#mg-numbers .mnote", { y: 16, x: 0, scale: 1, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 159.66);
+      tl.to("#mg-numbers .m3", { opacity: 0, duration: 0.45, ease: "power2.in" }, 161.26);
+      tl.fromTo("#mg-numbers .u1", { y: 26, x: 0, scale: 1.06, opacity: 0 }, { y: 0, x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 161.56);
+      tl.fromTo("#end-card", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 163.66);
+      tl.fromTo("#end-word", { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 163.81);
+      tl.fromTo("#end-tag", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 164.16);
+      tl.fromTo("#end-apis", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 164.51);
+      tl.fromTo("#end-url", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 164.81);
+      tl.fromTo("#end-small", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 165.16);
+      tl.to("#end-card", { opacity: 0, duration: 0.7, ease: "power2.in" }, 172.37);
+      tl.fromTo("#slam-0", { opacity: 0 }, { opacity: 1, duration: 0.28, ease: "power2.out" }, 134.66);
+      tl.fromTo("#slam-big-0", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 134.76);
+      tl.fromTo("#slam-small-0", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 135.11);
+      tl.fromTo("#slam-foot-0", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 135.46);
+      tl.to("#slam-0", { opacity: 0, duration: 0.45, ease: "power2.in" }, 140.61);
+      tl.fromTo("#slam-1", { opacity: 0 }, { opacity: 1, duration: 0.28, ease: "power2.out" }, 149.36);
+      tl.fromTo("#slam-big-1", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 149.46);
+      tl.fromTo("#slam-small-1", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 149.81);
+      tl.fromTo("#slam-foot-1", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 150.16);
+      tl.to("#slam-1", { opacity: 0, duration: 0.45, ease: "power2.in" }, 155.91);
+      tl.fromTo("#cue-0", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 6.7);
+      tl.fromTo("#cue-1", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 9.42);
+      tl.fromTo("#cue-2", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 11.82);
+      tl.fromTo("#cue-3", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 14.14);
+      tl.fromTo("#cue-4", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 19.2);
+      tl.fromTo("#cue-5", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 21.12);
+      tl.fromTo("#cue-6", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 23.12);
+      tl.fromTo("#cue-7", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 26.16);
+      tl.fromTo("#cue-8", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 29.44);
+      tl.fromTo("#cue-9", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 32.51);
+      tl.fromTo("#cue-10", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 35.23);
+      tl.fromTo("#cue-11", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 37.55);
+      tl.fromTo("#cue-12", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 39.39);
+      tl.fromTo("#cue-13", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 41.15);
+      tl.fromTo("#cue-14", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 44.35);
+      tl.fromTo("#cue-15", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 46.43);
+      tl.fromTo("#cue-16", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 49.42);
+      tl.fromTo("#cue-17", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 52.78);
+      tl.fromTo("#cue-18", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 55.5);
+      tl.fromTo("#cue-19", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 58.78);
+      tl.fromTo("#cue-20", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 60.14);
+      tl.fromTo("#cue-21", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 63.28);
+      tl.fromTo("#cue-22", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 64.72);
+      tl.fromTo("#cue-23", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 67.52);
+      tl.fromTo("#cue-24", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 72);
+      tl.fromTo("#cue-25", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 73.68);
+      tl.fromTo("#cue-26", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 76.32);
+      tl.fromTo("#cue-27", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 78.96);
+      tl.fromTo("#cue-28", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 81.84);
+      tl.fromTo("#cue-29", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 84.92);
+      tl.fromTo("#cue-30", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 87.56);
+      tl.fromTo("#cue-31", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 90.44);
+      tl.fromTo("#cue-32", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 93);
+      tl.fromTo("#cue-33", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 97.08);
+      tl.fromTo("#cue-34", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 100.12);
+      tl.fromTo("#cue-35", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 102.12);
+      tl.fromTo("#cue-36", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 105.16);
+      tl.fromTo("#cue-37", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 107.88);
+      tl.fromTo("#cue-38", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 110.06);
+      tl.fromTo("#cue-39", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 112.62);
+      tl.fromTo("#cue-40", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 115.26);
+      tl.fromTo("#cue-41", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 117.66);
+      tl.fromTo("#cue-42", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 119.98);
+      tl.fromTo("#cue-43", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 124.06);
+      tl.fromTo("#cue-44", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 125.66);
+      tl.fromTo("#cue-45", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 128.06);
+      tl.fromTo("#cue-46", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 130.86);
+      tl.fromTo("#cue-47", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 132.14);
+      tl.fromTo("#cue-48", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 134.7);
+      tl.fromTo("#cue-49", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 137.98);
+      tl.fromTo("#cue-50", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 142.54);
+      tl.fromTo("#cue-51", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 144.14);
+      tl.fromTo("#cue-52", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 146.3);
+      tl.fromTo("#cue-53", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 149.5);
+      tl.fromTo("#cue-54", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 153.74);
+      tl.fromTo("#cue-55", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 156.94);
+      tl.fromTo("#cue-56", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 159.5);
+      tl.fromTo("#cue-57", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 161.42);
+      tl.fromTo("#cue-58", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 163.86);
+      tl.fromTo("#cue-59", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 165.78);
+      tl.fromTo("#cue-60", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power1.out" }, 167.86);
       window.__timelines["main"] = tl;
       tl.seek(0);
     </script>
