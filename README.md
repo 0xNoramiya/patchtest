@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PatchTest
 
-## Getting Started
+**A patch test for your cart.** An AI skincare advisor for the moment before
+checkout that knows when *not* to sell.
 
-First, run the development server:
+A shopper answers a 30 second intake and picks a scan. The YouCam AI Skin
+Analysis and AI Fitzpatrick Skin Type APIs measure the skin. A language model
+proposes a routine. Then a deterministic, cited rules engine gives every item in
+the cart one of four verdicts:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Verdict | Meaning |
+|---|---|
+| **Not for you right now** | Unsafe given what the shopper told us |
+| **Adjust** | Fine, with a change: lower strength, alternate nights, add sunscreen |
+| **You don't need this** | The scan or the declared age shows nothing for it to do |
+| **Worth showing a professional** | Reported signs that shopping should not try to solve |
+
+**The LLM proposes. The rules decide.** The model never sets a verdict, and the
+engine evaluates what the shopper put in their cart as well as what the model
+suggested, so an item that gets dropped is explained rather than silently removed.
+
+---
+
+## For judges, in 60 seconds
+
+**Live app:** <!-- LIVE_URL -->
+
+**Start here.** The landing page has five one-click presets. Each replays a scan
+that really was run through both YouCam APIs, paired with a declared intake:
+
+| Preset | What it shows |
+|---|---|
+| A 12 year old with a TikTok routine | Three strong actives, all refused on declared age |
+| Eight weeks pregnant, breaking out | Adapalene blocked, azelaic acid offered instead |
+| Dark patches and a 30% peel | Fitzpatrick V from the scan: peel blocked, retinol adjusted, tinted SPF added |
+| Painful lumps that leave marks | A referral, and the strong actives held back |
+| On isotretinoin, wants wax strips | Two blocks straight off the FDA label |
+
+On any result, open **"What a plain AI advisor would have sold you"** for the
+side-by-side, and the **scan panel** to see `raw_score` against `ui_score`.
+
+**Then read** [`/methods`](#) for every rule with its source and quote, and
+[`/eval`](#) for the honest numbers.
+
+### Where the YouCam APIs are used
+
+| What | File |
+|---|---|
+| File upload, pre-signed PUT, task create and poll, for both APIs | [`lib/youcam/client.ts`](lib/youcam/client.ts) |
+| Parsing the real response shape, which is not the documented one | [`lib/youcam/parse.ts`](lib/youcam/parse.ts) |
+| Unit ledger and the circuit breaker | [`lib/ledger.ts`](lib/ledger.ts) |
+| One JPEG that satisfies both APIs at once | [`lib/image.ts`](lib/image.ts) |
+| The scan runner used by the CLI | [`lib/scan-runner.ts`](lib/scan-runner.ts) |
+| Ten documented differences between the docs and reality | [`docs/API_NOTES.md`](docs/API_NOTES.md) |
+
+### Where the guardrail lives
+
+| What | File |
+|---|---|
+| All 24 rules, as data, with sources and quotes | [`rules/rules.yaml`](rules/rules.yaml) |
+| The engine. A pure function, no model in the loop | [`lib/rules/engine.ts`](lib/rules/engine.ts) |
+| Thresholds, every one marked heuristic | [`rules/thresholds.json`](rules/thresholds.json) |
+| 96 tests, a positive and a negative case per rule | [`lib/rules/engine.test.ts`](lib/rules/engine.test.ts) |
+| The agent loop and the fair baseline | [`lib/agent/run.ts`](lib/agent/run.ts) |
+| Claim linter, build-time and runtime | [`lib/claims.ts`](lib/claims.ts) |
+
+---
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[Shopper: intake + cart] --> B[Consent]
+    B --> C[Photo]
+    C --> D[Normalize to one JPEG<br/>lib/image.ts]
+    D --> E{Circuit breaker<br/>lib/ledger.ts}
+    E -->|under budget| F[YouCam File API<br/>+ pre-signed PUT]
+    E -->|over cap| R[(Recorded scan<br/>fixtures/scans)]
+    F --> G[AI Skin Analysis SD<br/>8 concerns, 12 units]
+    F --> H[AI Fitzpatrick<br/>10 units]
+    G --> I[parse.ts<br/>raw_score only]
+    H --> I
+    R --> I
+    I --> J[LLM proposes a cart<br/>lib/agent/run.ts]
+    J --> K[Rules engine<br/>lib/rules/engine.ts]
+    K -->|violations| J
+    K --> L[Final verdicts<br/>BLOCK / ADJUST / UNNECESSARY / REFER]
+    L --> M[Results page]
+    J -.no guardrail.-> N[Baseline arm<br/>for the eval and the toggle]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The revision loop runs at most twice. The engine always has the last word.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Running it
 
-## Learn More
+```bash
+pnpm install
+cp .env.example .env.local     # then add your keys
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+The app runs in `replay` mode by default and needs **no API keys at all** to
+serve every preset, because the scans and the agent responses are recorded in
+`fixtures/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Environment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Default | What it does |
+|---|---|---|
+| `YOUCAM_API_KEY` | none | Server-side only. Needed only for live scans. |
+| `ANTHROPIC_API_KEY` | none | Needed only to generate an agent response that is not already recorded. |
+| `DEMO_MODE` | `replay` | `replay` serves recorded scans. `live` calls YouCam. |
+| `UNIT_BUDGET_TOTAL` | `1000` | Total units available. |
+| `UNIT_HARD_STOP` | `900` | The breaker refuses live calls past this. |
+| `LIVE_SCAN_DAILY_CAP` | `10` | Live scans per UTC day. |
+| `HIGH_ACID_PCT` | `20` | Leave-on acid percent treated as peel strength by R-FITZ-01. |
+| `DATA_DIR` | `./data` | Where the ledger lives. `/data` on the deployed volume. |
 
-## Deploy on Vercel
+### Commands
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Run locally |
+| `pnpm test` | 96 tests: the rules engine and the claim linter |
+| `pnpm units` | Print units spent, straight from the ledger |
+| `pnpm scan <image>` | Run one real scan. Costs 22 units. `--all` for the bank, `--force` to rescan |
+| `pnpm calibrate` | Print the score distribution across recorded scans |
+| `pnpm eval` | Score both arms over 40 scenarios. `--live` to record new responses |
+| `pnpm record-presets` | Record agent responses for the demo presets |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Units
+
+One scan is **22 units**: 12 for AI Skin Analysis at the SD tier with 8 concerns,
+10 for AI Fitzpatrick. Units are charged only when a task succeeds, so a rejected
+photo is free.
+
+Every live call is appended to `data/ledger.json` with the endpoint, the units,
+the status, the task id and a SHA-256 of the normalized image. **The image itself
+is never stored.** A circuit breaker refuses live calls past `UNIT_HARD_STOP` or
+`LIVE_SCAN_DAILY_CAP` and falls back to a recorded scan with a message saying so.
+
+Total spent building this: **198 units**, which is 9 scans. `pnpm units` prints
+the live figure.
+
+---
+
+## Limitations
+
+Stated at greater length on the Methods page in the app.
+
+- **Fitzpatrick from a photo is a proxy.** The real scale is about how skin
+  responds to sun. The shopper can override it and their answer wins.
+- **Scan scores are not clinical grades,** and the seven scales are not comparable
+  to each other. On our bank, acne only ever used the top fifth of its range.
+- **The gold labels come from one clinician** and have no external validation.
+- **Thresholds were calibrated on nine AI generated faces.** A generated face is
+  not a sample of real skin.
+- **Coverage is finite.** 24 rules. A missing verdict is not a safety claim.
+- **English only.**
+- **Not a medical device.** It does not diagnose anything.
+
+Every face in `fixtures/faces/` is AI generated and disclosed as such. No real
+person was scanned, and no minor was scanned: the under-13 preset uses an adult
+synthetic face with a *declared* age.
+
+"Lumen & Leaf" is a fictional store. Every product and price is invented.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).

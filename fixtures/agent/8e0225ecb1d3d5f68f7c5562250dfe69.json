@@ -1,6 +1,6 @@
 {
   "key": "8e0225ecb1d3d5f68f7c5562250dfe69",
-  "recorded_at": "2026-10-30T15:55:51.196Z",
+  "recorded_at": "2026-10-30T16:26:04.709Z",
   "model": "claude-sonnet-5-5",
   "label": "S16-r2",
   "run": 2,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps dry-feeling skin comfortable while the routine settles in."
+        "reason": "A gentle, fragrance-free cleanser that won't strip skin that already looks dry."
       },
       {
         "sku": "LL-111",
-        "reason": "A gentle azelaic acid cream that helps the look of uneven tone without the irritation risk of a strong peel or retinol."
+        "reason": "A gentle 10% azelaic cream to help even the look of dark patches without the irritation of a strong peel."
       },
       {
-        "sku": "LL-115",
-        "reason": "A rich ceramide cream to support a low-moisture, dry-feeling skin barrier."
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to add comfort and support the skin barrier."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF 50 with iron oxides helps shield the look of dark patches from daily sun and visible light."
+        "reason": "A tinted mineral SPF 50 with iron oxides to help keep the look of dark patches from deepening in sun and visible light."
       }
     ],
-    "routine_note": "I've left out the 30% peel and the 1% retinol because strong exfoliation and high-strength actives can cause irritation that leaves deeper skin tones looking darker and more uneven, so start gently, use the azelaic cream at night, and wear sunscreen every morning. Since dark patches on your cheeks are a persistent concern, a dermatologist is the best person to assess them and guide any stronger step."
+    "routine_note": "We left out the 30% peel and the strongest retinol because strong actives can cause irritation that leaves deeper skin tones looking more uneven, so start gently: cleanse, apply azelaic cream, moisturize, and use tinted SPF every morning. Dark patches on the cheeks are best assessed in person, so please see a dermatologist before adding anything stronger."
   }
 }

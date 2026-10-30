@@ -1,6 +1,6 @@
 {
   "key": "e156b0d33d5c2817ef307a85867de97b",
-  "recorded_at": "2026-10-30T16:01:01.429Z",
+  "recorded_at": "2026-10-30T16:33:13.572Z",
   "model": "claude-sonnet-5-5",
   "label": "S38-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-free cleanse that keeps skin feeling comfortable without stripping it."
+        "reason": "A gentle, fragrance-free-style cleanser that cleans oily-feeling skin without stripping it further."
       },
       {
         "sku": "LL-113",
-        "reason": "Niacinamide helps the look of uneven texture and visible redness, and is gentle enough to start with."
+        "reason": "A gentle serum that helps skin look smoother and more even and can help shine look more controlled."
       },
       {
         "sku": "LL-114",
-        "reason": "A light barrier moisturizer to help with the look of low moisture and keep skin feeling smooth."
+        "reason": "A ceramide moisturizer to support the look of a comfortable, hydrated barrier without feeling heavy."
       },
       {
-        "sku": "LL-122",
-        "reason": "A tinted mineral SPF 50 gives daily sun protection and a soft, even-looking finish that can help you feel more comfortable going out."
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection so skin tone and texture look their best over time."
       }
     ],
-    "routine_note": "Cleanse, then apply niacinamide and moisturizer morning and evening, and finish the morning with the tinted SPF. Because how your skin looks is affecting your mood and your willingness to go out, please consider talking with a dermatologist or doctor, since they can offer support that a shop cannot."
+    "routine_note": "Cleanse morning and night, apply the niacinamide then moisturizer, and finish with SPF every morning; give it about 6 to 8 weeks to judge how skin looks. Since how your skin looks is affecting your mood and your willingness to go out, it is worth talking with a dermatologist or your doctor, who can offer support a shop cannot."
   }
 }

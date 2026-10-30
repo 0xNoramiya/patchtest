@@ -1,6 +1,6 @@
 {
   "key": "24fbedec768d4a337b1d2a3a0f97cc3b",
-  "recorded_at": "2026-10-30T16:00:16.829Z",
+  "recorded_at": "2026-10-30T16:32:07.212Z",
   "model": "claude-sonnet-5-5",
   "label": "S35-r1",
   "run": 1,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that cleans without stripping dry, sensitive-looking skin."
+        "reason": "A fragrance-free, active-free cleanser that cleans without stripping already sensitive-looking, dry skin."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to support the skin's comfort and soften the look of dryness."
+        "reason": "A ceramide moisturizer to support the look of a comfortable, well-hydrated skin barrier."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 with zinc oxide is a gentle daily sun protector for fair, easily flushed-looking skin."
+        "reason": "A mineral SPF 50 is a gentle daily shield for fair, easily reddened skin."
       }
     ],
-    "routine_note": "Flushing that lingers, bumps and gritty eyes are best looked at by a dermatologist or eye professional rather than by a stronger product from a shop, so we've kept this to gentle basics and left out exfoliating and retinoid-type actives that could aggravate sensitive skin. Cleanse and moisturize morning and night, then finish the morning with the mineral SPF."
+    "routine_note": "Use the cleanser and moisturizer morning and night, with the mineral SPF last each morning, and skip strong exfoliants, retinoids, peels and scrubs for now, since they can make the look of redness worse. Flushing that lingers, bumps and gritty eyes are best looked at by a dermatologist or eye doctor rather than anything a shop can sell, so we'd suggest booking a visit instead of adding a stronger product."
   }
 }

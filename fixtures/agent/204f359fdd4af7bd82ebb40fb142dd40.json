@@ -1,6 +1,6 @@
 {
   "key": "204f359fdd4af7bd82ebb40fb142dd40",
-  "recorded_at": "2026-10-30T15:58:07.027Z",
+  "recorded_at": "2026-10-30T16:29:03.526Z",
   "model": "claude-sonnet-5-5",
   "label": "S25-r2",
   "run": 2,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that cleans without stripping dry, sensitive-looking skin."
+        "reason": "A fragrance-free, active-free cleanser that is kind to dry, sensitive-looking skin."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to support the skin barrier and add comfort to skin that scans low on moisture."
+        "reason": "A ceramide moisturizer to support a comfortable skin barrier and help dry skin look and feel more hydrated."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF 50 with iron oxides that gently softens the look of redness and protects skin from sun, which can make a flushed look more visible."
+        "reason": "A tinted mineral SPF 50 whose iron oxides soften the look of redness while protecting skin from the sun."
       }
     ],
-    "routine_note": "Because the redness is constant, we'd suggest having a dermatologist look at it before adding more products, and we've left out the vitamin C serum and glycolic toner since strong actives can sting dry, sensitive skin. Use the cleanser and moisturizer morning and night, with the tinted SPF as the last step each morning."
+    "routine_note": "We left out the vitamin C serum and glycolic toner for now because strong acids can sting and make already red, sensitive-looking skin look worse; use the cleanser and moisturizer morning and night, with the SPF last in the morning. Since you say your face is always red, a dermatologist is the best person to look at it, and we would rather you book that visit than add more products."
   }
 }

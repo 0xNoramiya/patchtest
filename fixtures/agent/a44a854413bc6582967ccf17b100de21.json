@@ -1,6 +1,6 @@
 {
   "key": "a44a854413bc6582967ccf17b100de21",
-  "recorded_at": "2026-10-30T15:59:37.311Z",
+  "recorded_at": "2026-10-30T16:31:13.380Z",
   "model": "claude-sonnet-5-5",
   "label": "S32-r1",
   "run": 1,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-106",
-        "reason": "A lower-strength retinol is a gentle way to start a night routine aimed at the look of fine lines."
-      },
-      {
-        "sku": "LL-114",
-        "reason": "A simple ceramide moisturizer helps support a comfortable, hydrated look while skin gets used to retinol."
+        "reason": "A lower-strength retinol is a gentle way to start for the look of fine lines."
       },
       {
         "sku": "LL-121",
-        "reason": "Retinol makes skin more sun-sensitive, so a daily mineral SPF 50 is essential alongside it."
+        "reason": "Retinol can make skin more sun-sensitive, so a daily mineral SPF 50 protects the look of your skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your scan shows low moisture, and a ceramide moisturizer supports a comfortable skin barrier while you start retinol."
       }
     ],
-    "routine_note": "Apply the retinol at night to dry skin, 2 nights a week at first, then add nights slowly as skin stays comfortable, following with the moisturizer. Use the SPF every morning, and pause the retinol if skin feels stinging or very dry."
+    "routine_note": "At night, use a pea-sized amount of retinol on clean, dry skin just 2 nights a week, then add nights slowly as your skin feels comfortable, and follow with moisturizer. Apply sunscreen every morning, and skip exfoliating acids and scrubs while you begin."
   }
 }

@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { globSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { lintClaims, sanitizeClaims } from "./claims";
 import { loadCatalog, loadRules } from "./rules/load";
@@ -21,6 +21,9 @@ describe("the claim linter catches what it should", () => {
     "Worth showing a professional.",
     "A daily wash for skin that looks congested.",
     "Do you get deep, painful bumps or scarring?",
+    "PatchTest is not a medical device and it does not diagnose anything.",
+    "This never diagnoses a condition.",
+    "It is not a cure for anything.",
   ])("allows %s", (text) => {
     expect(lintClaims(text)).toStrictEqual([]);
   });
@@ -59,10 +62,16 @@ describe("every shipped string passes the linter", () => {
     }
   });
 
-  it("passes for every string in the UI source", () => {
-    const files = JSON.parse(readFileSync("eval/ui-strings.json", "utf8")) as string[];
-    for (const text of files) {
-      expect(lintClaims(text), text).toStrictEqual([]);
+  it("passes for every user-facing string in the UI source", () => {
+    // Scans the real components rather than a copied list, so a new string
+    // cannot be added without the linter seeing it.
+    const files = globSync("{app,components}/**/*.tsx");
+    expect(files.length).toBeGreaterThan(5);
+
+    for (const file of files) {
+      const source = readFileSync(file, "utf8");
+      const violations = lintClaims(source);
+      expect(violations, `${file}: ${violations.map((v) => v.phrase).join(", ")}`).toStrictEqual([]);
     }
   });
 });

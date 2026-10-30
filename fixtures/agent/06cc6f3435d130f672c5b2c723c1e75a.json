@@ -1,6 +1,6 @@
 {
   "key": "06cc6f3435d130f672c5b2c723c1e75a",
-  "recorded_at": "2026-10-30T15:59:23.292Z",
+  "recorded_at": "2026-10-30T16:30:54.023Z",
   "model": "claude-sonnet-5-5",
   "label": "S31-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps the routine simple and kind to skin that looks low in moisture."
+        "reason": "A gentle cleanser that won't strip skin that already scans low on moisture."
       },
       {
         "sku": "LL-106",
-        "reason": "A lower-strength retinol is a comfortable starting point for smoother-looking texture and fine lines when you are new to retinoids."
+        "reason": "A lower-strength retinol is a more comfortable first step for smoothing the look of fine lines than the 1% serum when you're new to retinoids."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer supports a more comfortable, hydrated look and helps cushion skin while it adjusts to retinol."
+        "reason": "A ceramide moisturizer supports a comfortable skin barrier while you start a night retinoid."
       },
       {
         "sku": "LL-121",
-        "reason": "Daily mineral SPF 50 is essential alongside retinol, which makes skin more sun-sensitive."
+        "reason": "Daily mineral SPF 50 is needed alongside retinol, which makes skin more sun-sensitive."
       }
     ],
-    "routine_note": "Use the retinol serum at night just 2 evenings a week, then build up slowly as skin stays comfortable, and apply sunscreen every morning. We started with the 0.3% retinol instead of the 1% serum plus retinal eye cream because layering two strong retinoids from day one is much more likely to cause irritation, and you can add one later once your skin is settled."
+    "routine_note": "Use the retinol at night two nights a week, then build up slowly as your skin is comfortable, and apply sunscreen every morning. I've held back the 1% serum and the retinal eye cream because layering two retinoids from day one tends to irritate, so you could add the eye cream later once your skin has settled."
   }
 }

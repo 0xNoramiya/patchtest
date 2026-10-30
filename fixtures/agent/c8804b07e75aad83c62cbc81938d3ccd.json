@@ -1,6 +1,6 @@
 {
   "key": "c8804b07e75aad83c62cbc81938d3ccd",
-  "recorded_at": "2026-10-30T15:59:04.805Z",
+  "recorded_at": "2026-10-30T16:30:25.448Z",
   "model": "claude-sonnet-5-5",
   "label": "S29-r2",
   "run": 2,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-light cleanse that won't strip skin that already looks low on moisture."
-      },
-      {
-        "sku": "LL-116",
-        "reason": "The mattifying gel you asked for, with a light finish that helps keep shine down."
+        "reason": "A gentle, fragrance-free-style cleanser that cleans without stripping, which suits skin that looks low in moisture."
       },
       {
         "sku": "LL-125",
-        "reason": "A lightweight hydrating serum to add moisture under the gel without adding a greasy feel."
+        "reason": "A light hydrating layer under your gel to help skin look and feel more comfortable, since your scan shows lower moisture."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "The mattifying gel you asked for, which gives a shine-free, matte finish with a light 4% niacinamide base."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF with iron oxides for daily protection that blends well on deeper skin tones."
+        "reason": "A tinted mineral SPF 50 with iron oxides for daily protection that blends well on deeper skin tones."
       }
     ],
-    "routine_note": "Morning: cleanse, apply the hydrating serum, then the mattifying gel, and finish with the tinted SPF; at night, repeat without the SPF. Skip scrubs and strong exfoliants for now so skin stays comfortable while it adjusts."
+    "routine_note": "Morning: cleanse, apply the hyaluronic serum, then the mattifying gel, and finish with the tinted SPF. Evening: cleanse, then the serum and gel again, and skip anything stronger for now to keep skin comfortable."
   }
 }

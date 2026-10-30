@@ -1,6 +1,6 @@
 {
   "key": "700a2142ab715394e7f59bfbb7c2f143",
-  "recorded_at": "2026-10-30T15:57:53.693Z",
+  "recorded_at": "2026-10-30T16:28:43.727Z",
   "model": "claude-sonnet-5-5",
   "label": "S24-r2",
   "run": 2,
@@ -8,13 +8,17 @@
     "items": [
       {
         "sku": "LL-114",
-        "reason": "A fragrance-free ceramide moisturizer that helps skin feel comfortable and less tight without a heavy finish, which suits skin that looks both oily and dry."
+        "reason": "A lightweight, fragrance-free ceramide moisturizer to ease the tight, dry feel without feeling heavy on skin that also runs oily."
       },
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser so washing doesn't add to the tight, dry feeling."
+        "reason": "A gentle, active-free cleanser that cleans without stripping, so skin is less likely to feel tight afterward."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF suits sensitive, fair skin and protects the look of your skin through the day."
       }
     ],
-    "routine_note": "Cleanse morning and night, then apply the moisturizer to slightly damp skin while it still feels fresh. If you'd like to add sunscreen for daytime, just ask; otherwise keep it this simple."
+    "routine_note": "Morning: cleanse, moisturize, then apply sunscreen; evening: cleanse and moisturize. If the tightness or sensitivity doesn't ease after a few weeks, a dermatologist can take a closer look."
   }
 }

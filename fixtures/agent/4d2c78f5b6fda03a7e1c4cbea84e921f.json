@@ -1,6 +1,6 @@
 {
   "key": "4d2c78f5b6fda03a7e1c4cbea84e921f",
-  "recorded_at": "2026-10-30T15:59:31.454Z",
+  "recorded_at": "2026-10-30T16:31:01.981Z",
   "model": "claude-sonnet-5-5",
   "label": "S31-r2",
   "run": 2,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle cleanser keeps skin clean without stripping it while it adjusts to a retinol."
+        "reason": "A gentle, non-active cleanser keeps the routine comfortable while skin gets used to a night retinol."
       },
       {
         "sku": "LL-106",
-        "reason": "A 0.3% retinol is a sensible starting point for smoother-looking texture and softer-looking fine lines, since you aren't using any actives yet."
+        "reason": "Retinol 0.3% is a gentler first step than the 1% serum for smoother-looking texture and softer-looking fine lines."
       },
       {
         "sku": "LL-114",
-        "reason": "Your moisture score is low, and a ceramide moisturizer helps skin feel comfortable and supported alongside a retinol."
+        "reason": "A ceramide moisturizer helps with the low moisture score and cushions skin against retinol dryness."
       },
       {
         "sku": "LL-121",
-        "reason": "Daily sunscreen is needed with a retinol, and a mineral fluid is a light option for oily-looking skin."
+        "reason": "Daily mineral SPF 50 is needed because retinol makes skin more sun-sensitive."
       }
     ],
-    "routine_note": "I started you on the 0.3% retinol rather than the 1% serum or both retinol products together, because layering two strong retinoids on skin new to them often brings dryness and irritation, and the eye cream can be added later once your skin is comfortable. Use the retinol at night just 2 evenings a week, build up slowly, follow with moisturizer, and wear sunscreen every morning."
+    "routine_note": "Use the retinol serum at night just 2 nights a week at first, then add nights slowly as skin stays comfortable, and wear the SPF every morning. I left out the 1% serum and the retinal eye cream because using two strong retinol-type products from the start is likely to irritate; the eye cream can be added later once skin is comfortable, in place of, not on top of, the serum around the eyes."
   }
 }

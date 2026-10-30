@@ -1,6 +1,6 @@
 {
   "key": "463a17bd8aa09059ab55c55ca1330005",
-  "recorded_at": "2026-10-30T15:57:38.597Z",
+  "recorded_at": "2026-10-30T16:28:25.843Z",
   "model": "claude-sonnet-5-5",
   "label": "S23-r2",
   "run": 2,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-105",
-        "reason": "This is the adapalene gel you asked for, and it is used at night on skin prone to breakouts."
+        "reason": "The adapalene gel you asked for, to help improve the look of breakouts and uneven texture."
       },
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps the routine simple and avoids stacking extra irritation on top of adapalene."
+        "reason": "A gentle, active-free cleanser that won't add irritation on top of adapalene."
       },
       {
         "sku": "LL-114",
-        "reason": "Your moisture score is on the lower side, and a ceramide moisturizer helps keep skin comfortable while it adjusts to adapalene."
+        "reason": "A light ceramide moisturizer to support comfort and your lower moisture score while the skin adjusts."
       },
       {
         "sku": "LL-121",
-        "reason": "Adapalene makes skin more sun-sensitive, so a mineral SPF 50 each morning is an essential partner."
+        "reason": "Daily mineral SPF 50 is important alongside adapalene, which makes skin more sun-sensitive."
       }
     ],
-    "routine_note": "Start adapalene with a thin layer 2 to 3 nights a week after cleansing, then moisturize, and build up as skin feels comfortable. Use sunscreen every morning and skip other exfoliating acids or scrubs while you start, and if skin becomes very irritated or breakouts are painful or persistent, a dermatologist is the best person to see."
+    "routine_note": "Use a pea-sized amount of the gel on clean, dry skin at night, starting every other night and building up as your skin tolerates it, then moisturize. Use the cleanser morning and night and the SPF every morning, and skip other exfoliating acids or scrubs while you start."
   }
 }

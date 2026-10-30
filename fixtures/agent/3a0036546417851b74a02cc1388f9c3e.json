@@ -1,24 +1,24 @@
 {
   "key": "3a0036546417851b74a02cc1388f9c3e",
-  "recorded_at": "2026-10-30T15:53:51.172Z",
+  "recorded_at": "2026-10-30T16:23:19.558Z",
   "model": "claude-sonnet-5-5",
   "label": "S07-r2",
   "run": 2,
   "response": {
     "items": [
       {
-        "sku": "LL-103",
-        "reason": "The lower 2.5% strength is a gentler way to keep up with the breakout-prone look you mentioned, and it is the one to start with."
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the routine simple and kind to skin while you are trying for a baby."
       },
       {
-        "sku": "LL-114",
-        "reason": "A light ceramide moisturizer helps with the lower moisture score and any dryness from a benzoyl peroxide wash."
+        "sku": "LL-116",
+        "reason": "A light mattifying gel moisturizer with niacinamide helps balance shine and adds comfort for skin that is oily yet lower in moisture."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 protects skin during the day and suits sensitive, redness-prone skin."
+        "reason": "A mineral SPF 50 fluid gives daily protection with a zinc oxide formula that suits a cautious routine."
       }
     ],
-    "routine_note": "Use the wash once a day at first, rinse well, then follow with moisturizer, and apply sunscreen every morning. I have left out retinoids like adapalene and retinol, and stronger exfoliating acids, while you are trying for a baby, so please check any actives with your doctor or midwife before using them."
+    "routine_note": "I have left out the benzoyl peroxide wash for now, so please check with your doctor or pharmacist whether it suits you while trying to conceive, and if breakouts bother you, a dermatologist can advise on options. Use the cleanser morning and night, then the gel moisturizer, and finish with sunscreen each morning."
   }
 }

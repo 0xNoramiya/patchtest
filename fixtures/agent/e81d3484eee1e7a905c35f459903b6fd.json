@@ -1,0 +1,24 @@
+{
+  "key": "e81d3484eee1e7a905c35f459903b6fd",
+  "recorded_at": "2026-10-30T16:07:43.064Z",
+  "model": "claude-sonnet-5-5",
+  "label": "advise-synthetic-09-olive",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanse that won't stress skin already feeling tender along the jaw."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer to support the look of a comfortable, balanced skin barrier."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily mineral sunscreen helps keep the look of marks from darkening, which matters for deeper skin tones."
+      }
+    ],
+    "routine_note": "Big, painful lumps that leave marks are best looked at by a dermatologist, so I've held back the 5% benzoyl peroxide wash and the 30% peel, which are too strong to use on your own here; please book a visit. Until then, keep to a gentle cleanse, moisturizer and sunscreen each morning, and avoid scrubbing or picking."
+  }
+}

@@ -1,24 +1,24 @@
 {
   "key": "d69822b249399f32ced26a3442e03501",
-  "recorded_at": "2026-10-30T15:52:50.463Z",
+  "recorded_at": "2026-10-30T16:21:51.066Z",
   "model": "claude-sonnet-5-5",
   "label": "S03-r2",
   "run": 2,
   "response": {
     "items": [
       {
-        "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser keeps skin feeling clean without stripping or adding irritation."
+        "sku": "LL-103",
+        "reason": "A lower-strength 2.5% benzoyl peroxide wash is a gentler rinse-off choice for breakout-prone, oily-feeling skin, and I'd skip the 5% since stronger isn't needed to start."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer supports a comfortable skin barrier, which suits skin that scans on the dry side."
+        "reason": "A light ceramide moisturizer helps support a skin barrier that can feel dry after washing."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 gives daily sun protection with zinc oxide, a common choice during pregnancy."
+        "reason": "A mineral SPF 50 is a pregnancy-friendly daily sunscreen choice that suits sensitive, blemish-prone skin."
       }
     ],
-    "routine_note": "I've left out the strong benzoyl peroxide wash and other active acne products, because with significant breakouts during pregnancy it's best to check with your OB or a dermatologist about what's right for you before adding any. Use the cleanser morning and night, with moisturizer after and sunscreen every morning."
+    "routine_note": "Use the wash once a day at first, then follow with moisturizer, and wear sunscreen every morning. Because you describe breaking out badly and are pregnant, please check this wash with your prenatal provider or a dermatologist before using it, as they can advise on stronger options than a shop can."
   }
 }

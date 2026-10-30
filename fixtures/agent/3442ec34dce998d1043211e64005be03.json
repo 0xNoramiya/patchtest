@@ -1,6 +1,6 @@
 {
   "key": "3442ec34dce998d1043211e64005be03",
-  "recorded_at": "2026-10-30T15:54:18.835Z",
+  "recorded_at": "2026-10-30T16:23:52.891Z",
   "model": "claude-sonnet-5-5",
   "label": "S09-r2",
   "run": 2,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser keeps skin comfortable while it is still settling after isotretinoin."
+        "reason": "A gentle, active-free cleanser keeps skin feeling clean without stripping or adding irritation."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer supports the skin barrier and helps with the moisture level shown in your scan."
+        "reason": "A ceramide moisturizer supports the look of a comfortable, balanced skin barrier."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 is a gentle daily way to protect the look of marks from getting darker."
+        "reason": "A mineral SPF 50 helps protect the look of uneven tone and marks from fading more slowly in the sun."
       }
     ],
-    "routine_note": "I've left out the 30% peel and other strong exfoliants, scrubs and retinoids because you stopped isotretinoin under six months ago, so please ask your dermatologist when peels would be suitable for you. Meanwhile, cleanse and moisturize morning and night and apply the SPF every morning."
+    "routine_note": "We have left out the 30% peel and other strong exfoliants or retinol products because skin is often more sensitive in the months after isotretinoin, so please check with your dermatologist or prescriber before using any of them. Meanwhile, cleanse and moisturize morning and night and apply sunscreen every morning."
   }
 }

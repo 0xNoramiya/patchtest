@@ -1,6 +1,6 @@
 {
   "key": "8ef071539b99c373612ba1db2071151b",
-  "recorded_at": "2026-10-30T15:52:57.686Z",
+  "recorded_at": "2026-10-30T16:22:04.188Z",
   "model": "claude-sonnet-5-5",
   "label": "S04-r1",
   "run": 1,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that keeps the routine gentle and won't strip dry-looking skin."
+        "reason": "A fragrance-free, active-free cleanser keeps dry-looking skin comfortable without stripping it."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to add comfort and moisture for skin that looks and feels dry."
+        "reason": "A rich ceramide and glycerin cream supports the look of a smoother, more comfortable moisture barrier, which your scan shows is on the low side."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF 50 with iron oxides helps shield the look of dark patches from sun and visible light, and mineral filters are a pregnancy-friendly choice."
+        "reason": "A tinted mineral SPF 50 with iron oxides helps shield the look of dark patches from sun and visible light, and it contains no retinoids or acids."
       }
     ],
-    "routine_note": "Cleanse and moisturize morning and night, then apply the tinted SPF last each morning and reapply when outdoors. I haven't added any brightening or exfoliating actives, because please check with your doctor or a dermatologist about whether to keep using your hydroquinone cream while pregnant, and ask them what, if anything, to add for dark patches."
+    "routine_note": "Because you are pregnant, please ask your obstetric provider or a dermatologist whether your hydroquinone cream is right to continue, and hold off on adding any other actives until they advise. In the meantime, cleanse and moisturize morning and night, and apply the SPF each morning and reapply when outdoors."
   }
 }

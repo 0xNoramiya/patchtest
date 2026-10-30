@@ -1,6 +1,6 @@
 {
   "key": "02ade47a953a6c4ba74abc16f57f6b08",
-  "recorded_at": "2026-10-30T15:47:44.686Z",
+  "recorded_at": "2026-10-30T16:27:55.798Z",
   "model": "claude-sonnet-5-5",
   "label": "S22-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-103",
-        "reason": "The lower 2.5% strength is a gentler way to add a morning wash alongside your night tretinoin."
-      },
-      {
-        "sku": "LL-114",
-        "reason": "A light ceramide moisturizer helps support a skin barrier that can feel dry or tight with a retinoid and a wash, and your scan shows lower moisture."
+        "reason": "The lower 2.5% strength is a gentler way to add a morning wash alongside a nightly retinoid, and it keeps benzoyl peroxide away from your evening routine."
       },
       {
         "sku": "LL-121",
-        "reason": "A daily mineral SPF 50 is important with tretinoin, which makes skin more sun-sensitive."
+        "reason": "Daily broad mineral sunscreen is important with tretinoin, and this fluid is lightweight enough for oily-looking skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports a skin barrier that can feel dry with a wash and tretinoin, and your scan shows lower moisture."
       }
     ],
-    "routine_note": "Use the wash in the morning only, rinse well, then apply moisturizer and sunscreen, and keep your tretinoin at night as your dermatologist directed. Skip extra exfoliating acids, scrubs or other retinoids, and check with your dermatologist if you notice lasting dryness or irritation."
+    "routine_note": "Use the benzoyl peroxide wash in the morning, then moisturizer and sunscreen, and keep applying your tretinoin at night exactly as your dermatologist directed. Start the wash every other day if skin feels tight or irritated, and let your dermatologist know you're adding it."
   }
 }

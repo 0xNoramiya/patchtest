@@ -1,6 +1,6 @@
 {
   "key": "2510e045c47f4c6fea8425be00e3a913",
-  "recorded_at": "2026-10-30T15:58:51.792Z",
+  "recorded_at": "2026-10-30T16:30:03.368Z",
   "model": "claude-sonnet-5-5",
   "label": "S28-r2",
   "run": 2,
@@ -8,21 +8,25 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-free-style cleanse that won't strip skin that already looks dry and dull."
+        "reason": "A gentle, non-stripping cleanser suits skin that looks very low in moisture."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Hyaluronic acid adds hydration that can soften the look of fine lines on dry-looking skin."
       },
       {
         "sku": "LL-106",
-        "reason": "A beginner-friendly retinol strength to help soften the look of fine lines and improve the look of firmness over time."
+        "reason": "A moderate-strength retinol at night is a well-known cosmetic choice for the look of lines and uneven texture."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to comfort skin that scans as low in moisture and to cushion the retinol."
+        "reason": "A rich ceramide cream supports the skin barrier and adds comfort and a plumper look, which also helps skin tolerate retinol."
       },
       {
         "sku": "LL-121",
-        "reason": "A daily mineral SPF 50 is needed with retinol and helps keep lines from looking deeper."
+        "reason": "A mineral SPF 50 is needed every morning when using retinol and helps protect against further visible signs of aging."
       }
     ],
-    "routine_note": "Mornings: cleanse, moisturizer, then sunscreen. Evenings: cleanse, then retinol just 2 nights a week with moisturizer on top, building up slowly as skin feels comfortable, and pause it if skin feels stinging or tight."
+    "routine_note": "Mornings: cleanse, apply hyaluronic serum, then moisturizer and sunscreen. Evenings: cleanse, apply hyaluronic serum, then retinol 2 nights a week and build up slowly as comfortable, followed by moisturizer; skip exfoliating acids to avoid irritation."
   }
 }

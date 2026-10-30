@@ -1,24 +1,24 @@
 {
   "key": "bef5acd034392d61d4c384ebd91e2cc9",
-  "recorded_at": "2026-10-30T15:56:23.683Z",
+  "recorded_at": "2026-10-30T16:26:47.145Z",
   "model": "claude-sonnet-5-5",
   "label": "S18-r2",
   "run": 2,
   "response": {
     "items": [
       {
-        "sku": "LL-104",
-        "reason": "This is the 5% benzoyl peroxide wash you asked for, a rinse-off cleanser for breakout-prone areas like the jawline."
+        "sku": "LL-103",
+        "reason": "The 2.5% wash is a gentler place to start than 5% for the look of jaw breakouts, with less dryness, and you can step up later if your skin is comfortable."
       },
       {
-        "sku": "LL-116",
-        "reason": "A light, mattifying moisturizer to offset dryness from the wash without feeling heavy on oily skin."
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps support your skin's moisture level, which scanned on the lower side, so the wash feels more comfortable."
       },
       {
-        "sku": "LL-121",
-        "reason": "A mineral SPF 50 for daily use, to help keep any post-breakout marks from looking darker on deeper skin tones."
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides protects daily and helps keep the look of post-breakout marks from deepening on deeper skin tones."
       }
     ],
-    "routine_note": "Start by using the wash once a day on damp skin for a minute or two, rinse well, then follow with moisturizer, and add sunscreen in the morning; it can bleach towels and pillowcases, so keep them separate. If you notice stinging or peeling, use the wash every other day, and if breakouts stay stubborn or feel painful, a dermatologist is the better next step than adding more products."
+    "routine_note": "Use the wash once a day in the evening, then moisturizer, and build to twice daily only if your skin stays comfortable; apply sunscreen every morning, and keep the wash away from towels and pillowcases it can bleach. If breakouts are painful, keep returning, or leave lasting marks, a dermatologist is the better next step than a stronger product."
   }
 }

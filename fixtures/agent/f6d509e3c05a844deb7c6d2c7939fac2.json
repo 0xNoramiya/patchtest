@@ -1,6 +1,6 @@
 {
   "key": "f6d509e3c05a844deb7c6d2c7939fac2",
-  "recorded_at": "2026-10-30T15:54:58.890Z",
+  "recorded_at": "2026-10-30T16:24:57.955Z",
   "model": "claude-sonnet-5-5",
   "label": "S13-r1",
   "run": 1,
@@ -8,13 +8,13 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle cleanser with no active ingredients is all a young face needs for washing away daily oil and dirt."
+        "reason": "A gentle, fragrance-free-style daily cleanser with no active ingredients is a simple, kind way for a young person to start washing their face."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 for mornings gives simple daily sun protection without any strong ingredients."
+        "reason": "A mineral SPF 50 fluid is an easy daytime step to protect skin from the sun, and it is gentle on young skin."
       }
     ],
-    "routine_note": "Wash your face gently with the cleanser once or twice a day, then rinse well and pat dry, and use the sunscreen in the morning before going outside. Skip exfoliating acids, scrubs and other active products at this age, and ask a grown-up or a pharmacist if you ever want to add something new."
+    "routine_note": "Wash your face gently with lukewarm water once or twice a day, morning and evening, and pat dry. Use the sunscreen in the morning on days you'll be outside, and ask a parent or guardian to help you choose any extra products later.</br>"
   }
 }

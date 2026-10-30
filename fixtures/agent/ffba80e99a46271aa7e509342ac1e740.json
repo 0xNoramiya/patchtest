@@ -1,6 +1,6 @@
 {
   "key": "ffba80e99a46271aa7e509342ac1e740",
-  "recorded_at": "2026-10-30T15:49:33.133Z",
+  "recorded_at": "2026-10-30T16:32:20.873Z",
   "model": "claude-sonnet-5-5",
   "label": "S36-r0",
   "run": 0,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that won't strip dry, sensitive-looking skin."
+        "reason": "A fragrance-free, active-free cleanser that keeps dry, sensitive-feeling skin comfortable and doesn't add to the look of redness."
       },
       {
         "sku": "LL-117",
-        "reason": "A soothing gel that gives a calming feel to skin that looks red when warm."
+        "reason": "A soothing gel with centella that helps skin feel calmer and look less flushed after heat."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to support the skin barrier and ease the low moisture score."
+        "reason": "A ceramide moisturizer to support the skin barrier and add comfort to skin that scanned low on moisture."
       },
       {
-        "sku": "LL-122",
-        "reason": "A tinted mineral SPF that shields against sun and heat exposure and softens the look of visible redness."
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is usually gentler on easily flushed skin, and sun and heat can make the look of redness worse."
       }
     ],
-    "routine_note": "Cleanse, then apply the soothing gel and moisturizer morning and night, adding the tinted SPF last in the morning. Because the flushing keeps coming back with heat and wine, please also have a dermatologist look at it, as no cosmetic product can substitute for that advice."
+    "routine_note": "Mornings: cleanse, apply the soothing gel, then moisturizer and sunscreen; evenings: cleanse, soothing gel, moisturizer, and skip exfoliating acids and retinoids for now. Since the flushing comes and goes with heat and wine, it is worth showing a dermatologist if it keeps happening, stings or burns, or gets worse, as that is beyond what skincare can address."
   }
 }

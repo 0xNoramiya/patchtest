@@ -1,6 +1,6 @@
 {
   "key": "d3f9312999e29b222a9e68e833679bb7",
-  "recorded_at": "2026-10-30T15:45:53.333Z",
+  "recorded_at": "2026-10-30T16:23:25.201Z",
   "model": "claude-sonnet-5-5",
   "label": "S08-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that cleans without stripping skin that already looks dry."
+        "reason": "A fragrance-free, active-free wash that cleans without stripping skin that looks dry."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to support the look of a comfortable, well-cushioned skin barrier where moisture reads low."
+        "reason": "A rich ceramide and glycerin cream to support comfort and the look of low moisture."
       },
       {
-        "sku": "LL-122",
-        "reason": "A tinted mineral SPF 50 with iron oxides for daily sun protection, blending well on deeper skin tones."
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily sun protection, which is a good idea for skin that may be more sensitive."
       }
     ],
-    "routine_note": "I have left the wax strips out because waxing can lift or tear skin that is fragile while you are on isotretinoin, so please ask your prescriber or a dermatologist which hair removal options are safe for you. Cleanse and moisturize morning and night, and finish with sunscreen every morning."
+    "routine_note": "We left out the wax strips because waxing is not advised while on isotretinoin, when skin can be very fragile, so please ask your prescriber or a dermatologist about gentler hair-removal options. Use the cleanser morning and night, follow with the cream, and finish with SPF in the morning."
   }
 }

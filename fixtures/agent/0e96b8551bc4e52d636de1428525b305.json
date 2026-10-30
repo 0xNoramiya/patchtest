@@ -1,6 +1,6 @@
 {
   "key": "0e96b8551bc4e52d636de1428525b305",
-  "recorded_at": "2026-10-30T15:53:09.673Z",
+  "recorded_at": "2026-10-30T16:22:23.835Z",
   "model": "claude-sonnet-5-5",
   "label": "S05-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that keeps skin comfortable without stripping it."
+        "reason": "A gentle, active-free cleanser keeps oily skin feeling clean without stripping it."
       },
       {
         "sku": "LL-125",
-        "reason": "Adds lightweight hydration that can make skin look smoother and more even."
+        "reason": "A simple hydrating serum adds water-based moisture where your scan shows moderate hydration."
       },
       {
         "sku": "LL-114",
-        "reason": "A gentle ceramide moisturizer that supports the skin barrier and softens the look of rough texture."
+        "reason": "A ceramide moisturizer supports a smoother-looking, comfortable skin surface."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 for daily protection, which is a good fit during pregnancy."
+        "reason": "A mineral SPF 50 gives daily sun protection and is a pregnancy-friendly sunscreen choice."
       }
     ],
-    "routine_note": "I left out the 15% Lactic Acid Serum because it is a high-strength exfoliating acid, so please check with your prenatal provider before using it and start with this gentle routine for now. Use the cleanser, hydrating serum and moisturizer morning and night, and finish your morning routine with the SPF."
+    "routine_note": "I left out the 15% lactic acid serum because it is a high-strength leave-on exfoliant, so please check with your prenatal provider before using it during pregnancy. In the meantime, cleanse and moisturize morning and night, and apply the SPF every morning."
   }
 }

@@ -1,6 +1,6 @@
 {
   "key": "60da224f0e24b8a211dfc3a95e267eaa",
-  "recorded_at": "2026-10-30T15:49:42.792Z",
+  "recorded_at": "2026-10-30T16:32:40.190Z",
   "model": "claude-sonnet-5-5",
   "label": "S37-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, non-active cleanser that won't strip skin that already looks dry."
+        "reason": "A gentle, active-free cleanser that won't strip skin that already looks dry."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to support a comfortable, hydrated-looking skin barrier."
+        "reason": "A ceramide moisturizer to help comfort and support the look of dry, low-moisture skin."
       },
       {
         "sku": "LL-122",
-        "reason": "Tinted mineral sunscreen with iron oxides helps keep the look of dark patches from deepening and suits deeper skin tones without a white cast."
+        "reason": "A tinted mineral SPF 50 with iron oxides helps protect against further darkening of the look of uneven tone and suits deeper skin tones."
       }
     ],
-    "routine_note": "A mole on your cheek that has grown and darkened over the year should be checked by a dermatologist soon, before you add any brightening products, and nothing we sell is meant for that. Until then, keep to a gentle cleanse, moisturizer and a tinted SPF every morning, reapplying if you're outdoors."
+    "routine_note": "Please see a dermatologist soon about the cheek mole that has grown and darkened this year, as that is beyond what any shop product should address, and hold off on brightening or exfoliating products until then. In the meantime, cleanse and moisturize morning and night and apply the SPF every morning."
   }
 }

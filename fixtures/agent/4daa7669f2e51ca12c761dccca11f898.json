@@ -1,6 +1,6 @@
 {
   "key": "4daa7669f2e51ca12c761dccca11f898",
-  "recorded_at": "2026-10-30T16:01:25.738Z",
+  "recorded_at": "2026-10-30T16:33:42.685Z",
   "model": "claude-sonnet-5-5",
   "label": "S39-r2",
   "run": 2,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser keeps the routine gentle while your skin's look and feel are checked by a professional."
+        "reason": "A gentle, fragrance-free style cleanser keeps the routine simple and avoids adding more active ingredients to skin that has already had a lot thrown at it."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer supports the skin barrier and helps with the lower moisture and uneven texture shown in your scan."
+        "reason": "A ceramide moisturizer supports the look of a smooth, comfortable skin barrier, which suits the lower moisture score."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 protects skin daily without adding another active step."
+        "reason": "A mineral SPF 50 protects skin every morning and is a gentle daily basic."
       }
     ],
-    "routine_note": "Since three months of store-bought products haven't changed how your skin looks, we'd suggest booking a visit with a dermatologist or doctor rather than adding more actives here. Until then, cleanse and moisturize morning and night, and apply sunscreen every morning."
+    "routine_note": "Use the cleanser and moisturizer morning and night, and finish with the SPF each morning. Since three months of shop-bought products haven't changed how your skin looks, I'd rather not add more actives, and it's worth booking a visit with a dermatologist or pharmacist for personal advice."
   }
 }

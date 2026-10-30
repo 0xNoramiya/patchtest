@@ -1,6 +1,6 @@
 {
   "key": "2d4afeed958a111669d33f7fa7987d01",
-  "recorded_at": "2026-10-30T15:57:01.632Z",
+  "recorded_at": "2026-10-30T16:27:41.699Z",
   "model": "claude-sonnet-5-5",
   "label": "S21-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle cleanser keeps skin clean without stripping it while you add a night active."
+        "reason": "A gentle cleanser keeps oily-feeling skin fresh without stripping it while you start a new active."
       },
       {
         "sku": "LL-106",
-        "reason": "A starter-strength retinol at night is a good single choice for smoother-looking texture, which is your lowest scan score."
+        "reason": "A 0.3% retinol is a sensible starting strength to help smooth the look of uneven texture."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer supports a comfortable skin barrier and moisture while skin adjusts to retinol."
+        "reason": "A light barrier moisturizer supports comfort and hydration, which scored on the lower side, while retinol settles in."
       },
       {
         "sku": "LL-121",
-        "reason": "Retinol makes skin more sun-sensitive, so a daily mineral SPF 50 is needed alongside it."
+        "reason": "A daily mineral SPF 50 is essential alongside retinol and helps protect the look of even skin tone."
       }
     ],
-    "routine_note": "Use the retinol 2 nights a week at first, then add nights slowly as skin stays comfortable, and wear sunscreen every morning. I left out the glycolic toner and benzoyl peroxide wash because using all three together tends to irritate and dry skin, and your acne score doesn't call for the wash, so you'll likely see better progress from one active done consistently."
+    "routine_note": "Use the retinol 2 to 3 nights a week at first, moisturize after, and wear the SPF every morning. I left out the glycolic toner and benzoyl peroxide wash because using all three together is likely to leave skin dry and irritated and slow your progress, so add one later only if your skin is comfortable."
   }
 }

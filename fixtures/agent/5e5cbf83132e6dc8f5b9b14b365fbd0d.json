@@ -1,6 +1,6 @@
 {
   "key": "5e5cbf83132e6dc8f5b9b14b365fbd0d",
-  "recorded_at": "2026-10-30T15:55:18.188Z",
+  "recorded_at": "2026-10-30T16:25:19.904Z",
   "model": "claude-sonnet-5-5",
   "label": "S14-r2",
   "run": 2,
@@ -12,13 +12,13 @@
       },
       {
         "sku": "LL-114",
-        "reason": "A simple ceramide moisturizer supports your skin's comfort and moisture balance."
+        "reason": "A light ceramide moisturizer helps your skin feel comfortably hydrated and supported."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 is the most useful habit for keeping skin looking its best as you get older."
+        "reason": "A mineral SPF 50 worn every morning is the simplest long-term habit for keeping skin looking youthful."
       }
     ],
-    "routine_note": "Cleanse morning and night, moisturize, and apply sunscreen every morning, reapplying if you are outside for long. We left out vitamin C and firming creams because they aren't needed at 15, and this simple routine is easier to stick with."
+    "routine_note": "Cleanse and moisturize morning and night, then apply sunscreen last each morning and reapply if you're outdoors for long. I left out vitamin C and the firming cream because they aren't needed at 15, and this simple routine gives you the most benefit."
   }
 }

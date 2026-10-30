@@ -1,28 +1,28 @@
 {
   "key": "13152507f56aa7591d0555dca2cb481d",
-  "recorded_at": "2026-10-30T15:58:59.027Z",
+  "recorded_at": "2026-10-30T16:30:18.010Z",
   "model": "claude-sonnet-5-5",
   "label": "S29-r1",
   "run": 1,
   "response": {
     "items": [
       {
-        "sku": "LL-116",
-        "reason": "This is the mattifying gel you asked for, and it gives a shine-free finish as your daily moisturizer."
-      },
-      {
         "sku": "LL-101",
-        "reason": "A gentle, non-stripping cleanser keeps skin clean without adding to a tight, dry-looking feel."
+        "reason": "A gentle, non-stripping cleanser that keeps skin comfortable without adding to a tight, dry look."
       },
       {
         "sku": "LL-125",
-        "reason": "Your scan shows low moisture, so a light hydrating serum under the gel adds comfort without adding shine."
+        "reason": "Your scan shows low moisture, and this lightweight, non-greasy serum adds hydration without shine."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "The oil control mattifying gel you asked for gives a soft matte finish and is gentle enough for daily use."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF with iron oxides suits deeper skin tones, blends without a chalky cast, and protects during the day."
+        "reason": "A tinted mineral SPF 50 with iron oxides protects daily and suits deeper skin tones, with no chalky cast."
       }
     ],
-    "routine_note": "Morning: cleanse, apply the hyaluronic serum, then the mattifying gel, then the tinted SPF. Evening: cleanse, then the serum and gel again, and you can skip the SPF."
+    "routine_note": "In the morning, cleanse, apply the hydrating serum, then the mattifying gel, and finish with the tinted SPF; at night, cleanse and repeat the serum and gel. Skip harsh scrubs or strong exfoliants for now, since they can leave skin feeling tighter and drier."
   }
 }

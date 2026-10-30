@@ -1,6 +1,6 @@
 {
   "key": "3707b3657379d15d16ce17a98b25eb1d",
-  "recorded_at": "2026-10-30T15:56:07.515Z",
+  "recorded_at": "2026-10-30T16:26:22.676Z",
   "model": "claude-sonnet-5-5",
   "label": "S17-r2",
   "run": 2,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser keeps dry-feeling skin comfortable while it adjusts to retinol."
+        "reason": "A gentle, active-free cleanser suits dry-feeling skin and won't compete with the retinol."
       },
       {
         "sku": "LL-106",
-        "reason": "The lower 0.3% strength is a gentle starting point for smoother-looking texture and more even-looking tone."
+        "reason": "The lower 0.3% strength is a sensible starting point for smoother-looking texture and more even-looking tone."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream adds comfort and moisture to skin that scanned low on moisture."
+        "reason": "A rich ceramide and glycerin cream helps support comfort and moisture while your skin adjusts to retinol."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF 50 with iron oxides protects daily while using retinol and suits deeper skin tones without a white cast."
+        "reason": "Daily sunscreen is needed with retinol, and the tinted iron-oxide formula suits deeper skin tones and uneven-looking tone."
       }
     ],
-    "routine_note": "Start the retinol just two nights a week after cleansing, then moisturize, and build up slowly only if skin feels comfortable. Wear the SPF every morning, and pause the retinol if skin feels stinging or tight."
+    "routine_note": "Use the retinol at night, starting 2 nights a week and building up slowly as your skin stays comfortable, and skip other exfoliating acids for now. Apply sunscreen every morning and reapply when outdoors."
   }
 }

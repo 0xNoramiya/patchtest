@@ -1,6 +1,6 @@
 {
   "key": "0f131d4a521504aeb8287c38fdb7d1af",
-  "recorded_at": "2026-10-30T15:46:11.815Z",
+  "recorded_at": "2026-10-30T16:24:17.759Z",
   "model": "claude-sonnet-5-5",
   "label": "S11-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps skin feeling clean without stripping it."
+        "reason": "A gentle, active-free cleanser keeps your skin comfortable and doesn't strip it."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer supports a comfortable skin barrier and helps with the lower moisture score."
+        "reason": "A ceramide moisturizer supports your skin's moisture barrier, and your scan shows moisture and texture scores with room to improve."
       },
       {
         "sku": "LL-121",
-        "reason": "A daily mineral SPF 50 protects skin that may still be sensitive and is a good base for any later additions."
+        "reason": "A mineral SPF 50 gives daily sun protection, which matters for skin that has recently come off a strong prescription."
       }
     ],
-    "routine_note": "I've held back the glycolic toner for now: since you finished isotretinoin only eight months ago, please ask your dermatologist or prescriber whether your skin is ready for exfoliating acids before adding it. Meanwhile, cleanse and moisturize morning and night, and apply the SPF every morning."
+    "routine_note": "I've left the glycolic toner out for now, since exfoliating acids are usually held off for a while after isotretinoin, so please check with your dermatologist or prescriber about when it's right for you. Meanwhile, use the cleanser and moisturizer morning and night, and finish with the SPF each morning."
   }
 }

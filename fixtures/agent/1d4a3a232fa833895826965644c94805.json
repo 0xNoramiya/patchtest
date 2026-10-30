@@ -1,6 +1,6 @@
 {
   "key": "1d4a3a232fa833895826965644c94805",
-  "recorded_at": "2026-10-30T15:56:49.283Z",
+  "recorded_at": "2026-10-30T16:27:19.942Z",
   "model": "claude-sonnet-5-5",
   "label": "S20-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps oily skin feeling clean without stripping sensitive skin."
+        "reason": "A fragrance-free, active-free cleanser keeps oily, sensitive-feeling skin clean without stripping it while you start a retinol."
       },
       {
         "sku": "LL-106",
-        "reason": "A low-strength 0.3% retinol is a sensible starting point for softening the look of fine lines on sensitive skin."
+        "reason": "The lower-strength 0.3% retinol is a sensible first step for smoothing the look of fine lines on easily-reactive, fair skin."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer supports the skin barrier and helps keep retinol comfortable without feeling heavy."
+        "reason": "A ceramide moisturizer supports the skin barrier and helps your skin feel comfortable and hydrated alongside a retinol."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 is needed every morning with retinol, and mineral formulas tend to suit sensitive, fair skin."
+        "reason": "A mineral SPF 50 is gentle on sensitive skin and is needed each morning because retinol makes skin more sun-sensitive."
       }
     ],
-    "routine_note": "Use the retinol at night on dry skin, 2 nights a week to begin, then add nights slowly as your skin settles, and follow it with moisturizer. In the morning, cleanse, moisturize and apply sunscreen, and don't layer other exfoliating acids or scrubs with the retinol at first."
+    "routine_note": "Use the retinol at night on dry skin, starting 2 nights a week and building up slowly as your skin feels comfortable, then follow with moisturizer. Apply sunscreen every morning and skip other exfoliating acids or scrubs while you get used to the retinol."
   }
 }

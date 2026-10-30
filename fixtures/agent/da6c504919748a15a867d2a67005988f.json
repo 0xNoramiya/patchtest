@@ -1,6 +1,6 @@
 {
   "key": "da6c504919748a15a867d2a67005988f",
-  "recorded_at": "2026-10-30T15:55:26.667Z",
+  "recorded_at": "2026-10-30T16:25:32.792Z",
   "model": "claude-sonnet-5-5",
   "label": "S15-r1",
   "run": 1,
@@ -8,21 +8,17 @@
     "items": [
       {
         "sku": "LL-103",
-        "reason": "A low-strength 2.5% wash that helps keep the chin and jaw area looking clearer without being harsh on young skin."
+        "reason": "A low-strength 2.5% wash that is gentle enough for a teen and helps keep the chin and jaw looking clearer."
       },
       {
-        "sku": "LL-101",
-        "reason": "A gentle, fragrance-free-style cleanser for mornings so skin isn't over-washed with an active twice a day."
-      },
-      {
-        "sku": "LL-116",
-        "reason": "A light, mattifying gel moisturizer that suits oily-looking skin and adds comfort after cleansing."
+        "sku": "LL-114",
+        "reason": "A light, fragrance-free ceramide moisturizer that supports a comfortable skin barrier, since moisture reads on the low side."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 for daily protection, which also helps marks from spots look less noticeable."
+        "reason": "A mineral SPF 50 for daily protection that is easy on young skin."
       }
     ],
-    "routine_note": "Use the gentle cleanser, moisturizer and SPF in the morning, and the benzoyl peroxide wash in the evening followed by moisturizer, starting every other night and rinsing off well. If spots feel painful, look deep or leave marks, a dermatologist or doctor is the better person to ask than anything we sell."
+    "routine_note": "Use the wash once a day in the evening, rinse well, then apply moisturizer; in the morning, rinse with water, then moisturizer and SPF. If spots feel sore or deep, or look no better after about two months, please see a dermatologist rather than adding more products."
   }
 }

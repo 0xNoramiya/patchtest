@@ -1,6 +1,6 @@
 {
   "key": "e6024b134258c6b4d1c9d69e4fae64be",
-  "recorded_at": "2026-10-30T15:53:42.638Z",
+  "recorded_at": "2026-10-30T16:23:10.862Z",
   "model": "claude-sonnet-5-5",
   "label": "S07-r1",
   "run": 1,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-103",
-        "reason": "The lower 2.5% strength is the gentler way to get the benzoyl peroxide wash you asked for, aimed at the look of breakouts."
+        "reason": "The lower 2.5% strength is a gentler way to give the wash you asked for, and it is less likely to leave oily skin dry or tight."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer helps support the look of comfortable, balanced skin, since your scan shows moisture on the low side."
+        "reason": "A light ceramide moisturizer helps support a skin barrier that scans on the dry side, and it won't feel heavy on oily skin."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF suits daytime use while you are trying for a baby and helps keep skin tone looking even."
+        "reason": "A mineral zinc oxide sunscreen is a pregnancy-friendly daily option that suits skin prone to breakouts."
       }
     ],
-    "routine_note": "Use the wash once a day at first, then moisturizer, and add sunscreen in the morning. Because you are trying to conceive, check any active product with your doctor or midwife first, and I have left out retinoids and strong peels for now."
+    "routine_note": "Use the wash once daily in the evening, then moisturizer, and apply sunscreen each morning, building up to twice-daily washing only if skin stays comfortable. Because you are trying for a baby, check with your doctor or pharmacist before starting the wash, and skip retinol and adapalene products for now."
   }
 }

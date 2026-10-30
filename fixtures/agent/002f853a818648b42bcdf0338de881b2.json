@@ -1,0 +1,28 @@
+{
+  "key": "002f853a818648b42bcdf0338de881b2",
+  "recorded_at": "2026-10-30T16:07:36.297Z",
+  "model": "claude-sonnet-5-5",
+  "label": "advise-synthetic-04-pigment",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser suits dry-looking skin with low moisture."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "Azelaic acid 10% is a gentle option for helping uneven-looking dark patches appear more even."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide cream helps support a skin barrier that scored low on moisture."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Tinted mineral SPF with iron oxides helps protect against sun and visible light that can make dark patches look deeper."
+      }
+    ],
+    "routine_note": "I left out the 30% peel and the 1% retinol because strong actives can irritate dry skin and, on deeper skin tones, may leave patches looking darker, so start gently: cleanser, azelaic acid, and moisturizer in the evening, and cleanser, moisturizer, and tinted SPF each morning. If the patches persist, darken, or change, it is best to have a dermatologist look at them rather than add more products."
+  }
+}

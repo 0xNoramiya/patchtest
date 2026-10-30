@@ -1,0 +1,24 @@
+{
+  "key": "048f93aa2f1f9901016f027599ef02f1",
+  "recorded_at": "2026-10-30T16:07:50.595Z",
+  "model": "claude-sonnet-5-5",
+  "label": "advise-synthetic-01",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that cleans without stripping dry, flaky-looking skin."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream to support the skin barrier and add comfort where skin looks dry and flaky."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides for daily protection that suits deeper skin tones and gentle, sensitive-feeling skin."
+      }
+    ],
+    "routine_note": "I've left out the glycolic toner and wax strips because exfoliating acids and waxing are too harsh on skin while you're on isotretinoin, so please ask your prescriber or dermatologist about the flaking and about safer upper-lip hair removal. Cleanse gently morning and night, moisturize after each wash, and apply the SPF every morning."
+  }
+}

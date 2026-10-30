@@ -1,6 +1,6 @@
 {
   "key": "9d4ee3459f4a980ae7057eb7f022d475",
-  "recorded_at": "2026-10-30T16:00:31.478Z",
+  "recorded_at": "2026-10-30T16:32:28.062Z",
   "model": "claude-sonnet-5-5",
   "label": "S36-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that keeps easily flushed, dry skin feeling comfortable."
+        "reason": "A fragrance-free, active-free cleanser that keeps easily flushed, dry-feeling skin comfortable."
       },
       {
         "sku": "LL-117",
-        "reason": "A soothing gel that gives skin a calmer, cooler-feeling finish when it looks red and warm."
+        "reason": "A soothing gel that gives a calming, cooling feel to skin that looks red when warm."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer that supports the skin's moisture barrier, since the scan shows low moisture."
+        "reason": "A light ceramide moisturizer that supports the skin barrier and adds comfort to dry, sensitive-feeling skin."
       },
       {
-        "sku": "LL-122",
-        "reason": "A gentle mineral SPF whose iron-oxide tint softens the look of visible redness and protects skin on sunny or warm days."
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 gives gentle daily sun protection, since sun and heat can make skin look redder."
       }
     ],
-    "routine_note": "Use the cleanser, soothing gel and moisturizer morning and night, adding the SPF each morning, and skip strong exfoliants, scrubs and retinoids for now. Because the flushing comes back regularly with heat and wine, it is worth showing a dermatologist, who can advise on it far better than any product from a shop."
+    "routine_note": "Use the cleanser, soothing gel and moisturizer morning and night, then apply the mineral SPF as the last step each morning. Redness that flares with heat or wine is best looked at by a dermatologist, so we've kept this routine minimal and skipped actives that could add irritation."
   }
 }

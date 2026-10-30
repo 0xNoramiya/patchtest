@@ -1,6 +1,6 @@
 {
   "key": "8091b29918a9805e725281b7112ee64b",
-  "recorded_at": "2026-10-30T15:56:01.044Z",
+  "recorded_at": "2026-10-30T16:26:17.394Z",
   "model": "claude-sonnet-5-5",
   "label": "S17-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps dry-looking skin from being stripped before a retinol."
+        "reason": "A gentle, active-free cleanser keeps dry-feeling skin comfortable while you start a retinol."
       },
       {
         "sku": "LL-106",
-        "reason": "The lower-strength 0.3% retinol is a sensible starting point for smoother-looking texture and more even-looking tone."
+        "reason": "The lower-strength 0.3% retinol is a gentle starting point for smoother-looking texture and more even-looking tone."
       },
       {
         "sku": "LL-115",
-        "reason": "Your scan shows low moisture, so a rich ceramide cream helps cushion skin and keep it comfortable while it adjusts to retinol."
+        "reason": "A rich ceramide cream supports a low moisture score and helps the skin tolerate a new retinol."
       },
       {
         "sku": "LL-122",
-        "reason": "Retinol needs daily sunscreen, and this tinted mineral SPF with iron oxides blends well on deeper skin tones and helps keep tone looking even."
+        "reason": "A tinted mineral SPF 50 with iron oxides is needed daily with retinol and suits deeper skin tones without a chalky cast."
       }
     ],
-    "routine_note": "Use the retinol at night, 2 nights a week at first, and build up slowly only if skin feels comfortable, following it with the moisturizer. Wear the SPF every morning, and skip other exfoliating acids for now so skin isn't overloaded."
+    "routine_note": "Use the retinol at night just 2 nights a week at first, applied after cleansing and followed by the cream, then add nights slowly as your skin feels comfortable. Apply the sunscreen every morning, and skip other exfoliating acids while you settle in."
   }
 }

@@ -1,6 +1,6 @@
 {
   "key": "723af8e3e8dac3d07238cbd259659cb2",
-  "recorded_at": "2026-10-30T15:52:26.741Z",
+  "recorded_at": "2026-10-30T16:21:19.444Z",
   "model": "claude-sonnet-5-5",
   "label": "S02-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser that keeps skin clean without stripping it."
+        "reason": "A fragrance-free, active-free cleanser that clears the day without stripping, so skin looks fresher rather than tight."
       },
       {
         "sku": "LL-125",
-        "reason": "A fragrance-free hydrating serum to help skin look fresher and more plump, since moisture scored a little low."
+        "reason": "Hyaluronic acid adds a light layer of hydration that suits oily skin and helps skin look plumper and less dull."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer that supports the skin barrier without feeling heavy on oily skin."
+        "reason": "A lightweight ceramide moisturizer supports the skin barrier and softens the look of rough texture without feeling heavy."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 for daily protection, which helps skin look brighter and more even over time."
+        "reason": "A mineral SPF 50 protects skin from daily sun exposure and helps keep tone looking even and bright."
       }
     ],
-    "routine_note": "I left out the 30% peel because strong acid peels are best avoided during pregnancy, so please check with your doctor or midwife before adding any exfoliating acids. Use the cleanser, serum and moisturizer morning and night, and finish with the SPF each morning."
+    "routine_note": "Cleanse, apply hyaluronic serum and moisturizer, then finish with sunscreen in the morning, and repeat without sunscreen at night. I left out the 30% peel and other strong exfoliating or resurfacing products because they aren't a good fit during pregnancy, so please check with your prenatal provider before adding any active."
   }
 }

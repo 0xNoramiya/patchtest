@@ -1,6 +1,6 @@
 {
   "key": "bf7d1b992b9abcb4dea8437cf9329cc9",
-  "recorded_at": "2026-10-30T15:53:26.535Z",
+  "recorded_at": "2026-10-30T16:22:45.035Z",
   "model": "claude-sonnet-5-5",
   "label": "S06-r1",
   "run": 1,
@@ -8,9 +8,9 @@
     "items": [
       {
         "sku": "LL-124",
-        "reason": "A low-strength exfoliating spray made for the chest, to help keep pores clear and skin looking smoother on a small area."
+        "reason": "A light 2% salicylic acid spray made for the chest, to help clear the look of spots on your chest and shoulders in a small, simple routine."
       }
     ],
-    "routine_note": "Use a thin mist once a day on clean, dry skin on the chest, keep it off the breast and nipple area where your baby has contact, and cover the area from strong sun. Please check with your doctor or midwife before using any active ingredient while breastfeeding, and if the spots are painful, spreading or persistent, a dermatologist is the better next step than more products."
+    "routine_note": "Start with a thin layer once a day on the chest and shoulders, keeping it well away from the nipple and areola and letting it dry fully before your baby touches the skin. Because you are breastfeeding, check with your midwife, pharmacist or doctor before starting, and see them if the spots persist or worsen."
   }
 }

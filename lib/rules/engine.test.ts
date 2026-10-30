@@ -453,3 +453,16 @@ describe("sunscreen and basics are never called unnecessary", () => {
     expect(verdictOf(run({ cart: ["LL-115"], scan: makeScan({}, "Oily") }), "LL-115")).toBe("UNNECESSARY");
   });
 });
+
+describe("R-REF-01 holds the strong actives without over-blocking", () => {
+  const referred = { symptoms: ["deep_painful_bumps"] as const };
+
+  it.each(["LL-104", "LL-110", "LL-107", "LL-112"])("holds %s", (sku) => {
+    expect(verdictOf(run({ cart: [sku], intake: { symptoms: [...referred.symptoms] } }), sku)).toBe("BLOCK");
+  });
+
+  it.each(["LL-101", "LL-114", "LL-121", "LL-116", "LL-111"])("leaves %s available", (sku) => {
+    const r = run({ cart: [sku], intake: { symptoms: [...referred.symptoms] } });
+    expect(r.items.find((i) => i.sku === sku)?.findings.some((f) => f.ruleId === "R-REF-01")).toBe(false);
+  });
+});

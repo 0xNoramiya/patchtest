@@ -1,6 +1,6 @@
 {
   "key": "f067b224cd73e9ec1c8ddf2f41b8ff48",
-  "recorded_at": "2026-10-30T15:58:21.454Z",
+  "recorded_at": "2026-10-30T16:29:23.892Z",
   "model": "claude-sonnet-5-5",
   "label": "S26-r2",
   "run": 2,
@@ -8,25 +8,25 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps the base of your routine simple while you introduce new actives."
+        "reason": "A gentle, active-free cleanser keeps the base simple while your skin adjusts to new actives."
       },
       {
         "sku": "LL-113",
-        "reason": "A gentle morning active that suits an oily-labelled skin and helps skin look balanced and less shiny."
+        "reason": "Niacinamide is a gentle first active that suits an oily-labelled skin and pairs well with a retinol."
       },
       {
         "sku": "LL-106",
-        "reason": "A starter-strength retinol for nights, a beginner-friendly way to support smoother-looking, more even skin over time."
+        "reason": "A lower-strength retinol is a sensible starting point for a night-time active for someone new to them."
       },
       {
         "sku": "LL-114",
-        "reason": "A lightweight ceramide moisturizer supports a comfortable skin barrier and your moisture score while the retinol settles in."
+        "reason": "A light ceramide moisturizer supports your moisture score and helps skin stay comfortable with a retinol."
       },
       {
         "sku": "LL-121",
-        "reason": "Daily mineral SPF 50 is essential alongside retinol and helps protect your already even-looking tone."
+        "reason": "A daily mineral SPF 50 is essential alongside a retinol and protects the look of your skin."
       }
     ],
-    "routine_note": "Mornings: cleanser, niacinamide, moisturizer, then SPF. Nights: cleanser, retinol on just 2 nights a week at first (building up slowly as skin feels comfortable), then moisturizer, and stop the retinol and check with a professional if you become pregnant or start breastfeeding."
+    "routine_note": "Mornings: cleanse, niacinamide, moisturizer, then sunscreen. Evenings: cleanse, then retinol only 2 nights a week at first (before moisturizer), building up slowly if skin stays comfortable."
   }
 }

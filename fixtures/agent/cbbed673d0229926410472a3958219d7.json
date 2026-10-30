@@ -1,6 +1,6 @@
 {
   "key": "cbbed673d0229926410472a3958219d7",
-  "recorded_at": "2026-10-30T15:46:34.555Z",
+  "recorded_at": "2026-10-30T16:25:09.074Z",
   "model": "claude-sonnet-5-5",
   "label": "S14-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps oily-feeling skin fresh without stripping it."
+        "reason": "A gentle cleanser keeps skin feeling clean without stripping it."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer supports the skin's moisture barrier without feeling heavy."
+        "reason": "A simple ceramide moisturizer supports the skin's moisture barrier and suits a young, oily-feeling complexion."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 is the one habit that does the most to keep skin looking its best over the years."
+        "reason": "A daily mineral SPF 50 is the most useful step for keeping skin looking youthful over the long term."
       }
     ],
-    "routine_note": "Cleanse morning and night, moisturize, and apply the SPF every morning, reapplying if you are outdoors for long. At 15 your skin does not need vitamin C or a firming cream, so I left them out and kept the routine short enough to stick with."
+    "routine_note": "Cleanse and moisturize morning and night, then apply sunscreen every morning and reapply if you're outdoors. I've left out vitamin C and the firming cream because they aren't needed at 15, and your scan scores already look healthy in appearance."
   }
 }

@@ -1,6 +1,6 @@
 {
   "key": "dde6452f2e58c43363f3fa4d7bed2bb0",
-  "recorded_at": "2026-10-30T15:59:50.229Z",
+  "recorded_at": "2026-10-30T16:31:28.884Z",
   "model": "claude-sonnet-5-5",
   "label": "S33-r1",
   "run": 1,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that cleans the skin without stripping or adding irritation."
+        "reason": "A gentle, non-active cleanser keeps skin clean without stripping or adding irritation around tender areas."
       },
       {
         "sku": "LL-114",
-        "reason": "A light barrier moisturizer to support comfort, since the scan shows lower moisture."
+        "reason": "A simple barrier moisturizer helps support skin comfort, since moisture reads on the low side."
       },
       {
         "sku": "LL-121",
-        "reason": "Daily mineral sunscreen helps keep the look of marks from darkening or lingering."
+        "reason": "Daily mineral SPF helps keep the look of marks from darkening or lingering."
       }
     ],
-    "routine_note": "Deep, painful lumps that leave marks are best seen by a dermatologist, so I'm not suggesting anything stronger from our shelves, and I'd avoid scrubs, peels and picking in the meantime. Until then, keep to a gentle cleanse, moisturizer and sunscreen every morning."
+    "routine_note": "Deep, painful lumps that leave marks are best looked at by a dermatologist rather than anything a shop can sell, so please book a visit instead of reaching for the strongest products. Until then, keep to this gentle routine and avoid scrubs, peels and high-strength actives that could irritate sore skin."
   }
 }

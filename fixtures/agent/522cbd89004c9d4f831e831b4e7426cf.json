@@ -1,6 +1,6 @@
 {
   "key": "522cbd89004c9d4f831e831b4e7426cf",
-  "recorded_at": "2026-10-30T15:45:47.054Z",
+  "recorded_at": "2026-10-30T16:23:01.482Z",
   "model": "claude-sonnet-5-5",
   "label": "S07-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-103",
-        "reason": "The lower 2.5% strength is a gentler rinse-off way to clear the look of breakouts, and a wash stays on the skin only briefly."
+        "reason": "The lower 2.5% strength is a rinse-off wash that suits your request for clearer-looking skin, and it keeps things gentle on oily skin."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer helps support comfort and the look of hydration, since moisture reads on the lower side and the wash can be drying."
+        "reason": "A light ceramide moisturizer helps support comfort and balance as your moisture score is on the lower side."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 is a simple morning step that protects the skin's look and is a good fit while you are trying for a baby."
+        "reason": "A mineral SPF is a gentle daily choice for everyday protection while you are trying for a baby."
       }
     ],
-    "routine_note": "Start with the wash once a day, building up only if skin feels comfortable, then moisturizer, and sunscreen every morning. Retinoids and strong exfoliating acids are left out while you are trying to conceive, and it is worth checking this routine with your prenatal provider or pharmacist."
+    "routine_note": "Start with the wash once a day in the evening, then moisturizer, and use SPF every morning, building up only if your skin feels comfortable. As you are trying to conceive, I left out retinoids and strong acids, and it is worth checking your routine with your doctor or pharmacist."
   }
 }

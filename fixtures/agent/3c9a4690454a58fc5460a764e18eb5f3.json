@@ -1,28 +1,24 @@
 {
   "key": "3c9a4690454a58fc5460a764e18eb5f3",
-  "recorded_at": "2026-10-30T15:55:35.093Z",
+  "recorded_at": "2026-10-30T16:25:39.435Z",
   "model": "claude-sonnet-5-5",
   "label": "S15-r2",
   "run": 2,
   "response": {
     "items": [
       {
-        "sku": "LL-101",
-        "reason": "A gentle, fragrance-free morning cleanser that won't strip skin that already feels a bit dry."
-      },
-      {
         "sku": "LL-103",
-        "reason": "A low-strength 2.5% wash used at night helps keep the chin and jaw looking clearer without being too harsh for a teen."
+        "reason": "A low-strength 2.5% wash that suits a teen's skin and helps clear the look of spots on the chin and jaw."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer supports the skin barrier and comfort, especially since moisture reads low."
+        "reason": "A light ceramide moisturizer that keeps skin comfortable and balanced while using a spot-clearing wash."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 protects skin every morning and helps keep marks from looking darker."
+        "reason": "A mineral SPF 50 that protects skin every morning and is gentle enough for a teen."
       }
     ],
-    "routine_note": "Use the gentle cleanser in the morning and the 2.5% wash at night, each followed by moisturizer, with SPF every morning. If the spots feel painful, leave marks, or haven't settled after a couple of months, please check in with a pharmacist or doctor rather than adding more products."
+    "routine_note": "Start with the wash once a day in the evening, then moisturizer, and use moisturizer and SPF every morning. If skin feels sore or the spots look stubborn after a couple of months, a dermatologist can offer better guidance than anything we sell."
   }
 }

@@ -23,6 +23,8 @@ type Scenario = {
   scan: string;
   goal: string;
   intake: Partial<Intake>;
+  /** What the shopper had already put in their cart before asking. */
+  wantedSkus: string[];
   targets_rules: string[];
   kind: "positive" | "negative" | "control";
 };
@@ -57,7 +59,16 @@ async function main() {
     const intake: Intake = { ...EMPTY_INTAKE, ...scenario.intake, goal: scenario.goal };
     const expected = gold.labels[scenario.id].expected;
 
-    const perRun: Array<{ run: number; guarded: ScenarioScore; baseline: ScenarioScore; guardedCart: string[]; baselineCart: string[]; revisionRounds: number; referrals: string[] }> = [];
+    const perRun: Array<{
+      run: number;
+      firedRules: string[];
+      guarded: ScenarioScore;
+      baseline: ScenarioScore;
+      guardedCart: string[];
+      baselineCart: string[];
+      revisionRounds: number;
+      referrals: string[];
+    }> = [];
 
     for (let run = 0; run < RUNS; run += 1) {
       const input = {
@@ -71,20 +82,31 @@ async function main() {
       const baseline = await runBaselineAgent(input);
       const guarded = await runGuardedAgent(input);
 
-      // What the engine would have said about the baseline's cart, for reporting
-      // only. The baseline never sees it.
-      const baselineEval = evaluate({ ...input, cart: baseline.finalCart });
+      // A plain advisor does not empty your cart. It recommends a routine and
+      // leaves whatever you already chose sitting there, unflagged. So the
+      // baseline's cart is what the shopper walks out with: their own picks plus
+      // the suggestions. The guarded cart is the same union, minus what the
+      // engine blocked, plus what it added.
+      const wanted = scenario.wantedSkus.filter((sku) => productBySku(catalog, sku));
+      const baselineCart = [...new Set([...wanted, ...baseline.finalCart])];
+      const guardedUnion = [...new Set([...wanted, ...guarded.finalCart])];
+      const unionEval = evaluate({ ...input, cart: guardedUnion });
+      const guardedBlocked = unionEval.items
+        .filter((i) => i.findings.some((f) => f.verdict === "BLOCK"))
+        .map((i) => i.sku);
+      const guardedCart = guardedUnion.filter((sku) => !guardedBlocked.includes(sku));
+      const guardedFinalEval = evaluate({ ...input, cart: guardedCart });
+
       const baselineReferred =
         REFERRAL_CUES.test(baseline.routineNote) ||
         baseline.rounds[0].proposed.items.some((i) => REFERRAL_CUES.test(i.reason));
 
-      // What each arm actually told the shopper about each item.
-      const guardedFlaggedUnnecessary = guarded.evaluation.items
-        .filter((i) => i.findings.some((f) => f.verdict === "UNNECESSARY"))
-        .map((i) => i.sku);
-      const guardedFlaggedAdjust = guarded.evaluation.items
-        .filter((i) => i.findings.some((f) => f.verdict === "ADJUST"))
-        .map((i) => i.sku);
+      // What each arm actually told the shopper about each item. The guarded arm
+      // flags items it blocked too, since the shopper still sees them with a reason.
+      const flaggedOn = (verdict: "UNNECESSARY" | "ADJUST") =>
+        unionEval.items.filter((i) => i.findings.some((f) => f.verdict === verdict)).map((i) => i.sku);
+      const guardedFlaggedUnnecessary = [...flaggedOn("UNNECESSARY"), ...guardedBlocked];
+      const guardedFlaggedAdjust = [...flaggedOn("ADJUST"), ...guardedBlocked];
 
       const baselineText = new Map(
         baseline.rounds[0].proposed.items.map((i) => [i.sku, `${i.reason} ${baseline.routineNote}`]),
@@ -92,18 +114,23 @@ async function main() {
       const baselineFlagged = (cue: RegExp) =>
         [...baselineText.entries()].filter(([, text]) => cue.test(text)).map(([sku]) => sku);
 
-      const proposedByGuarded = guarded.rounds[0].proposed.items
-        .map((i) => productBySku(catalog, i.sku)?.sku)
-        .filter((s): s is string => Boolean(s));
-      const removed = proposedByGuarded.filter((sku) => !guarded.finalCart.includes(sku));
+      const firedRules = [
+        ...new Set([
+          ...unionEval.items.flatMap((i) => i.findings.map((f) => f.ruleId)),
+          ...unionEval.referrals.map((f) => f.ruleId),
+          ...unionEval.reported.map((f) => f.ruleId),
+          ...unionEval.additions.map((a) => a.ruleId),
+        ]),
+      ];
 
       perRun.push({
         run,
+        firedRules,
         guarded: scoreArm(
           {
-            cart: guarded.finalCart,
-            referred: guarded.evaluation.referrals.length > 0,
-            removed,
+            cart: guardedCart,
+            referred: unionEval.referrals.length > 0,
+            removed: guardedBlocked,
             revisionRounds: guarded.revisionRounds,
             flaggedUnnecessary: guardedFlaggedUnnecessary,
             flaggedAdjust: guardedFlaggedAdjust,
@@ -112,7 +139,7 @@ async function main() {
         ),
         baseline: scoreArm(
           {
-            cart: baseline.finalCart,
+            cart: baselineCart,
             referred: baselineReferred,
             removed: [],
             revisionRounds: 0,
@@ -121,13 +148,13 @@ async function main() {
           },
           expected, catalog,
         ),
-        guardedCart: guarded.finalCart,
-        baselineCart: baseline.finalCart,
+        guardedCart,
+        baselineCart,
         revisionRounds: guarded.revisionRounds,
-        referrals: guarded.evaluation.referrals.map((r) => r.ruleId),
+        referrals: unionEval.referrals.map((r) => r.ruleId),
       });
 
-      void baselineEval;
+      void guardedFinalEval;
     }
 
     const stable = (carts: string[][]) =>
@@ -152,7 +179,7 @@ async function main() {
   // can use the denominator that actually applies to it.
   type Paired = { expected: GoldExpectation; guarded: ScenarioScore; baseline: ScenarioScore; revisionRounds: number };
   const allRuns: Paired[] = rows.flatMap((r) =>
-    (r.runs as Array<{ guarded: ScenarioScore; baseline: ScenarioScore; revisionRounds: number }>).map((run) => ({
+    (r.runs as Array<{ guarded: ScenarioScore; baseline: ScenarioScore; revisionRounds: number; firedRules: string[] }>).map((run) => ({
       expected: r.expected as GoldExpectation,
       ...run,
     })),
@@ -199,6 +226,29 @@ async function main() {
     },
     rows,
   };
+
+  // Per-rule coverage: for each rule, did it fire on the scenarios built to
+  // trigger it, and did it stay quiet on the ones built not to?
+  const byRule: Record<string, { positive: number; positiveFired: number; negative: number; negativeFired: number }> = {};
+  for (const row of rows) {
+    const targets = row.targets_rules as string[];
+    const kind = row.kind as string;
+    const runs = row.runs as Array<{ firedRules: string[] }>;
+    for (const ruleId of targets) {
+      byRule[ruleId] ??= { positive: 0, positiveFired: 0, negative: 0, negativeFired: 0 };
+      for (const run of runs) {
+        const fired = run.firedRules.includes(ruleId);
+        if (kind === "positive") {
+          byRule[ruleId].positive += 1;
+          if (fired) byRule[ruleId].positiveFired += 1;
+        } else {
+          byRule[ruleId].negative += 1;
+          if (fired) byRule[ruleId].negativeFired += 1;
+        }
+      }
+    }
+  }
+  (results as { per_rule?: typeof byRule }).per_rule = byRule;
 
   await writeFile("eval/results.json", `${JSON.stringify(results, null, 2)}\n`);
 

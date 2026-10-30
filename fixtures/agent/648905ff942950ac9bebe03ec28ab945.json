@@ -1,6 +1,6 @@
 {
   "key": "648905ff942950ac9bebe03ec28ab945",
-  "recorded_at": "2026-10-30T15:48:45.602Z",
+  "recorded_at": "2026-10-30T16:30:28.917Z",
   "model": "claude-sonnet-5-5",
   "label": "S30-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle cleanser clears away daytime oil without stripping skin, which can leave it looking shinier later."
+        "reason": "A gentle, non-stripping cleanser to take off excess shine without leaving skin tight."
       },
       {
         "sku": "LL-116",
-        "reason": "The Oil Control Mattifying Gel you asked for is a lightweight, niacinamide-based moisturizer that helps skin look matte through the day."
+        "reason": "The mattifying gel you asked for, a light niacinamide moisturizer that helps keep shine down through the day."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 fluid protects skin in daylight and is light enough to wear over a mattifying gel."
+        "reason": "A lightweight mineral SPF 50 fluid for daytime protection that suits shiny skin."
       }
     ],
-    "routine_note": "Morning: cleanse, apply the mattifying gel, then finish with sunscreen. Evening: cleanse and apply the gel again, and add a little more only if skin feels tight."
+    "routine_note": "Cleanse morning and night, then apply the mattifying gel, and finish with sunscreen in the morning. Keep it to these three for a few weeks before adding anything else."
   }
 }

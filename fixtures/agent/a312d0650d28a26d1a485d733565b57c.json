@@ -1,6 +1,6 @@
 {
   "key": "a312d0650d28a26d1a485d733565b57c",
-  "recorded_at": "2026-10-30T15:47:52.622Z",
+  "recorded_at": "2026-10-30T16:28:14.990Z",
   "model": "claude-sonnet-5-5",
   "label": "S23-r0",
   "run": 0,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-105",
-        "reason": "This is the adapalene gel you asked for, and it suits a night routine aimed at the look of breakouts and uneven texture."
+        "reason": "This is the adapalene gel you asked for, used at night to target the look of breakouts."
       },
       {
         "sku": "LL-101",
-        "reason": "A gentle, active-free cleanser keeps the routine simple and avoids stacking extra irritation on top of adapalene."
+        "reason": "A gentle, active-free cleanser keeps skin clean without adding irritation alongside adapalene."
       },
       {
         "sku": "LL-114",
-        "reason": "Your scan shows low moisture, and a light ceramide moisturizer helps support comfort and the skin's barrier while you use a retinoid."
+        "reason": "A ceramide moisturizer supports the look of comfortable, hydrated skin, since your moisture score is on the lower side."
       },
       {
         "sku": "LL-121",
-        "reason": "Adapalene can make skin more sun-sensitive, so a mineral SPF 50 each morning is an important companion."
+        "reason": "Daily mineral SPF is important because adapalene can make skin more sun-sensitive."
       }
     ],
-    "routine_note": "Apply a thin, pea-sized layer of adapalene to dry skin at night, starting 2 to 3 nights a week and building up slowly as your skin allows, and avoid using other exfoliating acids or scrubs alongside it. Use the cleanser and moisturizer morning and night, finish with sunscreen in the morning, and stop adapalene and check with a healthcare professional if you become pregnant or plan to be."
+    "routine_note": "Morning: cleanse, moisturize, then apply sunscreen. At night, cleanse, apply a thin layer of adapalene to dry skin every other night at first, then moisturize; skip other exfoliating acids or retinol products while you start."
   }
 }

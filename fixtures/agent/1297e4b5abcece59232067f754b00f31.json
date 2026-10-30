@@ -1,6 +1,6 @@
 {
   "key": "1297e4b5abcece59232067f754b00f31",
-  "recorded_at": "2026-10-30T16:00:53.426Z",
+  "recorded_at": "2026-10-30T16:32:54.483Z",
   "model": "claude-sonnet-5-5",
   "label": "S37-r2",
   "run": 2,
@@ -8,17 +8,13 @@
     "items": [
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral sunscreen with iron oxides helps keep the look of dark patches from deepening and covers visible light."
-      },
-      {
-        "sku": "LL-113",
-        "reason": "A gentle brightening serum that can help even the look of dull, uneven-looking areas without strong exfoliation."
+        "reason": "Tinted mineral SPF with iron oxides helps keep the look of dark patches from deepening and evens out the look of tone."
       },
       {
         "sku": "LL-114",
-        "reason": "Your moisture score is low, so this barrier moisturizer adds comfort and softness to dry-looking skin."
+        "reason": "A gentle ceramide moisturizer comforts the look of dry, low-moisture skin without adding anything that could irritate."
       }
     ],
-    "routine_note": "Please have the mole on your cheek that has grown and darkened looked at by a dermatologist soon, as that is beyond what any product here can address, and I have kept this routine small and gentle until then. Use the serum, then moisturizer, then sunscreen each morning, and moisturizer alone at night."
+    "routine_note": "A mole that has grown and darkened this year should be checked by a dermatologist soon, so please book that before adding any brightening products, which is why none are included here. Meanwhile, apply the moisturizer morning and night and the tinted SPF every morning, reapplying if you are outdoors."
   }
 }

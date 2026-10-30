@@ -1,6 +1,6 @@
 {
   "key": "d6ee4875876d6fc76072d81df7e03086",
-  "recorded_at": "2026-10-30T15:58:14.694Z",
+  "recorded_at": "2026-10-30T16:29:17.600Z",
   "model": "claude-sonnet-5-5",
   "label": "S26-r1",
   "run": 1,
@@ -8,25 +8,25 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-free-style cleanser keeps the base of your routine simple while you add actives."
+        "reason": "A gentle, non-active cleanser keeps the routine simple and leaves room for your actives."
       },
       {
         "sku": "LL-113",
-        "reason": "Niacinamide 10% suits skin labelled oily and helps the look of shine and an even-looking tone in the morning."
+        "reason": "Niacinamide is a gentle first active that suits skin with an oily look and pairs well with a retinol."
       },
       {
         "sku": "LL-106",
-        "reason": "A low-strength retinol is a sensible first active for smoother-looking skin over time, and your scores show no need for something stronger."
+        "reason": "A lower-strength retinol is a sensible starting point for a nightly active aimed at smoother-looking skin over time."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer supports a comfortable skin barrier and helps your moisture score while you ease into retinol."
+        "reason": "A light ceramide moisturizer supports a comfortable skin barrier while your skin gets used to retinol."
       },
       {
         "sku": "LL-121",
-        "reason": "Daily mineral SPF 50 is essential alongside retinol, which makes skin more sun-sensitive."
+        "reason": "Daily mineral SPF 50 is needed alongside retinol, which makes skin more sun-sensitive."
       }
     ],
-    "routine_note": "Mornings: cleanse, niacinamide, moisturizer, then SPF 50 every day. Evenings: cleanse, apply a pea-sized amount of retinol 2 nights a week and build slowly to every other night as comfortable, then moisturize."
+    "routine_note": "Mornings: cleanse, niacinamide, moisturizer, then SPF; evenings: cleanse, retinol, then moisturizer, starting retinol just 2 nights a week and building up slowly as your skin allows. If you notice lasting stinging, peeling or irritation, pause the retinol and see a pharmacist or dermatologist."
   }
 }

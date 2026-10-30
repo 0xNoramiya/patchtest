@@ -1,6 +1,6 @@
 {
   "key": "2826154baf4a365ff78b23697ac1aa3a",
-  "recorded_at": "2026-10-30T15:47:34.911Z",
+  "recorded_at": "2026-10-30T16:27:34.746Z",
   "model": "claude-sonnet-5-5",
   "label": "S21-r0",
   "run": 0,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, non-active cleanser keeps the routine comfortable for oily-looking skin while you start an exfoliating product."
+        "reason": "A gentle cleanser keeps the routine comfortable for oily skin without adding more actives."
       },
       {
         "sku": "LL-109",
-        "reason": "One glycolic toner at night suits the uneven texture in your scan without stacking several strong actives."
+        "reason": "The glycolic toner suits your lower texture score and gives a smoother-looking surface, used at night."
       },
       {
         "sku": "LL-114",
-        "reason": "A lightweight barrier moisturizer helps balance moisture and offsets dryness from exfoliating."
+        "reason": "A light ceramide moisturizer supports a comfortable skin barrier while you use an exfoliating acid."
       },
       {
         "sku": "LL-121",
-        "reason": "Glycolic acid can make skin more sun-sensitive, so a daily mineral SPF 50 is essential alongside it."
+        "reason": "A daily mineral SPF is essential because glycolic acid makes skin more sun-sensitive."
       }
     ],
-    "routine_note": "Start the toner 2 nights a week at night, then build up slowly as your skin tolerates it, and wear SPF every morning. I left out the retinol and benzoyl peroxide wash because using all three together tends to irritate and won't speed up results, and your acne and wrinkle scores already look healthy; if you want retinol later, add it on different nights from the toner."
+    "routine_note": "Use the glycolic toner at night just 2 to 3 times a week at first, and wear the SPF every morning. We left out the retinol and benzoyl peroxide wash because using all three together often irritates and your scan shows no need for them now, though retinol can be added on alternate nights once your skin is settled."
   }
 }

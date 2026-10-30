@@ -1,6 +1,6 @@
 {
   "key": "5d351558e9c02a9e9f7be550bf34690e",
-  "recorded_at": "2026-10-30T16:00:38.723Z",
+  "recorded_at": "2026-10-30T16:32:34.355Z",
   "model": "claude-sonnet-5-5",
   "label": "S36-r2",
   "run": 2,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that cleans without stripping skin that looks dry and easily flushed."
+        "reason": "A fragrance-free, active-free cleanser that keeps dry, sensitive-feeling skin comfortable."
       },
       {
         "sku": "LL-117",
-        "reason": "A centella gel that gives a calming, cooling feel to skin that looks red when warm."
+        "reason": "A soothing centella gel to calm the look of redness and warmth-prone skin."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to help comfort and support the look of a dry-feeling skin barrier."
+        "reason": "A ceramide moisturizer to support the look of a comfortable, hydrated skin barrier."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 that is generally gentler on reactive-looking skin and helps shield fair skin from heat and sun that can bring on redness."
+        "reason": "A mineral SPF 50 that is gentle on sensitive skin and helps shield fair skin from sun and heat exposure."
       }
     ],
-    "routine_note": "Use lukewarm water to cleanse morning and night, then apply the soothing gel and moisturizer, finishing with the mineral SPF in the morning, and skip scrubs, acids and retinol for now. Because the flushing keeps returning with warmth and wine, a dermatologist is the right person to look at it rather than adding more products."
+    "routine_note": "Cleanse with lukewarm water, then layer the gel and moisturizer morning and night, adding the mineral SPF last in the morning, and skip scrubs, strong acids and retinoids for now. Because going red with warmth or wine is something a dermatologist is best placed to look at, we suggest booking a visit rather than adding more products."
   }
 }

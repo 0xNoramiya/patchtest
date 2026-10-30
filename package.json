@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "vitest run && next build",
     "start": "next start",
     "lint": "eslint",
     "units": "tsx scripts/units.ts",
@@ -13,7 +13,9 @@
     "scan": "tsx scripts/scan.ts",
     "calibrate": "tsx scripts/calibrate.ts",
     "agent": "tsx scripts/agent-demo.ts",
-    "eval": "tsx scripts/eval.ts"
+    "eval": "tsx scripts/eval.ts",
+    "record-presets": "tsx scripts/record-presets.ts",
+    "build:next": "next build"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.92",
@@ -32,6 +34,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "playwright": "^1.64.1",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
     "typescript": "^5",

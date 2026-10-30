@@ -1,6 +1,6 @@
 {
   "key": "4f7cdc5ffb1688c3a236f8bdaf4deb02",
-  "recorded_at": "2026-10-30T15:57:47.878Z",
+  "recorded_at": "2026-10-30T16:28:37.997Z",
   "model": "claude-sonnet-5-5",
   "label": "S24-r1",
   "run": 1,
@@ -11,10 +11,10 @@
         "reason": "A lightweight ceramide moisturizer that helps skin feel comfortable and less tight without feeling heavy on skin that also runs oily and sensitive."
       },
       {
-        "sku": "LL-121",
-        "reason": "A fragrance-free mineral sunscreen for mornings is a gentle way to protect fair, sensitive skin and keep the routine to just two steps."
+        "sku": "LL-101",
+        "reason": "A fragrance-free-style gentle cleanser with no actives keeps skin from feeling stripped before moisturizer."
       }
     ],
-    "routine_note": "Apply the moisturizer morning and evening on clean skin, and finish your morning routine with the sunscreen. If tightness or redness persists, check in with a dermatologist rather than adding more products."
+    "routine_note": "Cleanse gently morning and evening, then apply the moisturizer to slightly damp skin. If your skin still feels tight or uncomfortable after a couple of weeks, consider checking in with a dermatologist."
   }
 }

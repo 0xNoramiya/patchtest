@@ -1,6 +1,6 @@
 {
   "key": "aff7eb39581d99d732a2c0a6f04ba56f",
-  "recorded_at": "2026-10-30T16:00:46.440Z",
+  "recorded_at": "2026-10-30T16:32:46.572Z",
   "model": "claude-sonnet-5-5",
   "label": "S37-r1",
   "run": 1,
@@ -8,21 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-free style cleanser that suits dry-feeling skin without stripping it."
-      },
-      {
-        "sku": "LL-113",
-        "reason": "A gentle niacinamide serum to help even the look of dark patches over time; keep it away from the mole."
+        "reason": "A gentle, fragrance-free style cleanse that won't strip skin that looks dry."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to support comfort and moisture on dry-looking skin."
+        "reason": "Ceramide moisturizer to support comfort and hydration for skin with a low moisture score."
       },
       {
         "sku": "LL-122",
-        "reason": "Tinted mineral SPF with iron oxides helps keep the look of dark patches from deepening and suits deeper skin tones."
+        "reason": "Tinted mineral SPF with iron oxides helps protect against visible tone changes and evens the look of dark patches."
       }
     ],
-    "routine_note": "Please have the mole on your cheek that has grown and darkened checked by a dermatologist soon, as no product from a shop is the right answer for that, and avoid applying any serums directly on it. In the meantime, use the cleanser, serum and moisturizer morning and evening, and finish your morning routine with the SPF."
+    "routine_note": "Please have a dermatologist look at the mole on your cheek soon, since a mole that has grown and darkened is something a shop can't assess, and hold off on brightening actives until then. In the meantime, cleanse gently, moisturize, and wear the SPF every morning."
   }
 }

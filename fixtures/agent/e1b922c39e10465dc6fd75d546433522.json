@@ -1,6 +1,6 @@
 {
   "key": "e1b922c39e10465dc6fd75d546433522",
-  "recorded_at": "2026-10-30T15:57:33.074Z",
+  "recorded_at": "2026-10-30T16:28:19.878Z",
   "model": "claude-sonnet-5-5",
   "label": "S23-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-105",
-        "reason": "This is the adapalene gel you asked for, a nightly leave-on aimed at the look of breakouts."
+        "reason": "This is the adapalene gel you asked for, used at night to help keep breakout-prone skin looking clearer."
       },
       {
         "sku": "LL-101",
-        "reason": "A gentle cleanser with no actives keeps oily skin feeling clean without adding irritation alongside adapalene."
+        "reason": "A gentle, active-free cleanser keeps the routine from stacking irritation on top of adapalene."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer supports a skin barrier that scans on the drier side and helps the skin cope with adapalene."
+        "reason": "A light ceramide moisturizer supports a skin barrier that looks a bit dry and helps with comfort while your skin adjusts."
       },
       {
         "sku": "LL-121",
-        "reason": "Adapalene makes skin more sun-sensitive, so a daily mineral SPF 50 is an essential partner."
+        "reason": "Daily mineral sunscreen is a must alongside adapalene, which can make skin more sun-sensitive."
       }
     ],
-    "routine_note": "At night, cleanse, apply a pea-sized amount of adapalene to dry skin, then moisturizer, starting every second or third night and building up as skin tolerates it. Use the sunscreen every morning, and skip other exfoliating acids or scrubs while you settle in."
+    "routine_note": "Start adapalene a few nights a week with a pea-sized amount on dry skin, then build up as your skin tolerates it, and use sunscreen every morning. Skip other exfoliating acids or strong actives for now so skin has time to adjust."
   }
 }

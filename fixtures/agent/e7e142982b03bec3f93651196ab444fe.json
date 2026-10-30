@@ -1,6 +1,6 @@
 {
   "key": "e7e142982b03bec3f93651196ab444fe",
-  "recorded_at": "2026-10-30T15:45:37.914Z",
+  "recorded_at": "2026-10-30T16:22:37.129Z",
   "model": "claude-sonnet-5-5",
   "label": "S06-r0",
   "run": 0,
@@ -8,13 +8,9 @@
     "items": [
       {
         "sku": "LL-124",
-        "reason": "A low-strength 2% salicylic acid spray made for the chest, to help clear the look of spots on a small area."
-      },
-      {
-        "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser to keep the chest and shoulders clean without adding irritation."
+        "reason": "A targeted 2% salicylic acid spray made for the chest, to help clear the look of blemishes on a limited area."
       }
     ],
-    "routine_note": "Cleanse once or twice daily and use the spray once a day on the chest and shoulders only, keeping it away from the breast and nipple area, and check with your midwife, doctor or pharmacist first since you are breastfeeding. If the spots are painful, spreading or don't improve in a few weeks, a dermatologist is the right next step rather than more products."
+    "routine_note": "Use once a day on the chest and shoulder areas only, keep it away from the breast and nipple area, and check with your doctor or midwife before starting while breastfeeding. If the spots are painful, spreading or don't improve after several weeks, a dermatologist is the better next step than adding more products."
   }
 }

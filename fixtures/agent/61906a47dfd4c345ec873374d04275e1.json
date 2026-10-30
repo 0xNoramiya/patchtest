@@ -1,6 +1,6 @@
 {
   "key": "61906a47dfd4c345ec873374d04275e1",
-  "recorded_at": "2026-10-30T15:47:00.471Z",
+  "recorded_at": "2026-10-30T16:26:11.349Z",
   "model": "claude-sonnet-5-5",
   "label": "S17-r0",
   "run": 0,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-free style cleanse that won't strip already dry-feeling skin while you start a retinol."
+        "reason": "A gentle, active-free cleanser keeps dry-looking skin comfortable while the retinol settles in."
       },
       {
         "sku": "LL-106",
-        "reason": "The lower 0.3% strength is a sensible starting point for smoother-looking texture and a more even-looking tone."
+        "reason": "The lower 0.3% retinol is a sensible starting strength for smoother-looking texture and a more even-looking tone."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to add comfort and moisture, since your scan shows low moisture."
+        "reason": "A rich ceramide and glycerin cream adds comfort and moisture for skin that scans on the dry side."
       },
       {
         "sku": "LL-122",
-        "reason": "Retinol makes skin more sun-sensitive, and this tinted mineral SPF with iron oxides gives daily protection that suits deeper skin tones."
+        "reason": "A tinted mineral SPF 50 with iron oxides is needed in the morning alongside retinol, and the tint blends well on deeper skin tones."
       }
     ],
-    "routine_note": "Use the retinol at night just 2 evenings a week, applied after cleansing and followed by the cream, then slowly add nights as your skin feels comfortable. Apply the SPF every morning, and pause the retinol and check in with a dermatologist if skin becomes very sore, dark-looking or stays irritated."
+    "routine_note": "Use the retinol at night just two nights a week at first, applied after cleansing and followed by the moisturizer, then add nights slowly as your skin feels comfortable. Apply the sunscreen every morning, and pause the retinol if skin feels stinging or looks irritated, since irritation can leave deeper skin tones looking uneven."
   }
 }

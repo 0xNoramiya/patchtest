@@ -1,6 +1,6 @@
 {
   "key": "89e5636f5e2fd0744df705a1967ff502",
-  "recorded_at": "2026-10-30T15:49:51.647Z",
+  "recorded_at": "2026-10-30T16:33:04.354Z",
   "model": "claude-sonnet-5-5",
   "label": "S38-r0",
   "run": 0,
@@ -8,17 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-free-style cleanse that leaves skin feeling comfortable and doesn't add irritation to uneven-looking texture."
+        "reason": "A gentle, fragrance-free cleanser to freshen oily-feeling skin without stripping it."
+      },
+      {
+        "sku": "LL-113",
+        "reason": "Niacinamide helps skin look smoother and more even, which suits the low texture score and some visible redness."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to support the look of a smooth, comfortable barrier, since moisture reads on the lower side."
+        "reason": "A light ceramide moisturizer to support a comfortable skin barrier, since the moisture score is on the low side."
       },
       {
-        "sku": "LL-121",
-        "reason": "A mineral SPF 50 each morning helps keep the look of redness and uneven tone in check."
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 softens the look of redness and protects skin every day."
       }
     ],
-    "routine_note": "Cleanse and moisturize morning and night, and apply the SPF last each morning. Because how your skin looks is affecting your mood and your willingness to go out, please also talk to a dermatologist or doctor, as that goes beyond anything a shop can offer."
+    "routine_note": "Cleanse morning and night, apply niacinamide then moisturizer, and finish mornings with the tinted SPF. Since how your skin looks is weighing on your mood and your daily life, please also consider talking with a dermatologist or doctor, as they can offer support that goes beyond what a shop can."
   }
 }

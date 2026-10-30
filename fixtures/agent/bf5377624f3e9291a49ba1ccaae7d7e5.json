@@ -1,6 +1,6 @@
 {
   "key": "bf5377624f3e9291a49ba1ccaae7d7e5",
-  "recorded_at": "2026-10-30T15:54:25.131Z",
+  "recorded_at": "2026-10-30T16:24:05.668Z",
   "model": "claude-sonnet-5-5",
   "label": "S10-r1",
   "run": 1,
@@ -12,13 +12,13 @@
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to support a dry-looking skin barrier and soften flaky patches."
+        "reason": "A rich ceramide and glycerin cream to support comfort and moisture, which scored low in your scan."
       },
       {
-        "sku": "LL-121",
-        "reason": "A gentle mineral SPF 50 for daily protection, since skin can be more sun-sensitive during this time."
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 with iron oxides for daily protection, blending well on deeper skin tones."
       }
     ],
-    "routine_note": "I've left out the glycolic toner and vitamin C serum because exfoliating acids and strong actives can feel very harsh on skin that is already dry and flaky while on isotretinoin, so please check with your prescriber or a dermatologist before adding them. Use the cleanser and cream morning and night, and finish your morning routine with the SPF."
+    "routine_note": "I left out the glycolic toner and vitamin C serum because exfoliating acids and strong actives are too harsh for skin while you are on isotretinoin, so please ask your prescriber or dermatologist about the flaking and before adding any actives. Use the cleanser morning and night, follow with the cream, and finish with SPF every morning."
   }
 }

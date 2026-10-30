@@ -1,6 +1,6 @@
 {
   "key": "7bdaafb6cd10d261e796d33e8fb630a5",
-  "recorded_at": "2026-10-30T15:45:00.014Z",
+  "recorded_at": "2026-10-30T16:20:54.321Z",
   "model": "claude-sonnet-5-5",
   "label": "S01-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that suits oily, sensitive-looking skin without stripping it."
+        "reason": "A fragrance-free, active-free cleanser that suits oily and sensitive-looking skin without stripping it."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer to support comfort and a smoother look while moisture scores are mid-range."
+        "reason": "A light ceramide moisturizer to support the skin barrier and comfort, with no actives."
       },
       {
         "sku": "LL-121",
-        "reason": "Mineral SPF 50 is the most useful daily step for keeping the look of fine lines from deepening, and it is gentle on sensitive skin."
+        "reason": "A mineral SPF 50 is the most useful daily step for keeping the look of fine lines from advancing, and it is gentle on fair, sensitive skin."
       }
     ],
-    "routine_note": "I've left out retinol and other retinoids because they aren't recommended during pregnancy, so please check with your doctor or midwife before adding any active. Meanwhile, cleanse gently morning and night, moisturize, and apply mineral SPF every morning."
+    "routine_note": "We have left out all retinol and retinoid products because they are best avoided during pregnancy, so please ask your prenatal care provider before adding any active, including once you are breastfeeding. Use the cleanser and moisturizer morning and night, and apply the SPF last each morning, reapplying if you are outdoors."
   }
 }

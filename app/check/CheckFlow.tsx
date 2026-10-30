@@ -1,0 +1,290 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { BaselineCompare } from "@/components/BaselineCompare";
+import { CartList } from "@/components/CartList";
+import { IntakeForm } from "@/components/Intake";
+import { Referrals } from "@/components/Referrals";
+import { ScanPanel } from "@/components/ScanPanel";
+import type { AdviseResult } from "@/lib/advise";
+import { EMPTY_INTAKE, type Intake } from "@/lib/intake";
+import type { Preset } from "@/lib/presets";
+import type { ScanListing } from "@/app/api/scans/route";
+
+type Step = "consent" | "intake" | "cart" | "scan" | "working" | "results";
+
+type CatalogItem = { sku: string; name: string; price: number; blurb: string; tags: string[] };
+
+const STEP_ORDER: Step[] = ["consent", "intake", "cart", "scan", "results"];
+
+function Progress({ step }: { step: Step }) {
+  const index = STEP_ORDER.indexOf(step === "working" ? "scan" : step);
+  return (
+    <ol className="mb-8 flex flex-wrap gap-x-2 gap-y-1 text-xs text-faint">
+      {["Consent", "About you", "Your cart", "Your scan", "Verdicts"].map((label, i) => (
+        <li key={label} className="flex items-center gap-2">
+          <span className={i <= index ? "font-medium text-accent" : ""}>{label}</span>
+          {i < 4 ? <span aria-hidden>&rsaquo;</span> : null}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+export function CheckFlow() {
+  const params = useSearchParams();
+  const presetId = params.get("preset");
+
+  const [step, setStep] = useState<Step>("consent");
+  const [intake, setIntake] = useState<Intake>(EMPTY_INTAKE);
+  const [wanted, setWanted] = useState<string[]>([]);
+  const [catalog, setCatalog] = useState<CatalogItem[]>([]);
+  const [scans, setScans] = useState<ScanListing[]>([]);
+  const [result, setResult] = useState<AdviseResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/catalog").then((r) => r.json()).then((d) => setCatalog(d.products)).catch(() => {});
+    fetch("/api/scans").then((r) => r.json()).then((d) => setScans(d.scans)).catch(() => {});
+  }, []);
+
+  const run = useCallback(
+    async (scanLabel: string, intakeToUse: Intake, wantedSkus: string[]) => {
+      setStep("working");
+      setError(null);
+      try {
+        const res = await fetch("/api/advise", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ scanLabel, intake: intakeToUse, wantedSkus }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error ?? "Something went wrong");
+        setResult(data as AdviseResult);
+        setStep("results");
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Something went wrong");
+        setStep("scan");
+      }
+    },
+    [],
+  );
+
+  // A preset skips straight to the answer, which is what the demo needs.
+  useEffect(() => {
+    if (!presetId) return;
+    let cancelled = false;
+    (async () => {
+      const res = await fetch("/api/presets");
+      const { presets } = (await res.json()) as { presets: Preset[] };
+      const preset = presets.find((p) => p.id === presetId);
+      if (!preset || cancelled) return;
+      const presetIntake: Intake = { ...EMPTY_INTAKE, ...preset.intake, goal: preset.goal };
+      setIntake(presetIntake);
+      setWanted(preset.wantedSkus);
+      await run(preset.scanLabel, presetIntake, preset.wantedSkus);
+    })();
+    return () => { cancelled = true; };
+  }, [presetId, run]);
+
+  if (step === "results" && result) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-10">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h1 className="font-display text-3xl">What we found</h1>
+          <Link href="/check" className="text-sm text-accent underline underline-offset-2">
+            Start again
+          </Link>
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-muted">
+          {result.revisionRounds > 0
+            ? `The advisor proposed a cart, our rules rejected part of it, and it revised ${result.revisionRounds} time${result.revisionRounds > 1 ? "s" : ""}.`
+            : "The advisor proposed a cart and our rules checked every item in it."}{" "}
+          Final verdicts are always computed by the rules, never written by the model.
+        </p>
+
+        <div className="mt-6 space-y-5">
+          <Referrals result={result} />
+          <CartList result={result} />
+          {result.routineNote ? (
+            <section className="rounded-xl border border-line bg-surface p-4 sm:p-6">
+              <h2 className="font-display text-lg">How to use it</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">{result.routineNote}</p>
+              {result.claimsFiltered ? (
+                <p className="mt-2 text-xs text-faint">
+                  Part of what the model wrote was rewritten or removed by our claim filter.
+                </p>
+              ) : null}
+            </section>
+          ) : null}
+          <ScanPanel result={result} />
+          <BaselineCompare result={result} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-10">
+      <Progress step={step} />
+
+      {step === "consent" ? (
+        <section>
+          <h1 className="font-display text-3xl">Before we start</h1>
+          <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted">
+            <p>
+              <span className="font-medium text-ink">What gets sent.</span> If you run a live scan,
+              your photo is sent to YouCam, which is Perfect Corp, to be analyzed. YouCam says
+              results and generated images are kept for about 24 hours and then deleted.
+            </p>
+            <p>
+              <span className="font-medium text-ink">What we keep.</span> Nothing about you is stored
+              on our server beyond the scan scores, which we cache so the same photo is never
+              charged twice. We do not store your photo. We do not ask for your name or email.
+            </p>
+            <p>
+              <span className="font-medium text-ink">What this is not.</span> PatchTest is a
+              hackathon project. It is not a medical device and it does not diagnose anything. Scan
+              scores describe how skin looks in a photo, not your health.
+            </p>
+            <p>
+              <span className="font-medium text-ink">In this demo</span> you will choose from scans
+              that were already run through the YouCam APIs, so no new photo of you is sent anywhere.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setStep("intake")}
+            className="mt-7 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+          >
+            I understand, continue
+          </button>
+        </section>
+      ) : null}
+
+      {step === "intake" ? (
+        <section>
+          <h1 className="font-display text-3xl">About you</h1>
+          <p className="mt-2 text-sm text-muted">
+            This takes about 30 seconds. Everything here is what you tell us, not what we guess.
+          </p>
+          <div className="mt-6">
+            <IntakeForm value={intake} onChange={setIntake} />
+          </div>
+          <div className="mt-7 flex gap-3">
+            <button
+              type="button"
+              onClick={() => setStep("cart")}
+              className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+            >
+              Next
+            </button>
+            <button type="button" onClick={() => setStep("consent")} className="text-sm text-muted">
+              Back
+            </button>
+          </div>
+        </section>
+      ) : null}
+
+      {step === "cart" ? (
+        <section>
+          <h1 className="font-display text-3xl">What is in your cart?</h1>
+          <p className="mt-2 text-sm text-muted">
+            Pick anything you were already planning to buy. We will give each one a verdict, even if
+            the answer is no. Leave it empty and we will just suggest a routine.
+          </p>
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+            {catalog.map((item) => {
+              const checked = wanted.includes(item.sku);
+              return (
+                <li key={item.sku}>
+                  <label
+                    className={`flex h-full cursor-pointer gap-3 rounded-lg border p-3 text-sm transition-colors ${
+                      checked ? "border-accent bg-accent-soft" : "border-line bg-surface hover:border-accent/40"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() =>
+                        setWanted(checked ? wanted.filter((s) => s !== item.sku) : [...wanted, item.sku])
+                      }
+                      className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--accent)]"
+                    />
+                    <span>
+                      <span className="block font-medium">{item.name}</span>
+                      <span className="tnum block text-xs text-muted">${item.price}</span>
+                    </span>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="mt-7 flex gap-3">
+            <button
+              type="button"
+              onClick={() => setStep("scan")}
+              className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+            >
+              Next
+            </button>
+            <button type="button" onClick={() => setStep("intake")} className="text-sm text-muted">
+              Back
+            </button>
+          </div>
+        </section>
+      ) : null}
+
+      {step === "scan" ? (
+        <section>
+          <h1 className="font-display text-3xl">Choose a scan</h1>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Every one of these is a real result from the YouCam AI Skin Analysis and AI Fitzpatrick
+            Skin Type APIs, recorded once and replayed since. The faces are AI generated, so nobody
+            real is being analyzed here. The number shown is each face&rsquo;s lowest measured score.
+          </p>
+          {error ? (
+            <p className="mt-4 rounded-lg border border-block/25 bg-block-soft p-3 text-sm text-block">
+              {error}
+            </p>
+          ) : null}
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {scans.map((scan) => (
+              <li key={scan.label}>
+                <button
+                  type="button"
+                  onClick={() => run(scan.label, intake, wanted)}
+                  className="block w-full overflow-hidden rounded-xl border border-line bg-surface text-left transition-colors hover:border-accent"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={scan.imagePath} alt="" className="aspect-[3/4] w-full object-cover" />
+                  <span className="block p-2.5 text-xs">
+                    <span className="block font-medium">Fitzpatrick {scan.fitzpatrick}</span>
+                    <span className="tnum block text-faint">
+                      {scan.skinType}
+                      {scan.headline ? ` · ${scan.headline.concern.replace("_", " ")} ${scan.headline.raw.toFixed(0)}` : ""}
+                    </span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button type="button" onClick={() => setStep("cart")} className="mt-6 text-sm text-muted">
+            Back
+          </button>
+        </section>
+      ) : null}
+
+      {step === "working" ? (
+        <section className="py-16 text-center">
+          <p className="font-display text-2xl">Checking your cart</p>
+          <p className="mt-2 text-sm text-muted">
+            Reading the scan, running the advisor, then applying every rule.
+          </p>
+        </section>
+      ) : null}
+    </div>
+  );
+}

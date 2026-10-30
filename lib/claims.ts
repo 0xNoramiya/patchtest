@@ -21,10 +21,18 @@ const FORBIDDEN: Array<{ rule: string; pattern: RegExp }> = [
   { rule: "no eliminates/eradicates claims", pattern: /\b(?:eliminates?|eradicates?|heals?)\s+(?:your\s+)?(?:acne|breakouts|redness)\b/gi },
 ];
 
+/**
+ * "It does not diagnose anything" is the disclaimer, not the claim. A negation
+ * in the few words before a match clears it.
+ */
+const NEGATION = /\b(?:not|never|cannot|can't|doesn't|does not|don't|do not|isn't|is not|without|no)\b[^.!?]{0,24}$/i;
+
 export function lintClaims(text: string): ClaimViolation[] {
   const found: ClaimViolation[] = [];
   for (const { rule, pattern } of FORBIDDEN) {
     for (const match of text.matchAll(pattern)) {
+      const before = text.slice(Math.max(0, (match.index ?? 0) - 40), match.index ?? 0);
+      if (NEGATION.test(before)) continue;
       found.push({ phrase: match[0], rule });
     }
   }

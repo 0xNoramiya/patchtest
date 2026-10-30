@@ -1,6 +1,6 @@
 {
   "key": "0738982483085089fa620e494ed405d0",
-  "recorded_at": "2026-10-30T15:45:22.025Z",
+  "recorded_at": "2026-10-30T16:21:57.113Z",
   "model": "claude-sonnet-5-5",
   "label": "S04-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that won't strip skin that already looks dry."
+        "reason": "A fragrance-free, active-free cleanser that won't strip skin that already reads as dry."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to support comfort and moisture, since the scan shows low moisture."
+        "reason": "A rich ceramide and glycerin cream to help comfort and soften skin with a low moisture score."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF with iron oxides helps shield visible dark patches from daily light and is a pregnancy-friendly mineral option."
+        "reason": "A tinted mineral SPF 50 with iron oxides helps shield the look of dark patches from visible light and sun, and it is a gentle choice for pregnancy."
       }
     ],
-    "routine_note": "Please check your hydroquinone cream with your doctor, midwife or a dermatologist before continuing, and ask them about dark patches during pregnancy rather than adding more products here. Use the cleanser and moisturizer morning and night, and finish your morning routine with the tinted SPF."
+    "routine_note": "Please check with your doctor or a dermatologist about continuing your hydroquinone cream during pregnancy, since that is beyond what a shop can advise on, and we have left out extra brightening actives for now. Cleanse morning and night, moisturize after, and finish with the tinted SPF every morning."
   }
 }

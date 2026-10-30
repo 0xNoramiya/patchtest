@@ -1,6 +1,6 @@
 {
   "key": "a602d1fc191872f436903e68145ba05a",
-  "recorded_at": "2026-10-30T15:58:34.047Z",
+  "recorded_at": "2026-10-30T16:29:42.957Z",
   "model": "claude-sonnet-5-5",
   "label": "S27-r2",
   "run": 2,
@@ -8,21 +8,17 @@
     "items": [
       {
         "sku": "LL-118",
-        "reason": "The peptide cream you asked for is a gentle, easy way to begin a smoothing, firming routine."
+        "reason": "A gentle peptide cream is an easy way to start a preventive routine and add comfort to skin with moderate moisture."
       },
       {
         "sku": "LL-108",
-        "reason": "The retinal eye cream you asked for is a low-strength option for an early start on eye-area care."
+        "reason": "You asked for it, and a low-strength retinal eye cream suits an adult starting a gradual anti-aging habit."
       },
       {
         "sku": "LL-121",
-        "reason": "A daily mineral SPF 50 is needed alongside a retinal product and helps keep skin looking its best over time."
-      },
-      {
-        "sku": "LL-101",
-        "reason": "A gentle cleanser keeps the routine simple without stripping oily skin."
+        "reason": "Daily sunscreen is essential alongside retinal and is the most useful anti-aging step at any age."
       }
     ],
-    "routine_note": "Use the retinal eye cream at night, starting two or three nights a week and building up if your skin feels comfortable, and use the peptide cream morning or night. Apply sunscreen every morning and reapply when outdoors."
+    "routine_note": "Use the sunscreen every morning, and apply the retinal eye cream at night just 2 to 3 times a week at first, with the peptide cream after it or on its own on other nights. Build up slowly, and pause the retinal if the area feels irritated or if you become pregnant or start breastfeeding."
   }
 }

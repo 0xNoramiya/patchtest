@@ -1,6 +1,6 @@
 {
   "key": "05b293a8b78e007bda92672c947b8393",
-  "recorded_at": "2026-10-30T15:58:44.601Z",
+  "recorded_at": "2026-10-30T16:29:55.977Z",
   "model": "claude-sonnet-5-5",
   "label": "S28-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, fragrance-free-style cleanser that cleans without stripping skin that looks dry and dull."
+        "reason": "A gentle, active-free cleanser keeps skin comfortable while it adjusts to a retinol."
       },
       {
         "sku": "LL-106",
-        "reason": "A mild-strength retinol night serum is a sensible starting point to help smooth the look of fine lines and improve the look of firmness."
+        "reason": "A lower-strength retinol is a sensible starting point for softening the look of lines and uneven texture."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to boost comfort and plumpness, since your scan shows low surface moisture."
+        "reason": "A rich ceramide and glycerin cream helps with the low moisture reading and supports a smoother, plumper look."
       },
       {
         "sku": "LL-121",
-        "reason": "A daily mineral SPF 50 protects skin from sun and is essential alongside a retinol."
+        "reason": "Daily mineral SPF 50 is essential alongside retinol and helps protect against further visible signs of aging."
       }
     ],
-    "routine_note": "Mornings: cleanse, moisturize, then apply sunscreen; evenings: cleanse, apply a pea-sized amount of retinol 2 nights a week and build up slowly as comfortable, then moisturize. If skin feels sore, stinging or very dry, pause the retinol, and if you have any concerns about your skin, a dermatologist is the best person to ask."
+    "routine_note": "Mornings: cleanse, moisturizer, then SPF 50. Evenings: cleanse, retinol on 2 nights a week at first, then moisturizer, building up slowly if skin stays comfortable."
   }
 }

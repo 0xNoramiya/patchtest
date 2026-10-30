@@ -1,6 +1,6 @@
 {
   "key": "5f984128ec88df6bec40bc8a732fd797",
-  "recorded_at": "2026-10-30T15:57:59.578Z",
+  "recorded_at": "2026-10-30T16:28:56.541Z",
   "model": "claude-sonnet-5-5",
   "label": "S25-r1",
   "run": 1,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser that suits dry, sensitive-looking skin and won't strip it."
+        "reason": "A fragrance-free, active-free cleanser that won't strip dry, sensitive-feeling skin."
       },
       {
         "sku": "LL-114",
-        "reason": "A ceramide moisturizer to support a comfortable skin barrier and help with dryness."
+        "reason": "Ceramides help support the look of a comfortable, well-cushioned skin barrier and ease dryness."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF 50 with iron oxides that gently shields skin and softly evens the look of visible redness."
+        "reason": "A tinted mineral SPF with iron oxides gives daily sun protection and softly evens the look of visible redness."
       }
     ],
-    "routine_note": "I've left out the 15% vitamin C serum and the 10% glycolic toner for now, because strong actives can make sensitive, easily flushed-looking skin feel more irritated. Since your redness is constant and bothers you, I'd suggest having a dermatologist look at it before adding anything stronger."
+    "routine_note": "I've left out the 15% vitamin C serum and 10% glycolic toner because strong acids are likely to sting and worsen the look of redness on dry, sensitive skin, so start with this simple routine morning and night, using the SPF each morning. Since you say your face is always red, a dermatologist is the best person to look at it before you add any actives."
   }
 }

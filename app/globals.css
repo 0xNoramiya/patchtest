@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #fbfaf7;
+  --surface: #ffffff;
+  --ink: #191c1a;
+  --muted: #5f6660;
+  --faint: #8b918b;
+  --line: #e5e3dd;
+  --accent: #2f5d4f;
+  --accent-soft: #edf4f0;
+
+  --block: #a5342b;
+  --block-soft: #fbedeb;
+  --adjust: #8a5a14;
+  --adjust-soft: #fdf3e2;
+  --unnecessary: #4a5159;
+  --unnecessary-soft: #f1f2f3;
+  --refer: #2b5579;
+  --refer-soft: #eaf1f8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-block: var(--block);
+  --color-block-soft: var(--block-soft);
+  --color-adjust: var(--adjust);
+  --color-adjust-soft: var(--adjust-soft);
+  --color-unnecessary: var(--unnecessary);
+  --color-unnecessary-soft: var(--unnecessary-soft);
+  --color-refer: var(--refer);
+  --color-refer-soft: var(--refer-soft);
   --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-display);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+h1, h2, h3 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+/* Numbers in score tables line up. */
+.tnum { font-variant-numeric: tabular-nums; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

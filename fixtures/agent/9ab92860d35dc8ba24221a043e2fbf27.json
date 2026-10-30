@@ -1,6 +1,6 @@
 {
   "key": "9ab92860d35dc8ba24221a043e2fbf27",
-  "recorded_at": "2026-10-30T15:46:42.773Z",
+  "recorded_at": "2026-10-30T16:25:25.500Z",
   "model": "claude-sonnet-5-5",
   "label": "S15-r0",
   "run": 0,
@@ -8,17 +8,17 @@
     "items": [
       {
         "sku": "LL-103",
-        "reason": "A mild 2.5% benzoyl peroxide wash is a gentle, age-appropriate way to help keep the chin and jaw looking clearer."
+        "reason": "A low-strength 2.5% wash that cleanses oily skin and is gentle enough for a first routine at 16."
       },
       {
         "sku": "LL-114",
-        "reason": "A light ceramide moisturizer supports a comfortable skin barrier, which helps with the lower moisture reading and any dryness from the wash."
+        "reason": "A light barrier moisturizer to keep skin comfortable and balanced after cleansing."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 protects skin every morning and is gentle on young skin."
+        "reason": "A mineral SPF 50 for daily protection that suits a simple morning routine."
       }
     ],
-    "routine_note": "Start with the wash once a day in the evening and rinse well, then moisturize, and use the SPF each morning. If the spots are painful, leave marks or don't improve after a couple of months, a dermatologist or doctor is the best next step."
+    "routine_note": "Wash with LL-103 once a day at first, building to twice if skin feels comfortable, then moisturize and wear SPF every morning. If the spots are painful, leave marks, or don't improve after 8 to 12 weeks, please see a doctor or dermatologist instead of adding more products."
   }
 }

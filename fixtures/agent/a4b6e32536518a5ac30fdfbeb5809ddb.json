@@ -1,6 +1,6 @@
 {
   "key": "a4b6e32536518a5ac30fdfbeb5809ddb",
-  "recorded_at": "2026-10-30T15:48:29.540Z",
+  "recorded_at": "2026-10-30T16:29:49.643Z",
   "model": "claude-sonnet-5-5",
   "label": "S28-r0",
   "run": 0,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A fragrance-free, active-free cleanser keeps skin comfortable while the scan shows very low moisture."
+        "reason": "A gentle, fragrance-free style cleanse that won't strip skin that looks dry and dehydrated."
       },
       {
         "sku": "LL-106",
-        "reason": "A starter-strength retinol serum for the night is a well-known cosmetic choice to help soften the look of lines and improve the look of firmness."
+        "reason": "A starter-strength retinol night serum to help smooth the look of lines and improve the look of firmness over time."
       },
       {
-        "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream supports the look of plumper, more comfortable skin where moisture reads low."
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to boost comfort and plumpness where the scan shows low moisture, without being too heavy for an oily-labelled skin type."
       },
       {
         "sku": "LL-121",
-        "reason": "A mineral SPF 50 each morning is needed with retinol and helps protect the look of skin from further visible signs of aging."
+        "reason": "A daily mineral SPF 50 to protect skin from sun, which is needed alongside retinol and helps keep lines from looking deeper."
       }
     ],
-    "routine_note": "Cleanse morning and night, then apply sunscreen after moisturizer in the morning. Start the retinol 2 nights a week, followed by the cream, and increase slowly as your skin feels comfortable."
+    "routine_note": "Mornings: cleanse, moisturize, then SPF. At night: cleanse, apply retinol 2 nights a week and build up slowly, with moisturizer after, and stop and check in with a dermatologist if skin stays sore or irritated."
   }
 }

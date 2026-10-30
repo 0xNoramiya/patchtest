@@ -1,0 +1,24 @@
+{
+  "key": "83925b37b0f4a27882866f7d64bda1f9",
+  "recorded_at": "2026-10-30T16:07:28.473Z",
+  "model": "claude-sonnet-5-5",
+  "label": "advise-synthetic-02-acne",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser to keep skin feeling clean without stripping it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer to support a comfortable skin barrier, since moisture reads on the low side."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection, and zinc oxide formulas are a common pick for sensitive or changing skin."
+      }
+    ],
+    "routine_note": "We have left out the adapalene gel because it is a retinoid and not a good fit while pregnant, so please ask your prenatal care provider or a dermatologist about your skin changes and what is safe for you. Until then, cleanse and moisturize morning and night and apply sunscreen each morning."
+  }
+}

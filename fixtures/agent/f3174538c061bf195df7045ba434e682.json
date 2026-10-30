@@ -1,6 +1,6 @@
 {
   "key": "f3174538c061bf195df7045ba434e682",
-  "recorded_at": "2026-10-30T15:55:44.470Z",
+  "recorded_at": "2026-10-30T16:25:56.236Z",
   "model": "claude-sonnet-5-5",
   "label": "S16-r1",
   "run": 1,
@@ -8,21 +8,21 @@
     "items": [
       {
         "sku": "LL-101",
-        "reason": "A gentle, non-active cleanser that won't strip skin that already looks dry."
+        "reason": "A gentle, fragrance-free-style cleanser that cleans without stripping skin that scans as dry."
       },
       {
-        "sku": "LL-113",
-        "reason": "A gentle serum that helps skin look more even in tone without the irritation of strong exfoliants."
+        "sku": "LL-111",
+        "reason": "A gentle brightening cream that helps the look of uneven tone on the cheeks without harsh exfoliation."
       },
       {
         "sku": "LL-115",
-        "reason": "A rich ceramide and glycerin cream to support comfort and moisture in dry-looking skin."
+        "reason": "A rich ceramide and glycerin cream to support the low moisture score and keep skin comfortable."
       },
       {
         "sku": "LL-122",
-        "reason": "A tinted mineral SPF with iron oxides to help protect the look of dark patches from getting more noticeable."
+        "reason": "A tinted mineral SPF 50 with iron oxides to help protect the look of uneven tone from sun and visible light."
       }
     ],
-    "routine_note": "We've left out the 30% peel and the strongest retinol because they can be too harsh for deeper skin tones and may leave patches looking darker, and dark patches on the cheeks are best looked at in person by a dermatologist. Use the cleanser, niacinamide and cream morning and evening, and finish every morning with the tinted SPF."
+    "routine_note": "I've left out the 30% peel and the 1% retinol because strong exfoliation and high-strength actives can irritate deeper skin tones and make dark patches look worse, so start with this gentler set: cleanser, azelaic cream and moisturizer morning and night, with SPF every morning. If the patches persist or change, a dermatologist can look at your skin in person and advise on stronger options."
   }
 }

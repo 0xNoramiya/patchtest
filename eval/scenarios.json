@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "40 scenarios. Each is a recorded scan fixture plus a declared intake plus what the shopper asked for. kind=positive means the named rules should fire, negative means they should not, control means nothing should be blocked at all.",
+  "note": "40 scenarios. Each is a recorded scan fixture, a declared intake, what the shopper asked for in their own words, and the skus they had already put in their cart. kind=positive means the named rules should fire, negative means they should not, control means nothing should be blocked at all.",
   "scenarios": [
     {
       "id": "S01",
@@ -13,7 +13,10 @@
       "targets_rules": [
         "R-PREG-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-106"
+      ]
     },
     {
       "id": "S02",
@@ -26,7 +29,10 @@
       "targets_rules": [
         "R-PREG-03"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-110"
+      ]
     },
     {
       "id": "S03",
@@ -39,7 +45,10 @@
       "targets_rules": [
         "R-PREG-04"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-104"
+      ]
     },
     {
       "id": "S04",
@@ -55,7 +64,10 @@
       "targets_rules": [
         "R-PREG-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-112"
+      ]
     },
     {
       "id": "S05",
@@ -68,7 +80,10 @@
       "targets_rules": [
         "R-PREG-05"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-126"
+      ]
     },
     {
       "id": "S06",
@@ -81,7 +96,10 @@
       "targets_rules": [
         "R-BF-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-124"
+      ]
     },
     {
       "id": "S07",
@@ -94,7 +112,10 @@
       "targets_rules": [
         "R-PREG-04"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-103"
+      ]
     },
     {
       "id": "S08",
@@ -107,7 +128,10 @@
       "targets_rules": [
         "R-ISO-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-120"
+      ]
     },
     {
       "id": "S09",
@@ -120,7 +144,10 @@
       "targets_rules": [
         "R-ISO-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-110"
+      ]
     },
     {
       "id": "S10",
@@ -133,7 +160,11 @@
       "targets_rules": [
         "R-ISO-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-109",
+        "LL-112"
+      ]
     },
     {
       "id": "S11",
@@ -147,7 +178,10 @@
         "R-ISO-01",
         "R-ISO-02"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-109"
+      ]
     },
     {
       "id": "S12",
@@ -160,7 +194,12 @@
       "targets_rules": [
         "R-AGE-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-107",
+        "LL-112",
+        "LL-110"
+      ]
     },
     {
       "id": "S13",
@@ -173,7 +212,10 @@
       "targets_rules": [
         "R-AGE-01"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-101"
+      ]
     },
     {
       "id": "S14",
@@ -186,7 +228,11 @@
       "targets_rules": [
         "R-AGE-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-112",
+        "LL-118"
+      ]
     },
     {
       "id": "S15",
@@ -199,7 +245,10 @@
       "targets_rules": [
         "R-AGE-02"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-105"
+      ]
     },
     {
       "id": "S16",
@@ -211,7 +260,11 @@
         "R-FITZ-01",
         "R-FITZ-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-110",
+        "LL-107"
+      ]
     },
     {
       "id": "S17",
@@ -222,7 +275,10 @@
       "targets_rules": [
         "R-FITZ-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-106"
+      ]
     },
     {
       "id": "S18",
@@ -233,7 +289,10 @@
       "targets_rules": [
         "R-FITZ-03"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-104"
+      ]
     },
     {
       "id": "S19",
@@ -244,7 +303,10 @@
       "targets_rules": [
         "R-FITZ-01"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-110"
+      ]
     },
     {
       "id": "S20",
@@ -255,7 +317,10 @@
       "targets_rules": [
         "R-FITZ-02"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-106"
+      ]
     },
     {
       "id": "S21",
@@ -266,7 +331,12 @@
       "targets_rules": [
         "R-STACK-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-106",
+        "LL-109",
+        "LL-103"
+      ]
     },
     {
       "id": "S22",
@@ -281,7 +351,10 @@
       "targets_rules": [
         "R-STACK-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-103"
+      ]
     },
     {
       "id": "S23",
@@ -292,7 +365,10 @@
       "targets_rules": [
         "R-SPF-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-105"
+      ]
     },
     {
       "id": "S24",
@@ -304,7 +380,10 @@
         "R-STACK-01",
         "R-SPF-01"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-114"
+      ]
     },
     {
       "id": "S25",
@@ -315,7 +394,11 @@
       "targets_rules": [
         "R-SENS-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-112",
+        "LL-109"
+      ]
     },
     {
       "id": "S26",
@@ -326,7 +409,10 @@
       "targets_rules": [
         "R-SENS-01"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-113"
+      ]
     },
     {
       "id": "S27",
@@ -337,7 +423,11 @@
       "targets_rules": [
         "R-NEED-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-118",
+        "LL-108"
+      ]
     },
     {
       "id": "S28",
@@ -348,7 +438,11 @@
       "targets_rules": [
         "R-NEED-01"
       ],
-      "kind": "negative"
+      "kind": "negative",
+      "wantedSkus": [
+        "LL-118",
+        "LL-106"
+      ]
     },
     {
       "id": "S29",
@@ -359,7 +453,10 @@
       "targets_rules": [
         "R-NEED-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-116"
+      ]
     },
     {
       "id": "S30",
@@ -370,7 +467,10 @@
       "targets_rules": [
         "R-NEED-02"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-116"
+      ]
     },
     {
       "id": "S31",
@@ -381,7 +481,11 @@
       "targets_rules": [
         "R-DUP-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-107",
+        "LL-108"
+      ]
     },
     {
       "id": "S32",
@@ -392,7 +496,10 @@
       "targets_rules": [
         "R-DUP-01"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-106"
+      ]
     },
     {
       "id": "S33",
@@ -408,7 +515,11 @@
       "targets_rules": [
         "R-REF-01"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-104",
+        "LL-110"
+      ]
     },
     {
       "id": "S34",
@@ -419,7 +530,10 @@
       "targets_rules": [
         "R-REF-01"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-101"
+      ]
     },
     {
       "id": "S35",
@@ -436,7 +550,11 @@
       "targets_rules": [
         "R-REF-02"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-109",
+        "LL-104"
+      ]
     },
     {
       "id": "S36",
@@ -451,7 +569,10 @@
       "targets_rules": [
         "R-REF-02"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-117"
+      ]
     },
     {
       "id": "S37",
@@ -466,7 +587,10 @@
       "targets_rules": [
         "R-REF-03"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-112"
+      ]
     },
     {
       "id": "S38",
@@ -481,7 +605,10 @@
       "targets_rules": [
         "R-REF-04"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-104"
+      ]
     },
     {
       "id": "S39",
@@ -496,7 +623,10 @@
       "targets_rules": [
         "R-REF-04"
       ],
-      "kind": "positive"
+      "kind": "positive",
+      "wantedSkus": [
+        "LL-105"
+      ]
     },
     {
       "id": "S40",
@@ -508,7 +638,10 @@
         "R-REF-03",
         "R-REF-04"
       ],
-      "kind": "control"
+      "kind": "control",
+      "wantedSkus": [
+        "LL-101"
+      ]
     }
   ]
 }
