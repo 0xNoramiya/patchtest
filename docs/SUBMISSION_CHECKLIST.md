@@ -14,7 +14,8 @@ Checked against the rules on 2026-10-31.
 | Video names the YouCam APIs used | Script puts both names on screen as a persistent lower third for the whole "how it works" section, and says them aloud |
 | Video runtime fits the cap | **Measured, not estimated.** The composition is 172.52s (2:53), 7.5s under the cap. Every clip length is probed with `ffprobe` by `scripts/build-video.mjs`, so the timeline cannot drift from the audio |
 | Narration | 163.9s of recorded voiceover across eight blocks, generated with ElevenLabs by `scripts/narrate.ts` and request-stitched so the blocks share one voice |
-| Subtitles | 61 burned-in cues. Timed by ASR over the narration, worded from the script, so a judge watching muted still gets every number. Contrast checked: 9/9 pass WCAG AA |
+| Subtitles | 61 burned-in cues. Timed by ASR over the narration, worded from the script, so a judge watching muted still gets every number. Contrast checked: 29/29 pass WCAG AA |
+| How it is made | The narrative is motion graphics, not screen recording, built in HTML and GSAP by `scripts/build-video.mjs`. Every figure, quote, price and rule id in it is read out of `rules/rules.yaml`, `data/catalog.json` and the scan fixtures at build time, so the film cannot drift from the app it describes |
 | Every spoken number matches the site | Checked against `eval/results.json`: 120 runs per arm, 22.5% unsafe, 100% versus 11.1% uncaveated, 35% cart instability in both arms |
 
 ## Keeps working without babysitting until 20 Nov
