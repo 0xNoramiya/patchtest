@@ -10,16 +10,22 @@ Checked against the rules on 2026-10-31.
 | Public GitHub repo | **Done.** https://github.com/0xNoramiya/patchtest |
 | MIT licence in the repo | **Done.** `LICENSE`, copyright Rifqi Haikal |
 | English text description | **Done.** `docs/DEVPOST.md`, ready to paste |
-| YouTube demo, 1 to 3 minutes | **Not done.** Script ready at `docs/VIDEO_SCRIPT.md` |
+| YouTube demo, 1 to 3 minutes | **Not done.** Script ready at `docs/VIDEO_SCRIPT.md`. Paste the URL into this row once uploaded |
 | Video names the YouCam APIs used | Script puts both names on screen as a persistent lower third for the whole "how it works" section, and says them aloud |
+| Video runtime fits the cap | Script is budgeted at 417 spoken words, 152s at 165 wpm, landing at 2:45. Every block carries a word count |
+| Every spoken number matches the site | Checked against `eval/results.json`: 120 runs per arm, 22.5% unsafe, 100% versus 11.1% uncaveated, 35% cart instability in both arms |
 
 ## Keeps working without babysitting until 20 Nov
 
 - One Fly machine with `min_machines_running = 1`, so it never scales to zero.
 - Every preset is served from recorded fixtures and needs no API key.
-- Live scanning is capped at 3 a day, and the 900 unit hard stop permits about 31
-  more live scans in total. Past either cap the breaker refuses and falls back to a
-  recorded scan with a message saying why.
+- Live scanning is capped at 5 a day, and the 900 unit hard stop permits about 31
+  more live scans in total, ever. Past either cap the breaker refuses and falls
+  back to a recorded scan with a message saying why.
+- **The daily cap counts successful scans only.** A photo the API rejects costs
+  nothing, so it no longer counts. Before this fix three bad selfies from three
+  judges would have closed the live path for everyone for the rest of the UTC day.
+  Verified: three rejected photos now count 0 against the cap.
 - The agent falls back to recorded responses if the LLM key is removed or rate
   limited.
 

@@ -1,6 +1,6 @@
 # PatchTest progress
 
-Updated: Sat Oct 31 2026, 01:45 UTC+8
+Updated: Sat Oct 31 2026, 02:10 UTC+8
 
 **Live:** https://patchtest.fly.dev
 **Repo:** https://github.com/0xNoramiya/patchtest
@@ -64,6 +64,12 @@ should. The 24th is the sunscreen rule, which never needed to fire because the
 advisor had already added sunscreen.
 
 ## Still open for Rifqi
+
+0. **Live scanning is blocked until 00:00 UTC**, which is 08:00 Sat local, about
+   six hours away. Not a bug. The nine dev scans that cost the 198 units all
+   landed on UTC day 2026-10-30, and the seeded ledger counts them against that
+   day. From 31 Oct onward, and through all of judging, the counter reads zero.
+   Verified against the real ledger.
 
 1. **Record the video.** `docs/VIDEO_SCRIPT.md` is a shot-by-shot 2:30 script.
    This is the only required submission item that is not done.
