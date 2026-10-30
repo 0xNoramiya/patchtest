@@ -43,3 +43,11 @@ dist/
 
 # Generated voiceover audio. Rebuild with: pnpm narrate --generate
 media/
+
+# Video build. Source is video/demo/index.html (generated) + the scripts that
+# make it; the heavy inputs are rebuilt by scripts/build-video.mjs.
+video/demo/assets/audio/
+video/demo/assets/clips/
+video/demo/assets/img/
+video/demo/node_modules/
+video/demo/.hyperframes/

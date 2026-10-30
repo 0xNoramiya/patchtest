@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* The real files, so the cards are set in the same faces as the product
+         the clips are showing. The clips carry their own fonts already. */
+      @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
+      @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-600.woff2") format("woff2"); font-weight: 600; font-display: block; }
+      @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
+      @font-face { font-family: "Geist"; src: url("assets/fonts/Geist-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+
+      /* Taken from the product's own tokens, see video/design.md. */
+      :root {
+        --paper: #fbfaf7;
+        --surface: #ffffff;
+        --ink: #191c1a;
+        --muted: #5f6660;
+        --faint: #6f756f;
+        --accent: #2f5d4f;
+        --block: #a5342b;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px; overflow: hidden;
+        background: var(--paper);
+        font-family: "Geist", "Inter", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      #root { width: 100%; height: 100%; position: relative; }
+
+      .scene { position: absolute; inset: 0; }
+      .scene video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+      .card {
+        width: 100%; height: 100%;
+        display: flex; flex-direction: column; justify-content: center;
+        padding: 150px 190px; gap: 30px;
+        background: var(--paper);
+      }
+      .eyebrow {
+        font-size: 24px; letter-spacing: 0.14em; text-transform: uppercase;
+        font-weight: 500; color: var(--accent);
+      }
+      .stat {
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 128px; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink);
+        max-width: 1480px;
+      }
+      .stat em { font-style: normal; color: var(--block); }
+      .sub { font-size: 34px; line-height: 1.45; color: var(--muted); max-width: 1280px; }
+      .cite { font-size: 24px; color: var(--faint); font-style: italic; }
+
+      .endcard { align-items: flex-start; gap: 26px; }
+      .wordmark {
+        font-family: "Source Serif 4", Georgia, serif;
+        font-size: 104px; letter-spacing: -0.02em; color: var(--ink);
+      }
+      .wordmark span { color: var(--accent); }
+      .tagline { font-size: 40px; color: var(--ink); }
+      .apis { font-size: 27px; line-height: 1.6; color: var(--muted); }
+      .url { font-size: 34px; color: var(--accent); font-weight: 500; }
+      .smallprint { font-size: 21px; line-height: 1.6; color: var(--faint); }
+
+      .shot {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--paper);
+      }
+      .shot img { width: 78%; border-radius: 16px;
+        box-shadow: 0 2px 4px rgb(25 28 26 / 0.05), 0 18px 48px rgb(25 28 26 / 0.14); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="168.42" data-width="1920" data-height="1080">
+      <div class="scene" id="sc-hook" style="z-index:0">
+        <div id="hook-card" class="clip card" data-start="0" data-duration="6.85" data-track-index="1">
+          <p class="eyebrow" id="hook-eyebrow">Pediatrics, 2025</p>
+          <h1 class="stat" id="hook-stat">The top-viewed children&rsquo;s skincare routines on TikTok average <em>11 potentially irritating active ingredients</em>.</h1>
+          <p class="sub" id="hook-sub">Only 26% include sunscreen.</p>
+        </div>
+        <div class="shot clip" id="hook-shot" data-start="6.63" data-duration="4.64" data-track-index="2">
+          <img src="assets/img/landing.webp" alt="" crossorigin="anonymous" />
+        </div>
+      </div>
+      <div class="scene" id="sc-pregnant" style="z-index:10">
+        <video id="v-pregnant" data-start="10.55" data-duration="14.16" data-track-index="10" src="assets/clips/preset-pregnant.mp4" muted playsinline></video>
+      </div>
+      <div class="scene" id="sc-peel" style="z-index:24">
+        <video id="v-peel" data-start="24.21" data-duration="17.76" data-track-index="24" src="assets/clips/preset-peel.mp4" muted playsinline></video>
+      </div>
+      <div class="scene" id="sc-refer" style="z-index:41">
+        <video id="v-refer" data-start="41.47" data-duration="14.71" data-track-index="41" src="assets/clips/preset-refer.mp4" muted playsinline></video>
+      </div>
+      <div class="scene" id="sc-extension" style="z-index:55">
+        <video id="v-extension" data-start="55.68" data-duration="22.49" data-track-index="55" src="assets/clips/extension.mp4" muted playsinline></video>
+      </div>
+      <div class="scene" id="sc-methods" style="z-index:77">
+        <video id="v-methods" data-start="77.67" data-duration="25.99" data-track-index="77" src="assets/clips/methods.mp4" muted playsinline></video>
+      </div>
+      <div class="scene" id="sc-evalpage" style="z-index:103">
+        <video id="v-evalpage" data-start="103.16" data-duration="54.65" data-track-index="103" src="assets/clips/eval.mp4" muted playsinline></video>
+      </div>
+      <div class="scene" id="sc-endcard" style="z-index:99">
+        <div id="end-card" class="clip card endcard" data-start="157.3" data-duration="11.11" data-track-index="3">
+          <h1 class="wordmark" id="end-wordmark">Patch<span>Test</span></h1>
+          <p class="tagline" id="end-tagline">A patch test for your cart.</p>
+          <p class="apis" id="end-apis">Web app, and a browser extension for everyone else&rsquo;s shop.<br />Built with the YouCam AI Skin Analysis API and the YouCam AI Fitzpatrick Skin Type Analysis API.</p>
+          <p class="url" id="end-url">patchtest.fly.dev</p>
+          <p class="smallprint" id="end-small">Every face and product image shown is AI generated. &ldquo;Lumen &amp; Leaf&rdquo; and &ldquo;Verdant Row&rdquo; are fictional stores. Not a medical device.</p>
+        </div>
+      </div>
+
+    <audio id="a-hook" data-start="0.3" data-track-index="20" src="assets/audio/01-the-hook.mp3" data-volume="1"></audio>
+    <audio id="a-pregnant" data-start="10.85" data-track-index="21" src="assets/audio/02-preset-1-eight-weeks-pregnant-breaking-out.mp3" data-volume="1"></audio>
+    <audio id="a-peel" data-start="24.51" data-track-index="22" src="assets/audio/03-preset-2-dark-patches-and-a-30-peel.mp3" data-volume="1"></audio>
+    <audio id="a-refer" data-start="41.77" data-track-index="23" src="assets/audio/04-preset-3-painful-lumps-that-leave-marks.mp3" data-volume="1"></audio>
+    <audio id="a-extension" data-start="55.98" data-track-index="24" src="assets/audio/05-it-works-on-other-people-s-shops.mp3" data-volume="1"></audio>
+    <audio id="a-methods" data-start="77.97" data-track-index="25" src="assets/audio/06-how-it-works.mp3" data-volume="1"></audio>
+    <audio id="a-evalpage" data-start="103.46" data-track-index="26" src="assets/audio/07-the-numbers.mp3" data-volume="1"></audio>
+    <audio id="a-endcard" data-start="157.6" data-track-index="27" src="assets/audio/08-the-limits-then-the-card.mp3" data-volume="1"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.from("#hook-eyebrow", { y: 26, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.25);
+      tl.from("#hook-stat", { y: 48, opacity: 0, duration: 0.9, ease: "expo.out" }, 0.45);
+      tl.from("#hook-sub", { y: 30, opacity: 0, duration: 0.7, ease: "power2.out" }, 0.95);
+      tl.fromTo("#hook-shot", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 6.63);
+      tl.fromTo("#sc-pregnant", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 10.55);
+      tl.fromTo("#sc-peel", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 24.21);
+      tl.fromTo("#sc-refer", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 41.47);
+      tl.fromTo("#sc-extension", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 55.68);
+      tl.fromTo("#sc-methods", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 77.67);
+      tl.fromTo("#sc-evalpage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 103.16);
+      tl.fromTo("#sc-endcard", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 157.30);
+      tl.from("#end-wordmark", { y: 34, opacity: 0, duration: 0.7, ease: "expo.out" }, 157.65);
+      tl.from("#end-tagline", { y: 24, opacity: 0, duration: 0.6, ease: "power3.out" }, 157.90);
+      tl.from("#end-apis", { opacity: 0, duration: 0.6, ease: "power2.out" }, 158.15);
+      tl.from("#end-url", { y: 18, opacity: 0, duration: 0.5, ease: "power3.out" }, 158.35);
+      tl.from("#end-small", { opacity: 0, duration: 0.5, ease: "power1.out" }, 158.60);
+      tl.to("#sc-endcard", { opacity: 0, duration: 0.7, ease: "power2.in" }, 167.66);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
