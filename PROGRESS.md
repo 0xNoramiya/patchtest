@@ -1,105 +1,82 @@
 # PatchTest progress
 
-Updated: Fri Oct 30 2026, 23:35 UTC+8
+Updated: Sat Oct 31 2026, 01:10 UTC+8
+
+**Live:** https://patchtest.fly.dev
+**Repo:** https://github.com/0xNoramiya/patchtest
 
 ## Units spent
 
 | What | Units | Running total |
 |---|---|---|
 | M0 smoke test, synthetic-01, both APIs | 22 | 22 of 1000 |
-| Scan bank, 7 faces (synthetic-01 served from cache) | 154 | 176 of 1000 |
+| Scan bank, 7 faces | 154 | 176 of 1000 |
+| Fitzpatrick IV face | 22 | 198 of 1000 |
+| Live-path testing | 0 | 198 of 1000 |
 
-Dev budget target is under 300 units. `pnpm units` prints the live total from `data/ledger.json`.
+**198 of 1000.** Under the 300 dev target, 802 left for judges. The live-path
+testing cost nothing: a face-less image exercised upload, task creation and error
+mapping for free, because YouCam does not charge for a failed task, and the
+success path was exercised by re-polling an already-booked task.
+
+The deployed site enforces tighter caps than development: 3 live scans a day, with
+the 900 hard stop permitting about 31 more live scans in total, ever.
 
 ## Done
 
-- **M0 scaffold**: Next.js 16 App Router, TypeScript, Tailwind 4, pnpm.
-- **Secrets**: `.env*` ignored before the first commit, `.env.local` is mode 600, `scripts/scan-secrets.sh` blocks credential-shaped strings and tracked env files.
-- **Env config** (`lib/env.ts`): secrets read lazily and never echoed in errors; caps read from env.
-- **Unit ledger and circuit breaker** (`lib/ledger.ts`): append-only `data/ledger.json`, records endpoint, units, status, SHA-256 image hash (never the image), task id. Refuses live calls past `UNIT_HARD_STOP` or `LIVE_SCAN_DAILY_CAP` and logs the refusal.
-- **YouCam client** (`lib/youcam/client.ts`): File API plus pre-signed PUT, task create and poll for both APIs, units booked only on `success`, raw-response capture sink for fixtures.
-- **Image normalizer** (`lib/image.ts`): one JPEG that satisfies both APIs, EXIF stripped.
-- **Smoke test** (`scripts/smoke.ts`), **unit report** (`pnpm units`).
-- **Scan parser** (`lib/youcam/parse.ts`): normalizes the real 13-item response into
-  a `ScanSummary`. Verified against the recorded fixture.
-- **Deploy target**: Fly.io with a persistent volume at `/data`, so the ledger and
-  the daily cap survive restarts. `Dockerfile`, `fly.toml`, `output: "standalone"`.
-- **First fixture**: `fixtures/scans/synthetic-01/`, a real recorded scan with all
-  11 mask PNGs downloaded, signed URLs stripped.
+**M0.** Scaffold, secrets hygiene, unit ledger with circuit breaker, YouCam client,
+image normalizer, smoke test. Ten documented differences between the API docs and
+the real responses in `docs/API_NOTES.md`.
 
-## Confirmed against a real response
+**M1.** 26-SKU fictional catalogue. 24 rules as data in `rules/rules.yaml` with a
+quote and access date on each. Pure-function engine. All 21 source URLs fetched and
+checked: 14 verified, 7 partial, 3 heuristic rules with no source by design. Nine
+disclosed synthetic faces scanned and recorded. Thresholds calibrated against the
+real distribution, which caught three bugs that would have shipped.
 
-Full detail in `docs/API_NOTES.md`. The ten differences that changed code:
+**M2.** Agent loop with the fair baseline. Claim linter, build-time and runtime.
+40-scenario eval, both arms, three runs each. Full UI: landing, consent, intake,
+cart picker, scan selection, results with mask overlays, `/methods`, `/eval`.
+Live scan path with a client-side quality check. Deployed to Fly with a persistent
+volume.
 
-- `format` defaults to `zip`, so `"json"` is passed explicitly.
-- Fitzpatrick needs `version: "1.0"`.
-- 8 requested actions returned **13** output items. `skin_type` comes back three
-  times, by region, with a label and no scores. `all`, `skin_age` and
-  `resize_image` are undocumented extras. Scored items have no `region` key.
-- `all.score` is the mean of the **ui** scores, not the raw ones. 79.14 against a
-  raw mean of 72.77.
-- `ui_score` compresses toward the middle. Texture raw 17.8 displays as 53.
-- Mask URLs are signed with `X-Amz-Expires=7200`, so two hours, not 24.
-- `timed` is milliseconds despite the spec saying seconds.
-- v2.1 adds only `pf_camera_kit`. Staying on v2.0.
-- A face at 77% of image width with a cropped crown was accepted by both APIs.
-- 8 SD concerns billed 12 units, Fitzpatrick 10, as expected.
+## Eval headline
 
-## Verified from the docs before the call
+| | With guardrail | Plain advisor |
+|---|---|---|
+| Sold an item the gold calls unsafe | **0%** | **22.5%** |
+| Sold an item needing a caveat, with none | 11.1% | 100% |
+| Same cart on all three runs | 62.5% | 65% |
+| Mean cart value | $82.50 | $90.61 |
 
-- `format` defaults to `zip`. We pass `"json"` explicitly.
-- Fitzpatrick needs `version: "1.0"` in the request body. Result is `data.results.fitzpatrick_scale`, one of `I` to `VI`, with no confidence value.
-- v2.1 is not preferable: same cost, same schema, adds only `pf_camera_kit`. Staying on v2.0.
-- Output items carry `region` and a third `score` field next to `raw_score` and `ui_score`.
-- 8 SD concerns including `skin_type` falls in the 5 to 8 band, so 12 units. Fitzpatrick is 10. One scan is 22.
+23 of 24 rules fired exactly when they should and stayed quiet exactly when they
+should. The 24th is the sunscreen rule, which never needed to fire because the
+advisor had already added sunscreen.
 
-## M1 done ahead of schedule
+## Still open for Rifqi
 
-- **Catalogue**: 25 Lumen & Leaf SKUs in `data/catalog.json`, covering every class
-  the rules need. No real brand anywhere. Hydroquinone deliberately absent.
-- **Scan bank images**: 8 disclosed synthetic faces in `fixtures/faces/`, generated
-  from text prompts only. Acne, flushing, pigmentation, mature, clear, oily, dry,
-  plus the original. Not yet scanned.
-- **Rules engine**: `rules/rules.yaml` holds all 24 rules as data. `lib/rules/engine.ts`
-  is a pure function over that data. 60 Vitest tests pass, a positive and a negative
-  case for every rule, plus a test proving verdicts do not change when ui_score and
-  skin_age are replaced with nonsense.
-- **Source verification**: all 21 URLs fetched and checked. 14 verified, 7 partial,
-  3 heuristic rules with no source by design. The Ovid link for the AAD 2024 acne
-  guideline returns HTTP 402, so it was replaced with the PubMed record, which
-  carries the same abstract.
+1. **Record the video.** `docs/VIDEO_SCRIPT.md` is a shot-by-shot 2:30 script.
+   This is the only required submission item that is not done.
+2. **Submit to Devpost.** `docs/DEVPOST.md` is the write-up, ready to paste.
+3. **Two gold labels want a second look.** Both are flagged in `eval/gold.json`
+   and named on the `/eval` page. S19 asks whether a 30% at-home peel should carry
+   a caveat for everyone rather than only for Fitzpatrick IV to VI. S36 asks
+   whether someone who only flushes with warmth and wine should trip the
+   reactive-skin rule. Neither was edited to improve our own score.
+4. **S18's gold is over-specified.** It labels the whole benzoyl peroxide class as
+   needing a caveat, while the rule is strength-specific and correctly says
+   nothing about the 2.5%. This is the entire source of the guarded arm's 11.1%.
+   Your call whether to narrow the label.
+5. **Rotate both API keys after judging closes on 20 Nov.** They were pasted into
+   chat.
+6. **The scan bank has no Fitzpatrick I.** Five of six types are covered.
 
-## Next
+## Not built
 
-1. Replay mode and the scan cache wired into the app.
-2. Agent loop plus the fair baseline.
-3. Full UI, presets, mask overlays.
-4. Eval harness and draft gold labels. **Stops for your review.**
-
-## Signed off on 2026-10-30
-
-- R-AGE-02 stays as drafted: UNNECESSARY for anti-aging items at 13 to 17, acne
-  actives still available.
-- LL-126, a 15% lactic acid serum, added so R-PREG-05 has a live case.
-- Verdict precedence leads with UNNECESSARY over BLOCK. The agent's re-plan loop
-  keys off BLOCK findings rather than the headline, so nothing unsafe survives
-  the softer wording.
-- All 24 rules marked `status: approved`.
-
-## Thresholds calibrated against the bank
-
-`pnpm calibrate` prints the distribution. Three changes came out of it:
-
-- `ACNE_ASK_T` 70 to 88. At 70 the question was asked of nobody, because the face
-  with visible pustules scored 81.7.
-- `healthy acne` 80 to 95. At 80 all 8 faces counted as healthy, which would have
-  marked every acne product unnecessary.
-- `REDNESS_T` 70 to 60. At 70 it called 5 of 8 faces reactive.
-
-## Open questions for Rifqi
-
-1. MIT license holder name: Set to Rifqi Haikal.
-2. The API keys were pasted into chat. Rotate both after judging closes on Nov 20.
-3. The synthetic face scored acne 100 and redness 100, so it cannot calibrate the
-   acne or redness thresholds. The scan bank needs faces with visible inflammatory
-   acne and visible flushing, or your own selfie, or those thresholds stay guesses.
+- The MCP tool `check_cart`, which was a stretch goal.
+- A Bahasa Indonesia interface, also a stretch goal.
+- MediaPipe face detection in the browser. The pre-check uses resolution,
+  brightness and framing instead. The reason is in `docs/API_NOTES.md`: YouCam
+  charges nothing for a task that fails validation, so a face check in the browser
+  saves the shopper time rather than saving units, and the API's own face checks
+  are authoritative. Their error codes are mapped to plain messages.

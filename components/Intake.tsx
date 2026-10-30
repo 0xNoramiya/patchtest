@@ -186,6 +186,7 @@ export function IntakeForm({
         <textarea
           value={value.goal}
           onChange={(e) => set("goal", e.target.value)}
+          aria-label="What are you hoping for?"
           rows={3}
           placeholder="For example: my skin is breaking out along my jaw and I want it to stop"
           className="w-full rounded-lg border border-line bg-surface p-3 text-base leading-relaxed placeholder:text-faint"

@@ -106,7 +106,7 @@ export function CartList({ result }: { result: AdviseResult }) {
           const findings = item?.findings ?? [];
           return (
             <li key={line.sku} className="border-b border-line p-4 last:border-0 sm:p-6">
-              <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-xs uppercase tracking-wide text-faint">
                     {ORIGIN_LABEL[line.origin]}
@@ -114,7 +114,7 @@ export function CartList({ result }: { result: AdviseResult }) {
                   <h3 className="mt-0.5 font-display text-lg leading-snug">{line.product.name}</h3>
                   <p className="tnum text-sm text-muted">${line.product.price}</p>
                 </div>
-                <VerdictBadge verdict={verdict} className="mt-5" />
+                <VerdictBadge verdict={verdict} />
               </div>
 
               {findings.length > 0 ? (
