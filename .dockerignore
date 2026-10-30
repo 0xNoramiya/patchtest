@@ -2,8 +2,6 @@ node_modules
 .next
 .git
 .env*
-# The ledger is runtime state and lives on the mounted volume, not in the image.
-data/ledger.json
 docs
 *.md
 !fixtures/faces/README.md

@@ -25,6 +25,8 @@ COPY --from=build /app/.next/static ./.next/static
 # Read-only inputs the server needs at runtime: the rules, the catalogue, the
 # recorded scans and agent responses, and the eval results the /eval page renders.
 COPY --from=build /app/rules ./rules
+# data/catalog.json is read at runtime. data/ledger.json travels with the image
+# as the seed for the volume, so the deployed app knows what was already spent.
 COPY --from=build /app/data ./data
 COPY --from=build /app/fixtures ./fixtures
 COPY --from=build /app/eval ./eval
