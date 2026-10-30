@@ -3,7 +3,7 @@
 **A patch test for your cart.** An AI skincare advisor for the moment before
 checkout that knows when not to sell.
 
-<!-- Live app: LIVE_URL -->
+**Live app: https://patchtest.fly.dev**
 
 ## Inspiration
 

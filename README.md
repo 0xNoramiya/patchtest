@@ -23,7 +23,7 @@ suggested, so an item that gets dropped is explained rather than silently remove
 
 ## For judges, in 60 seconds
 
-**Live app:** <!-- LIVE_URL -->
+**Live app: https://patchtest.fly.dev**
 
 **Start here.** The landing page has five one-click presets. Each replays a scan
 that really was run through both YouCam APIs, paired with a declared intake:
@@ -39,8 +39,8 @@ that really was run through both YouCam APIs, paired with a declared intake:
 On any result, open **"What a plain AI advisor would have sold you"** for the
 side-by-side, and the **scan panel** to see `raw_score` against `ui_score`.
 
-**Then read** [`/methods`](#) for every rule with its source and quote, and
-[`/eval`](#) for the honest numbers.
+**Then read** [https://patchtest.fly.dev/methods](https://patchtest.fly.dev/methods) for every rule with its source and
+quote, and [https://patchtest.fly.dev/eval](https://patchtest.fly.dev/eval) for the honest numbers.
 
 ### Where the YouCam APIs are used
 

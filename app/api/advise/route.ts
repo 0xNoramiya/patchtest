@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { advise, type AdviseRequest } from "@/lib/advise";
-import { config } from "@/lib/env";
 
 export async function POST(request: Request) {
   let body: AdviseRequest;
@@ -15,12 +14,20 @@ export async function POST(request: Request) {
   }
 
   try {
-    const result = await advise({ ...body, mode: config.demoMode });
+    const result = await advise(body);
     return NextResponse.json(result);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Something went wrong";
     // A replay miss is the expected failure here and is worth saying plainly.
-    const status = message.includes("No recorded agent response") ? 409 : 500;
-    return NextResponse.json({ error: message }, { status });
+    if (message.includes("No recorded agent response")) {
+      return NextResponse.json(
+        {
+          error:
+            "This combination has not been recorded and no model key is configured here. Try one of the presets on the home page, which are all recorded.",
+        },
+        { status: 409 },
+      );
+    }
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

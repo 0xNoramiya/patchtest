@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { runBaselineAgent, runGuardedAgent } from "./agent/run";
+import { config, hasSecret } from "./env";
 import { EMPTY_INTAKE, effectiveFitzpatrick, type Intake } from "./intake";
 import { evaluate } from "./rules/engine";
 import { loadCatalog, loadRules, loadThresholds, productBySku, type Product } from "./rules/load";
@@ -83,7 +84,12 @@ export async function advise(req: AdviseRequest): Promise<AdviseResult> {
     rules: loadRules(),
     thresholds: loadThresholds(),
     fitzpatrick: fitz.value,
-    mode: req.mode ?? "replay",
+    // Scans and model calls are budgeted separately. A scan costs 22 units of a
+    // fixed allowance, so it defaults to replay. A model call costs cents, so it
+    // runs live whenever a key is present and falls back to recorded answers when
+    // it is not. That is what lets the demo presets work with no keys at all
+    // while an arbitrary intake still gets a real answer.
+    mode: req.mode ?? (hasSecret("ANTHROPIC_API_KEY") ? "live" : "replay"),
     label: `advise-${req.scanLabel}`,
     run: 0,
   };

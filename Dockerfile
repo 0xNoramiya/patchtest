@@ -22,8 +22,10 @@ ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 DATA_DIR=/data
 COPY --from=build /app/public ./public
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
-# Read-only inputs the server needs at runtime.
+# Read-only inputs the server needs at runtime: the rules, the catalogue, the
+# recorded scans and agent responses, and the eval results the /eval page renders.
 COPY --from=build /app/rules ./rules
+COPY --from=build /app/data ./data
 COPY --from=build /app/fixtures ./fixtures
 COPY --from=build /app/eval ./eval
 EXPOSE 3000

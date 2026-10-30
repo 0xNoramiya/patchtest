@@ -139,7 +139,7 @@ then on the results table.
 > and the YouCam AI Fitzpatrick Skin Type Analysis API
 >
 > Every face shown is AI generated. "Lumen & Leaf" is a fictional store.
-> <!-- LIVE_URL -->
+> https://patchtest.fly.dev
 
 ---
 
