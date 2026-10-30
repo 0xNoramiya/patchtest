@@ -1,32 +1,50 @@
 {
-  "_note": "Every value here is a heuristic, not a clinical grade. YouCam raw_score runs 1 to 100 where higher is healthier. These are provisional until calibrated against the saved scan bank, and the Methods page says so. The UI shows the actual raw_score next to any verdict one of these triggered.",
-  "_status": "provisional, calibrated against 1 of 8 scan fixtures",
+  "_note": "Every value here is a heuristic, not a clinical grade. YouCam raw_score runs 1 to 100 where higher is healthier. The UI shows the actual raw_score next to any verdict one of these triggered.",
+  "_calibration": {
+    "basis": "8 recorded scans, all of AI-generated faces. Run `pnpm calibrate` to reprint the distribution.",
+    "date": "2026-10-30",
+    "limitation": "Eight synthetic faces are a weak basis. A generated face is not a sample of real skin, and the bank has no Fitzpatrick IV. Treat every number here as provisional. This is stated on the Methods page.",
+    "observed_ranges": {
+      "acne": "81.7 to 100.0, compressed into the top fifth of the scale",
+      "redness": "7.1 to 100.0, the widest and most discriminating",
+      "oiliness": "32.9 to 95.1",
+      "moisture": "20.6 to 59.2, never reached 70 on any face",
+      "age_spot": "74.4 to 97.3, narrow",
+      "wrinkle": "1.1 to 92.8, wide and tracked the intended face age well",
+      "texture": "17.6 to 90.1"
+    }
+  },
   "thresholds": {
     "ACNE_ASK_T": {
-      "value": 70,
+      "value": 88,
       "used_by": ["R-REF-01"],
-      "meaning": "Below this acne raw_score, ask the shopper about deep painful bumps and scarring. The score never asserts that acne is present."
+      "meaning": "Below this acne raw_score, ask the shopper about deep painful bumps and scarring. The score never asserts that acne is present.",
+      "calibration": "Was 70, which asked nobody in the bank. The face with visible pustules scored 81.7 and the clearest face scored 96.9, so the whole usable range sits above 80. At 88 the question is asked of the three faces with any visible blemishes."
     },
     "REDNESS_T": {
-      "value": 70,
+      "value": 60,
       "used_by": ["R-SENS-01"],
-      "meaning": "Below this redness raw_score, treat the skin as reactive: barrier first, no stacking."
+      "meaning": "Below this redness raw_score, treat the skin as reactive: barrier first, no stacking.",
+      "calibration": "Was 70, which called 5 of 8 faces reactive. At 60 it fires on the flushing face at 7.1, the acne face at 58.4 and the dry face at 55.0, and leaves the rest alone."
     },
     "WRINKLE_HEALTHY_T": {
       "value": 75,
       "used_by": ["R-NEED-01"],
-      "meaning": "At or above this wrinkle raw_score, an anti-aging product has nothing visible to work on yet."
+      "meaning": "At or above this wrinkle raw_score, an anti-aging product has nothing visible to work on yet.",
+      "calibration": "Unchanged. Separates the bank cleanly: the 63 year old face scored 1.1 and every face intended as under 35 scored above 84."
     },
     "HIGH_ACID_PCT": {
       "value": 20,
       "used_by": ["R-FITZ-01"],
-      "meaning": "Leave-on acid percentage at or above which an at-home product is treated as a peel-strength risk. Overridable by the HIGH_ACID_PCT env var.",
-      "unit": "percent"
+      "meaning": "Leave-on acid percentage at or above which an at-home product is treated as peel-strength. Overridable by the HIGH_ACID_PCT env var.",
+      "unit": "percent",
+      "calibration": "Not scan-derived. A product formulation threshold, not a skin measurement."
     }
   },
   "healthy_by_concern": {
     "_meaning": "Used by R-NEED-02. At or above these raw_scores, a product aimed at that concern has nothing to work on.",
-    "acne": 80,
+    "_calibration": "acne was 80, which called all 8 faces healthy and would have marked every acne product unnecessary, including for the face with visible pustules. Raised to 95 to match where the acne scale actually separates. moisture never reached 70 on any face, so a moisturizer is never called unnecessary on moisture grounds. That is the safe direction, and it is deliberate.",
+    "acne": 95,
     "redness": 80,
     "oiliness": 75,
     "moisture": 70,
@@ -35,9 +53,14 @@
     "texture": 70
   },
   "skin_type_contradictions": {
-    "_meaning": "Used by R-NEED-02. A product tagged this way contradicts a scan that reports this skin type.",
+    "_meaning": "Used by R-NEED-02. A product tagged this way contradicts a scan reporting this skin type. Matched as a substring, because the API returns compound labels such as 'Dry & Sensitive'.",
     "mattifying": ["Dry"],
     "oil_control": ["Dry"],
     "rich": ["Oily"]
+  },
+  "skin_type_vocabulary": {
+    "_note": "Observed in real responses, not documented by YouCam. The brief assumed a 'Redness' label; no such label exists.",
+    "observed": ["Dry", "Oily", "Normal", "Dry & Sensitive", "Oily & Sensitive", "Normal & Sensitive"],
+    "sensitivity_marker": "Sensitive"
   }
 }

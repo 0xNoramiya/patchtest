@@ -47,7 +47,7 @@ function verdictOf(result: Evaluation, sku: string) {
 
 describe("the catalogue and rules load", () => {
   it("has 25 products and 24 rules", () => {
-    expect(catalog.products).toHaveLength(25);
+    expect(catalog.products).toHaveLength(26);
     expect(rules).toHaveLength(24);
   });
 
@@ -117,7 +117,11 @@ describe("R-PREG-05 strong leave-on AHA in pregnancy", () => {
     expect(fired(r, "R-PREG-05", STRONG_LEAVE_ON_AHA.sku)).toBe(true);
   });
 
-  it("does not fire on the 10% toner, which documents the catalogue coverage gap", () => {
+  it("fires on the 15% lactic acid serum in the shipped catalogue", () => {
+    expect(fired(run({ cart: ["LL-126"], intake: { pregnancy: "pregnant" } }), "R-PREG-05")).toBe(true);
+  });
+
+  it("does not fire on the 10% toner, which sits at the documented safe ceiling", () => {
     expect(fired(run({ cart: ["LL-109"], intake: { pregnancy: "pregnant" } }), "R-PREG-05")).toBe(false);
   });
 });
@@ -264,8 +268,12 @@ describe("R-SENS-01 reactive skin", () => {
     expect(finding?.trigger).toMatchObject({ kind: "scan", concern: "redness", raw: 40 });
   });
 
-  it("also fires on a Redness skin type label", () => {
-    expect(fired(run({ cart: ["LL-106"], scan: makeScan({}, "Redness") }), "R-SENS-01")).toBe(true);
+  it("fires on a compound Sensitive skin type label", () => {
+    expect(fired(run({ cart: ["LL-106"], scan: makeScan({}, "Dry & Sensitive") }), "R-SENS-01")).toBe(true);
+  });
+
+  it("does not fire on a plain Dry label", () => {
+    expect(fired(run({ cart: ["LL-106"], scan: makeScan({}, "Dry") }), "R-SENS-01")).toBe(false);
   });
 
   it("does not fire when redness is healthy", () => {
@@ -287,6 +295,10 @@ describe("R-NEED-01 anti-aging with nothing to work on", () => {
 describe("R-NEED-02 product that contradicts the scan", () => {
   it("calls a mattifying gel unnecessary on dry skin", () => {
     expect(verdictOf(run({ cart: ["LL-116"], scan: makeScan({}, "Dry") }), "LL-116")).toBe("UNNECESSARY");
+  });
+
+  it("also matches the compound label the API really returns", () => {
+    expect(verdictOf(run({ cart: ["LL-116"], scan: makeScan({}, "Dry & Sensitive") }), "LL-116")).toBe("UNNECESSARY");
   });
 
   it("does not fire on oily skin", () => {
@@ -399,7 +411,28 @@ describe("source verification", () => {
     }
   });
 
-  it("holds every rule at draft until Rifqi signs it off", () => {
-    expect(rules.every((r) => r.status === "draft")).toBe(true);
+  it("has a signed-off status on every rule", () => {
+    expect(rules.every((r) => r.status === "approved")).toBe(true);
+  });
+});
+
+describe("verdict precedence", () => {
+  it("leads with UNNECESSARY when an item is both unsafe and pointless", () => {
+    const r = run({
+      cart: ["LL-106"],
+      intake: { pregnancy: "pregnant" },
+      scan: makeScan({ wrinkle: 95, texture: 95, age_spot: 95 }),
+    });
+    expect(verdictOf(r, "LL-106")).toBe("UNNECESSARY");
+  });
+
+  it("still keeps that item out of the cart and out of the agent's next plan", () => {
+    const r = run({
+      cart: ["LL-106"],
+      intake: { pregnancy: "pregnant" },
+      scan: makeScan({ wrinkle: 95, texture: 95, age_spot: 95 }),
+    });
+    expect(r.blocked).toContain("LL-106");
+    expect(r.items[0].findings.some((f) => f.ruleId === "R-PREG-01" && f.verdict === "BLOCK")).toBe(true);
   });
 });

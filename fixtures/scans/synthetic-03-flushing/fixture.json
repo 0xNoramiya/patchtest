@@ -1,0 +1,259 @@
+{
+  "label": "synthetic-03-flushing",
+  "recorded_at": "2026-10-30T15:28:43.647Z",
+  "source": "live YouCam API call",
+  "image": {
+    "file": "input.jpg",
+    "width": 1536,
+    "height": 2048,
+    "hash": "d20dfb4765cf4ae7bea6f083d593127192635ee01b0d48f565b22ae2d9c98506"
+  },
+  "units_spent": 22,
+  "requests": {
+    "skin_analysis": {
+      "endpoint": "POST /s2s/v2.0/task/skin-analysis",
+      "body": {
+        "src_file_id": "<file id, not stored>",
+        "dst_actions": [
+          "acne",
+          "redness",
+          "oiliness",
+          "moisture",
+          "age_spot",
+          "wrinkle",
+          "texture",
+          "skin_type"
+        ],
+        "format": "json"
+      }
+    },
+    "fitzpatrick": {
+      "endpoint": "POST /s2s/v2.0/task/fitzpatrick-scale-analyzer",
+      "body": {
+        "src_file_id": "<file id, not stored>",
+        "version": "1.0",
+        "index": 0
+      }
+    }
+  },
+  "skin_analysis": {
+    "error": null,
+    "results": {
+      "output": [
+        {
+          "ui_score": 44,
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_redness_output.png?<signature stripped, expired after 2h>"
+          ],
+          "raw_score": 7.106786727905273,
+          "type": "redness",
+          "url": null
+        },
+        {
+          "ui_score": 72,
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_texture_output.png?<signature stripped, expired after 2h>"
+          ],
+          "raw_score": 59.54935550689697,
+          "type": "texture",
+          "url": null
+        },
+        {
+          "ui_score": 75,
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_age_spot_output.png?<signature stripped, expired after 2h>"
+          ],
+          "raw_score": 80.37323760986328,
+          "type": "age_spot",
+          "url": null
+        },
+        {
+          "ui_score": 80,
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_oiliness_output.png?<signature stripped, expired after 2h>"
+          ],
+          "raw_score": 78.44142150878906,
+          "type": "oiliness",
+          "url": null
+        },
+        {
+          "ui_score": 93,
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_acne_output.png?<signature stripped, expired after 2h>"
+          ],
+          "raw_score": 95.92201,
+          "type": "acne",
+          "url": null
+        },
+        {
+          "ui_score": 68,
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_moisture_output.png?<signature stripped, expired after 2h>"
+          ],
+          "raw_score": 44.588807225227356,
+          "type": "moisture",
+          "url": null
+        },
+        {
+          "ui_score": 75,
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_wrinkle_output.png?<signature stripped, expired after 2h>"
+          ],
+          "raw_score": 76.27102136611938,
+          "type": "wrinkle",
+          "url": null
+        },
+        {
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_skin_type_output.png?<signature stripped, expired after 2h>"
+          ],
+          "type": "skin_type",
+          "region": "whole",
+          "skin_type": "Dry & Sensitive",
+          "url": null
+        },
+        {
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_skin_type_t_zone_output.png?<signature stripped, expired after 2h>"
+          ],
+          "type": "skin_type",
+          "region": "t_zone",
+          "skin_type": "Normal & Sensitive",
+          "url": null
+        },
+        {
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_skin_type_u_zone_output.png?<signature stripped, expired after 2h>"
+          ],
+          "type": "skin_type",
+          "region": "u_zone",
+          "skin_type": "Dry & Sensitive",
+          "url": null
+        },
+        {
+          "score": 72.42857142857143,
+          "type": "all",
+          "url": null
+        },
+        {
+          "score": 61,
+          "type": "skin_age",
+          "url": null
+        },
+        {
+          "mask_urls": [
+            "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_resize_image.jpg?<signature stripped, expired after 2h>"
+          ],
+          "type": "resize_image",
+          "url": null
+        }
+      ]
+    },
+    "task_status": "success"
+  },
+  "fitzpatrick": {
+    "error": null,
+    "results": {
+      "timed": 2391,
+      "fitzpatrick_scale": "II"
+    },
+    "task_status": "success"
+  },
+  "summary": {
+    "concerns": {
+      "redness": {
+        "raw": 7.106786727905273,
+        "ui": 44,
+        "maskUrl": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_redness_output.png?<signature stripped, expired after 2h>"
+      },
+      "texture": {
+        "raw": 59.54935550689697,
+        "ui": 72,
+        "maskUrl": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_texture_output.png?<signature stripped, expired after 2h>"
+      },
+      "age_spot": {
+        "raw": 80.37323760986328,
+        "ui": 75,
+        "maskUrl": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_age_spot_output.png?<signature stripped, expired after 2h>"
+      },
+      "oiliness": {
+        "raw": 78.44142150878906,
+        "ui": 80,
+        "maskUrl": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_oiliness_output.png?<signature stripped, expired after 2h>"
+      },
+      "acne": {
+        "raw": 95.92201,
+        "ui": 93,
+        "maskUrl": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_acne_output.png?<signature stripped, expired after 2h>"
+      },
+      "moisture": {
+        "raw": 44.588807225227356,
+        "ui": 68,
+        "maskUrl": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_moisture_output.png?<signature stripped, expired after 2h>"
+      },
+      "wrinkle": {
+        "raw": 76.27102136611938,
+        "ui": 75,
+        "maskUrl": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_wrinkle_output.png?<signature stripped, expired after 2h>"
+      }
+    },
+    "skinType": {
+      "whole": "Dry & Sensitive",
+      "t_zone": "Normal & Sensitive",
+      "u_zone": "Dry & Sensitive"
+    },
+    "overall": 72.42857142857143,
+    "skinAge": 61,
+    "fitzpatrick": "II",
+    "masks": {
+      "redness": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_redness_output.png?<signature stripped, expired after 2h>",
+      "texture": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_texture_output.png?<signature stripped, expired after 2h>",
+      "age_spot": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_age_spot_output.png?<signature stripped, expired after 2h>",
+      "oiliness": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_oiliness_output.png?<signature stripped, expired after 2h>",
+      "acne": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_acne_output.png?<signature stripped, expired after 2h>",
+      "moisture": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_moisture_output.png?<signature stripped, expired after 2h>",
+      "wrinkle": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_wrinkle_output.png?<signature stripped, expired after 2h>",
+      "skin_type_whole": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_skin_type_output.png?<signature stripped, expired after 2h>",
+      "skin_type_t_zone": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_skin_type_t_zone_output.png?<signature stripped, expired after 2h>",
+      "skin_type_u_zone": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_skin_type_u_zone_output.png?<signature stripped, expired after 2h>",
+      "resize_image": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123780506082/v2/aeMNNB0KmUIP8rnQ996tC5Q/8a62c06f-b3a8-4d59-b9d9-3da817ef60bf_resize_image.jpg?<signature stripped, expired after 2h>"
+    }
+  },
+  "local_masks": {
+    "redness:whole": [
+      "masks/redness.png"
+    ],
+    "texture:whole": [
+      "masks/texture.png"
+    ],
+    "age_spot:whole": [
+      "masks/age_spot.png"
+    ],
+    "oiliness:whole": [
+      "masks/oiliness.png"
+    ],
+    "acne:whole": [
+      "masks/acne.png"
+    ],
+    "moisture:whole": [
+      "masks/moisture.png"
+    ],
+    "wrinkle:whole": [
+      "masks/wrinkle.png"
+    ],
+    "skin_type:whole": [
+      "masks/skin_type.png"
+    ],
+    "skin_type:t_zone": [
+      "masks/skin_type_t_zone.png"
+    ],
+    "skin_type:u_zone": [
+      "masks/skin_type_u_zone.png"
+    ],
+    "all:whole": [],
+    "skin_age:whole": [],
+    "resize_image:whole": [
+      "masks/resize_image.png"
+    ]
+  }
+}

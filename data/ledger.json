@@ -16,5 +16,131 @@
     "status": "success",
     "image_hash": "a9bd9beb7e404f2b6e71235a9e5b3c3071bcaf674574a687fe1608431b414120",
     "task_id": "Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52-OgDNdZhnUMQD0vgTqO76IVSf2WmnU8QD4vnx7klL26A"
+  },
+  {
+    "ts": "2026-10-30T15:28:12.083Z",
+    "scan_id": "synthetic-02-acne-1793374083308",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "b81085a94ef9f716869562707977ff14e3adc6f0aa65222b088c257cdfa90a47",
+    "task_id": "TMiEYYT3IGsU0fG-wCQkK2980qAmrYSOMdMQGjkFcchubJMPyLTtRL9UrVSxN_3bSpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:28:17.531Z",
+    "scan_id": "synthetic-02-acne-1793374083308",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "b81085a94ef9f716869562707977ff14e3adc6f0aa65222b088c257cdfa90a47",
+    "task_id": "TMiEYYT3IGsU0fG-wCQkK2980qAmrYSOMdMQGjkFccj6KVj6XUQPEUQrK4QP-5z3VSf2WmnU8QD4vnx7klL26A"
+  },
+  {
+    "ts": "2026-10-30T15:28:32.087Z",
+    "scan_id": "synthetic-03-flushing-1793374104099",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "d20dfb4765cf4ae7bea6f083d593127192635ee01b0d48f565b22ae2d9c98506",
+    "task_id": "ol5vaqtZYx2TjqvMb2qTV4CvX7nFm4BmJ8fgm-urjLEaY4bBkXBWFn1rReiF65V0SpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:28:36.939Z",
+    "scan_id": "synthetic-03-flushing-1793374104099",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "d20dfb4765cf4ae7bea6f083d593127192635ee01b0d48f565b22ae2d9c98506",
+    "task_id": "ol5vaqtZYx2TjqvMb2qTV4CvX7nFm4BmJ8fgm-urjLFffJFClXUQfzawZfC0LNQ3VSf2WmnU8QD4vnx7klL26A"
+  },
+  {
+    "ts": "2026-10-30T15:28:51.769Z",
+    "scan_id": "synthetic-04-pigment-1793374123648",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "ae013eccb7298c9dcd73561548cb1ed15f50fba957a152e4fa4d9b0590433823",
+    "task_id": "1aqODzxaEl1076oZdnc1xbPS9yrrBY7hR9_hJSsv_HCJm90zO_9y8GNcWhOkIFumSpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:28:57.121Z",
+    "scan_id": "synthetic-04-pigment-1793374123648",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "ae013eccb7298c9dcd73561548cb1ed15f50fba957a152e4fa4d9b0590433823",
+    "task_id": "1aqODzxaEl1076oZdnc1xbPS9yrrBY7hR9_hJSsv_HDyzFSOxQVFyD8jwsrgBKSXVSf2WmnU8QD4vnx7klL26A"
+  },
+  {
+    "ts": "2026-10-30T15:29:11.458Z",
+    "scan_id": "synthetic-05-mature-1793374143910",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "09476c74707848982b90885f9a0b6c18a44a7404dd7450086a15078442bb90ad",
+    "task_id": "5pvQ8Q-2XsTLxHchyPfj_kYf9HZbwBY0TlU7D_OdTQJsQxNB8FHHsBS0iA6KbDwiSpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:29:17.114Z",
+    "scan_id": "synthetic-05-mature-1793374143910",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "09476c74707848982b90885f9a0b6c18a44a7404dd7450086a15078442bb90ad",
+    "task_id": "5pvQ8Q-2XsTLxHchyPfj_kYf9HZbwBY0TlU7D_OdTQKqL_3hw4xXPLFulMkLJISVVSf2WmnU8QD4vnx7klL26A"
+  },
+  {
+    "ts": "2026-10-30T15:29:31.232Z",
+    "scan_id": "synthetic-06-clear-1793374163683",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "5d6cee96f3c312248a97812840515c5fa0700adf3bbb3388b67b114e6755c3e8",
+    "task_id": "8QcSf8WmJEtijFSKsO26_8tiOHrUI81fRlmBm9LmBYatCO_hSR0B32bF-Wn3jJhaSpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:29:45.255Z",
+    "scan_id": "synthetic-06-clear-1793374163683",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "5d6cee96f3c312248a97812840515c5fa0700adf3bbb3388b67b114e6755c3e8",
+    "task_id": "8QcSf8WmJEtijFSKsO26_8tiOHrUI81fRlmBm9LmBYaGKt2i3g3ygWOFjgT5YqSyVSf2WmnU8QD4vnx7klL26A"
+  },
+  {
+    "ts": "2026-10-30T15:29:59.957Z",
+    "scan_id": "synthetic-07-oily-1793374191689",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "a9c9419371b5ff32de18e334c3ce239abf5e3f8852343a41846febf2619abbdb",
+    "task_id": "y5s25FFjBhs2uUXfyr-ng1ntdsXNEew2ARx4ypx_XJrbPmW11IJ5RTYhmVquhtgISpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:30:05.637Z",
+    "scan_id": "synthetic-07-oily-1793374191689",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "a9c9419371b5ff32de18e334c3ce239abf5e3f8852343a41846febf2619abbdb",
+    "task_id": "y5s25FFjBhs2uUXfyr-ng1ntdsXNEew2ARx4ypx_XJrirIJeVD4V85mTTPZUr151VSf2WmnU8QD4vnx7klL26A"
+  },
+  {
+    "ts": "2026-10-30T15:30:19.316Z",
+    "scan_id": "synthetic-08-dry-1793374211886",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "1118907bed1641b51393d49c46ac4c6b3eddace911be74208985165486bf9e7c",
+    "task_id": "WOEIOzrtqpzM1OcdyNOTP8xoUD0LnlY4467ZKxa4SO_Ovw20Ph6cN7H_CSzKkf9tSpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:30:24.896Z",
+    "scan_id": "synthetic-08-dry-1793374211886",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "1118907bed1641b51393d49c46ac4c6b3eddace911be74208985165486bf9e7c",
+    "task_id": "WOEIOzrtqpzM1OcdyNOTP8xoUD0LnlY4467ZKxa4SO_SUTZrY1UVQl9HmtWeXuV0VSf2WmnU8QD4vnx7klL26A"
   }
 ]

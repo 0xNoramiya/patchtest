@@ -22,7 +22,7 @@
 # scope: referral   the rule raises a referral and may restrict what stays in the cart
 
 version: 1
-status: draft
+status: approved
 
 rules:
   # ---------------------------------------------------------------- pregnancy
@@ -44,7 +44,7 @@ rules:
     source_quote: "It is generally recommended to avoid topical retinoid medications."
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
 
   - id: R-PREG-02
     verdict: BLOCK
@@ -62,7 +62,7 @@ rules:
     source_quote: "you should avoid prescription skin care or over-the-counter products with these ingredients"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     notes: >-
       The AAD page lists hydroquinone among the ingredients to avoid. The quote is the page's general instruction for that list.
 
@@ -86,7 +86,7 @@ rules:
     source_quote: "Broad use of salicylic acid, either with high concentration or under occlusion, should be avoided."
     source_accessed: "2026-10-30"
     verification: partial
-    status: draft
+    status: approved
     notes: >-
       Neither source says the words 'avoid peels'. The catalogue peel is blocked because it is 30 percent AHA, which is above the 10 percent ceiling Putra 2022 gives, and it also contains salicylic acid. The peel branch of this rule is our inference from the concentration limits, not a quoted instruction.
 
@@ -107,7 +107,7 @@ rules:
     source_quote: "Ingredients to use sparingly during pregnancy"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     notes: >-
       The AAD page files benzoyl peroxide under 'use sparingly' rather than under 'avoid', which is exactly why this rule is ADJUST and not BLOCK.
 
@@ -127,9 +127,9 @@ rules:
     source_quote: "it is considered safe to use AHA in concentration up to 10% with pH > 3.5"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     notes: >-
-      COVERAGE NOTE. The source puts the safe ceiling at 10 percent, so the rule firing above 10 percent matches it exactly. No leave-on AHA in the catalogue exceeds 10 percent, so the rule currently matches nothing in the shipped catalogue. The 10 percent glycolic toner sits at the documented ceiling, not above it. Decision needed: leave as is, or add a stronger leave-on AHA so the rule has a live example.
+      The source puts the safe ceiling at 10 percent, so a rule that fires above 10 percent matches it exactly. The 10 percent glycolic toner sits at that ceiling and correctly does not fire. LL-126, a 15 percent lactic acid serum, was added to the catalogue at sign-off so the rule has a live case in the eval and the demo.
 
   - id: R-BF-01
     verdict: ADJUST
@@ -148,7 +148,7 @@ rules:
     source_quote: "Do not apply topical acne treatments directly to the nipple or areola."
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
 
   # ------------------------------------------------------------- isotretinoin
   - id: R-ISO-01
@@ -170,7 +170,7 @@ rules:
     source_quote: "Do not have cosmetic procedures to smooth your skin, including waxing, dermabrasion, or laser procedures, during treatment"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     notes: >-
       A 2017 JAMA Dermatology consensus relaxed the six month wait for some procedures. PatchTest keeps the stricter FDA label wording and shows that note next to the verdict rather than silently picking the looser reading. The label states the six month period directly: 'and for at least 6 months after you stop'. The AAD FAQ covers waxing only, so the label is the primary source here.
 
@@ -192,7 +192,7 @@ rules:
     source_quote: "do not use skincare products containing salicylic acid or benzoyl peroxide"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
 
   # ----------------------------------------------------------------------- age
     notes: >-
@@ -216,7 +216,7 @@ rules:
     source_quote: "avoid products with active ingredients like retinol, vitamin C, and exfoliating acids"
     source_accessed: "2026-10-30"
     verification: partial
-    status: draft
+    status: approved
     notes: >-
       IMPORTANT. The AAD release of 28 Oct 2025 addresses 'tweens and teens' and never names age 13. The under-13 cutoff is ours, not the source's. The source also notes a dermatologist may still recommend a retinoid or salicylic acid for a young person, which is why this rule covers shopping, not prescribing.
 
@@ -239,7 +239,7 @@ rules:
     source_quote: "which target concerns like wrinkles, sun damage, and uneven skin tone, issues that children don't have"
     source_accessed: "2026-10-30"
     verification: partial
-    status: draft
+    status: approved
 
   # --------------------------------------------------------------- skin tone
     notes: >-
@@ -267,7 +267,7 @@ rules:
     source_quote: "even the at-home versions of these acne treatments can cause side effects like permanent dark marks"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     notes: >-
       The AAD chemical peel page supports the referral half of the message: 'you should see a dermatologist or dermatologic surgeon'.
 
@@ -288,7 +288,7 @@ rules:
     source_quote: "use the least-intense retinoid formula they can find, and use it every other night to start"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
 
   - id: R-FITZ-03
     verdict: ADJUST
@@ -305,7 +305,7 @@ rules:
     source_quote: "To prevent benzoyl peroxide from irritating your skin, start with a product that contains 2.5% benzoyl peroxide."
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
 
   # -------------------------------------------------------------- interactions
   - id: R-STACK-01
@@ -330,7 +330,7 @@ rules:
     source_quote: "skin irritation and dryness is more likely to occur if you use another topical acne medication at the same time"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     notes: >-
       The adapalene Drug Facts label carries the same warning, and the AAD anti-aging page says to start with one product.
 
@@ -351,7 +351,7 @@ rules:
     source_quote: "The combination of benzoyl peroxide and light results in more than 50% degradation of tretinoin in about 2 h"
     source_accessed: "2026-10-30"
     verification: partial
-    status: draft
+    status: approved
     notes: >-
       Two caveats, both shown to the shopper. The 1998 study tested tretinoin 0.025% gel mixed with benzoyl peroxide 10% lotion under light, so it may not apply to modern encapsulated or microsphere tretinoin. And it never tested whether separating the two by time of day prevents the problem, so that part is our inference. Adapalene stayed stable in the same study, which is why the swap hint is adapalene.
 
@@ -374,7 +374,7 @@ rules:
     source_quote: "Use a sunscreen, wear protective clothing, and limit sun exposure"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     add:
       default: LL-121
       if_fitzpatrick_in: { scales: [IV, V, VI], sku: LL-122 }
@@ -392,7 +392,7 @@ rules:
         - scan:
             raw_lt: { concern: redness, threshold: REDNESS_T }
         - scan:
-            skin_type_any: [Redness]
+            skin_type_any: [Sensitive]
       item:
         active_class_any: [retinoid, aha, bha, bpo, vitamin_c]
     message: >-
@@ -405,7 +405,7 @@ rules:
     source_quote: "Start with one product."
     source_accessed: "2026-10-30"
     verification: partial
-    status: draft
+    status: approved
     notes: The threshold is a heuristic set by us, not a clinical cutoff.
 
   - id: R-NEED-01
@@ -424,7 +424,7 @@ rules:
     source_urls: []
     source_quote: ""
     verification: not_applicable
-    status: draft
+    status: approved
     notes: Entirely our own threshold. Labelled heuristic on the Methods page.
 
   - id: R-NEED-02
@@ -442,7 +442,7 @@ rules:
     source_urls: []
     source_quote: ""
     verification: not_applicable
-    status: draft
+    status: approved
 
   - id: R-DUP-01
     verdict: UNNECESSARY
@@ -458,7 +458,7 @@ rules:
     source_quote: "Using several anti-aging products at the same time can irritate your skin."
     source_accessed: "2026-10-30"
     verification: not_applicable
-    status: draft
+    status: approved
 
   # ------------------------------------------------------------------ referral
   - id: R-REF-01
@@ -478,7 +478,7 @@ rules:
     source_quote: "the spots are deep, painful or causing scars"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     ask_when:
       scan:
         raw_lt: { concern: acne, threshold: ACNE_ASK_T }
@@ -503,7 +503,7 @@ rules:
     source_quote: "It's estimated that 50% of people who have rosacea will have a flare-up that affects their eyes."
     source_accessed: "2026-10-30"
     verification: partial
-    status: draft
+    status: approved
     restrict:
       block_active_classes: [aha, bha, retinoid, bpo]
     notes: >-
@@ -524,7 +524,7 @@ rules:
     source_quote: "see a board-certified dermatologist for a skin exam"
     source_accessed: "2026-10-30"
     verification: partial
-    status: draft
+    status: approved
     priority: high
     notes: >-
       The page supports this for a changing mole through its ABCDE criteria. It mentions a sore that does not heal as something to watch for during a self exam but does not explicitly send the reader to a dermatologist for it, so that half of the rule is weaker.
@@ -545,7 +545,7 @@ rules:
     source_quote: "it's affecting your mental health"
     source_accessed: "2026-10-30"
     verification: verified
-    status: draft
+    status: approved
     soft: true
     notes: >-
       The NHS page also lists 'you've tried treating it yourself but it's not getting better' with no timeframe attached. The two to three month wording in our intake is ours, not the NHS's.

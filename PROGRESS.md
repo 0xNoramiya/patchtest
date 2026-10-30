@@ -1,12 +1,13 @@
 # PatchTest progress
 
-Updated: Fri Oct 30 2026, 23:25 UTC+8
+Updated: Fri Oct 30 2026, 23:35 UTC+8
 
 ## Units spent
 
 | What | Units | Running total |
 |---|---|---|
 | M0 smoke test, synthetic-01, both APIs | 22 | 22 of 1000 |
+| Scan bank, 7 faces (synthetic-01 served from cache) | 154 | 176 of 1000 |
 
 Dev budget target is under 300 units. `pnpm units` prints the live total from `data/ledger.json`.
 
@@ -70,9 +71,30 @@ Full detail in `docs/API_NOTES.md`. The ten differences that changed code:
 
 ## Next
 
-1. **Your rule sign-off.** Eight rules need a decision. See below.
-2. Scan the 8 face images. **Needs approval: 176 units.**
-3. Replay mode, cache, agent loop, baseline.
+1. Replay mode and the scan cache wired into the app.
+2. Agent loop plus the fair baseline.
+3. Full UI, presets, mask overlays.
+4. Eval harness and draft gold labels. **Stops for your review.**
+
+## Signed off on 2026-10-30
+
+- R-AGE-02 stays as drafted: UNNECESSARY for anti-aging items at 13 to 17, acne
+  actives still available.
+- LL-126, a 15% lactic acid serum, added so R-PREG-05 has a live case.
+- Verdict precedence leads with UNNECESSARY over BLOCK. The agent's re-plan loop
+  keys off BLOCK findings rather than the headline, so nothing unsafe survives
+  the softer wording.
+- All 24 rules marked `status: approved`.
+
+## Thresholds calibrated against the bank
+
+`pnpm calibrate` prints the distribution. Three changes came out of it:
+
+- `ACNE_ASK_T` 70 to 88. At 70 the question was asked of nobody, because the face
+  with visible pustules scored 81.7.
+- `healthy acne` 80 to 95. At 80 all 8 faces counted as healthy, which would have
+  marked every acne product unnecessary.
+- `REDNESS_T` 70 to 60. At 70 it called 5 of 8 faces reactive.
 
 ## Open questions for Rifqi
 

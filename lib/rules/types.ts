@@ -4,14 +4,15 @@ export const VERDICTS = ["BLOCK", "ADJUST", "UNNECESSARY", "REFER", "ADD", "OK"]
 export type Verdict = (typeof VERDICTS)[number];
 
 /**
- * How strongly a verdict argues against selling the item. The strongest finding
- * on an item wins. BLOCK beats UNNECESSARY because "unsafe" outranks
- * "pointless", and UNNECESSARY beats ADJUST because an item with nothing to do
- * should come out of the cart rather than be tweaked.
+ * Which verdict becomes the headline when several rules fire on one item.
+ * Clinician's call: lead with "you don't need this" wherever it applies, since
+ * it is the least alarming way to not sell something, and show the safety
+ * reason underneath. Every finding is still listed under the headline, and an
+ * item carrying a BLOCK finding never stays in the cart whichever label it wears.
  */
 export const VERDICT_RANK: Record<Verdict, number> = {
+  UNNECESSARY: 5,
   BLOCK: 4,
-  UNNECESSARY: 3,
   ADJUST: 2,
   REFER: 1,
   ADD: 0,

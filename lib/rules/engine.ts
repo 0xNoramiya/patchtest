@@ -72,8 +72,10 @@ function matchScan(p: ScanPredicate, ctx: Ctx): { ok: boolean; trigger?: Finding
   }
 
   if (p.skin_type_any) {
+    // Labels come back compound, such as "Dry & Sensitive", so this matches on
+    // substring rather than equality.
     for (const [region, label] of Object.entries(ctx.scan.skinType)) {
-      if (label && p.skin_type_any.includes(label)) {
+      if (label && p.skin_type_any.some((want) => label.includes(want))) {
         return { ok: true, trigger: { kind: "scan_skin_type", region, label } };
       }
     }
@@ -101,7 +103,9 @@ function skinTypeContradicts(product: Product, ctx: Ctx): boolean {
   if (!ctx.scan) return false;
   const whole = ctx.scan.skinType.whole;
   if (!whole) return false;
-  return product.tags.some((tag) => ctx.thresholds.skinTypeContradictions[tag]?.includes(whole));
+  return product.tags.some((tag) =>
+    ctx.thresholds.skinTypeContradictions[tag]?.some((label) => whole.includes(label)),
+  );
 }
 
 function matchItem(p: ItemPredicate, product: Product, ctx: Ctx): boolean {
@@ -367,7 +371,12 @@ export function evaluate(input: EvaluationInput): Evaluation {
     referrals,
     reported,
     additions,
-    blocked: items.filter((i) => i.verdict === "BLOCK").map((i) => i.sku),
+    // Keyed off the finding, not the headline. An item can be shown as
+    // UNNECESSARY while still carrying a BLOCK finding, and the agent must not
+    // be allowed to propose it again either way.
+    blocked: items
+      .filter((i) => i.findings.some((f) => f.verdict === "BLOCK"))
+      .map((i) => i.sku),
     suggestedQuestions,
   };
 }

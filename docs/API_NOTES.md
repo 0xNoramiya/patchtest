@@ -106,6 +106,59 @@ The image was 1536x2048 with the face about 77% of the image width and the top o
 the head cropped above the hairline. Both APIs accepted it. The 60% face width floor
 is about the face, not the whole head, so a tight portrait is fine.
 
+## 11. The skin_type label vocabulary is undocumented and compound
+
+`skin_type` returns a label, not a score, and the labels are not what we expected.
+Across 8 scans and 24 regions we saw exactly six values:
+
+`Dry`, `Oily`, `Normal`, `Dry & Sensitive`, `Oily & Sensitive`, `Normal & Sensitive`
+
+There is no `Redness` label. Sensitivity is expressed as an `& Sensitive` suffix on
+one of the three base types. Any rule comparing the label by equality silently
+never fires, which is what happened to our first version of R-SENS-01. Every
+comparison is now a substring test.
+
+## 12. The concern scales are not comparable to each other
+
+From the 8 scan bank:
+
+| Concern | Range observed | Usable? |
+|---|---|---|
+| redness | 7.1 to 100.0 | Yes, the widest and most discriminating |
+| wrinkle | 1.1 to 92.8 | Yes, tracked intended face age closely |
+| texture | 17.6 to 90.1 | Yes |
+| oiliness | 32.9 to 95.1 | Yes |
+| acne | 81.7 to 100.0 | Compressed into the top fifth |
+| age_spot | 74.4 to 97.3 | Narrow |
+| moisture | 20.6 to 59.2 | Never reached 70 on any face |
+
+Two of these changed our thresholds. A face with clearly visible pustules scored
+`acne` 81.7 while the clearest face scored 96.9, so a threshold of 80 called every
+face healthy and would have marked every acne product "you don't need this". And
+`moisture` never reaches 70, so a moisturizer is never called unnecessary on
+moisture grounds. We left that as it is, because it fails in the safe direction.
+
+A single number out of 100 reads as if the seven scales mean the same thing. They
+do not. The UI shows the raw score next to each verdict for that reason.
+
+## 13. skin_age across the bank
+
+| Face, as prompted | skin_age returned |
+|---|---|
+| 29 | 37 |
+| 28 | 38 |
+| 42 | 61 |
+| 38 | 58 |
+| 63 | 67 |
+| 24 | 30 |
+| 27 | 26 |
+| 34 | 34 |
+
+These are generated faces, so the "as prompted" column is our intent and not a
+real age. It is not evidence of error rates on real photos and we make no such
+claim. What it does show is a spread wide enough that gating a blocking rule on it
+would be indefensible. Age comes from what the shopper declares.
+
 ## Billing confirmed
 
 Eight SD concerns including `skin_type` fell in the 5 to 8 band at 12 units.
