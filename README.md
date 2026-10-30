@@ -95,15 +95,22 @@ The revision loop runs at most twice. The engine always has the last word.
 
 ## Running it
 
+Needs **Node 22.12 or newer** and pnpm.
+
 ```bash
 pnpm install
-cp .env.example .env.local     # then add your keys
+cp .env.example .env.local     # then add your keys, or skip this entirely
 pnpm dev
 ```
 
 The app runs in `replay` mode by default and needs **no API keys at all** to
 serve every preset, because the scans and the agent responses are recorded in
 `fixtures/`.
+
+> **On Node 22.11 or older**, `pnpm test` fails to start with "Cannot find native
+> binding". The test runner's native dependency declares `node >= 22.12.0`, so
+> pnpm skips it as unsatisfiable and the error that surfaces is misleading. The
+> app itself builds and runs fine on 22.11. Use Node 22.12+ to run the tests.
 
 ### Environment
 
