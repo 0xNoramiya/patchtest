@@ -178,9 +178,18 @@ function html(S, total, slams) {
     for (const c of CUES[key] ?? []) {
       const start = round2(sc.audioStart + c.start);
       const duration = round2(Math.max(c.end - c.start - 0.01, 0.4));
-      cues.push({ id: `cue-${cues.length}`, start, duration, text: c.text });
+      cues.push({ start, duration, text: c.text });
     }
   }
+  // Scenes crossfade by XFADE, so the next block's narration — and its first
+  // caption — starts before the previous block's last one has finished. On a
+  // single track that is an overlap, and on screen it is two captions stacked.
+  cues.sort((a, b) => a.start - b.start);
+  for (let i = 0; i < cues.length - 1; i++) {
+    const overlap = cues[i].start + cues[i].duration - cues[i + 1].start;
+    if (overlap > 0) cues[i].duration = round2(Math.max(cues[i].duration - overlap - 0.01, 0.3));
+  }
+  cues.forEach((c, i) => { c.id = `cue-${i}`; });
   const cueMarkup = cues.map((c) => `      <div class="scene" style="z-index:95">
         <p class="clip cue" id="${c.id}" data-start="${c.start}" data-duration="${c.duration}" data-track-index="110">${esc(c.text)}</p>
       </div>`);

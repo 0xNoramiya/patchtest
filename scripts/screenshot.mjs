@@ -16,6 +16,7 @@ const shots = [
   { name: "methods", route: "/methods", width: 1180, height: 1000, full: false },
   { name: "mobile", route: "/check?preset=tiktok", width: 390, height: 1100, full: false },
   { name: "store", route: "/store", width: 1180, height: 760, full: false },
+  { name: "extension", route: "/extension", width: 1180, height: 1250, full: false },
 ];
 
 // Use whatever chromium this machine already has rather than downloading one.

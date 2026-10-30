@@ -19,19 +19,24 @@ function extensionVersion(): string {
 function Step({
   n,
   title,
+  last,
   children,
 }: {
   n: number;
   title: string;
+  last?: boolean;
   children?: React.ReactNode;
 }) {
   return (
     <li className="relative flex gap-4">
-      {/* The rail is decorative, so it must never eat a click. */}
-      <span
-        aria-hidden
-        className="absolute left-[15px] top-9 h-[calc(100%-12px)] w-px bg-line last:hidden"
-      />
+      {/* The rail joins a step to the next one, so the last step has none. It is
+          decorative, so it must never eat a click. */}
+      {last ? null : (
+        <span
+          aria-hidden
+          className="absolute left-[15px] top-9 h-[calc(100%-12px)] w-px bg-line"
+        />
+      )}
       <span className="relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full border border-line-strong bg-surface text-sm font-medium tabular-nums">
         {n}
       </span>
@@ -98,7 +103,7 @@ export default function ExtensionPage() {
               uninstalls it.
             </p>
           </Step>
-          <Step n={2} title="Open your browser's extensions page">
+          <Step n={2} title="Open your browser’s extensions page">
             <p>
               Paste <Key>chrome://extensions</Key> into the address bar and press Enter. On Edge it
               is <Key>edge://extensions</Key>, on Brave <Key>brave://extensions</Key>. A link will
@@ -117,7 +122,7 @@ export default function ExtensionPage() {
               <Key>manifest.json</Key>. PatchTest now appears in your extensions list.
             </p>
           </Step>
-          <Step n={5} title="Pin it to the toolbar (optional)">
+          <Step n={5} last title="Pin it to the toolbar (optional)">
             <p>
               Press the puzzle-piece icon beside the address bar and pin PatchTest, so the check
               button is one click away on any shop.
@@ -148,7 +153,7 @@ export default function ExtensionPage() {
               it. The extension annotates the cart in place.
             </p>
           </Step>
-          <Step n={3} title="Run it anywhere else">
+          <Step n={3} last title="Run it anywhere else">
             <p>
               On any other shop, press the toolbar icon and then <strong>Check this page</strong>.
               It reads product titles out of the page and returns a verdict for each one it can
