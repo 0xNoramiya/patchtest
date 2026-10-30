@@ -1,4 +1,4 @@
-import { append, budget, BudgetExceeded, UNIT_COST } from "../ledger";
+import { alreadyBooked, append, budget, BudgetExceeded, UNIT_COST } from "../ledger";
 import { secret } from "../env";
 import {
   type FileApiResponse,
@@ -170,6 +170,67 @@ export async function pollSkinAnalysis(taskId: string, opts: BillableOpts): Prom
     });
     throw err;
   }
+}
+
+/**
+ * One poll, no loop. The browser drives the polling through a lightweight status
+ * route, so a serverless request is never held open waiting on a task that can
+ * take tens of seconds. Units are booked exactly once, on the first success.
+ */
+async function checkOnce<T extends { task_status: string; error?: string | null; error_message?: string }>(
+  path: string,
+  endpoint: string,
+  units: number,
+  taskId: string,
+  opts: BillableOpts,
+): Promise<T> {
+  const res = await call<{ status: number; data: T }>("GET", path);
+  const data = res.data;
+
+  if (data.task_status === "success" && !(await alreadyBooked(taskId))) {
+    await append({
+      scan_id: opts.scanId,
+      endpoint,
+      units,
+      status: "success",
+      image_hash: opts.imageHash,
+      task_id: taskId,
+    });
+  }
+
+  if (data.task_status === "error") {
+    await append({
+      scan_id: opts.scanId,
+      endpoint,
+      units: 0,
+      status: "error",
+      image_hash: opts.imageHash,
+      task_id: taskId,
+      note: data.error ?? "task failed",
+    });
+    throw new YouCamError(data.error_message ?? "Task failed", data.error ?? null);
+  }
+  return data;
+}
+
+export function checkSkinAnalysis(taskId: string, opts: BillableOpts): Promise<SkinAnalysisResult> {
+  return checkOnce<SkinAnalysisResult>(
+    `/s2s/v2.0/task/skin-analysis/${taskId}`,
+    "task/skin-analysis",
+    UNIT_COST.skin_analysis_sd,
+    taskId,
+    opts,
+  );
+}
+
+export function checkFitzpatrick(taskId: string, opts: BillableOpts): Promise<FitzpatrickResult> {
+  return checkOnce<FitzpatrickResult>(
+    `/s2s/v2.0/task/fitzpatrick-scale-analyzer/${taskId}`,
+    "task/fitzpatrick-scale-analyzer",
+    UNIT_COST.fitzpatrick,
+    taskId,
+    opts,
+  );
 }
 
 export async function createFitzpatrick(fileId: string, opts: BillableOpts): Promise<string> {

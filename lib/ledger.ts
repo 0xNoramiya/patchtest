@@ -44,13 +44,40 @@ export function imageHash(bytes: Buffer | Uint8Array, actions: readonly string[]
     .digest("hex");
 }
 
-export async function readLedger(): Promise<LedgerEntry[]> {
+/**
+ * The deployed volume starts empty, but the units spent building this were spent
+ * from the same 1000. Without seeding, production would believe it had the whole
+ * allowance again and the hard stop would let through far more in total than
+ * intended. On first read the committed ledger is copied onto the volume.
+ */
+const SEED_PATH = path.join(process.cwd(), "data", "ledger.json");
+
+async function readFrom(file: string): Promise<LedgerEntry[] | null> {
   try {
-    return JSON.parse(await readFile(LEDGER_PATH, "utf8")) as LedgerEntry[];
+    return JSON.parse(await readFile(file, "utf8")) as LedgerEntry[];
   } catch (err) {
-    if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
     throw err;
   }
+}
+
+export async function readLedger(): Promise<LedgerEntry[]> {
+  const current = await readFrom(LEDGER_PATH);
+  if (current) return current;
+
+  if (LEDGER_PATH !== SEED_PATH) {
+    const seed = await readFrom(SEED_PATH);
+    if (seed) {
+      try {
+        await mkdir(path.dirname(LEDGER_PATH), { recursive: true });
+        await writeFile(LEDGER_PATH, `${JSON.stringify(seed, null, 2)}\n`);
+      } catch {
+        // Read-only is fine. The total is still correct for this process.
+      }
+      return seed;
+    }
+  }
+  return [];
 }
 
 export async function append(entry: Omit<LedgerEntry, "ts">): Promise<LedgerEntry> {
@@ -60,6 +87,12 @@ export async function append(entry: Omit<LedgerEntry, "ts">): Promise<LedgerEntr
   await mkdir(path.dirname(LEDGER_PATH), { recursive: true });
   await writeFile(LEDGER_PATH, `${JSON.stringify(entries, null, 2)}\n`);
   return full;
+}
+
+/** True when this task already had its units booked, so a repeat poll is free. */
+export async function alreadyBooked(taskId: string): Promise<boolean> {
+  const entries = await readLedger();
+  return entries.some((e) => e.task_id === taskId && e.status === "success");
 }
 
 export function spent(entries: LedgerEntry[]): number {

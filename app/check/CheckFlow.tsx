@@ -7,6 +7,7 @@ import { BaselineCompare } from "@/components/BaselineCompare";
 import { CartList } from "@/components/CartList";
 import { IntakeForm } from "@/components/Intake";
 import { Referrals } from "@/components/Referrals";
+import { LiveScan, type BudgetState } from "@/components/LiveScan";
 import { ScanPanel } from "@/components/ScanPanel";
 import type { AdviseResult } from "@/lib/advise";
 import { EMPTY_INTAKE, type Intake } from "@/lib/intake";
@@ -44,10 +45,13 @@ export function CheckFlow() {
   const [scans, setScans] = useState<ScanListing[]>([]);
   const [result, setResult] = useState<AdviseResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [budget, setBudget] = useState<BudgetState | null>(null);
+  const [liveOpen, setLiveOpen] = useState(false);
 
   useEffect(() => {
     fetch("/api/catalog").then((r) => r.json()).then((d) => setCatalog(d.products)).catch(() => {});
     fetch("/api/scans").then((r) => r.json()).then((d) => setScans(d.scans)).catch(() => {});
+    fetch("/api/budget").then((r) => r.json()).then(setBudget).catch(() => {});
   }, []);
 
   const run = useCallback(
@@ -250,6 +254,27 @@ export function CheckFlow() {
               {error}
             </p>
           ) : null}
+
+          {liveOpen && budget ? (
+            <div className="mt-5">
+              <LiveScan
+                budget={budget}
+                onScanned={(label) => run(label, intake, wanted)}
+                onCancel={() => setLiveOpen(false)}
+              />
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setLiveOpen(true)}
+              className="mt-5 rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
+            >
+              Or run a live scan on your own photo
+              {budget && !budget.liveAvailable ? (
+                <span className="ml-2 text-xs text-faint">(currently unavailable)</span>
+              ) : null}
+            </button>
+          )}
           <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {scans.map((scan) => (
               <li key={scan.label}>

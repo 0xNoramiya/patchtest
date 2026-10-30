@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { runBaselineAgent, runGuardedAgent } from "./agent/run";
+import { fixtureSearchPath } from "./scan-runner";
 import { config, hasSecret } from "./env";
 import { EMPTY_INTAKE, effectiveFitzpatrick, type Intake } from "./intake";
 import { evaluate } from "./rules/engine";
@@ -44,9 +45,16 @@ export type AdviseResult = {
 export async function loadScanFixture(
   label: string,
 ): Promise<{ summary: ScanSummary; maskPaths: Record<string, string>; imagePath: string }> {
-  const raw = JSON.parse(
-    await readFile(path.join(process.cwd(), "fixtures", "scans", label, "fixture.json"), "utf8"),
-  ) as { summary: ScanSummary; local_masks?: Record<string, string[]> };
+  let raw: { summary: ScanSummary; local_masks?: Record<string, string[]> } | null = null;
+  for (const dir of fixtureSearchPath(label)) {
+    try {
+      raw = JSON.parse(await readFile(path.join(dir, "fixture.json"), "utf8"));
+      break;
+    } catch {
+      // Try the next location.
+    }
+  }
+  if (!raw) throw new Error(`No recorded scan called ${label}`);
 
   // The signed mask URLs YouCam returned expired two hours after the scan. These
   // are the files we downloaded at scan time and committed next to the scores.

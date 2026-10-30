@@ -36,6 +36,16 @@ export function fixtureDir(label: string): string {
   return path.join(process.cwd(), "fixtures", "scans", label);
 }
 
+/** Where a live scan writes. The image is read-only once deployed. */
+export function liveFixtureDir(label: string): string {
+  return path.join(process.env.DATA_DIR ?? path.join(process.cwd(), "data"), "scans", label);
+}
+
+/** Bundled fixtures first, then anything recorded at runtime. */
+export function fixtureSearchPath(label: string): string[] {
+  return [fixtureDir(label), liveFixtureDir(label)];
+}
+
 /**
  * Returns the stored fixture for this label if there is one. Keyed on the label
  * rather than the image hash on purpose: re-encoding an image changes its hash,
