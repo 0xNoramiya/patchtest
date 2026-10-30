@@ -31,6 +31,10 @@ applies the same 24 rules there.
 
 ![The extension annotating a third-party shop's cart with blocked verdicts and sources](docs/screenshots/extension.webp)
 
+*Verdant Row is a fictional shop built for this demo, with its own product
+photography, so the extension can be seen working on a page that is visibly not
+ours. It publishes the same schema.org microdata real shops already emit.*
+
 That works because the rules key on **active classes and percentages**, and
 skincare titles almost always carry both: "Retinol 0.5% Night Serum", "AHA 30% +
 BHA 2% Peeling Solution". [`lib/match.ts`](lib/match.ts) turns a title into
