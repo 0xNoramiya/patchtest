@@ -1,0 +1,233 @@
+[
+  {
+    "path": "/s2s/v2.0/file",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "files": [
+          {
+            "content_type": "image/jpeg",
+            "file_name": "synthetic-01.jpg",
+            "file_id": "Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM528LbKfeLEmuXUa9yH4wuc2K",
+            "requests": [
+              {
+                "method": "PUT",
+                "url": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778836263/v2/aeMNNB0KmUIP8rnQ996tC5Q/6931c357-e69e-4480-861e-de24a97f9625.jpg?<signature stripped, expired after 2h>",
+                "headers": {
+                  "Content-Length": "593131",
+                  "Content-Type": "image/jpeg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/skin-analysis",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "task_id": "Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52_hrQzu8o3_EZE9oFfqWs4TSpcgV8WTLEnG8Q2PXjtLzQ"
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/skin-analysis/Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52_hrQzu8o3_EZE9oFfqWs4TSpcgV8WTLEnG8Q2PXjtLzQ",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "error": null,
+        "results": null,
+        "task_status": "running"
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/skin-analysis/Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52_hrQzu8o3_EZE9oFfqWs4TSpcgV8WTLEnG8Q2PXjtLzQ",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "error": null,
+        "results": null,
+        "task_status": "running"
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/skin-analysis/Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52_hrQzu8o3_EZE9oFfqWs4TSpcgV8WTLEnG8Q2PXjtLzQ",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "error": null,
+        "results": {
+          "output": [
+            {
+              "ui_score": 99,
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_redness_output.png?<signature stripped, expired after 2h>"
+              ],
+              "raw_score": 100,
+              "type": "redness",
+              "url": null
+            },
+            {
+              "ui_score": 82,
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_oiliness_output.png?<signature stripped, expired after 2h>"
+              ],
+              "raw_score": 83.16140747070312,
+              "type": "oiliness",
+              "url": null
+            },
+            {
+              "ui_score": 53,
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_texture_output.png?<signature stripped, expired after 2h>"
+              ],
+              "raw_score": 17.79000759124756,
+              "type": "texture",
+              "url": null
+            },
+            {
+              "ui_score": 99,
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_acne_output.png?<signature stripped, expired after 2h>"
+              ],
+              "raw_score": 100,
+              "type": "acne",
+              "url": null
+            },
+            {
+              "ui_score": 77,
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_age_spot_output.png?<signature stripped, expired after 2h>"
+              ],
+              "raw_score": 84.97002410888672,
+              "type": "age_spot",
+              "url": null
+            },
+            {
+              "ui_score": 66,
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_moisture_output.png?<signature stripped, expired after 2h>"
+              ],
+              "raw_score": 38.973334431648254,
+              "type": "moisture",
+              "url": null
+            },
+            {
+              "ui_score": 78,
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_wrinkle_output.png?<signature stripped, expired after 2h>"
+              ],
+              "raw_score": 84.50393676757812,
+              "type": "wrinkle",
+              "url": null
+            },
+            {
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_skin_type_output.png?<signature stripped, expired after 2h>"
+              ],
+              "type": "skin_type",
+              "region": "whole",
+              "skin_type": "Dry",
+              "url": null
+            },
+            {
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_skin_type_t_zone_output.png?<signature stripped, expired after 2h>"
+              ],
+              "type": "skin_type",
+              "region": "t_zone",
+              "skin_type": "Dry",
+              "url": null
+            },
+            {
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_skin_type_u_zone_output.png?<signature stripped, expired after 2h>"
+              ],
+              "type": "skin_type",
+              "region": "u_zone",
+              "skin_type": "Dry",
+              "url": null
+            },
+            {
+              "score": 79.14285714285714,
+              "type": "all",
+              "url": null
+            },
+            {
+              "score": 37,
+              "type": "skin_age",
+              "url": null
+            },
+            {
+              "mask_urls": [
+                "https://yce-us.s3-accelerate.amazonaws.com/ttl30/519154157068759850/123778838194/v2/aeMNNB0KmUIP8rnQ996tC5Q/9a052945-7848-4c2b-af6c-eac7e1965860_resize_image.jpg?<signature stripped, expired after 2h>"
+              ],
+              "type": "resize_image",
+              "url": null
+            }
+          ]
+        },
+        "task_status": "success"
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/fitzpatrick-scale-analyzer",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "task_id": "Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52-OgDNdZhnUMQD0vgTqO76IVSf2WmnU8QD4vnx7klL26A"
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/fitzpatrick-scale-analyzer/Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52-OgDNdZhnUMQD0vgTqO76IVSf2WmnU8QD4vnx7klL26A",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "error": null,
+        "results": null,
+        "task_status": "running"
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/fitzpatrick-scale-analyzer/Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52-OgDNdZhnUMQD0vgTqO76IVSf2WmnU8QD4vnx7klL26A",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "error": null,
+        "results": null,
+        "task_status": "running"
+      }
+    }
+  },
+  {
+    "path": "/s2s/v2.0/task/fitzpatrick-scale-analyzer/Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52-OgDNdZhnUMQD0vgTqO76IVSf2WmnU8QD4vnx7klL26A",
+    "httpStatus": 200,
+    "body": {
+      "status": 200,
+      "data": {
+        "error": null,
+        "results": {
+          "timed": 2129,
+          "fitzpatrick_scale": "VI"
+        },
+        "task_status": "success"
+      }
+    }
+  }
+]

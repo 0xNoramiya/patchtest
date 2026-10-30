@@ -1,0 +1,36 @@
+app = "patchtest"
+primary_region = "sin"
+
+[build]
+
+[env]
+  PORT = "3000"
+  DATA_DIR = "/data"
+  DEMO_MODE = "replay"
+  UNIT_BUDGET_TOTAL = "1000"
+  UNIT_HARD_STOP = "900"
+  LIVE_SCAN_DAILY_CAP = "10"
+  HIGH_ACID_PCT = "20"
+
+# The unit ledger and the scan cache live here so the daily cap survives
+# restarts and is enforced across requests.
+[[mounts]]
+  source = "patchtest_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "suspend"
+  auto_start_machines = true
+  # Judges test until Nov 20. One machine stays available rather than scaling to zero.
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 40
+    hard_limit = 80
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1gb"

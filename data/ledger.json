@@ -1,0 +1,20 @@
+[
+  {
+    "ts": "2026-10-30T15:00:43.948Z",
+    "scan_id": "smoke-synthetic-01-1793372434843",
+    "endpoint": "task/skin-analysis",
+    "units": 12,
+    "status": "success",
+    "image_hash": "a9bd9beb7e404f2b6e71235a9e5b3c3071bcaf674574a687fe1608431b414120",
+    "task_id": "Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52_hrQzu8o3_EZE9oFfqWs4TSpcgV8WTLEnG8Q2PXjtLzQ"
+  },
+  {
+    "ts": "2026-10-30T15:00:49.677Z",
+    "scan_id": "smoke-synthetic-01-1793372434843",
+    "endpoint": "task/fitzpatrick-scale-analyzer",
+    "units": 10,
+    "status": "success",
+    "image_hash": "a9bd9beb7e404f2b6e71235a9e5b3c3071bcaf674574a687fe1608431b414120",
+    "task_id": "Rlt4Q8Yy7Tw241xnSsBisN93MrkyVfkMwiyYvyZM52-OgDNdZhnUMQD0vgTqO76IVSf2WmnU8QD4vnx7klL26A"
+  }
+]

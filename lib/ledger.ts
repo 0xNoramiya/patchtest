@@ -17,7 +17,13 @@ export type LedgerEntry = {
   note?: string;
 };
 
-const LEDGER_PATH = path.join(process.cwd(), "data", "ledger.json");
+/**
+ * Fly.io mounts a persistent volume at /data in production, so the ledger and the
+ * scan cache survive restarts and the daily cap is enforced for real. Locally this
+ * falls back to ./data in the repo.
+ */
+export const DATA_DIR = process.env.DATA_DIR ?? path.join(process.cwd(), "data");
+const LEDGER_PATH = path.join(DATA_DIR, "ledger.json");
 
 /** Units are charged by YouCam only when a task reaches `success`. */
 export const UNIT_COST = {

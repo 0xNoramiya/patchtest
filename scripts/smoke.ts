@@ -13,6 +13,20 @@ import { SD_CONCERNS } from "../lib/youcam/types";
 
 process.loadEnvFile(path.join(process.cwd(), ".env.local"));
 
+/**
+ * Mask URLs are pre-signed and the signature expires after two hours, so the
+ * query string is worthless in a committed fixture. It also carries an AWS access
+ * key id, which the secrets scan rightly objects to. The bytes are saved locally.
+ */
+function stringifyWithoutSignatures(value: unknown): string {
+  const stripped = JSON.stringify(value, (_key, v) =>
+    typeof v === "string" && v.startsWith("http") && v.includes("?")
+      ? `${v.split("?")[0]}?<signature stripped, expired after 2h>`
+      : v,
+  );
+  return `${JSON.stringify(JSON.parse(stripped), null, 2)}\n`;
+}
+
 async function main() {
   const imagePath = process.argv[2];
   if (!imagePath) {
@@ -98,8 +112,8 @@ async function main() {
     fitzpatrick: fitz,
     local_masks: masks,
   };
-  await writeFile(path.join(outDir, "fixture.json"), `${JSON.stringify(fixture, null, 2)}\n`);
-  await writeFile(path.join(outDir, "raw-responses.json"), `${JSON.stringify(raw, null, 2)}\n`);
+  await writeFile(path.join(outDir, "fixture.json"), stringifyWithoutSignatures(fixture));
+  await writeFile(path.join(outDir, "raw-responses.json"), stringifyWithoutSignatures(raw));
 
   console.log("=== OBSERVED SCHEMA ===");
   for (const item of skin.results?.output ?? []) {

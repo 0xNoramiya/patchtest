@@ -15,17 +15,28 @@ export type SdConcern = (typeof SD_CONCERNS)[number];
 export type FitzpatrickScale = "I" | "II" | "III" | "IV" | "V" | "VI";
 
 /**
- * One item of `data.results.output`. `raw_score` and `ui_score` both run 1 to 100
- * where higher is healthier. PatchTest decides on `raw_score` only: YouCam
- * documents `ui_score` as adjusted upward to be more favorable.
+ * One item of `data.results.output`, as the API really returns it rather than as
+ * the OpenAPI spec describes it. Eight requested actions produce thirteen items:
+ *
+ *   - seven scored concerns, carrying `raw_score` and `ui_score` but no `region`
+ *   - three `skin_type` items, carrying `region` and a `skin_type` label, no scores
+ *   - `all` and `skin_age`, carrying a plain `score`
+ *   - `resize_image`, a mask only
+ *
+ * Every item also carries an undocumented `url`, null in every response observed.
+ *
+ * `raw_score` and `ui_score` both run 1 to 100 where higher is healthier.
+ * PatchTest decides on `raw_score` only.
  */
 export type SkinOutputItem = {
   type: string;
   region?: string;
-  raw_score: number;
-  ui_score: number;
+  raw_score?: number;
+  ui_score?: number;
+  skin_type?: string;
   score?: number;
   mask_urls?: string[];
+  url?: string | null;
 };
 
 export type TaskStatus = "running" | "success" | "error";
