@@ -111,7 +111,7 @@ export default function Home() {
             <dt className="font-display text-3xl text-accent">11</dt>
             <dd className="mt-1 text-sm leading-relaxed text-muted">
               potentially irritating active ingredients in the average top-viewed children&rsquo;s
-              skincare routine on TikTok. Only 26% of daytime routines included sunscreen.{" "}
+              skincare video on TikTok. Only 26% of daytime routines included sunscreen.{" "}
               <a
                 className="text-accent underline underline-offset-2"
                 href="https://www.sciencedaily.com/releases/2025/06/250609054355.htm"
