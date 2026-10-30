@@ -16,10 +16,12 @@
     "record-presets": "tsx scripts/record-presets.ts",
     "build:next": "next build",
     "preview": "next build && cp -r public .next/standalone/ && mkdir -p .next/standalone/.next && cp -r .next/static .next/standalone/.next/ && node .next/standalone/server.js",
-    "package:extension": "node scripts/package-extension.mjs"
+    "package:extension": "node scripts/package-extension.mjs",
+    "narrate": "tsx scripts/narrate.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.92",
+    "@elevenlabs/elevenlabs-js": "^2.75.0",
     "ai": "^7.0.157",
     "next": "16.4.3",
     "react": "19.3.0",
