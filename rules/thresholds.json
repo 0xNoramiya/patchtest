@@ -1,0 +1,43 @@
+{
+  "_note": "Every value here is a heuristic, not a clinical grade. YouCam raw_score runs 1 to 100 where higher is healthier. These are provisional until calibrated against the saved scan bank, and the Methods page says so. The UI shows the actual raw_score next to any verdict one of these triggered.",
+  "_status": "provisional, calibrated against 1 of 8 scan fixtures",
+  "thresholds": {
+    "ACNE_ASK_T": {
+      "value": 70,
+      "used_by": ["R-REF-01"],
+      "meaning": "Below this acne raw_score, ask the shopper about deep painful bumps and scarring. The score never asserts that acne is present."
+    },
+    "REDNESS_T": {
+      "value": 70,
+      "used_by": ["R-SENS-01"],
+      "meaning": "Below this redness raw_score, treat the skin as reactive: barrier first, no stacking."
+    },
+    "WRINKLE_HEALTHY_T": {
+      "value": 75,
+      "used_by": ["R-NEED-01"],
+      "meaning": "At or above this wrinkle raw_score, an anti-aging product has nothing visible to work on yet."
+    },
+    "HIGH_ACID_PCT": {
+      "value": 20,
+      "used_by": ["R-FITZ-01"],
+      "meaning": "Leave-on acid percentage at or above which an at-home product is treated as a peel-strength risk. Overridable by the HIGH_ACID_PCT env var.",
+      "unit": "percent"
+    }
+  },
+  "healthy_by_concern": {
+    "_meaning": "Used by R-NEED-02. At or above these raw_scores, a product aimed at that concern has nothing to work on.",
+    "acne": 80,
+    "redness": 80,
+    "oiliness": 75,
+    "moisture": 70,
+    "age_spot": 80,
+    "wrinkle": 75,
+    "texture": 70
+  },
+  "skin_type_contradictions": {
+    "_meaning": "Used by R-NEED-02. A product tagged this way contradicts a scan that reports this skin type.",
+    "mattifying": ["Dry"],
+    "oil_control": ["Dry"],
+    "rich": ["Oily"]
+  }
+}

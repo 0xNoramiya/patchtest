@@ -1,6 +1,6 @@
 # PatchTest progress
 
-Updated: Fri Oct 30 2026, 23:20 UTC+8
+Updated: Fri Oct 30 2026, 23:25 UTC+8
 
 ## Units spent
 
@@ -52,16 +52,31 @@ Full detail in `docs/API_NOTES.md`. The ten differences that changed code:
 - Output items carry `region` and a third `score` field next to `raw_score` and `ui_score`.
 - 8 SD concerns including `skin_type` falls in the 5 to 8 band, so 12 units. Fitzpatrick is 10. One scan is 22.
 
+## M1 done ahead of schedule
+
+- **Catalogue**: 25 Lumen & Leaf SKUs in `data/catalog.json`, covering every class
+  the rules need. No real brand anywhere. Hydroquinone deliberately absent.
+- **Scan bank images**: 8 disclosed synthetic faces in `fixtures/faces/`, generated
+  from text prompts only. Acne, flushing, pigmentation, mature, clear, oily, dry,
+  plus the original. Not yet scanned.
+- **Rules engine**: `rules/rules.yaml` holds all 24 rules as data. `lib/rules/engine.ts`
+  is a pure function over that data. 60 Vitest tests pass, a positive and a negative
+  case for every rule, plus a test proving verdicts do not change when ui_score and
+  skin_age are replaced with nonsense.
+- **Source verification**: all 21 URLs fetched and checked. 14 verified, 7 partial,
+  3 heuristic rules with no source by design. The Ovid link for the AAD 2024 acne
+  guideline returns HTTP 402, so it was replaced with the PubMed record, which
+  carries the same abstract.
+
 ## Next
 
-1. Replay mode and the scan cache on top of the recorded fixture.
-2. Catalogue of 25 fictional SKUs.
-3. Rules engine, `rules.yaml`, Vitest tests, source verification. **Stops for your rule sign-off.**
-4. Scan bank. **Needs approval before spending.**
+1. **Your rule sign-off.** Eight rules need a decision. See below.
+2. Scan the 8 face images. **Needs approval: 176 units.**
+3. Replay mode, cache, agent loop, baseline.
 
 ## Open questions for Rifqi
 
-1. MIT license holder name: `LICENSE` currently says "Rifqi". Tell me the name you want on it.
+1. MIT license holder name: Set to Rifqi Haikal.
 2. The API keys were pasted into chat. Rotate both after judging closes on Nov 20.
 3. The synthetic face scored acne 100 and redness 100, so it cannot calibrate the
    acne or redness thresholds. The scan bank needs faces with visible inflammatory

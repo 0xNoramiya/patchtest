@@ -1,0 +1,304 @@
+{
+  "store": "Lumen & Leaf",
+  "note": "A fictional store. Every product, name and price here is invented for this demo. No real brand, logo or trademark appears anywhere in this catalogue.",
+  "currency": "USD",
+  "active_classes": {
+    "retinoid": "Vitamin A derivatives: retinol, retinaldehyde, adapalene, tretinoin, tazarotene",
+    "aha": "Alpha hydroxy acids: glycolic, lactic, mandelic",
+    "bha": "Beta hydroxy acid: salicylic",
+    "bpo": "Benzoyl peroxide",
+    "vitamin_c": "L-ascorbic acid and derivatives",
+    "azelaic": "Azelaic acid",
+    "niacinamide": "Niacinamide",
+    "peptide": "Signal peptides",
+    "ceramide": "Ceramides and barrier lipids",
+    "centella": "Centella asiatica",
+    "humectant": "Glycerin, hyaluronic acid",
+    "physical_exfoliant": "Abrasive particles or tools",
+    "hair_removal": "Wax and depilatories",
+    "sunscreen": "UV filters"
+  },
+  "products": [
+    {
+      "sku": "LL-101",
+      "name": "Everyday Gentle Cleanser",
+      "price": 14,
+      "blurb": "A low-foam daily wash for all skin types.",
+      "targets": [],
+      "actives": [],
+      "leave_on": false,
+      "area": "face",
+      "tags": ["cleanser", "gentle", "basic"]
+    },
+    {
+      "sku": "LL-102",
+      "name": "Clarifying Cleanser with 2% Salicylic Acid",
+      "price": 16,
+      "blurb": "A daily wash for skin that looks congested or shiny.",
+      "targets": ["acne", "oiliness", "texture"],
+      "actives": [{ "class": "bha", "name": "salicylic acid", "pct": 2 }],
+      "leave_on": false,
+      "area": "face",
+      "tags": ["cleanser", "exfoliating"]
+    },
+    {
+      "sku": "LL-103",
+      "name": "Benzoyl Peroxide 2.5% Daily Wash",
+      "price": 12,
+      "blurb": "A rinse-off wash at the lower of the two strengths we stock.",
+      "targets": ["acne"],
+      "actives": [{ "class": "bpo", "name": "benzoyl peroxide", "pct": 2.5 }],
+      "leave_on": false,
+      "area": "face",
+      "tags": ["cleanser", "otc_drug"]
+    },
+    {
+      "sku": "LL-104",
+      "name": "Benzoyl Peroxide 5% Wash",
+      "price": 13,
+      "blurb": "A rinse-off wash at the higher strength.",
+      "targets": ["acne"],
+      "actives": [{ "class": "bpo", "name": "benzoyl peroxide", "pct": 5 }],
+      "leave_on": false,
+      "area": "face",
+      "tags": ["cleanser", "otc_drug"]
+    },
+    {
+      "sku": "LL-105",
+      "name": "Adapalene 0.1% Gel",
+      "price": 17,
+      "blurb": "An over-the-counter retinoid gel, used at night.",
+      "targets": ["acne", "texture"],
+      "actives": [{ "class": "retinoid", "name": "adapalene", "pct": 0.1 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["otc_drug", "night"]
+    },
+    {
+      "sku": "LL-106",
+      "name": "Retinol 0.3% Night Serum",
+      "price": 24,
+      "blurb": "An entry-strength retinol serum for night use.",
+      "targets": ["wrinkle", "texture", "age_spot"],
+      "actives": [{ "class": "retinoid", "name": "retinol", "pct": 0.3 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["anti_aging", "night"]
+    },
+    {
+      "sku": "LL-107",
+      "name": "Retinol 1% Advanced Night Serum",
+      "price": 32,
+      "blurb": "Our highest retinol strength, for night use.",
+      "targets": ["wrinkle", "texture", "age_spot"],
+      "actives": [{ "class": "retinoid", "name": "retinol", "pct": 1 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["anti_aging", "night", "high_strength"]
+    },
+    {
+      "sku": "LL-108",
+      "name": "Retinal Firming Eye Cream",
+      "price": 38,
+      "blurb": "A retinaldehyde eye cream for the look of fine lines.",
+      "targets": ["wrinkle"],
+      "actives": [{ "class": "retinoid", "name": "retinaldehyde", "pct": 0.06 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["anti_aging", "eye", "night"]
+    },
+    {
+      "sku": "LL-109",
+      "name": "Glycolic Acid 10% Resurfacing Toner",
+      "price": 20,
+      "blurb": "A leave-on acid toner for the look of uneven texture.",
+      "targets": ["texture", "age_spot"],
+      "actives": [{ "class": "aha", "name": "glycolic acid", "pct": 10 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["exfoliating", "night"]
+    },
+    {
+      "sku": "LL-110",
+      "name": "10-Minute Renewal Peel, 30% AHA + 2% BHA",
+      "price": 28,
+      "blurb": "A weekly at-home peel, rinsed off after ten minutes.",
+      "targets": ["texture", "age_spot", "acne"],
+      "actives": [
+        { "class": "aha", "name": "glycolic and lactic acid", "pct": 30 },
+        { "class": "bha", "name": "salicylic acid", "pct": 2 }
+      ],
+      "leave_on": false,
+      "area": "face",
+      "tags": ["peel", "at_home_peel", "exfoliating", "high_strength"]
+    },
+    {
+      "sku": "LL-111",
+      "name": "Azelaic Acid 10% Cream",
+      "price": 26,
+      "blurb": "A leave-on cream for the look of uneven tone and blemishes.",
+      "targets": ["acne", "redness", "age_spot"],
+      "actives": [{ "class": "azelaic", "name": "azelaic acid", "pct": 10 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["gentle"]
+    },
+    {
+      "sku": "LL-112",
+      "name": "Vitamin C 15% Brightening Serum",
+      "price": 34,
+      "blurb": "A morning antioxidant serum for the look of dull, uneven tone.",
+      "targets": ["age_spot", "wrinkle"],
+      "actives": [{ "class": "vitamin_c", "name": "L-ascorbic acid", "pct": 15 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["anti_aging", "morning"]
+    },
+    {
+      "sku": "LL-113",
+      "name": "Niacinamide 10% Serum",
+      "price": 18,
+      "blurb": "A leave-on serum for the look of large pores and shine.",
+      "targets": ["oiliness", "texture", "redness"],
+      "actives": [{ "class": "niacinamide", "name": "niacinamide", "pct": 10 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["gentle"]
+    },
+    {
+      "sku": "LL-114",
+      "name": "Ceramide Barrier Moisturizer",
+      "price": 22,
+      "blurb": "A daily moisturizer with ceramides.",
+      "targets": ["moisture"],
+      "actives": [{ "class": "ceramide", "name": "ceramide complex" }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["moisturizer", "gentle", "basic", "barrier"]
+    },
+    {
+      "sku": "LL-115",
+      "name": "Rich Repair Cream",
+      "price": 26,
+      "blurb": "A thicker cream for skin that feels tight and dry.",
+      "targets": ["moisture"],
+      "actives": [
+        { "class": "ceramide", "name": "ceramide complex" },
+        { "class": "humectant", "name": "glycerin" }
+      ],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["moisturizer", "gentle", "rich", "barrier"]
+    },
+    {
+      "sku": "LL-116",
+      "name": "Oil Control Mattifying Gel",
+      "price": 19,
+      "blurb": "A light gel for skin that looks shiny by midday.",
+      "targets": ["oiliness"],
+      "actives": [{ "class": "niacinamide", "name": "niacinamide", "pct": 4 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["moisturizer", "mattifying", "oil_control"]
+    },
+    {
+      "sku": "LL-117",
+      "name": "Centella Soothing Gel",
+      "price": 21,
+      "blurb": "A calming leave-on gel for skin that looks red or feels reactive.",
+      "targets": ["redness", "moisture"],
+      "actives": [{ "class": "centella", "name": "centella asiatica extract" }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["gentle", "soothing", "barrier"]
+    },
+    {
+      "sku": "LL-118",
+      "name": "Peptide Firming Cream",
+      "price": 42,
+      "blurb": "A peptide night cream with no acids or retinoids.",
+      "targets": ["wrinkle"],
+      "actives": [{ "class": "peptide", "name": "signal peptide blend" }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["anti_aging", "gentle"]
+    },
+    {
+      "sku": "LL-119",
+      "name": "Polishing Face Scrub",
+      "price": 15,
+      "blurb": "A rinse-off scrub with smooth jojoba beads.",
+      "targets": ["texture"],
+      "actives": [{ "class": "physical_exfoliant", "name": "jojoba beads" }],
+      "leave_on": false,
+      "area": "face",
+      "tags": ["scrub", "exfoliating", "physical"]
+    },
+    {
+      "sku": "LL-120",
+      "name": "Facial Wax Strips",
+      "price": 11,
+      "blurb": "Ready-to-use wax strips for upper lip and brows.",
+      "targets": [],
+      "actives": [{ "class": "hair_removal", "name": "wax" }],
+      "leave_on": false,
+      "area": "face",
+      "tags": ["wax", "hair_removal", "mechanical"]
+    },
+    {
+      "sku": "LL-121",
+      "name": "Mineral SPF 50 Face Fluid",
+      "price": 25,
+      "blurb": "A zinc oxide sunscreen for daily use.",
+      "targets": ["sun_protection"],
+      "actives": [{ "class": "sunscreen", "name": "zinc oxide", "pct": 20 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["spf", "mineral", "morning", "otc_drug"]
+    },
+    {
+      "sku": "LL-122",
+      "name": "Tinted Mineral SPF 50 with Iron Oxides",
+      "price": 28,
+      "blurb": "A tinted mineral sunscreen with iron oxides, in four shades.",
+      "targets": ["sun_protection", "age_spot"],
+      "actives": [{ "class": "sunscreen", "name": "zinc oxide", "pct": 18 }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["spf", "mineral", "tinted", "iron_oxides", "morning", "otc_drug"]
+    },
+    {
+      "sku": "LL-123",
+      "name": "Invisible Chemical SPF 50",
+      "price": 22,
+      "blurb": "A lightweight sunscreen that leaves no white cast.",
+      "targets": ["sun_protection"],
+      "actives": [{ "class": "sunscreen", "name": "avobenzone and octisalate" }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["spf", "chemical", "morning", "otc_drug"]
+    },
+    {
+      "sku": "LL-124",
+      "name": "Body Clear Spray with 2% Salicylic Acid",
+      "price": 19,
+      "blurb": "A leave-on spray for the back, shoulders and chest.",
+      "targets": ["acne"],
+      "actives": [{ "class": "bha", "name": "salicylic acid", "pct": 2 }],
+      "leave_on": true,
+      "area": "chest",
+      "tags": ["body", "exfoliating", "spray"]
+    },
+    {
+      "sku": "LL-125",
+      "name": "Hydrating Hyaluronic Serum",
+      "price": 20,
+      "blurb": "A plain humectant serum with no acids or retinoids.",
+      "targets": ["moisture"],
+      "actives": [{ "class": "humectant", "name": "hyaluronic acid" }],
+      "leave_on": true,
+      "area": "face",
+      "tags": ["gentle", "basic", "hydrating"]
+    }
+  ]
+}

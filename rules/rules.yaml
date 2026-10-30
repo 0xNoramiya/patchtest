@@ -1,0 +1,552 @@
+# PatchTest guardrail rules.
+#
+# The LLM proposes a cart. These rules decide. Nothing here is written by a model
+# at runtime, and no rule reads ui_score or skin_age.
+#
+# status: draft means Rifqi has not signed it off yet. Nothing ships on draft.
+# verification: pending means the source URL has not been fetched and checked yet.
+#
+# Condition vocabulary, all evaluated by lib/rules/engine.ts:
+#   intake:  pregnancy_in, isotretinoin_in, age_band_in, fitzpatrick_in,
+#            reported_use_any, symptoms_any, symptoms_all, recent_procedure_any
+#   item:    active_class_any, active_pct_gt, active_pct_gte_threshold, tag_any,
+#            leave_on, area_in, targets_any, all_targets_healthy,
+#            skin_type_contradicts, any_of
+#   scan:    raw_lt, raw_gte, skin_type_any
+#   cart:    active_class_count_gte, has_active_class_any, missing_tag_any,
+#            duplicate_leave_on_active_class
+#
+# scope: item       the rule gives one cart item a verdict
+# scope: cart       the rule gives every matching item a verdict
+# scope: reported   the rule is about something the shopper said they already use
+# scope: referral   the rule raises a referral and may restrict what stays in the cart
+
+version: 1
+status: draft
+
+rules:
+  # ---------------------------------------------------------------- pregnancy
+  - id: R-PREG-01
+    verdict: BLOCK
+    scope: item
+    when:
+      pregnancy_in: [pregnant, trying]
+      item:
+        active_class_any: [retinoid]
+    message: >-
+      Not for you right now. Retinoids are the one group that pregnancy skincare
+      guidance consistently says to avoid, including the over-the-counter ones.
+    swap_hint: LL-111
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/routine/pregnancy-skin-care
+      - https://mothertobaby.org/fact-sheets/topical-acne-treatments-pregnancy/
+    source_quote: "It is generally recommended to avoid topical retinoid medications."
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+
+  - id: R-PREG-02
+    verdict: BLOCK
+    scope: reported
+    when:
+      pregnancy_in: [pregnant, trying]
+      reported_use_any: [hydroquinone]
+    message: >-
+      You told us you are using hydroquinone. Pregnancy guidance says to stop it.
+      Ask whoever prescribed it what to use instead.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/routine/pregnancy-skin-care
+    source_quote: "you should avoid prescription skin care or over-the-counter products with these ingredients"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    notes: >-
+      The AAD page lists hydroquinone among the ingredients to avoid. The quote is the page's general instruction for that list.
+
+  - id: R-PREG-03
+    verdict: BLOCK
+    scope: item
+    when:
+      pregnancy_in: [pregnant, trying]
+      item:
+        any_of:
+          - active_pct_gt: { class: bha, pct: 2 }
+          - tag_any: [peel]
+    message: >-
+      Not for you right now. Pregnancy guidance keeps salicylic acid at low
+      strength and leaves peels alone.
+    swap_hint: LL-111
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/routine/pregnancy-skin-care
+      - https://pmc.ncbi.nlm.nih.gov/articles/PMC8884185/
+    source_quote: "Broad use of salicylic acid, either with high concentration or under occlusion, should be avoided."
+    source_accessed: "2026-10-30"
+    verification: partial
+    status: draft
+    notes: >-
+      Neither source says the words 'avoid peels'. The catalogue peel is blocked because it is 30 percent AHA, which is above the 10 percent ceiling Putra 2022 gives, and it also contains salicylic acid. The peel branch of this rule is our inference from the concentration limits, not a quoted instruction.
+
+  - id: R-PREG-04
+    verdict: ADJUST
+    scope: item
+    when:
+      pregnancy_in: [pregnant]
+      item:
+        active_class_any: [bpo]
+    message: >-
+      Adjust. Benzoyl peroxide is generally treated as acceptable in pregnancy
+      when it is used sparingly rather than over the whole face every day.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/routine/pregnancy-skin-care
+    source_quote: "Ingredients to use sparingly during pregnancy"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    notes: >-
+      The AAD page files benzoyl peroxide under 'use sparingly' rather than under 'avoid', which is exactly why this rule is ADJUST and not BLOCK.
+
+  - id: R-PREG-05
+    verdict: ADJUST
+    scope: item
+    when:
+      pregnancy_in: [pregnant]
+      item:
+        leave_on: true
+        active_pct_gt: { class: aha, pct: 10 }
+    message: Adjust. Keep leave-on acid strength modest while pregnant.
+    swap_hint: ""
+    evidence: review
+    source_urls:
+      - https://pmc.ncbi.nlm.nih.gov/articles/PMC8884185/
+    source_quote: "it is considered safe to use AHA in concentration up to 10% with pH > 3.5"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    notes: >-
+      COVERAGE NOTE. The source puts the safe ceiling at 10 percent, so the rule firing above 10 percent matches it exactly. No leave-on AHA in the catalogue exceeds 10 percent, so the rule currently matches nothing in the shipped catalogue. The 10 percent glycolic toner sits at the documented ceiling, not above it. Decision needed: leave as is, or add a stronger leave-on AHA so the rule has a live example.
+
+  - id: R-BF-01
+    verdict: ADJUST
+    scope: item
+    when:
+      pregnancy_in: [breastfeeding]
+      item:
+        area_in: [chest, body]
+    message: >-
+      Adjust. Keep this off the nipple and areola, and wash your hands before
+      feeding.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://mothertobaby.org/fact-sheets/topical-acne-treatments-pregnancy/
+    source_quote: "Do not apply topical acne treatments directly to the nipple or areola."
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+
+  # ------------------------------------------------------------- isotretinoin
+  - id: R-ISO-01
+    verdict: BLOCK
+    scope: item
+    when:
+      isotretinoin_in: [now, stopped_under_6m]
+      item:
+        tag_any: [wax, peel, scrub]
+    message: >-
+      Not for you right now. On isotretinoin, and for a while after stopping,
+      skin tears and marks far more easily than usual. Waxing, peels and scrubs
+      are the common way that happens.
+    swap_hint: ""
+    evidence: label
+    source_urls:
+      - https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=08529687-26b2-41e5-b6fb-35b4c0d891fe&type=display
+      - https://www.aad.org/public/diseases/acne/derm-treat/isotretinoin/faqs
+    source_quote: "Do not have cosmetic procedures to smooth your skin, including waxing, dermabrasion, or laser procedures, during treatment"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    notes: >-
+      A 2017 JAMA Dermatology consensus relaxed the six month wait for some procedures. PatchTest keeps the stricter FDA label wording and shows that note next to the verdict rather than silently picking the looser reading. The label states the six month period directly: 'and for at least 6 months after you stop'. The AAD FAQ covers waxing only, so the label is the primary source here.
+
+  - id: R-ISO-02
+    verdict: BLOCK
+    scope: item
+    when:
+      isotretinoin_in: [now]
+      item:
+        active_class_any: [aha, bha, retinoid, bpo, vitamin_c, physical_exfoliant]
+    message: >-
+      Not for you right now. Isotretinoin is already doing this job from the
+      inside. Layering actives on top mostly adds dryness and irritation.
+    swap_hint: LL-115
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/diseases/acne/derm-treat/isotretinoin/side-effects
+      - https://www.nhs.uk/medicines/isotretinoin-capsules/common-questions-about-isotretinoin-capsules/
+    source_quote: "do not use skincare products containing salicylic acid or benzoyl peroxide"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+
+  # ----------------------------------------------------------------------- age
+    notes: >-
+      The AAD side effects page adds retinol, exfoliating acids, scrubs, toners and vitamin C to the same list.
+
+  - id: R-AGE-01
+    verdict: BLOCK
+    scope: item
+    when:
+      age_band_in: [under_13]
+      item:
+        active_class_any: [retinoid, aha, bha, vitamin_c]
+    message: >-
+      You don't need this, and it is not for you. There is nothing in young skin
+      for an active like this to work on. The likely result is stinging and a
+      damaged skin barrier, not better skin.
+    swap_hint: LL-101
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/news/dermatologist-guide-skincare
+    source_quote: "avoid products with active ingredients like retinol, vitamin C, and exfoliating acids"
+    source_accessed: "2026-10-30"
+    verification: partial
+    status: draft
+    notes: >-
+      IMPORTANT. The AAD release of 28 Oct 2025 addresses 'tweens and teens' and never names age 13. The under-13 cutoff is ours, not the source's. The source also notes a dermatologist may still recommend a retinoid or salicylic acid for a young person, which is why this rule covers shopping, not prescribing.
+
+  - id: R-AGE-02
+    verdict: UNNECESSARY
+    scope: item
+    when:
+      age_band_in: [13_17]
+      item:
+        any_of:
+          - tag_any: [anti_aging]
+          - active_class_any: [vitamin_c]
+    message: >-
+      You don't need this. Anti-aging actives have nothing to work on yet at
+      your age. A cleanser, a moisturizer and sunscreen is the whole routine.
+    swap_hint: LL-121
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/news/dermatologist-guide-skincare
+    source_quote: "which target concerns like wrinkles, sun damage, and uneven skin tone, issues that children don't have"
+    source_accessed: "2026-10-30"
+    verification: partial
+    status: draft
+
+  # --------------------------------------------------------------- skin tone
+    notes: >-
+      The source treats tweens and teens the same way and would support blocking rather than merely discouraging these actives at 13 to 17. We kept the softer verdict for this band because the same source allows a dermatologist-recommended retinoid or salicylic acid for acne at this age. Needs sign-off.
+
+  - id: R-FITZ-01
+    verdict: BLOCK
+    scope: item
+    when:
+      fitzpatrick_in: [IV, V, VI]
+      item:
+        any_of:
+          - tag_any: [at_home_peel]
+          - leave_on: true
+            active_pct_gte_threshold: { class: aha, threshold: HIGH_ACID_PCT }
+    message: >-
+      Not for you right now. At-home peels at this strength are a common way
+      deeper skin tones end up with dark marks that last far longer than the
+      thing being treated. A dermatologist can do a peel safely.
+    swap_hint: LL-111
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/cosmetic/younger-looking/chemical-peels-faqs
+      - https://www.aad.org/public/diseases/acne/diy/skin-color
+    source_quote: "even the at-home versions of these acne treatments can cause side effects like permanent dark marks"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    notes: >-
+      The AAD chemical peel page supports the referral half of the message: 'you should see a dermatologist or dermatologic surgeon'.
+
+  - id: R-FITZ-02
+    verdict: ADJUST
+    scope: item
+    when:
+      fitzpatrick_in: [IV, V, VI]
+      item:
+        active_class_any: [retinoid]
+    message: >-
+      Adjust. Start at the lowest strength, every other night, and build up
+      slowly. On deeper skin tones, irritation tends to leave dark marks behind.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/retinoid-retinol
+    source_quote: "use the least-intense retinoid formula they can find, and use it every other night to start"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+
+  - id: R-FITZ-03
+    verdict: ADJUST
+    scope: item
+    when:
+      fitzpatrick_in: [IV, V, VI]
+      item:
+        active_pct_gte_threshold: { class: bpo, threshold: 5 }
+    message: Adjust. Start at 2.5% rather than 5%.
+    swap_hint: LL-103
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/diseases/acne/diy/skin-color
+    source_quote: "To prevent benzoyl peroxide from irritating your skin, start with a product that contains 2.5% benzoyl peroxide."
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+
+  # -------------------------------------------------------------- interactions
+  - id: R-STACK-01
+    verdict: ADJUST
+    scope: cart
+    when:
+      cart:
+        active_class_count_gte:
+          classes: [retinoid, aha, bha, bpo]
+          count: 2
+      item:
+        active_class_any: [retinoid, aha, bha, bpo]
+    message: >-
+      Adjust. This cart has more than one strong exfoliating or retinoid
+      product. Use them on alternate nights, or drop one.
+    swap_hint: ""
+    evidence: label
+    source_urls:
+      - https://www.law.cornell.edu/cfr/text/21/333.350
+      - https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=0739d631-171b-42a8-bd55-0022b8df2d8a
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/maximize-anti-aging-products
+    source_quote: "skin irritation and dryness is more likely to occur if you use another topical acne medication at the same time"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    notes: >-
+      The adapalene Drug Facts label carries the same warning, and the AAD anti-aging page says to start with one product.
+
+  - id: R-STACK-02
+    verdict: ADJUST
+    scope: cart
+    when:
+      reported_use_any: [tretinoin]
+      item:
+        active_class_any: [bpo]
+    message: >-
+      Adjust. You told us you use tretinoin. Keep benzoyl peroxide to the
+      morning and tretinoin at night, or pick adapalene instead.
+    swap_hint: LL-105
+    evidence: review
+    source_urls:
+      - https://pubmed.ncbi.nlm.nih.gov/9990414/
+    source_quote: "The combination of benzoyl peroxide and light results in more than 50% degradation of tretinoin in about 2 h"
+    source_accessed: "2026-10-30"
+    verification: partial
+    status: draft
+    notes: >-
+      Two caveats, both shown to the shopper. The 1998 study tested tretinoin 0.025% gel mixed with benzoyl peroxide 10% lotion under light, so it may not apply to modern encapsulated or microsphere tretinoin. And it never tested whether separating the two by time of day prevents the problem, so that part is our inference. Adapalene stayed stable in the same study, which is why the swap hint is adapalene.
+
+  - id: R-SPF-01
+    verdict: ADD
+    scope: cart
+    when:
+      cart:
+        has_active_class_any: [retinoid, aha, bha, bpo]
+        missing_tag_any: [spf]
+    message: >-
+      Added. Everything in this cart makes skin more sensitive to sun. Sunscreen
+      is part of the routine, not an upsell.
+    swap_hint: ""
+    evidence: label
+    source_urls:
+      - https://www.fda.gov/regulatory-information/search-fda-guidance-documents/guidance-industry-labeling-cosmetics-containing-alpha-hydroxy-acids
+      - https://www.fda.gov/cosmetics/cosmetic-ingredients/beta-hydroxy-acids
+      - https://www.law.cornell.edu/cfr/text/21/333.350
+    source_quote: "Use a sunscreen, wear protective clothing, and limit sun exposure"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    add:
+      default: LL-121
+      if_fitzpatrick_in: { scales: [IV, V, VI], sku: LL-122 }
+      if_concern_below: { concern: age_spot, threshold_key: age_spot, sku: LL-122 }
+
+  # ------------------------------------------------------------ scan-triggered
+    notes: >-
+      The FDA AHA sunburn alert is a recommendation to industry rather than a binding rule. The FDA page on beta hydroxy acids is weaker still and only says 'Use sun protection if you use a BHA product'. For benzoyl peroxide the warning is mandatory under 21 CFR 333.350.
+
+  - id: R-SENS-01
+    verdict: ADJUST
+    scope: item
+    when:
+      any_of:
+        - scan:
+            raw_lt: { concern: redness, threshold: REDNESS_T }
+        - scan:
+            skin_type_any: [Redness]
+      item:
+        active_class_any: [retinoid, aha, bha, bpo, vitamin_c]
+    message: >-
+      Adjust. Your scan shows skin that is reacting right now. Settle the
+      barrier first and add one active at a time rather than all of them.
+    swap_hint: LL-117
+    evidence: heuristic
+    source_urls:
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/maximize-anti-aging-products
+    source_quote: "Start with one product."
+    source_accessed: "2026-10-30"
+    verification: partial
+    status: draft
+    notes: The threshold is a heuristic set by us, not a clinical cutoff.
+
+  - id: R-NEED-01
+    verdict: UNNECESSARY
+    scope: item
+    when:
+      item:
+        tag_any: [anti_aging]
+      scan:
+        raw_gte: { concern: wrinkle, threshold: WRINKLE_HEALTHY_T }
+    message: >-
+      You don't need this. There is nothing here for an anti-aging product to
+      work on yet.
+    swap_hint: ""
+    evidence: heuristic
+    source_urls: []
+    source_quote: ""
+    verification: not_applicable
+    status: draft
+    notes: Entirely our own threshold. Labelled heuristic on the Methods page.
+
+  - id: R-NEED-02
+    verdict: UNNECESSARY
+    scope: item
+    when:
+      item:
+        any_of:
+          - all_targets_healthy: true
+          - skin_type_contradicts: true
+    message: >-
+      You don't need this. The scan does not show anything for it to work on.
+    swap_hint: ""
+    evidence: heuristic
+    source_urls: []
+    source_quote: ""
+    verification: not_applicable
+    status: draft
+
+  - id: R-DUP-01
+    verdict: UNNECESSARY
+    scope: cart
+    when:
+      cart:
+        duplicate_leave_on_active_class: true
+    message: You don't need both of these. They do the same job.
+    swap_hint: ""
+    evidence: heuristic
+    source_urls:
+      - https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/maximize-anti-aging-products
+    source_quote: "Using several anti-aging products at the same time can irritate your skin."
+    source_accessed: "2026-10-30"
+    verification: not_applicable
+    status: draft
+
+  # ------------------------------------------------------------------ referral
+  - id: R-REF-01
+    verdict: REFER
+    scope: referral
+    when:
+      symptoms_any: [deep_painful_bumps, scarring]
+    message: >-
+      Worth showing a professional. What you described tends to need prescription
+      treatment, and scarring is easier to prevent than to fix. We have kept the
+      gentle basics and sunscreen in your cart and held the rest.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://pubmed.ncbi.nlm.nih.gov/38300170/
+      - https://www.nhs.uk/conditions/acne/
+    source_quote: "the spots are deep, painful or causing scars"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    ask_when:
+      scan:
+        raw_lt: { concern: acne, threshold: ACNE_ASK_T }
+    restrict:
+      keep_only_tags: [gentle, basic, spf, moisturizer, cleanser, barrier]
+    notes: >-
+      The AAD 2024 acne guideline gives the stronger version: 'Oral isotretinoin is strongly recommended for acne that is severe, causing psychosocial burden or scarring.' Neither is something a shop can supply, which is the point of the rule.
+
+  - id: R-REF-02
+    verdict: REFER
+    scope: referral
+    when:
+      symptoms_all: [flushing, persistent_redness]
+      symptoms_any: [deep_painful_bumps, eye_irritation]
+    message: >-
+      Worth showing a professional. That combination is worth a proper look
+      before you put acids or retinoids anywhere near it.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/diseases/rosacea/what-is/symptoms
+    source_quote: "It's estimated that 50% of people who have rosacea will have a flare-up that affects their eyes."
+    source_accessed: "2026-10-30"
+    verification: partial
+    status: draft
+    restrict:
+      block_active_classes: [aha, bha, retinoid, bpo]
+    notes: >-
+      The AAD page presents these as signs and does not itself tell the reader to see a dermatologist. The referral is our decision, based on the signs the page describes.
+
+  - id: R-REF-03
+    verdict: REFER
+    scope: referral
+    when:
+      symptoms_any: [mole_changed, sore_not_healing]
+    message: >-
+      Worth showing a dermatologist soon. A mole that has changed, or a sore
+      that will not heal, is not a skincare question. Please get it looked at.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://www.aad.org/public/diseases/skin-cancer/types/common/melanoma/symptoms
+    source_quote: "see a board-certified dermatologist for a skin exam"
+    source_accessed: "2026-10-30"
+    verification: partial
+    status: draft
+    priority: high
+    notes: >-
+      The page supports this for a changing mole through its ABCDE criteria. It mentions a sore that does not heal as something to watch for during a self exam but does not explicitly send the reader to a dermatologist for it, so that half of the rule is weaker.
+
+  - id: R-REF-04
+    verdict: REFER
+    scope: referral
+    when:
+      symptoms_any: [mood_impact, otc_no_change]
+    message: >-
+      Worth showing a professional. If it is affecting how you feel, or months
+      of over-the-counter products have not shifted it, a dermatologist has
+      options a shop does not.
+    swap_hint: ""
+    evidence: guideline
+    source_urls:
+      - https://www.nhs.uk/conditions/acne/
+    source_quote: "it's affecting your mental health"
+    source_accessed: "2026-10-30"
+    verification: verified
+    status: draft
+    soft: true
+    notes: >-
+      The NHS page also lists 'you've tried treating it yourself but it's not getting better' with no timeframe attached. The two to three month wording in our intake is ours, not the NHS's.
+
