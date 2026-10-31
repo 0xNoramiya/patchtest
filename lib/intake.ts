@@ -1,11 +1,14 @@
 import type { FitzpatrickScale } from "./youcam/types";
 
-export type AgeBand = "under_13" | "13_17" | "18_plus";
+export const AGE_BANDS = ["under_13", "13_17", "18_plus"] as const;
+export type AgeBand = (typeof AGE_BANDS)[number];
 
 /** What the shopper declares. Never inferred from the photo. */
-export type PregnancyStatus = "pregnant" | "trying" | "breastfeeding" | "none";
+export const PREGNANCY_STATUSES = ["pregnant", "trying", "breastfeeding", "none"] as const;
+export type PregnancyStatus = (typeof PREGNANCY_STATUSES)[number];
 
-export type IsotretinoinStatus = "now" | "stopped_under_6m" | "no";
+export const ISOTRETINOIN_STATUSES = ["now", "stopped_under_6m", "no"] as const;
+export type IsotretinoinStatus = (typeof ISOTRETINOIN_STATUSES)[number];
 
 /** Things a shopper may already be using that change what is safe to add. */
 export const REPORTED_PRODUCTS = [

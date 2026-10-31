@@ -48,6 +48,17 @@ usually happens on somebody else's website. The extension reads the cart on a
 shop's own page and applies the same rules there. It is
 [downloadable from Releases](https://github.com/0xNoramiya/patchtest/releases/latest) and loads unpacked in about thirty seconds.
 
+And it ships as an **MCP server** at `https://patchtest.fly.dev/api/mcp`, with no key
+and nothing to install, so an agent can call the guardrail before it sells. Three
+tools, all read-only: `check_cart` for the verdicts, `list_rules` for the whole cited
+corpus, and `list_scans` for the recorded scans a check can be judged against. The
+server's instructions tell the calling model, in as many words, that the verdicts
+come from a rules engine rather than a model and are not its to rewrite, and that an
+item it cannot parse comes back `UNKNOWN`, which is not a safety clearance. That
+makes the guardrail infrastructure any beauty agent can adopt — including one already
+talking to Perfect Corp's own beauty MCP server — rather than a feature of our shop.
+`docs/MCP.md` has the setup.
+
 Three decisions shape the whole thing.
 
 **It decides on `raw_score`, and shows `ui_score`.** Perfect Corp returns two
@@ -83,10 +94,10 @@ recorded scan, saying so on screen. Total spend building this was 198 units.
 **The rules.** 24 rules live in a YAML file as data: conditions, message, swap,
 source URLs, a quote of 25 words or less, the access date, and an evidence class of
 guideline, label, review or heuristic. The engine is a pure TypeScript function
-over that file. 130 tests cover a positive and a negative case for every rule. One
-test replaces every `ui_score` with nonsense and asserts the verdicts come back
-byte for byte identical, so "the rules never read the flattering number" is
-enforced rather than claimed.
+over that file, with 81 tests over it — a positive and a negative case for every
+rule, out of 154 in the suite. One test replaces every `ui_score` with nonsense and
+asserts the verdicts come back byte for byte identical, so "the rules never read the
+flattering number" is enforced rather than claimed.
 
 **Source verification.** All 21 source URLs were fetched and read against the rule
 they back. 14 support it fully, 7 say less than the rule claims, and those 7 say so
@@ -216,9 +227,6 @@ to 10%) that we would otherwise have guessed at.
 
 ## What's next
 
-- Expose the same guardrail as an MCP tool, `check_cart(intake, scan, cart)`, so
-  any beauty agent, including one using YouCam's own beauty MCP server, can call
-  it before selling. The HTTP endpoint the extension uses is already that shape.
 - Hand `docs/API_NOTES.md` to Perfect Corp's docs team. Thirteen places where the
   published spec and a real response differ, each with the response that proves
   it, is a day of work for whoever writes the next integration and we would rather
@@ -250,7 +258,8 @@ age. "Lumen & Leaf" is a fictional store and every product in it is invented.
 ## Built with
 
 Next.js, TypeScript, Tailwind, Vitest, the Vercel AI SDK, Claude Sonnet 5.5,
-a Chrome Manifest V3 extension, Playwright, Fly.io, and the **YouCam AI Skin
+the Model Context Protocol, a Chrome Manifest V3 extension, Playwright, Fly.io,
+and the **YouCam AI Skin
 Analysis API** and **YouCam AI Fitzpatrick Skin Type Analysis API** from Perfect
 Corp.
 

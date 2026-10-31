@@ -180,14 +180,16 @@ documentation bugs is a gift if it is framed as one.
 
 ## P2. Only after the video exists
 
-**Ship `check_cart` as an MCP server.** The hackathon brief says "cutting-edge
-Agentic AI workflows" twice, and `/api/check-cart` is already exactly that shape —
-it takes an intake, a scan and a cart, and returns cited verdicts. A guardrail any
-beauty agent can call before it sells, including one on Perfect Corp's own beauty
-MCP server, is the most direct possible answer to that sentence in the brief, and
-it moves a line from "What's next" into "what it does."
+**Ship `check_cart` as an MCP server.** **Done.** `/api/mcp`, dual-era Streamable
+HTTP, three read-only tools (`check_cart`, `list_rules`, `list_scans`), 24 tests,
+plus `mcp/stdio.mjs` for clients that only speak stdio. The judging moved into
+`lib/check-cart.ts` so the extension's endpoint and the MCP tool share one code
+path. `docs/MCP.md` documents it, and the line moved out of "What's next" and into
+"What it does" in `docs/DEVPOST.md`.
 
-Budget an hour. Do not start it before the video is uploaded.
+One thing the move surfaced: rules carry a swap as a bare SKU, which means nothing
+to a caller outside our catalogue. Swaps now resolve to a name and a price
+everywhere, including in the extension's HTTP response.
 
 **Check the two side awards.** Women in Tech and Rising Star (student) are $1,000
 each with far smaller fields than the main prize. If either applies, the submission

@@ -31,6 +31,9 @@ Checked against the rules on 2026-10-31.
   Verified: three rejected photos now count 0 against the cap.
 - The agent falls back to recorded responses if the LLM key is removed or rate
   limited.
+- The MCP server at `/api/mcp` needs no key and no account, and all three of its
+  tools are read-only, so a judge can add it and call it without being able to
+  spend anything or change anything.
 
 ## No real brands
 

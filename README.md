@@ -52,6 +52,31 @@ before running it.
 
 ---
 
+## And inside other people's agents
+
+The same guardrail is an **MCP server**, so an agent can check a cart before it
+sells. No key, no account, nothing to install:
+
+```bash
+claude mcp add --transport http patchtest https://patchtest.fly.dev/api/mcp
+```
+
+Three tools, all read-only. `check_cart` returns a verdict per item with the rule
+id, the source URL and a quote from it. `list_rules` returns the whole cited
+corpus, caveats included. `list_scans` returns the recorded scans a check can be
+judged against, with the measured score and the display score side by side and a
+note saying which one the rules use.
+
+Nothing here writes anything &mdash; no tool edits a rule, sets a verdict or spends a
+YouCam unit, and a test asserts it. The judging is
+[`lib/check-cart.ts`](lib/check-cart.ts), which the extension's HTTP endpoint calls
+too, so a browser and an agent cannot drift apart. The endpoint serves both the
+handshake-era and the stateless 2026-07-28 protocol revisions;
+[`docs/MCP.md`](docs/MCP.md) has the setup, a worked call, and the one place it
+deliberately departs from the transport spec.
+
+---
+
 ## For judges, in 60 seconds
 
 **Live app: https://patchtest.fly.dev** &middot; **[Demo video, 2:53](https://youtu.be/gih0cIAdp7E)**
@@ -99,7 +124,7 @@ numbers.
 | All 24 rules, as data, with sources and quotes | [`rules/rules.yaml`](rules/rules.yaml) |
 | The engine. A pure function, no model in the loop | [`lib/rules/engine.ts`](lib/rules/engine.ts) |
 | Thresholds, every one marked heuristic | [`rules/thresholds.json`](rules/thresholds.json) |
-| 130 tests, a positive and a negative case per rule | [`lib/rules/engine.test.ts`](lib/rules/engine.test.ts) |
+| 81 tests, a positive and a negative case per rule | [`lib/rules/engine.test.ts`](lib/rules/engine.test.ts) |
 | The agent loop and the fair baseline | [`lib/agent/run.ts`](lib/agent/run.ts) |
 | Claim linter, build-time and runtime | [`lib/claims.ts`](lib/claims.ts) |
 | Product title to actives, for carts outside our catalogue | [`lib/match.ts`](lib/match.ts) |
@@ -174,7 +199,7 @@ serve every preset, because the scans and the agent responses are recorded in
 | Command | What it does |
 |---|---|
 | `pnpm dev` | Run locally |
-| `pnpm test` | 130 tests: the rules engine, the title parser, the ledger and the claim linter |
+| `pnpm test` | 154 tests: the rules engine, the title parser, the ledger, the claim linter and the MCP server |
 | `pnpm units` | Print units spent, straight from the ledger |
 | `pnpm scan <image>` | Run one real scan. Costs 22 units. `--all` for the bank, `--force` to rescan |
 | `pnpm calibrate` | Print the score distribution across recorded scans |

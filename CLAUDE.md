@@ -62,9 +62,25 @@ Three corollaries, each enforced by a test:
 
 Two HTTP entry points share the engine: `app/api/advise/route.ts` for the site's
 own catalogue, and `app/api/check-cart/route.ts` (CORS, used by the extension) for
-any shop's cart. The latter builds an *ephemeral* catalogue from titles parsed by
-`lib/match.ts`. A title it cannot read returns `UNKNOWN`, never `OK` — an absent
-verdict must never read as a safety clearance.
+any shop's cart. The latter is a thin wrapper over `lib/check-cart.ts`, which builds
+an *ephemeral* catalogue from titles parsed by `lib/match.ts`. A title it cannot read
+returns `UNKNOWN`, never `OK` — an absent verdict must never read as a safety
+clearance.
+
+## The MCP server
+
+`app/api/mcp/route.ts` exposes the same guardrail to agents. `lib/mcp/server.ts` is
+the wire protocol as a pure function over one JSON-RPC message, which is what the
+tests drive; `lib/mcp/tools.ts` holds the three tools. It is **dual-era**: revision
+`2026-07-28` removed the `initialize` handshake and sessions, earlier revisions
+require them, and this endpoint answers both because every tool is stateless and
+read-only. `docs/MCP.md` records the one place it deliberately departs from the
+transport spec — update that file if you change the departure.
+
+Two things to keep true. Every tool carries `readOnlyHint` and a test asserts it:
+nothing over MCP may write a rule, set a verdict or spend a unit. And the judging
+lives in `lib/check-cart.ts`, not in the tool, so the extension and an agent cannot
+drift apart — put shared behaviour there rather than in either caller.
 
 ## Rules are data
 
