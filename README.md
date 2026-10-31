@@ -67,6 +67,9 @@ corpus, caveats included. `list_scans` returns the recorded scans a check can be
 judged against, with the measured score and the display score side by side and a
 note saying which one the rules use.
 
+**[Set it up from the site](https://patchtest.fly.dev/mcp)** if you would rather have
+the steps, the tools and the troubleshooting on a page.
+
 Nothing here writes anything &mdash; no tool edits a rule, sets a verdict or spends a
 YouCam unit, and a test asserts it. The judging is
 [`lib/check-cart.ts`](lib/check-cart.ts), which the extension's HTTP endpoint calls

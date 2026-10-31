@@ -57,7 +57,8 @@ come from a rules engine rather than a model and are not its to rewrite, and tha
 item it cannot parse comes back `UNKNOWN`, which is not a safety clearance. That
 makes the guardrail infrastructure any beauty agent can adopt — including one already
 talking to Perfect Corp's own beauty MCP server — rather than a feature of our shop.
-`docs/MCP.md` has the setup.
+https://patchtest.fly.dev/mcp has the setup, and `docs/MCP.md` has the protocol
+notes.
 
 Three decisions shape the whole thing.
 

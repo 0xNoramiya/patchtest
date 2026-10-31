@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { Key, Step } from "@/components/Steps";
 
 export const metadata = {
   title: "Install the extension | PatchTest",
@@ -14,48 +15,6 @@ function extensionVersion(): string {
     version: string;
   };
   return manifest.version;
-}
-
-function Step({
-  n,
-  title,
-  last,
-  children,
-}: {
-  n: number;
-  title: string;
-  last?: boolean;
-  children?: React.ReactNode;
-}) {
-  return (
-    <li className="relative flex gap-4">
-      {/* The rail joins a step to the next one, so the last step has none. It is
-          decorative, so it must never eat a click. */}
-      {last ? null : (
-        <span
-          aria-hidden
-          className="absolute left-[15px] top-9 h-[calc(100%-12px)] w-px bg-line"
-        />
-      )}
-      <span className="relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full border border-line-strong bg-surface text-sm font-medium tabular-nums">
-        {n}
-      </span>
-      <div className="min-w-0 pb-7">
-        <h3 className="text-[15px] font-medium leading-8">{title}</h3>
-        {children ? (
-          <div className="mt-1 space-y-2 text-sm leading-relaxed text-muted">{children}</div>
-        ) : null}
-      </div>
-    </li>
-  );
-}
-
-function Key({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="rounded border border-line bg-sunken px-1.5 py-0.5 text-[0.8125rem] text-ink">
-      {children}
-    </code>
-  );
 }
 
 export default function ExtensionPage() {

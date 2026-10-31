@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
             <Link href="/extension" className="text-muted hover:text-ink">
               Extension
             </Link>
+            <Link href="/mcp" className="text-muted hover:text-ink">
+              Agents
+            </Link>
             <Link href="/eval" className="text-muted hover:text-ink">
               Eval
             </Link>
@@ -24,6 +28,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       </header>
 
       <main className="flex-1">{children}</main>
+      <Reveal />
 
       <footer className="border-t border-line bg-surface">
         <div className="mx-auto max-w-5xl px-4 py-6 text-xs leading-relaxed text-faint">

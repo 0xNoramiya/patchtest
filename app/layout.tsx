@@ -27,6 +27,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${display.variable} h-full antialiased`}
     >
+      <head>
+        {/* Before first paint, so a revealed section is never briefly visible
+            and then hidden. With scripting off the attribute never appears and
+            every reveal stays in its resting, readable state. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.dataset.motion="on"`,
+          }}
+        />
+      </head>
       <body className="min-h-dvh">{children}</body>
     </html>
   );

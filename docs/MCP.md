@@ -17,6 +17,10 @@ No key, no account, nothing to install. Three tools, all read-only:
 
 ## Adding it
 
+[patchtest.fly.dev/mcp](https://patchtest.fly.dev/mcp) has the same thing as a page,
+with the steps, the tools and the troubleshooting, so nobody has to read a repo to
+get it running.
+
 **Claude Code**
 
 ```bash
