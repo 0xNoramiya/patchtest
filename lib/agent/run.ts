@@ -7,7 +7,13 @@ import type { Catalog, Product, Thresholds } from "../rules/load";
 import { productBySku } from "../rules/load";
 import type { Rule } from "../rules/types";
 import type { ScanSummary } from "../youcam/parse";
-import { buildRevisionPrompt, buildUserPrompt, SYSTEM_PROMPT } from "./prompts";
+import {
+  REVIEW_SYSTEM_PROMPT,
+  SYSTEM_PROMPT,
+  buildRevisionPrompt,
+  buildReviewPrompt,
+  buildUserPrompt,
+} from "./prompts";
 import { promptKey, readRecorded, record } from "./replay";
 import { proposedCartSchema, type AgentArm, type AgentResult, type AgentRound, type ProposedCart } from "./types";
 
@@ -155,6 +161,38 @@ export async function runBaselineAgent(input: AgentInput): Promise<AgentResult> 
 
   return {
     arm: "baseline",
+    finalCart: realSkus(proposed, input.catalog),
+    rounds: [{ round: 0, proposed, blocked: [] }],
+    revisionRounds: 0,
+    routineNote: clean.text,
+    claimsFiltered: clean.changed,
+    source,
+  };
+}
+
+/**
+ * The third arm: the model is shown the shopper's cart and told to review it.
+ * No engine, no guardrail, no revision loop. Whatever it hands back is what the
+ * shopper walks out with.
+ */
+export async function runReviewAgent(
+  input: AgentInput & { wantedSkus: string[] },
+): Promise<AgentResult> {
+  const cart = input.wantedSkus
+    .map((sku) => productBySku(input.catalog, sku))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p))
+    .map((p) => ({ sku: p.sku, name: p.name }));
+
+  const system = REVIEW_SYSTEM_PROMPT;
+  const user = buildReviewPrompt({ ...input, cart });
+  const { cart: proposed, source } = await propose(system, user, input.mode, {
+    label: input.label,
+    run: input.run ?? 0,
+  });
+  const clean = sanitizeClaims(proposed.routine_note);
+
+  return {
+    arm: "review",
     finalCart: realSkus(proposed, input.catalog),
     rounds: [{ round: 0, proposed, blocked: [] }],
     revisionRounds: 0,

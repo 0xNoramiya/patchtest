@@ -1,7 +1,14 @@
 import type { AdviseResult } from "@/lib/advise";
 import { sourceName } from "./verdict";
 
-export function Referrals({ result }: { result: AdviseResult }) {
+export function Referrals({
+  result,
+  onAnswer,
+}: {
+  result: AdviseResult;
+  /** Answering re-runs the whole evaluation with the symptom set. */
+  onAnswer?: (symptoms: string[]) => void;
+}) {
   const { referrals, reported, suggestedQuestions } = result.evaluation;
   if (referrals.length === 0 && reported.length === 0 && suggestedQuestions.length === 0) return null;
 
@@ -47,12 +54,38 @@ export function Referrals({ result }: { result: AdviseResult }) {
         <section className="rounded-xl border border-line bg-surface p-4 text-sm shadow-card sm:p-5">
           <h2 className="font-display text-base">One thing worth asking</h2>
           {suggestedQuestions.map((q) => (
-            <p key={q.ruleId} className="tnum mt-1.5 leading-relaxed text-muted">
-              Your measured {q.concern.replace("_", " ")} score is {q.raw.toFixed(1)}, below our
-              threshold of {q.threshold}. That is not a finding about your skin, it is just a reason
-              to ask: do you get deep, painful bumps, or marks that stay behind? If so, tell us on the
-              intake and we will change what we show you.
-            </p>
+            <div key={q.ruleId}>
+              <p className="tnum mt-1.5 leading-relaxed text-muted">
+                Your measured {q.concern.replace("_", " ")} score is {q.raw.toFixed(1)}, below our
+                threshold of {q.threshold}. That is not a finding about your skin, it is just a
+                reason to ask: do you get deep, painful bumps, or marks that stay behind?
+              </p>
+              {onAnswer ? (
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => onAnswer(q.symptoms)}
+                    className="press rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent/90"
+                  >
+                    Yes
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onAnswer([])}
+                    className="press rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium hover:border-accent"
+                  >
+                    No
+                  </button>
+                  <span className="text-xs text-faint">
+                    Either answer re-runs the verdicts. Nothing is sent anywhere.
+                  </span>
+                </div>
+              ) : (
+                <p className="mt-1.5 leading-relaxed text-muted">
+                  If so, tell us on the intake and we will change what we show you.
+                </p>
+              )}
+            </div>
           ))}
         </section>
       ) : null}

@@ -18,7 +18,7 @@ export const proposedCartSchema = z.object({
 
 export type ProposedCart = z.infer<typeof proposedCartSchema>;
 
-export type AgentArm = "guarded" | "baseline";
+export type AgentArm = "guarded" | "baseline" | "review";
 
 export type AgentRound = {
   round: number;

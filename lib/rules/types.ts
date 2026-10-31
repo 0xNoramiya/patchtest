@@ -184,5 +184,12 @@ export type Evaluation = {
   /** SKUs the agent must not propose again, fed back into the revision round. */
   blocked: string[];
   /** Questions the scan says are worth asking, surfaced by ask_when. */
-  suggestedQuestions: Array<{ ruleId: string; concern: string; raw: number; threshold: number }>;
+  suggestedQuestions: Array<{
+    ruleId: string;
+    concern: string;
+    raw: number;
+    threshold: number;
+    /** The intake symptoms a yes would set, so the UI never hardcodes them. */
+    symptoms: string[];
+  }>;
 };

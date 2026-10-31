@@ -11,9 +11,9 @@ type Results = {
   scenarios: number;
   total_runs: number;
   gold_status: string;
-  metrics: Record<"guarded" | "baseline", Record<string, number | Record<string, number>>>;
+  metrics: Partial<Record<"guarded" | "baseline" | "review", Record<string, number | Record<string, number>>>>;
   mean_revision_rounds: number;
-  cart_stability_across_runs: { guarded: number; baseline: number };
+  cart_stability_across_runs: { guarded: number; baseline: number; review?: number };
   per_rule?: Record<string, { positive: number; positiveFired: number; negative: number; negativeFired: number }>;
   rows: Array<{
     id: string;
@@ -79,6 +79,9 @@ export default function EvalPage() {
 
   const g = results.metrics.guarded as Record<string, number>;
   const b = results.metrics.baseline as Record<string, number>;
+  // The review arm was added after the first eval, so a results file recorded
+  // before it exists is still renderable.
+  const r = results.metrics.review as Record<string, number> | undefined;
 
   // One row per scenario, showing what the plain advisor actually did with the
   // shopper's cart rather than what our labels say about the scenario.
@@ -140,6 +143,7 @@ export default function EvalPage() {
             <tr className="border-b border-line label text-faint">
               <th className="py-2 font-medium">Measure</th>
               <th className="py-2 text-right font-medium">With guardrail</th>
+              <th className="py-2 text-right font-medium">Asked to review</th>
               <th className="py-2 text-right font-medium">Plain advisor</th>
             </tr>
           </thead>
@@ -148,6 +152,7 @@ export default function EvalPage() {
               const isRate = LOWER_IS_BETTER.has(key);
               const guarded = g[key];
               const baseline = b[key];
+              const review = r?.[key];
               if (typeof guarded !== "number") return null;
               const better = isRate && guarded < baseline;
               return (
@@ -159,6 +164,19 @@ export default function EvalPage() {
                       {isRate ? "%" : ""}
                     </span>
                     {isRate ? <Bar value={guarded} tone={guarded === 0 ? "good" : "neutral"} /> : null}
+                  </td>
+                  <td className="tnum w-32 py-3 text-right">
+                    {typeof review === "number" ? (
+                      <>
+                        <span>
+                          {review}
+                          {isRate ? "%" : ""}
+                        </span>
+                        {isRate ? <Bar value={review} tone="neutral" /> : null}
+                      </>
+                    ) : (
+                      <span className="text-faint">n/a</span>
+                    )}
                   </td>
                   <td className="tnum w-32 py-3 text-right">
                     <span className={better ? "font-medium text-block" : ""}>
@@ -173,6 +191,10 @@ export default function EvalPage() {
             <tr className="border-b border-line/60">
               <td className="py-3 pr-4">Gave the same shopper the same cart on all three runs</td>
               <td className="tnum py-3 text-right">{results.cart_stability_across_runs.guarded}%</td>
+              <td className="tnum py-3 text-right">
+                {results.cart_stability_across_runs.review ?? "n/a"}
+                {typeof results.cart_stability_across_runs.review === "number" ? "%" : ""}
+              </td>
               <td className="tnum py-3 text-right">{results.cart_stability_across_runs.baseline}%</td>
             </tr>
             <tr>
@@ -185,8 +207,9 @@ export default function EvalPage() {
 
         <div className="mt-4 space-y-2 rounded-lg bg-surface p-4 text-sm leading-relaxed text-muted">
           <p>
-            <span className="font-medium text-ink">What actually separates the two.</span> Both arms
-            end up with near-identical carts. The difference is what the shopper is told about them.
+            <span className="font-medium text-ink">What actually separates the two.</span> Apart
+            from the items the guardrail removes, both arms propose near-identical carts. The rest
+            of the difference is what the shopper is told about what stays.
             The plain advisor sold an item that needed a usage caveat without giving one in{" "}
             <span className="tnum font-medium text-ink">{b.unflagged_adjust_rate}%</span> of
             applicable runs, against{" "}

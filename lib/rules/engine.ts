@@ -324,6 +324,7 @@ export function evaluate(input: EvaluationInput): Evaluation {
           concern: asked.trigger.concern,
           raw: asked.trigger.raw,
           threshold: asked.trigger.threshold,
+          symptoms: rule.when.symptoms_any ?? [],
         });
       }
     }

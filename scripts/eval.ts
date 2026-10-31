@@ -9,7 +9,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { EMPTY_INTAKE, type Intake } from "../lib/intake";
-import { runBaselineAgent, runGuardedAgent, AGENT_MODEL } from "../lib/agent/run";
+import { runBaselineAgent, runGuardedAgent, runReviewAgent, AGENT_MODEL } from "../lib/agent/run";
 import { evaluate, evaluateFinal } from "../lib/rules/engine";
 import { loadCatalog, loadRules, loadThresholds, productBySku } from "../lib/rules/load";
 import type { ScanSummary } from "../lib/youcam/parse";
@@ -66,8 +66,10 @@ async function main() {
       unsafeLetThrough: Array<{ sku: string; name: string; guardrailSaid: string | null; ruleId: string | null }>;
       guarded: ScenarioScore;
       baseline: ScenarioScore;
+      review: ScenarioScore;
       guardedCart: string[];
       baselineCart: string[];
+      reviewCart: string[];
       revisionRounds: number;
       referrals: string[];
     }> = [];
@@ -83,6 +85,7 @@ async function main() {
 
       const baseline = await runBaselineAgent(input);
       const guarded = await runGuardedAgent(input);
+      const review = await runReviewAgent({ ...input, wantedSkus: scenario.wantedSkus });
 
       // A plain advisor does not empty your cart. It recommends a routine and
       // leaves whatever you already chose sitting there, unflagged. So the
@@ -113,6 +116,22 @@ async function main() {
       const baselineText = new Map(
         baseline.rounds[0].proposed.items.map((i) => [i.sku, `${i.reason} ${baseline.routineNote}`]),
       );
+
+      // The review arm was handed the shopper's cart and asked to check it, so
+      // what it hands back is what the shopper leaves with. Anything of theirs
+      // it dropped counts as removed, the same way a block does.
+      const reviewCart = review.finalCart.filter((sku) => productBySku(catalog, sku));
+      const reviewRemoved = wanted.filter((sku) => !reviewCart.includes(sku));
+      const reviewText = new Map(
+        review.rounds[0].proposed.items.map((i) => [i.sku, `${i.reason} ${review.routineNote}`]),
+      );
+      const reviewFlagged = (cue: RegExp) => [
+        ...[...reviewText.entries()].filter(([, t]) => cue.test(t)).map(([sku]) => sku),
+        ...reviewRemoved,
+      ];
+      const reviewReferred =
+        REFERRAL_CUES.test(review.routineNote) ||
+        review.rounds[0].proposed.items.some((i) => REFERRAL_CUES.test(i.reason));
       const baselineFlagged = (cue: RegExp) =>
         [...baselineText.entries()].filter(([, text]) => cue.test(text)).map(([sku]) => sku);
       const baselineFlaggedAdjust = baselineFlagged(ADJUST_CUES);
@@ -201,8 +220,20 @@ async function main() {
           },
           expected, catalog,
         ),
+        review: scoreArm(
+          {
+            cart: reviewCart,
+            referred: reviewReferred,
+            removed: reviewRemoved,
+            revisionRounds: 0,
+            flaggedUnnecessary: reviewFlagged(UNNECESSARY_CUES),
+            flaggedAdjust: reviewFlagged(ADJUST_CUES),
+          },
+          expected, catalog,
+        ),
         guardedCart,
         baselineCart,
+        reviewCart,
         revisionRounds: guarded.revisionRounds,
         referrals: unionEval.referrals.map((r) => r.ruleId),
       });
@@ -221,6 +252,7 @@ async function main() {
       runs: perRun,
       guarded_stable: stable(perRun.map((r) => r.guardedCart)),
       baseline_stable: stable(perRun.map((r) => r.baselineCart)),
+      review_stable: stable(perRun.map((r) => r.reviewCart)),
     });
 
     done += 1;
@@ -230,16 +262,16 @@ async function main() {
 
   // Every run, paired with the gold entry it was scored against, so each metric
   // can use the denominator that actually applies to it.
-  type Paired = { expected: GoldExpectation; guarded: ScenarioScore; baseline: ScenarioScore; revisionRounds: number };
+  type Paired = { expected: GoldExpectation; guarded: ScenarioScore; baseline: ScenarioScore; review: ScenarioScore; revisionRounds: number };
   const allRuns: Paired[] = rows.flatMap((r) =>
-    (r.runs as Array<{ guarded: ScenarioScore; baseline: ScenarioScore; revisionRounds: number; firedRules: string[] }>).map((run) => ({
+    (r.runs as Array<{ guarded: ScenarioScore; baseline: ScenarioScore; review: ScenarioScore; revisionRounds: number; firedRules: string[] }>).map((run) => ({
       expected: r.expected as GoldExpectation,
       ...run,
     })),
   );
   const n = allRuns.length;
 
-  const agg = (arm: "guarded" | "baseline") => {
+  const agg = (arm: "guarded" | "baseline" | "review") => {
     const s = allRuns.map((r) => r[arm]);
     // Denominators differ on purpose. A missed referral is only possible on a
     // scenario where gold says to refer, and missing sunscreen is only possible
@@ -270,12 +302,13 @@ async function main() {
     scenarios: scenarios.length,
     total_runs: n,
     gold_status: "draft, written by one physician and not independently reviewed",
-    metrics: { guarded: agg("guarded"), baseline: agg("baseline") },
+    metrics: { guarded: agg("guarded"), baseline: agg("baseline"), review: agg("review") },
     mean_revision_rounds:
       Math.round((allRuns.reduce((a, r) => a + r.revisionRounds, 0) / n) * 100) / 100,
     cart_stability_across_runs: {
       guarded: rate(rows.filter((r) => r.guarded_stable).length, rows.length),
       baseline: rate(rows.filter((r) => r.baseline_stable).length, rows.length),
+      review: rate(rows.filter((r) => r.review_stable).length, rows.length),
     },
     rows,
   };

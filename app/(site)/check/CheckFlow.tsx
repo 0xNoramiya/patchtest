@@ -7,6 +7,7 @@ import { BaselineCompare } from "@/components/BaselineCompare";
 import { CartList } from "@/components/CartList";
 import { IntakeForm } from "@/components/Intake";
 import { Referrals } from "@/components/Referrals";
+import { Routine } from "@/components/Routine";
 import { LiveScan, type BudgetState } from "@/components/LiveScan";
 import { ProductImage } from "@/components/ProductImage";
 import { ScanPanel } from "@/components/ScanPanel";
@@ -136,28 +137,21 @@ export function CheckFlow() {
         </p>
 
         <div className="mt-6 space-y-5">
-          <Referrals result={result} />
+          <Referrals
+            result={result}
+            onAnswer={(symptoms) => {
+              // A low score only ever earned the right to ask. The answer is
+              // the shopper's, and it is what the rules key on.
+              const answered: Intake = {
+                ...intake,
+                symptoms: [...new Set([...intake.symptoms, ...symptoms])] as Intake["symptoms"],
+              };
+              setIntake(answered);
+              void run(result.scanLabel, answered, wanted);
+            }}
+          />
           <CartList result={result} />
-          <section className="rounded-xl border border-line bg-surface p-4 shadow-card sm:p-6">
-            <h2 className="font-display text-lg">How to use it</h2>
-            {result.routineNote ? (
-              <>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">{result.routineNote}</p>
-                {result.claimsFiltered ? (
-                  <p className="mt-2 text-xs text-faint">
-                    Part of what the model wrote was rewritten or removed by our claim filter.
-                  </p>
-                ) : null}
-              </>
-            ) : (
-              <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                The usage note is written by the model, from the routine it proposed. This time the
-                rules ended up with a different cart to the one it described, so it is withheld
-                rather than shown next to a cart it does not match. The verdicts above are the
-                engine&rsquo;s and are unaffected.
-              </p>
-            )}
-          </section>
+          <Routine result={result} />
           <ScanPanel result={result} />
           <BaselineCompare result={result} />
 
