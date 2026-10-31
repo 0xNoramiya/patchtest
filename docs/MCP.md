@@ -65,7 +65,13 @@ BLOCK  Adapalene 0.1% Gel
     instead: Azelaic Acid 10% Cream ($26) [LL-111]
     source says: "It is generally recommended to avoid topical retinoid medications."
     https://www.aad.org/public/everyday-care/skin-care-secrets/routine/pregnancy-skin-care
+    ...
 ```
+
+Trimmed: the real result also lists a second source for that rule and a second
+finding, `R-FITZ-02`, because the scan read Fitzpatrick V. The call above returns
+both, plus the same thing again as `structuredContent` for a caller that would
+rather parse than read.
 
 Product titles are parsed for actives and strengths, so pass them as the shop
 writes them. A title that names no active ingredient comes back `UNKNOWN`, never
