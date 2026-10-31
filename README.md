@@ -42,7 +42,7 @@ actives, percentages, tags, rinse-off versus leave-on and body area, with 24
 tests of its own. A title it cannot read gets no verdict and says so, rather than
 being presented as cleared.
 
-**[Install it from the site](https://patchtest.fly.dev/extension)** &mdash; the
+**[Install it from the site](https://patchtest.fly.dev/extension).** The
 download, the five steps and the troubleshooting are all on that page, so nobody
 has to read a repo to get it running. The demo shop to try it on is
 [/store](https://patchtest.fly.dev/store).
@@ -70,7 +70,7 @@ note saying which one the rules use.
 **[Set it up from the site](https://patchtest.fly.dev/mcp)** if you would rather have
 the steps, the tools and the troubleshooting on a page.
 
-Nothing here writes anything &mdash; no tool edits a rule, sets a verdict or spends a
+Nothing here writes anything. No tool edits a rule, sets a verdict or spends a
 YouCam unit, and a test asserts it. The judging is
 [`lib/check-cart.ts`](lib/check-cart.ts), which the extension's HTTP endpoint calls
 too, so a browser and an agent cannot drift apart. The endpoint serves both the
@@ -118,7 +118,7 @@ numbers.
 | Unit ledger and the circuit breaker | [`lib/ledger.ts`](lib/ledger.ts) |
 | One JPEG that satisfies both APIs at once | [`lib/image.ts`](lib/image.ts) |
 | The scan runner used by the CLI | [`lib/scan-runner.ts`](lib/scan-runner.ts) |
-| Ten documented differences between the docs and reality | [`docs/API_NOTES.md`](docs/API_NOTES.md) |
+| Thirteen documented differences between the docs and reality | [`docs/API_NOTES.md`](docs/API_NOTES.md) |
 
 ### Where the guardrail lives
 

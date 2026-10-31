@@ -14,7 +14,7 @@ Needs Node >= 22.12 (`engines`) and pnpm. `.nvmrc` pins 22.
 |---|---|
 | `pnpm dev` | Local dev server. Runs in `replay` mode with no keys needed |
 | `pnpm test` | vitest over `lib/**/*.test.ts`, `eval/**`, `app/**` |
-| `pnpm build` | `vitest run && next build` — tests gate the build |
+| `pnpm build` | `vitest run && next build`. Tests gate the build |
 | `pnpm lint` | eslint |
 | `pnpm preview` | Standalone production build served locally with static assets copied into place |
 | `pnpm units` | Units spent, from the ledger |
@@ -50,20 +50,20 @@ Three corollaries, each enforced by a test:
 
 1. `loadScanFixture(label)` reads `fixtures/scans/<label>/fixture.json`.
 2. `runGuardedAgent` and `runBaselineAgent` run in parallel on the *identical*
-   prompt. The baseline's only missing piece is the guardrail — keep it that way
+   prompt. The baseline's only missing piece is the guardrail. Keep it that way
    or the eval is worthless.
 3. The guarded loop proposes → `evaluate()` → BLOCK findings go back as revision
    feedback → at most `MAX_REVISION_ROUNDS` (2). Anything still carrying a BLOCK
    after the last round is removed by the engine, and `ADD` rules inject SKUs.
 4. One final `evaluate()` over the *merged* cart: what the shopper wanted plus
-   what the agent proposed. This is deliberate — an item the agent silently drops
+   what the agent proposed. This is deliberate. An item the agent silently drops
    still gets a verdict and a reason, so the shopper learns why.
 
 Two HTTP entry points share the engine: `app/api/advise/route.ts` for the site's
 own catalogue, and `app/api/check-cart/route.ts` (CORS, used by the extension) for
 any shop's cart. The latter is a thin wrapper over `lib/check-cart.ts`, which builds
 an *ephemeral* catalogue from titles parsed by `lib/match.ts`. A title it cannot read
-returns `UNKNOWN`, never `OK` — an absent verdict must never read as a safety
+returns `UNKNOWN`, never `OK`. An absent verdict must never read as a safety
 clearance.
 
 ## The MCP server
@@ -74,12 +74,12 @@ tests drive; `lib/mcp/tools.ts` holds the three tools. It is **dual-era**: revis
 `2026-07-28` removed the `initialize` handshake and sessions, earlier revisions
 require them, and this endpoint answers both because every tool is stateless and
 read-only. `docs/MCP.md` records the one place it deliberately departs from the
-transport spec — update that file if you change the departure.
+transport spec. Update that file if you change the departure.
 
 Two things to keep true. Every tool carries `readOnlyHint` and a test asserts it:
 nothing over MCP may write a rule, set a verdict or spend a unit. And the judging
 lives in `lib/check-cart.ts`, not in the tool, so the extension and an agent cannot
-drift apart — put shared behaviour there rather than in either caller.
+drift apart. Put shared behaviour there rather than in either caller.
 
 ## Rules are data
 
@@ -91,10 +91,10 @@ Adding or changing a `when` predicate means touching three places together:
    `matchContext`),
 3. the condition vocabulary comment at the top of `rules/rules.yaml`.
 
-`evaluate()` skips only `status: retired`. Tests additionally require every shipped
-rule to be `status: approved`, `verification` not `pending`, and — unless
-`evidence: heuristic` — to carry a source URL, a quote of 25 words or fewer, and
-an access date.
+`evaluate()` skips only `status: retired`. Tests also require every shipped rule
+to be `status: approved` and `verification` not `pending`. Unless its evidence is
+`heuristic`, a rule must carry a source URL, a quote of 25 words or fewer, and an
+access date.
 
 `rules/thresholds.json` holds every number, each marked as a heuristic, with its
 calibration note. Re-run `pnpm calibrate` after changing the scan bank; the file
@@ -104,8 +104,8 @@ threshold overridable by env at deploy time.
 ### Verdict precedence is subtle
 
 `VERDICT_RANK` in `lib/rules/types.ts` makes `UNNECESSARY` outrank `BLOCK` as the
-*headline* label — leading with "you don't need this" is the least alarming way to
-refuse a sale. But `evaluation.blocked` keys off the individual findings, not the
+*headline* label, because leading with "you don't need this" is the least
+alarming way to refuse a sale. But `evaluation.blocked` keys off the individual findings, not the
 headline, so an item carrying a BLOCK finding always leaves the cart and is always
 fed back to the agent as off-limits. Do not "fix" the ranking to match the removal
 behaviour; two tests pin both halves.
@@ -117,7 +117,7 @@ Scans and model calls are budgeted separately on purpose.
 **Scans cost 22 YouCam units each**, so they default to replay from
 `fixtures/scans/`. `lib/ledger.ts` appends every live call to
 `$DATA_DIR/ledger.json` (endpoint, units, status, task id, SHA-256 of the
-normalized image — never the image). `budget()` is the circuit breaker: check
+normalized image, never the image). `budget()` is the circuit breaker: check
 `liveAllowed` before any billable request and fall back to replay. Units are
 charged only on `success`, so a rejected photo is free, and a repeat poll of an
 already-booked task is free. Production seeds the volume from the committed
@@ -125,7 +125,7 @@ already-booked task is free. Production seeds the volume from the committed
 
 **Model calls cost cents**, so they run live whenever `ANTHROPIC_API_KEY` is set
 and fall back to `fixtures/agent/<key>.json` otherwise. The key is
-`sha256(model#run, system, user)` — see `lib/agent/replay.ts`.
+`sha256(model#run, system, user)`. See `lib/agent/replay.ts`.
 
 > **Gotcha:** editing `lib/agent/prompts.ts`, `data/catalog.json`, or anything else
 > that lands in the prompt invalidates all 142 recorded agent fixtures. The demo
@@ -154,7 +154,7 @@ real responses. The ones that shape the code:
 `lib/claims.ts` enforces cosmetic-only language two ways: `lintClaims` runs at
 build time over every rule message, product blurb, and `{app,components}/**/*.tsx`
 source file (it globs the real components, so a new string cannot sneak in), and
-`sanitizeClaims` runs at runtime over everything the LLM wrote — rewriting what it
+`sanitizeClaims` runs at runtime over everything the LLM wrote, rewriting what it
 can and dropping the sentence when it cannot.
 
 ## Eval honesty
@@ -171,8 +171,8 @@ generous on purpose, in the baseline's favour.
 Every face in `fixtures/faces/` is AI-generated and disclosed; no real person was
 scanned and no minor was photographed (the under-13 preset's age is declared, not
 read off the photo). Two faces read as men, and a test fails the build if a
-pregnancy or breastfeeding preset or eval scenario is pointed at one of them —
-that bug shipped once already.
+pregnancy or breastfeeding preset or eval scenario is pointed at one of them.
+That bug shipped once already.
 
 ## Deployment
 
@@ -180,7 +180,7 @@ Fly.io, `output: "standalone"`, Debian base so `sharp` uses its prebuilt glibc
 binaries (and `serverExternalPackages` keeps it unbundled). The Dockerfile copies
 `rules/`, `data/`, `fixtures/`, and `eval/` into the runtime image because all
 four are read at runtime. `DATA_DIR=/data` is a persistent volume holding the
-ledger, runtime scan cache, and runtime agent recordings — production runs
+ledger, runtime scan cache, and runtime agent recordings. Production runs
 `DEMO_MODE=live` with tighter caps than development (see `fly.toml`).
 
 ## Next.js version

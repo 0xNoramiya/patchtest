@@ -10,7 +10,7 @@
  *   node mcp/stdio.mjs [url]
  *
  * Default endpoint: https://patchtest.fly.dev/api/mcp
- * Diagnostics go to stderr, never stdout — anything on stdout has to be a
+ * Diagnostics go to stderr, never stdout. Anything on stdout has to be a
  * JSON-RPC message or the client will fail to parse the stream.
  */
 const endpoint = process.argv[2] ?? process.env.PATCHTEST_MCP_URL ?? "https://patchtest.fly.dev/api/mcp";

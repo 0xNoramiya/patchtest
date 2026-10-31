@@ -27,8 +27,8 @@ get it running.
 claude mcp add --transport http patchtest https://patchtest.fly.dev/api/mcp
 ```
 
-**Anything that takes an HTTP MCP server** — Claude Desktop, Cursor, VS Code — point it
-at the same URL.
+**Claude Desktop, Cursor, VS Code, or anything else that takes an HTTP MCP
+server.** Point it at the same URL.
 
 **A client that only speaks stdio.** `mcp/stdio.mjs` is a pipe to the endpoint and
 needs nothing but Node:
@@ -79,7 +79,7 @@ rather parse than read.
 
 Product titles are parsed for actives and strengths, so pass them as the shop
 writes them. A title that names no active ingredient comes back `UNKNOWN`, never
-`OK` — the server's instructions tell the calling model, in as many words, that an
+`OK`. The server's instructions tell the calling model, in as many words, that an
 absent verdict is not a safety clearance.
 
 ## Why the tools are shaped this way
@@ -107,7 +107,7 @@ extension in a browser and an agent over MCP cannot drift apart.
 
 The endpoint is **dual-era**. Revision `2026-07-28` removed the `initialize`
 handshake and protocol-level sessions; `2025-11-25` and earlier require them. The
-spec allows one endpoint to serve both, and this one does — every tool is stateless
+spec allows one endpoint to serve both, and this one does. Every tool is stateless
 and read-only, so there was never any session state to keep. `server/discover`,
 `tools/list` and `tools/call` work without a handshake; `initialize` still gets an
 answer, with the client's own revision echoed back when we have it.
@@ -118,12 +118,11 @@ with `-32022` for a version we do not support, 400 with `-32020` for a header th
 contradicts the body, 404 with `-32601` for an unknown method, 202 for a
 notification.
 
-**One deliberate deviation, rather than a silent one.** The transport requires the
-`Mcp-Method` and `Mcp-Name` headers on a modern request and says a server MUST
-reject a request that omits one. We reject a header that *disagrees* with the body —
-that divergence is the security problem the rule exists to prevent — but we serve a
-request that simply leaves the header out, so a client in the middle of migrating
-still works. If you need strict rejection, it is four lines in `lib/mcp/server.ts`.
+**One deviation from the transport spec.** It requires the `Mcp-Method` and
+`Mcp-Name` headers on a modern request and says a server MUST reject a request
+that omits one. We reject a header that *disagrees* with the body, which is the
+divergence the rule exists to prevent. A request that simply leaves the header
+out is served, so a client in the middle of migrating still works. If you need strict rejection, it is four lines in `lib/mcp/server.ts`.
 
 The endpoint is open to any origin and unauthenticated. That is a decision: every
 tool is read-only, costs nothing to run, and reads only files committed to this

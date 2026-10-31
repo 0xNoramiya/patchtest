@@ -17,7 +17,7 @@ const BLURB: Record<string, string> = {
   check_cart:
     "Judges a cart. One verdict per item, each carrying the rule that produced it, the source URL and a quote from that source.",
   list_rules:
-    "The whole rule corpus, with every source, every quote and every caveat — including the seven rules whose source says less than the rule does.",
+    "The whole rule corpus, with every source, every quote and every caveat, including the seven rules whose source says less than the rule does.",
   list_scans:
     "The recorded skin scans a check can be judged against. Each concern comes back with the measured score and the display score side by side.",
 };
@@ -52,8 +52,8 @@ export default function McpPage() {
         style={{ "--i": 2 } as React.CSSProperties}
       >
         The extension puts the guardrail where people shop. This puts it where agents shop. PatchTest
-        runs as an MCP server, so anything that speaks the protocol can send it a cart and get back a
-        verdict per item with the rule and the source behind it &mdash; before it recommends, adds or
+        runs as an MCP server, so anything that speaks the protocol can send it a cart and get back
+        a verdict per item with the rule and the source behind it, before it recommends, adds or
         buys anything.
       </p>
 
@@ -71,7 +71,7 @@ export default function McpPage() {
         <ol className="mt-5">
           <Step n={1} title="Claude Code">
             <p>
-              Run the line above. That is the whole thing &mdash; it is an HTTP server, so there is
+              Run the line above. That is the whole thing. It is an HTTP server, so there is
               nothing to clone and nothing to keep running.
             </p>
           </Step>
@@ -130,9 +130,9 @@ export default function McpPage() {
           {EXAMPLE}
         </pre>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Trimmed &mdash; the real result also carries a second source for that rule, a second
-          finding because the scan read Fitzpatrick V, and the same thing again as structured JSON
-          for a caller that would rather parse than read.
+          Trimmed. The real result also carries a second source for that rule, a second finding
+          because the scan read Fitzpatrick V, and the same thing again as structured JSON for a
+          caller that would rather parse than read.
         </p>
       </section>
 
@@ -182,7 +182,7 @@ export default function McpPage() {
             <dt className="font-medium">Every item comes back UNKNOWN</dt>
             <dd className="mt-1 text-muted">
               The titles are being paraphrased before they reach the tool. The rules key on active
-              ingredients and strengths, so pass titles as the shop writes them &mdash; &ldquo;Retinol
+              ingredients and strengths, so pass titles as the shop writes them. &ldquo;Retinol
               0.3% Night Serum&rdquo;, not &ldquo;a retinol serum&rdquo;.
             </dd>
           </div>
@@ -199,8 +199,8 @@ export default function McpPage() {
             <dt className="font-medium">A swap points at a product that is not in your shop</dt>
             <dd className="mt-1 text-muted">
               Swaps resolve against our fictional catalogue, because that is the only one we can
-              price. Treat the returned name as the shape of the substitute &mdash; an azelaic acid
-              cream rather than a retinoid &mdash; and match it to your own stock.
+              price. Treat the returned name as the shape of the substitute, an azelaic acid cream
+              rather than a retinoid, and match it to your own stock.
             </dd>
           </div>
         </dl>
@@ -215,9 +215,9 @@ export default function McpPage() {
         >
           docs/MCP.md
         </a>{" "}
-        has the worked <code className="font-mono">curl</code> call, the protocol notes &mdash; the
-        endpoint answers both the handshake-era revisions and the stateless 2026-07-28 one &mdash;
-        and the one place it deliberately departs from the transport spec.
+        has the worked <code className="font-mono">curl</code> call and the one place this
+        deliberately departs from the transport spec. The endpoint answers both the handshake-era
+        revisions and the stateless 2026-07-28 one.
       </p>
     </div>
   );

@@ -146,8 +146,8 @@ Two of these changed our thresholds. A face with clearly visible pustules scored
 `acne` 81.7 while the clearest face scored 96.9, so our first cutoff of 80 called
 both of them healthy and would have marked every acne product "you don't need
 this". The ninth face, added after this table was first written, scored 61.2 and
-is the only one below 81 — so the scale is not quite as compressed as eight faces
-suggested, and the cutoff was still in the wrong place. And `moisture` never
+is the only one below 81, so the scale is not quite as compressed as eight faces
+suggested. The cutoff was still in the wrong place. And `moisture` never
 reaches 70, so a moisturizer is never called unnecessary on moisture grounds. We
 left that as it is, because it fails in the safe direction.
 

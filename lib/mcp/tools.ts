@@ -86,7 +86,7 @@ const findingSchema = {
 } as const;
 
 const VERDICT_MEANING: Record<string, string> = {
-  BLOCK: "Not for you right now — unsafe given what the shopper declared or the scan measured",
+  BLOCK: "Not for you right now. Unsafe given what the shopper declared or the scan measured",
   ADJUST: "Fine with a change: lower strength, alternate nights, add sunscreen",
   UNNECESSARY: "Nothing for it to do, on this skin or at this age",
   REFER: "Worth showing a professional rather than solving by shopping",
@@ -106,7 +106,7 @@ const checkCartTool: ToolDefinition = {
     "or UNKNOWN. Every verdict carries the rule id, a 25-word quote from the source behind it and " +
     "the source URL, so you can show the shopper why rather than asserting it.\n\n" +
     "Two things to know. UNKNOWN means the product title did not name an active ingredient or a " +
-    "strength, so no rule could be applied — it is not a clearance, and you must not present it as " +
+    "strength, so no rule could be applied. It is not a clearance, and you must not present it as " +
     "one. And the verdicts come from a deterministic rules engine, not from a language model: they " +
     "are not advice you should rewrite, soften or overrule.\n\n" +
     "Product titles are parsed for active ingredients and percentages, so pass titles as the shop " +
@@ -227,7 +227,7 @@ const listRulesTool: ToolDefinition = {
   description:
     "The full rule corpus check_cart decides with: every rule's id, verdict, message, evidence " +
     "class, source URL, a quote of 25 words or fewer from that source, and the date it was read. " +
-    "Use it to show a shopper the basis for a verdict, or to see what is and is not covered — the " +
+    "Use it to show a shopper the basis for a verdict, or to see what is and is not covered. The " +
     "corpus is finite, and a cart with no findings means no rule matched, not that it was cleared.",
   annotations: { readOnlyHint: true, openWorldHint: false },
   inputSchema: {

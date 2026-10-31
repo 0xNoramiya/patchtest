@@ -57,7 +57,7 @@ export default function ExtensionPage() {
               <a className="text-accent underline underline-offset-2" href={zip}>
                 patchtest-extension-v{version}.zip
               </a>
-              . Unzip it somewhere you will not delete by accident &mdash; the browser loads the
+              . Unzip it somewhere you will not delete by accident. The browser loads the
               extension from this folder every time it starts, so moving or binning it later
               uninstalls it.
             </p>
