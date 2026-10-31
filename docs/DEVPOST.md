@@ -254,7 +254,9 @@ to 10%) that we would otherwise have guessed at.
 
 Every face used is AI generated and disclosed. No real person was scanned, and no
 minor was scanned: the under-13 preset uses an adult synthetic face with a declared
-age. "Lumen & Leaf" is a fictional store and every product in it is invented.
+age. "Lumen & Leaf" is a fictional store and every product in it is invented. The
+cover image in this gallery is generated art and contains no real person, place or
+product; the five screenshots beside it are the deployed app, unretouched.
 
 ## Built with
 
