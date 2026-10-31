@@ -34,8 +34,6 @@ function resolveThreshold(t: Thresholds, key: string | number): number | null {
   return t.values[key] ?? t.healthyByConcern[key] ?? null;
 }
 
-// --------------------------------------------------------------- predicates
-
 function matchScan(p: ScanPredicate, ctx: Ctx): { ok: boolean; trigger?: Finding["trigger"] } {
   if (!ctx.scan) return { ok: false };
 
@@ -254,8 +252,6 @@ function intakeTrigger(rule: Rule, intake: Intake, fitzpatrick: string | null): 
   }
   return undefined;
 }
-
-// ------------------------------------------------------------------ evaluate
 
 /**
  * Pure function. Same inputs, same verdicts, every time. The LLM never reaches

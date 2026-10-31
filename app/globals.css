@@ -188,11 +188,9 @@ p { text-wrap: pretty; }
    content, and with JavaScript off the attribute never appears and the page
    renders exactly as it always did. `components/Reveal.tsx` adds `is-in`.
 
-   This is an observer and a transition rather than `animation-timeline: view()`,
-   which was the first attempt. A scroll-driven range needs scroll left to run
-   in, and the last elements on a page do not have any: they settled at about
-   0.84 opacity and stayed there. A transition finishes on a clock, so it always
-   finishes, and every browser has an IntersectionObserver. */
+   Not `animation-timeline: view()`: a scroll-driven range needs scroll left to
+   run in, and the last elements on a page have none, so they strand part-faded.
+   A transition finishes on a clock. */
 @media (prefers-reduced-motion: no-preference) {
   html[data-motion="on"] .anim-reveal {
     opacity: 0;

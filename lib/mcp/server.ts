@@ -2,17 +2,17 @@
  * The MCP wire protocol for PatchTest, as a pure function over one JSON-RPC
  * message.
  *
- * It is dual-era on purpose. Revision 2026-07-28 removed the `initialize`
- * handshake and protocol-level sessions, and the spec explicitly allows one
- * endpoint to serve both eras at once; a judge's client may be either. Because
- * every tool here is stateless and read-only there is nothing a session was
- * holding, so serving both costs a version check rather than a second code path.
+ * It is dual-era. Revision 2026-07-28 removed the `initialize` handshake and
+ * protocol-level sessions, and the spec allows one endpoint to serve both eras
+ * at once; a caller's client may be either. Every tool here is stateless and
+ * read-only, so there is nothing a session was holding and serving both costs a
+ * version check rather than a second code path.
  *
- * Deliberate deviation, stated rather than hidden: on a modern request the
- * transport requires `Mcp-Method` and `Mcp-Name` headers and says a server MUST
- * reject a request that omits one. We reject a header that *disagrees* with the
- * body — which is the divergence the rule exists to prevent — but serve a
- * request that simply omits it, so a client that is mid-migration still works.
+ * One deviation from the transport spec: it requires `Mcp-Method` and `Mcp-Name`
+ * on a modern request and says a server MUST reject a request that omits one.
+ * This rejects a header that *disagrees* with the body, which is the divergence
+ * the rule exists to prevent, but serves a request that simply omits it, so a
+ * client mid-migration still works.
  */
 import { TOOLS, toolByName } from "./tools";
 
@@ -160,7 +160,7 @@ export async function handleMessage(message: unknown, headers: Headers): Promise
         cacheScope: "public",
       });
 
-    // The handshake-era opener. Answering it is what makes this server dual-era.
+    // The handshake-era opener.
     case "initialize": {
       if (modern) return unknownMethod();
       const asked = params.protocolVersion;

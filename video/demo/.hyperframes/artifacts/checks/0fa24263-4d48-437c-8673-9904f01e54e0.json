@@ -1,0 +1,1128 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 14,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 747 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split coherent scenes or layers into separate .html files under compositions/, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 110 has 61 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"beat-eleven\"> is a timeline element that contains nested <p id=\"beat-eleven-n\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#beat-eleven",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"beat-eleven\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"beat-sun\"> is a timeline element that contains nested <p id=\"beat-sun-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#beat-sun",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"beat-sun\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"logo-card\"> is a timeline element that contains nested <p id=\"logo-word\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#logo-card",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"logo-card\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"mg-verdict\"> is a timeline element that contains nested <p>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#mg-verdict",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"mg-verdict\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"mg-scan\"> is a timeline element that contains nested <p>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#mg-scan",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"mg-scan\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"mg-refer\"> is a timeline element that contains nested <p>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#mg-refer",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"mg-refer\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"mg-ext\"> is a timeline element that contains nested <p>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#mg-ext",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"mg-ext\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"mg-pipeline\"> is a timeline element that contains nested <p>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#mg-pipeline",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"mg-pipeline\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"mg-numbers\"> is a timeline element that contains nested <p>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#mg-numbers",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"mg-numbers\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"end-card\"> is a timeline element that contains nested <p id=\"end-word\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#end-card",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"end-card\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"slam-0\"> is a timeline element that contains nested <p id=\"slam-big-0\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#slam-0",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"slam-0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"slam-1\"> is a timeline element that contains nested <p id=\"slam-big-1\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#slam-1",
+        "dataAttributes": {},
+        "sourceFile": "/home/kuda/hackathon/patchtest/video/demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"slam-1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"a-ext\" is 21.84s but its slot (data-duration) is 21.89s — the slot is shortened to the media length when rendered. Set data-duration to ~21.84s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "173.07",
+          "data-width": "1920",
+          "data-height": "1080",
+          "data-track-index": "0"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "time": 0
+      }
+    ]
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 32.861,
+        "selector": "#mg-verdict > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 130,
+          "top": 86,
+          "right": 407.95,
+          "bottom": 116,
+          "width": 277.95,
+          "height": 30
+        },
+        "containerSelector": "#mg-scan > p:nth-of-type(1)",
+        "text": "THE CART, CHECKED",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 130,
+          "y": 86,
+          "width": 277.95,
+          "height": 30
+        },
+        "firstSeen": 32.861,
+        "lastSeen": 32.861,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          32.861
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 43.815,
+        "selector": "div.srow.sr2 > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 130,
+          "top": 435,
+          "right": 202.61,
+          "bottom": 474,
+          "width": 72.61,
+          "height": 39
+        },
+        "containerSelector": "div.gcol.gui > p:nth-of-type(1)",
+        "text": "Lines",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 130,
+          "y": 435,
+          "width": 72.61,
+          "height": 39
+        },
+        "firstSeen": 43.815,
+        "lastSeen": 43.815,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          43.815
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 43.815,
+        "selector": "div.srow.sr4 > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 130,
+          "top": 571,
+          "right": 199.48,
+          "bottom": 610,
+          "width": 69.48,
+          "height": 39
+        },
+        "containerSelector": "div.gcol.gui > p:nth-of-type(3)",
+        "text": "Acne",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 130,
+          "y": 571,
+          "width": 69.48,
+          "height": 39
+        },
+        "firstSeen": 43.815,
+        "lastSeen": 43.815,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          43.815
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 63.532,
+        "selector": "#mg-refer > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 130,
+          "top": 86,
+          "right": 649.8,
+          "bottom": 116,
+          "width": 519.8,
+          "height": 30
+        },
+        "containerSelector": "#mg-ext > p:nth-of-type(1)",
+        "text": "THE STRONGEST THINGS IN THE SHOP",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 130,
+          "y": 86,
+          "width": 519.8,
+          "height": 30
+        },
+        "firstSeen": 63.532,
+        "lastSeen": 63.532,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          63.532
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 85.02,
+        "selector": "#mg-ext > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 130,
+          "top": 86,
+          "right": 473.64,
+          "bottom": 116,
+          "width": 343.64,
+          "height": 30
+        },
+        "containerSelector": "#mg-pipeline > p:nth-of-type(1)",
+        "text": "SOMEBODY ELSE’S SHOP",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 130,
+          "y": 86,
+          "width": 343.64,
+          "height": 30
+        },
+        "firstSeen": 85.02,
+        "lastSeen": 85.02,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          85.02
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 110.16,
+        "selector": "#mg-pipeline > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 130,
+          "top": 86,
+          "right": 439.86,
+          "bottom": 116,
+          "width": 309.86,
+          "height": 30
+        },
+        "containerSelector": "#mg-numbers > p:nth-of-type(1)",
+        "text": "ONE PHOTO, TWO APIS",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 130,
+          "y": 86,
+          "width": 309.86,
+          "height": 30
+        },
+        "firstSeen": 110.16,
+        "lastSeen": 110.16,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          110.16
+        ]
+      }
+    ],
+    "duration": 173.07,
+    "samples": [
+      9.615,
+      28.845,
+      48.075,
+      67.305,
+      86.535,
+      105.765,
+      124.995,
+      144.225,
+      163.455
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 6,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      9.615,
+      48.075,
+      86.535,
+      124.995,
+      163.455
+    ],
+    "checked": 29,
+    "passed": 29
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 9,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"potentially irritating active ingredients in the average ...\" (12 words) is on screen 2.49 s (±0.01 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "potentially irritating active ingredients in the average top-viewed children’s skincare video",
+        "selector": "#beat-eleven-l",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 150,
+          "y": 861.24,
+          "width": 1172.89,
+          "height": 104
+        },
+        "time": 2.311,
+        "words": 12,
+        "seconds": 2.493,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"She is eight weeks pregnant and put the\" (8 words) is on screen 1.88 s (±0.01 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "She is eight weeks pregnant and put the",
+        "selector": "#cue-4",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 621.78,
+          "y": 966.39,
+          "width": 676.44,
+          "height": 48
+        },
+        "time": 19.268,
+        "words": 8,
+        "seconds": 1.878,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"so the at-home peel is blocked and the\" (9 words) is on screen 2.27 s (±0.01 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "so the at-home peel is blocked and the",
+        "selector": "#cue-10",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 633.82,
+          "y": 966.39,
+          "width": 652.36,
+          "height": 48
+        },
+        "time": 35.304,
+        "words": 9,
+        "seconds": 2.275,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"That is the web app.\" (5 words) is on screen 1.39 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "That is the web app.",
+        "selector": "#cue-21",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 792.52,
+          "y": 966.39,
+          "width": 334.96000000000004,
+          "height": 48
+        },
+        "time": 63.348,
+        "words": 5,
+        "seconds": 1.391,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 51 text elements stay under it for 0.5 s or more, the smallest \"PT\" at 16 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "PT",
+        "selector": "#ext-pin",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1735.68,
+          "y": 162.99,
+          "width": 24.63,
+          "height": 26.02
+        },
+        "time": 68.188,
+        "times": [
+          19.358,
+          19.647,
+          23.403,
+          24.559,
+          24.559,
+          26.871,
+          32.649,
+          32.938,
+          32.938,
+          33.227,
+          33.227,
+          33.227,
+          33.516,
+          35.539,
+          36.405,
+          41.317,
+          41.317,
+          43.918,
+          44.495,
+          49.696,
+          49.985,
+          50.852,
+          63.565,
+          64.432,
+          64.432,
+          64.432,
+          64.432,
+          64.432,
+          68.188,
+          71.077,
+          71.366,
+          71.655,
+          71.944,
+          75.411,
+          75.411,
+          75.411,
+          78.3,
+          78.878,
+          79.167,
+          79.456,
+          85.235,
+          95.058,
+          97.659,
+          99.104,
+          101.993,
+          110.372,
+          111.817,
+          113.839,
+          115.284,
+          117.884,
+          165.558
+        ],
+        "fontPx": 16.23,
+        "floorPx": 28,
+        "seconds": 17.336,
+        "elements": [
+          {
+            "selector": "#ext-pin",
+            "text": "PT",
+            "fontPx": 16.23,
+            "time": 68.188,
+            "seconds": 17.336
+          },
+          {
+            "selector": "div.crow.cr1 > span:nth-of-type(4)",
+            "text": "Not for you right now",
+            "fontPx": 20.32,
+            "time": 71.366,
+            "seconds": 14.158
+          },
+          {
+            "selector": "div.crow.cr2 > span:nth-of-type(4)",
+            "text": "Fine for you",
+            "fontPx": 20.32,
+            "time": 71.655,
+            "seconds": 13.869
+          },
+          {
+            "selector": "div.crow.cr3 > span:nth-of-type(4)",
+            "text": "Fine for you",
+            "fontPx": 20.32,
+            "time": 71.944,
+            "seconds": 13.58
+          },
+          {
+            "selector": "div.crow.cr0 > span:nth-of-type(4)",
+            "text": "Not for you right now",
+            "fontPx": 20.5,
+            "time": 71.077,
+            "seconds": 14.447
+          },
+          {
+            "selector": "span.surl",
+            "text": "verdant-row.example/cart",
+            "fontPx": 20.93,
+            "time": 64.432,
+            "seconds": 21.092
+          },
+          {
+            "selector": "p.slabel",
+            "text": "Try instead",
+            "fontPx": 21,
+            "time": 26.871,
+            "seconds": 6.067
+          },
+          {
+            "selector": "div.fsw.fsw4 > span:nth-of-type(1)",
+            "text": "V",
+            "fontPx": 21.41,
+            "time": 33.227,
+            "seconds": 6.068
+          },
+          {
+            "selector": "div.fsw.fsw1 > span:nth-of-type(1)",
+            "text": "II",
+            "fontPx": 21.56,
+            "time": 32.938,
+            "seconds": 6.357
+          },
+          {
+            "selector": "p.fnever",
+            "text": "never sets a verdict",
+            "fontPx": 21.9,
+            "time": 97.659,
+            "seconds": 13.002
+          },
+          {
+            "selector": "p.rid",
+            "text": "R-PREG-01",
+            "fontPx": 22,
+            "time": 24.559,
+            "seconds": 8.379
+          },
+          {
+            "selector": "span.sh.ui",
+            "text": "ui_score",
+            "fontPx": 22,
+            "time": 41.317,
+            "seconds": 2.601
+          },
+          {
+            "selector": "span.sh.raw",
+            "text": "raw_score",
+            "fontPx": 22,
+            "time": 41.317,
+            "seconds": 2.601
+          },
+          {
+            "selector": "#end-small",
+            "text": "Every face, product and scene shown is AI generated. “Lumen & Leaf” and “Verdant Row” are fictional stores. Not a medical device.",
+            "fontPx": 22,
+            "time": 165.558,
+            "seconds": 7.512
+          },
+          {
+            "selector": "#mg-verdict > p:nth-of-type(1)",
+            "text": "The cart, checked",
+            "fontPx": 23,
+            "time": 19.358,
+            "seconds": 13.58
+          },
+          {
+            "selector": "#mg-scan > p:nth-of-type(1)",
+            "text": "The scan",
+            "fontPx": 23,
+            "time": 32.649,
+            "seconds": 17.336
+          },
+          {
+            "selector": "div.fsw.fsw0 > span:nth-of-type(1)",
+            "text": "I",
+            "fontPx": 23,
+            "time": 32.938,
+            "seconds": 6.357
+          },
+          {
+            "selector": "div.fsw.fsw2 > span:nth-of-type(1)",
+            "text": "III",
+            "fontPx": 23,
+            "time": 33.227,
+            "seconds": 6.068
+          },
+          {
+            "selector": "div.fsw.fsw3 > span:nth-of-type(1)",
+            "text": "IV",
+            "fontPx": 23,
+            "time": 33.227,
+            "seconds": 6.068
+          },
+          {
+            "selector": "div.fsw.fsw5 > span:nth-of-type(1)",
+            "text": "VI",
+            "fontPx": 23,
+            "time": 33.516,
+            "seconds": 5.779
+          },
+          {
+            "selector": "#mg-refer > p:nth-of-type(1)",
+            "text": "The strongest things in the shop",
+            "fontPx": 23,
+            "time": 49.696,
+            "seconds": 14.158
+          },
+          {
+            "selector": "#mg-ext > p:nth-of-type(1)",
+            "text": "Somebody else’s shop",
+            "fontPx": 23,
+            "time": 63.565,
+            "seconds": 21.959
+          },
+          {
+            "selector": "#mg-pipeline > p:nth-of-type(1)",
+            "text": "One photo, two APIs",
+            "fontPx": 23,
+            "time": 85.235,
+            "seconds": 25.426
+          },
+          {
+            "selector": "#mg-numbers > p:nth-of-type(1)",
+            "text": "The eval",
+            "fontPx": 23,
+            "time": 110.372,
+            "seconds": 21.959
+          },
+          {
+            "selector": "span.pchip.pc0",
+            "text": "retinoid",
+            "fontPx": 23.47,
+            "time": 78.3,
+            "seconds": 7.224
+          },
+          {
+            "selector": "span.pchip.pc2",
+            "text": "leave-on",
+            "fontPx": 23.5,
+            "time": 79.167,
+            "seconds": 6.357
+          },
+          {
+            "selector": "pre.code",
+            "text": "<span itemprop=\"\">Overnight Retinol Renewal Serum</span>",
+            "fontPx": 24,
+            "time": 75.411,
+            "seconds": 10.113
+          },
+          {
+            "selector": "pre.code > em:nth-of-type(1)",
+            "text": "name",
+            "fontPx": 24,
+            "time": 75.411,
+            "seconds": 10.113
+          },
+          {
+            "selector": "pre.code > em:nth-of-type(2)",
+            "text": "0.5%",
+            "fontPx": 24,
+            "time": 75.411,
+            "seconds": 10.113
+          },
+          {
+            "selector": "span.pchip.pc1",
+            "text": "0.5%",
+            "fontPx": 24.71,
+            "time": 78.878,
+            "seconds": 6.646
+          },
+          {
+            "selector": "span.pchip.pc3",
+            "text": "R-PREG-01",
+            "fontPx": 24.92,
+            "time": 79.456,
+            "seconds": 6.068
+          },
+          {
+            "selector": "p.qsrc",
+            "text": "American Academy of Dermatology · MotherToBaby",
+            "fontPx": 25,
+            "time": 24.559,
+            "seconds": 8.379
+          },
+          {
+            "selector": "span.vb.block",
+            "text": "Not for you right now",
+            "fontPx": 25,
+            "time": 35.539,
+            "seconds": 3.756
+          },
+          {
+            "selector": "span.vb.adjust",
+            "text": "Adjust",
+            "fontPx": 25,
+            "time": 36.405,
+            "seconds": 2.89
+          },
+          {
+            "selector": "div.srow2.s20 > span:nth-of-type(2)",
+            "text": "identical",
+            "fontPx": 25,
+            "time": 111.817,
+            "seconds": 10.69
+          },
+          {
+            "selector": "div.srow2.s21 > span:nth-of-type(2)",
+            "text": "identical",
+            "fontPx": 25,
+            "time": 113.839,
+            "seconds": 8.668
+          },
+          {
+            "selector": "div.srow2.s22 > span:nth-of-type(2)",
+            "text": "identical",
+            "fontPx": 25,
+            "time": 115.284,
+            "seconds": 7.223
+          },
+          {
+            "selector": "span.sv.ne",
+            "text": "the only difference",
+            "fontPx": 25,
+            "time": 117.884,
+            "seconds": 4.623
+          },
+          {
+            "selector": "div.stamp.block",
+            "text": "Not for you right now",
+            "fontPx": 25.21,
+            "time": 23.403,
+            "seconds": 9.535
+          },
+          {
+            "selector": "div.gcol.graw > p:nth-of-type(3)",
+            "text": "the measurement",
+            "fontPx": 25.21,
+            "time": 44.495,
+            "seconds": 5.49
+          },
+          {
+            "selector": "div.gcol.gui > p:nth-of-type(3)",
+            "text": "documented as a motivator",
+            "fontPx": 25.57,
+            "time": 43.918,
+            "seconds": 6.067
+          },
+          {
+            "selector": "div.crow.cr0 > span:nth-of-type(3)",
+            "text": "$29",
+            "fontPx": 25.91,
+            "time": 64.432,
+            "seconds": 21.092
+          },
+          {
+            "selector": "div.crow.cr1 > span:nth-of-type(3)",
+            "text": "$18",
+            "fontPx": 25.91,
+            "time": 64.432,
+            "seconds": 21.092
+          },
+          {
+            "selector": "div.crow.cr2 > span:nth-of-type(3)",
+            "text": "$22",
+            "fontPx": 25.91,
+            "time": 64.432,
+            "seconds": 21.092
+          },
+          {
+            "selector": "div.crow.cr3 > span:nth-of-type(3)",
+            "text": "$25",
+            "fontPx": 25.91,
+            "time": 64.432,
+            "seconds": 21.092
+          },
+          {
+            "selector": "div.chip.c1",
+            "text": "Declared · 8 weeks pregnant",
+            "fontPx": 27,
+            "time": 19.647,
+            "seconds": 13.291
+          },
+          {
+            "selector": "div.chips.ch1 > div:nth-of-type(1)",
+            "text": "deep painful lumps",
+            "fontPx": 27,
+            "time": 49.985,
+            "seconds": 13.869
+          },
+          {
+            "selector": "div.chips.ch1 > div:nth-of-type(2)",
+            "text": "scarring",
+            "fontPx": 27,
+            "time": 50.852,
+            "seconds": 13.002
+          },
+          {
+            "selector": "div.fbox.fb0 > p:nth-of-type(2)",
+            "text": "proposes a routine",
+            "fontPx": 27,
+            "time": 95.058,
+            "seconds": 15.603
+          },
+          {
+            "selector": "div.fbox.fb1 > p:nth-of-type(2)",
+            "text": "each with a source and a quote",
+            "fontPx": 27,
+            "time": 99.104,
+            "seconds": 5.778
+          },
+          {
+            "selector": "div.fbox.fb2 > p:nth-of-type(2)",
+            "text": "block · adjust · unnecessary · refer",
+            "fontPx": 27,
+            "time": 101.993,
+            "seconds": 8.668
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"And of the items that needed a usage\" (8 words) is on screen 2.09 s (±0.01 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "And of the items that needed a usage",
+        "selector": "#cue-51",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 645.76,
+          "y": 966.39,
+          "width": 628.48,
+          "height": 48
+        },
+        "time": 144.213,
+        "words": 8,
+        "seconds": 2.094,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Identical. The guardrail did not make the model consistent.\" (9 words) is on screen 1.86 s (±0.01 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Identical. The guardrail did not make the model consistent.",
+        "selector": "div.metric.m3 > p:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 130,
+          "y": 680.13,
+          "width": 903.25,
+          "height": 44
+        },
+        "time": 159.779,
+        "words": 9,
+        "seconds": 1.86,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"All of that is on the page,\" (7 words) is on screen 1.86 s (±0.01 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "All of that is on the page,",
+        "selector": "#cue-58",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 751.63,
+          "y": 966.39,
+          "width": 416.7399999999999,
+          "height": 48
+        },
+        "time": 163.95,
+        "words": 7,
+        "seconds": 1.86,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"because a tool that tells people when to\" (8 words) is on screen 2.02 s (±0.01 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "because a tool that tells people when to",
+        "selector": "#cue-59",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 623.34,
+          "y": 966.39,
+          "width": 673.32,
+          "height": 48
+        },
+        "time": 165.847,
+        "words": 8,
+        "seconds": 2.022,
+        "floorSeconds": 2.175
+      }
+    ],
+    "enabled": true,
+    "step": 0.2890000000000015,
+    "samples": 599
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

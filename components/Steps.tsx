@@ -16,11 +16,10 @@ export function Step({
 }) {
   return (
     <li className="anim-reveal relative flex gap-4" style={{ "--i": n - 1 } as React.CSSProperties}>
-      {/* Decorative, so it must never eat a click. */}
       {last ? null : (
         <span
           aria-hidden
-          className="absolute left-[15px] top-9 h-[calc(100%-12px)] w-px bg-line"
+          className="pointer-events-none absolute left-[15px] top-9 h-[calc(100%-12px)] w-px bg-line"
         />
       )}
       <span className="relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full border border-line-strong bg-surface text-sm font-medium tabular-nums">

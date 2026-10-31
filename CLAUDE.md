@@ -4,8 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 PatchTest is a Next.js app that judges a skincare cart against what a shopper
 declared and what the YouCam skin APIs measured. `README.md` is the user-facing
-tour; `PROGRESS.md` tracks what is done and what is still open. This file covers
-the parts you cannot see from one file.
+tour. This file covers the parts you cannot see from one file.
 
 ## Commands
 

@@ -42,23 +42,3 @@ yarn-error.log*
 next-env.d.ts
 dist/
 
-# Generated voiceover audio. Rebuild with: pnpm narrate --generate
-media/
-
-# Video build. Source is video/demo/index.html (generated) + the scripts that
-# make it.
-#
-# The screen recordings are reproducible — scripts/record-clips.mjs drives the
-# running app and re-records them — so they stay out of the repo. The b-roll,
-# the score and the narration are not: they came from generative APIs that bill
-# per call and do not return the same output twice. Those are committed, or the
-# cold open could never be rebuilt.
-video/demo/assets/clips/
-video/demo/assets/img/
-video/demo/node_modules/
-video/demo/.hyperframes/
-video/demo/.thumbnails/
-# Render scratch directories, and the rendered film itself (it lives on YouTube).
-video/.*.hf-transaction-*/
-video/work-*/
-video/*.mp4

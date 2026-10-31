@@ -64,7 +64,7 @@ export default function EvalPage() {
   try {
     results = JSON.parse(readFileSync("eval/results.json", "utf8")) as Results;
   } catch {
-    results = null;
+    // Not run yet. The page says so below.
   }
   const rules = loadRules();
 

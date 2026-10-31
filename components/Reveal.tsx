@@ -8,11 +8,7 @@ import { useEffect } from "react";
  *
  * Mounted once in the site layout rather than wrapping each element, because
  * the thing being revealed is ordinary server-rendered markup and should not
- * have to become a client component to move.
- *
- * The hidden state lives in CSS, gated on the `data-motion` attribute that an
- * inline script sets before first paint, so nothing here is load-bearing for
- * whether the content is readable.
+ * have to become a client component to move. The hidden state lives in CSS.
  */
 export function Reveal() {
   const pathname = usePathname();

@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-10-30T18:26:53.563Z",
+  "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_v4",
+  "totalSeconds": 163.9,
+  "clips": [
+    {
+      "file": "01-the-hook.mp3",
+      "section": "0:00 to 0:10, the hook",
+      "words": 27,
+      "seconds": 10.44898
+    },
+    {
+      "file": "02-preset-1-eight-weeks-pregnant-breaking-out.mp3",
+      "section": "Preset 1, \"Eight weeks pregnant, breaking out\" (0:10–0:26)",
+      "words": 37,
+      "seconds": 13.557551
+    },
+    {
+      "file": "03-preset-2-dark-patches-and-a-30-peel.mp3",
+      "section": "Preset 2, \"Dark patches and a 30% peel\" (0:26–0:42)",
+      "words": 40,
+      "seconds": 17.162449
+    },
+    {
+      "file": "04-preset-3-painful-lumps-that-leave-marks.mp3",
+      "section": "Preset 3, \"Painful lumps that leave marks\" (0:42–0:57)",
+      "words": 36,
+      "seconds": 14.106122
+    },
+    {
+      "file": "05-it-works-on-other-people-s-shops.mp3",
+      "section": "0:57 to 1:20, it works on other people's shops",
+      "words": 58,
+      "seconds": 21.890612
+    },
+    {
+      "file": "06-how-it-works.mp3",
+      "section": "1:20 to 1:42, how it works",
+      "words": 54,
+      "seconds": 25.39102
+    },
+    {
+      "file": "07-the-numbers.mp3",
+      "section": "1:42 to 2:35, the numbers",
+      "words": 141,
+      "seconds": 54.047347
+    },
+    {
+      "file": "08-the-limits-then-the-card.mp3",
+      "section": "2:35 to 2:45, the limits, then the card",
+      "words": 24,
+      "seconds": 7.314286
+    }
+  ]
+}
