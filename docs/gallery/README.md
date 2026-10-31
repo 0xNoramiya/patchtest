@@ -25,16 +25,30 @@ node scripts/gallery.mjs
 The extension pane is captured with the extension actually installed in the
 browser, the same way `scripts/test-extension.mjs` does it.
 
-**The cover is generated art.** It was made with Higgsfield (`gpt_image_2_5`) and
-is an illustration, not a photograph: no real person, place or product appears in
-it, and every container in it is deliberately blank, with no label, logo or trade
-dress of any kind. The unmodified generator output is kept at
-`source/cover-generated-1024.png`, because a generative API bills per call and
-does not return the same image twice; `scripts/gallery-cover.mjs` crops it to an
-exact 3:2 and resizes it.
+**The cover is generated art with the pitch set over it.** The photograph was made
+with Higgsfield (`gpt_image_2_5`), prompted so the objects sit on the right and
+the left half stays empty paper, and it is an illustration rather than a
+photograph of anything real: no real person, place or product appears in it, and
+every container is deliberately blank, with no label, logo or trade dress of any
+kind. Three stay together and one is set apart with a card beside it, which is
+the product in one picture.
 
-One note on that, since it is the sort of thing that is easy to miss: the 2K model
-upscale of this cover came back with scrawled lettering hallucinated into the
-blank paper at the bottom. It was faint, but it read as handwriting. The cover
-here is a plain Lanczos resize of the original instead, which is very slightly
-softer and has nothing in it that nobody wrote.
+The headline, the four verdicts and the footer are set by
+`scripts/gallery-cover.mjs` in the site's own typefaces rather than asked of the
+image model. A cover has to spell a long sentence correctly and sit in the
+product's own type, and neither is worth leaving to a sampler. Rebuild it with:
+
+```bash
+node scripts/gallery-cover.mjs docs/gallery/source/cover-generated-1024.png
+```
+
+The unmodified generator output is kept at `source/cover-generated-1024.png`,
+because a generative API bills per call and does not return the same image twice.
+
+Two notes, since both are easy to miss. The art is resized with a plain Lanczos
+filter and not a model upscale: the 2K upscale of an earlier cover came back with
+scrawled lettering hallucinated into the blank paper, faint but legible as
+handwriting, and invented text on a submission cover is worse than a slightly
+softer one. And the first cover was a pretty still life that said nothing &mdash;
+it could have belonged to any skincare brand. A gallery cover has about one second
+to land the pitch, which is why this one carries the headline.
