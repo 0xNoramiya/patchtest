@@ -82,6 +82,9 @@ export default function EvalPage() {
   // The review arm was added after the first eval, so a results file recorded
   // before it exists is still renderable.
   const r = results.metrics.review as Record<string, number> | undefined;
+  // Counted off the results file rather than hardcoded. This sentence said
+  // "both arms" and 240 for a while after the third arm landed.
+  const arms = Object.keys(results.metrics).length;
 
   // One row per scenario, showing what the plain advisor actually did with the
   // shopper's cart rather than what our labels say about the scenario.
@@ -96,9 +99,9 @@ export default function EvalPage() {
     <div className="mx-auto max-w-4xl px-4 py-12">
       <h1 className="font-display text-4xl">Eval</h1>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
-        {results.scenarios} scenarios covering all {rules.length} rules, run through both arms{" "}
-        {results.runs_per_scenario} times each. That is {results.total_runs * 2} agent results on{" "}
-        <code className="font-mono text-sm">{results.model}</code>.
+        {results.scenarios} scenarios covering all {rules.length} rules, run through all {arms}{" "}
+        arms {results.runs_per_scenario} times each. That is {results.total_runs * arms} agent
+        results on <code className="font-mono text-sm">{results.model}</code>.
       </p>
 
       <section className="mt-6 rounded-xl border border-adjust/25 bg-adjust-soft p-4 sm:p-5">
