@@ -162,8 +162,8 @@ equality could never fire.
 
 **The baseline refused to be a strawman, and that changed the project.** We built
 the comparison arm with the same model, the same prompt and the same inputs,
-differing only in the guardrail. Across 240 runs it *recommended* zero items our
-labels call unsafe. Our first eval therefore showed no difference between the arms,
+differing only in the guardrail. Across its 120 runs it *recommended* zero items
+our labels call unsafe. Our first eval therefore showed no difference between the arms,
 which was a real result and a useless demo.
 
 The fix was realising the eval was measuring the wrong thing. PatchTest is called a

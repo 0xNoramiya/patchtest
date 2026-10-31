@@ -119,7 +119,7 @@ is about the face, not the whole head, so a tight portrait is fine.
 ## 11. The skin_type label vocabulary is undocumented and compound
 
 `skin_type` returns a label, not a score, and the labels are not what we expected.
-Across 8 scans and 24 regions we saw exactly six values:
+Across 9 scans and 27 regions we saw exactly six values:
 
 `Dry`, `Oily`, `Normal`, `Dry & Sensitive`, `Oily & Sensitive`, `Normal & Sensitive`
 

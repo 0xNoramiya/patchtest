@@ -10,6 +10,7 @@ Checked against the rules on 2026-10-31.
 | Public GitHub repo | **Done.** https://github.com/0xNoramiya/patchtest |
 | MIT licence in the repo | **Done.** `LICENSE`, copyright Rifqi Haikal |
 | English text description | **Done.** `docs/DEVPOST.md`, ready to paste |
+| The form's other written answers | **Done.** `docs/DEVPOST_FORM.md` answers all six prompts — what was updated, the description, the repo URL, the API surprise, the untapped use cases, and the technical wall. Every figure in it is cross-checked against `eval/results.json`, `docs/API_NOTES.md` and the unit ledger |
 | YouTube demo, 1 to 3 minutes | **Done.** https://youtu.be/gih0cIAdp7E — 2:53, and it plays without a login. Checked rather than assumed: YouTube's oEmbed endpoint answers 200 for it, which it does not do for a private video |
 | Video names the YouCam APIs used | Script puts both names on screen as a persistent lower third for the whole "how it works" section, and says them aloud |
 | Video runtime fits the cap | **Measured, not estimated.** The composition is 172.52s (2:53), 7.5s under the cap. Every clip length is probed with `ffprobe` by `scripts/build-video.mjs`, so the timeline cannot drift from the audio |
