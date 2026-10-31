@@ -1,0 +1,32 @@
+{
+  "key": "d538764af150b5cf31eeba74753de018",
+  "recorded_at": "2026-10-31T08:08:40.663Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S26-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-113",
+        "reason": "A gentle niacinamide serum suits oily-looking skin and works as a first active in the morning."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the routine simple and leaves the actives to do the work."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a sensible second active for a beginner who wants a smoother, more even-looking finish."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a comfortable skin feel, since the moisture score is moderate."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily mineral SPF is needed alongside retinol, which makes skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Mornings: cleanser, niacinamide, moisturizer, then SPF; evenings: cleanser, retinol, then moisturizer, starting retinol just 2 nights a week and building up slowly. Stronger acids and peels were left out so the two actives stay easy to follow and comfortable."
+  }
+}

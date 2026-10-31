@@ -1,0 +1,24 @@
+{
+  "key": "9c94c817c3847abf3c5bb38a97d4d78d",
+  "recorded_at": "2026-10-31T08:05:30.352Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S17-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A gentle-strength retinol is a sensible starting point for smoother-looking texture and a more even-looking tone."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your scan shows low moisture and a dry skin label, so a ceramide moisturizer helps keep skin comfortable and looking smooth while you use retinol."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Retinol needs daily sunscreen alongside it, and a tinted mineral SPF with iron oxides blends well on deeper skin tones without a chalky look."
+      }
+    ],
+    "routine_note": "Use the retinol at night just 2 to 3 times a week at first, applied to dry skin and followed by the moisturizer, then build up slowly if your skin feels comfortable. Apply the tinted SPF every morning, because retinol makes skin more sensitive to the sun."
+  }
+}

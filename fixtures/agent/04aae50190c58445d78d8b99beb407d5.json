@@ -1,0 +1,20 @@
+{
+  "key": "04aae50190c58445d78d8b99beb407d5",
+  "recorded_at": "2026-10-31T08:02:33.555Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S07-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "A low-strength 2.5% rinse-off wash that suits oily-looking skin and the breakout look you want to clear up."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free ceramide moisturizer to keep skin comfortable, since benzoyl peroxide can leave skin feeling dry."
+      }
+    ],
+    "routine_note": "Use the wash once a day in the evening at first, then moisturize, and build up only if your skin feels comfortable. Since you are trying for a baby, it is a good idea to check any product with your prenatal provider, and a dermatologist is the right person to ask if breakouts persist or become painful."
+  }
+}

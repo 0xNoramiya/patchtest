@@ -1,0 +1,24 @@
+{
+  "key": "777b79a0721b152ea8d971b3568c1503",
+  "recorded_at": "2026-10-31T08:03:11.637Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S09-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser suits oily-feeling skin without stripping it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports a comfortable skin barrier and adds moisture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 helps keep the look of marks from deepening in the sun."
+      }
+    ],
+    "routine_note": "I removed the 30% peel because skin can be more sensitive for months after isotretinoin, so please ask your dermatologist or prescriber about peels and about your marks before using one. Meanwhile, cleanse and moisturize morning and night, and apply the SPF every morning."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "key": "cda1633dd3c68c8f24f51b1ad0fd9bcd",
+  "recorded_at": "2026-10-31T08:12:16.462Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S38-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "A rinse-off wash that is fine for an adult and gives a simple, low-effort starting point for the look of blemish-prone skin."
+      }
+    ],
+    "routine_note": "Because you said your skin is affecting your mood and your wish to go out, a dermatologist or your doctor is the right person to talk to, and we have kept your cart to this one simple wash instead of adding more products. Start with the wash once a day, rinse it off well, and follow with a daily sunscreen and moisturizer you already have if your skin feels dry."
+  }
+}

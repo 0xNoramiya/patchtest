@@ -1,0 +1,28 @@
+{
+  "key": "eb69641a1be528a37c923903db1842d9",
+  "recorded_at": "2026-10-31T08:00:33.453Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S02-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps skin fresh without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Hyaluronic hydration helps dull-looking skin appear plumper and more radiant."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the skin barrier and softens the look of dullness."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 protects daily and helps keep skin looking even and bright."
+      }
+    ],
+    "routine_note": "I removed the 30% peel because it combines high-strength acids with salicylic acid, which isn't a good fit during pregnancy, so please check any exfoliating products with your prenatal care provider first. Cleanse, apply hyaluronic serum and moisturizer morning and night, and finish with the mineral SPF each morning for a brighter-looking glow."
+  }
+}

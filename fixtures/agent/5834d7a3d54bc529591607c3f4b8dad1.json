@@ -1,0 +1,28 @@
+{
+  "key": "5834d7a3d54bc529591607c3f4b8dad1",
+  "recorded_at": "2026-10-31T08:10:50.154Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S34-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free cleanser is a good base for morning use on skin that gets the odd spot."
+      },
+      {
+        "sku": "LL-103",
+        "reason": "A low-strength 2.5% wash used in the evening is a mild way to help keep the look of occasional spots down."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light, mattifying moisturizer suits oily-looking skin and keeps the routine to one simple step."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF protects skin and helps keep the look of spot marks from deepening on deeper skin tones."
+      }
+    ],
+    "routine_note": "Morning: gentle cleanser, mattifying gel, then SPF; evening: benzoyl peroxide wash used every other night at first, then the mattifying gel. The wash can bleach towels and fabrics, so rinse well and use white towels."
+  }
+}

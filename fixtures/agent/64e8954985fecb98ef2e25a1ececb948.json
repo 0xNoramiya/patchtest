@@ -1,0 +1,24 @@
+{
+  "key": "64e8954985fecb98ef2e25a1ececb948",
+  "recorded_at": "2026-10-31T08:12:09.503Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S38-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "Your chosen wash is fine for adult skin and suits a shiny, oily-looking T-zone."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps with the dry, tight look your moisture score suggests and offsets the drying feel of the wash."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF each morning helps keep redness-prone skin looking even and protects it while you use the wash."
+      }
+    ],
+    "routine_note": "Start with the wash once a day, then moisturizer, and add sunscreen every morning, building up slowly if skin feels dry. Because your skin is affecting your mood and your wish to go out, please also talk to a dermatologist or doctor, as that support goes beyond what a shop can offer, so I have not added more products."
+  }
+}

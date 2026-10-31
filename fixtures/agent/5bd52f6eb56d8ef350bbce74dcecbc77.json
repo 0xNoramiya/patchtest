@@ -1,0 +1,24 @@
+{
+  "key": "5bd52f6eb56d8ef350bbce74dcecbc77",
+  "recorded_at": "2026-10-31T08:02:54.088Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S08-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser suits very dry-feeling skin without adding to dryness."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide and glycerin cream supports the low moisture score and keeps skin feeling comfortable."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 gives daily sun protection, which matters for skin that may feel more sensitive."
+      }
+    ],
+    "routine_note": "The facial wax strips have been removed because waxing pulls on the skin surface, and skin that is on isotretinoin can be very fragile and easily damaged; please ask your prescriber or dermatologist about safe options for upper lip hair. Cleanse gently, moisturize morning and night, and apply the mineral sunscreen every morning.}</br>"
+  }
+}

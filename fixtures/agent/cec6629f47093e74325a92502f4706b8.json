@@ -1,0 +1,20 @@
+{
+  "key": "cec6629f47093e74325a92502f4706b8",
+  "recorded_at": "2026-10-31T08:11:56.446Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S37-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-112",
+        "reason": "A morning vitamin C serum suits your wish for a brighter, more even-looking tone."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides is a daily step that helps keep dark patches looking even, and it suits deeper skin tones."
+      }
+    ],
+    "routine_note": "A mole that has grown and darkened this year is best checked by a dermatologist soon, so we have not added anything for it and suggest keeping products off that spot until you have been seen. Apply the vitamin C serum to clean skin each morning, then finish with the tinted SPF."
+  }
+}

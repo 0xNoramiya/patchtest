@@ -1,0 +1,20 @@
+{
+  "key": "3376eb8014dddc9b2d6d7198f0d15b72",
+  "recorded_at": "2026-10-31T08:09:37.684Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S30-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-116",
+        "reason": "This lightweight mattifying gel is made to keep shine in check through the day, which suits your oily-looking skin and your lunchtime shine."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style rinse-off cleanser clears away surface oil without stripping, so the gel sits well on top."
+      }
+    ],
+    "routine_note": "Cleanse morning and evening, then smooth on a thin layer of the mattifying gel, adding a little more only where shine shows up first. Nothing else in your cart needed to change, and a daily sunscreen is a good habit if you spend time outdoors."
+  }
+}

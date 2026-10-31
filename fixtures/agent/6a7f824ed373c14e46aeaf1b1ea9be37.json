@@ -1,0 +1,24 @@
+{
+  "key": "6a7f824ed373c14e46aeaf1b1ea9be37",
+  "recorded_at": "2026-10-31T08:03:50.550Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S11-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-109",
+        "reason": "A 10% glycolic toner suits your request to smooth the look of uneven texture, and you are past the usual six-month wait after stopping isotretinoin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Glycolic acid makes skin more sun-sensitive, so a mineral SPF 50 is needed every morning alongside it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer helps keep skin feeling comfortable and cushioned while it adjusts to the toner."
+      }
+    ],
+    "routine_note": "Start the toner at night just two evenings a week, then increase slowly if your skin feels comfortable, and apply sunscreen every morning. Since your skin is still recovering from your isotretinoin course, pause the toner if it feels stinging or tight, and check with your prescriber if you are unsure."
+  }
+}

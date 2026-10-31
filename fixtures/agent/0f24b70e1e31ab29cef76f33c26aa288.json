@@ -1,0 +1,24 @@
+{
+  "key": "0f24b70e1e31ab29cef76f33c26aa288",
+  "recorded_at": "2026-10-31T08:06:18.891Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S19-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-110",
+        "reason": "This is the peel you asked for, and it suits a smoother-looking surface when used sparingly."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "AHA and BHA exfoliants make skin more sun-sensitive, and a mineral SPF is a gentle choice for sensitive-feeling skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple ceramide moisturizer helps keep skin comfortable after a strong exfoliating peel."
+      }
+    ],
+    "routine_note": "Patch test the peel first, then use it at night no more than once a week, leaving it on for no longer than the stated 10 minutes and rinsing well, followed by the moisturizer, and wear the SPF every morning and reapply it outdoors. Skip other exfoliating products on peel days, and pause the peel if your skin stings, looks flushed or feels tight."
+  }
+}

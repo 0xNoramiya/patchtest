@@ -1,0 +1,24 @@
+{
+  "key": "9b500e919d7c1f293a9b934881a1b16c",
+  "recorded_at": "2026-10-31T08:03:36.107Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S11-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-109",
+        "reason": "At eight months past your last isotretinoin dose, this 10% glycolic toner is a reasonable way to smooth the look of uneven texture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Glycolic acid makes skin more sun-sensitive, so a daily mineral SPF 50 goes with it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple ceramide moisturizer helps keep skin comfortable while it adjusts to a new exfoliating step."
+      }
+    ],
+    "routine_note": "Start the toner at night 2 times a week after cleansing, follow with the moisturizer, and wear the SPF every morning; do a small patch test first and pause if skin feels stinging or tight. If your prescriber gave you a different waiting period after isotretinoin, follow their advice before starting."
+  }
+}

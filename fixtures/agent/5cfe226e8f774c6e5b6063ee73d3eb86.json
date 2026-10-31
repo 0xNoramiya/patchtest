@@ -1,0 +1,24 @@
+{
+  "key": "5cfe226e8f774c6e5b6063ee73d3eb86",
+  "recorded_at": "2026-10-31T08:09:12.412Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S28-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-118",
+        "reason": "A gentle peptide cream suited to the look of lines and loss of firmness, and it adds comfort to dry-looking skin."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A moderate-strength retinol for night use that targets the look of fine lines and uneven texture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol calls for daily sunscreen, and a mineral SPF 50 fluid is a simple, gentle choice for the morning."
+      }
+    ],
+    "routine_note": "Use the retinol at night just two or three evenings a week at first, building up as your skin feels comfortable, and follow it with the peptide cream. Apply the peptide cream in the morning too, then finish with the SPF every day, reapplying if you are outdoors for long."
+  }
+}

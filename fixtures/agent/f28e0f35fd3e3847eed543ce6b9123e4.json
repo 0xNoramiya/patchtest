@@ -1,0 +1,24 @@
+{
+  "key": "f28e0f35fd3e3847eed543ce6b9123e4",
+  "recorded_at": "2026-10-31T08:06:12.350Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S19-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-102",
+        "reason": "A rinse-off 2% salicylic cleanser is a gentler way to smooth the look of texture on oily skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer helps keep sensitive skin comfortable while it adjusts to exfoliating."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is a gentle daily choice for fair, sensitive skin and is needed alongside exfoliating products."
+      }
+    ],
+    "routine_note": "I removed the 30% peel because it is a very strong first step for skin that scans as oily and sensitive, so start with the gentler salicylic cleanser a few evenings a week and build up only if your skin stays comfortable. Follow with moisturizer, and wear the SPF every morning."
+  }
+}

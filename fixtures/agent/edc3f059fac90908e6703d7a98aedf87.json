@@ -1,0 +1,28 @@
+{
+  "key": "edc3f059fac90908e6703d7a98aedf87",
+  "recorded_at": "2026-10-31T08:07:38.280Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S23-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "This is the adapalene gel you asked for, and nothing in your answers conflicts with it, so it stays as a night step for a clearer-looking complexion."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Adapalene can leave skin more sensitive to sun, so a daily mineral SPF 50 is needed alongside it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps offset dryness from the gel, which suits your lower moisture score."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the routine simple and avoids stacking extra irritation on top of the gel."
+      }
+    ],
+    "routine_note": "Cleanse and apply SPF in the morning, then at night cleanse, apply a pea-sized amount of gel to dry skin and follow with moisturizer, starting every second or third night. I kept the routine small and added no other exfoliating acids or retinols, since they could irritate when combined with adapalene."
+  }
+}

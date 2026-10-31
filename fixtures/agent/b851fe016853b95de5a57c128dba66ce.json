@@ -1,0 +1,20 @@
+{
+  "key": "b851fe016853b95de5a57c128dba66ce",
+  "recorded_at": "2026-10-31T08:08:18.627Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S25-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the look of a comfortable, well-cushioned skin surface for dry, sensitive skin."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides softens the look of redness and gives daily sun protection."
+      }
+    ],
+    "routine_note": "I removed the vitamin C serum and glycolic toner because strong acids can sting and add to the look of redness on dry, sensitive skin, and using the two together is more than this skin needs right now. Use the moisturizer morning and night and the tinted SPF each morning, and because the redness is constant and bothers you, it is worth showing to a dermatologist rather than adding more products."
+  }
+}

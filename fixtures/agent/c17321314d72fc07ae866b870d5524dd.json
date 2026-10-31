@@ -1,0 +1,24 @@
+{
+  "key": "c17321314d72fc07ae866b870d5524dd",
+  "recorded_at": "2026-10-31T08:10:10.552Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S32-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A gentle-strength retinol is a sensible first step for softening the look of fine lines."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol makes skin more sun-sensitive, so a daily mineral SPF 50 is needed alongside it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps support comfort and the look of hydration, since the scan shows low moisture appearance."
+      }
+    ],
+    "routine_note": "Start the retinol just 2 nights a week after cleansing, then add nights slowly as your skin feels comfortable, and layer the moisturizer over it. Apply the SPF every morning and reapply when outdoors."
+  }
+}

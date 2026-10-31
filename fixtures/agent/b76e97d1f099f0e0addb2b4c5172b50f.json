@@ -1,0 +1,24 @@
+{
+  "key": "b76e97d1f099f0e0addb2b4c5172b50f",
+  "recorded_at": "2026-10-31T08:07:48.319Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S23-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "This is the adapalene gel you asked for, and nothing in your answers rules it out, so it stays for your breakout-prone, oily-looking skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Adapalene can make skin more sun-sensitive, so a mineral SPF 50 each morning is worth having alongside it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light, gentle moisturizer helps the skin feel comfortable and less dry or tight while it gets used to a retinoid."
+      }
+    ],
+    "routine_note": "Apply a thin layer of the gel to clean, dry skin at night, starting every second or third night and building up as your skin feels comfortable, then moisturize. Use the SPF every morning and reapply when outdoors."
+  }
+}

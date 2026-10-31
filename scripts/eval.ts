@@ -338,12 +338,12 @@ async function main() {
 
   await writeFile("eval/results.json", `${JSON.stringify(results, null, 2)}\n`);
 
-  console.log(`\nmodel: ${AGENT_MODEL}, ${scenarios.length} scenarios x 2 arms x ${RUNS} runs = ${n * 2} agent results\n`);
+  console.log(`\nmodel: ${AGENT_MODEL}, ${scenarios.length} scenarios x 3 arms x ${RUNS} runs = ${n * 3} agent results\n`);
   const m = results.metrics;
   for (const k of Object.keys(m.guarded) as Array<keyof typeof m.guarded>) {
     if (k === "_denominators") continue;
     console.log(
-      `  ${String(k).padEnd(28)} guarded ${String(m.guarded[k]).padStart(7)}   baseline ${String(m.baseline[k]).padStart(7)}`,
+      `  ${String(k).padEnd(28)} guarded ${String(m.guarded[k]).padStart(7)}   review ${String(m.review[k]).padStart(7)}   baseline ${String(m.baseline[k]).padStart(7)}`,
     );
   }
   console.log(`\n  mean revision rounds used: ${results.mean_revision_rounds}`);

@@ -1,0 +1,24 @@
+{
+  "key": "3d73d52c50d83a7d9d90f044f6d09b7d",
+  "recorded_at": "2026-10-31T08:09:32.358Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S30-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-116",
+        "reason": "A lightweight niacinamide gel that gives a matte finish and suits skin that looks shiny by midday."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-stripping cleanser keeps the surface looking fresh without adding actives."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 fluid is a simple daily finish that helps protect skin appearance from sun exposure."
+      }
+    ],
+    "routine_note": "Cleanse morning and evening, then apply the mattifying gel, and finish with the mineral SPF in the morning. Moisture on this scan reads on the lower side, so the gel is the only moisturizer you need for now, and the routine stays small so it is easy to keep up."
+  }
+}

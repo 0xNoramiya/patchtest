@@ -1,0 +1,20 @@
+{
+  "key": "7c2287710e8e57fbac622725d4b82c08",
+  "recorded_at": "2026-10-31T08:07:51.600Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S24-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free ceramide moisturizer suits skin that feels tight and dry, and keeps the routine simple."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser helps skin feel less tight than a stronger cleanser would."
+      }
+    ],
+    "routine_note": "Cleanse gently morning and night, then apply the moisturizer while skin is still slightly damp. The scan scores describe how skin looks today, not its health, so a simple routine is a good place to start; if tightness persists or skin feels uncomfortable, consider seeing a dermatologist."
+  }
+}

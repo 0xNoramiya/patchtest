@@ -1,0 +1,20 @@
+{
+  "key": "981215d61ff2de7733ed425178dd1f49",
+  "recorded_at": "2026-10-31T08:02:39.855Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S07-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "A low-strength 2.5% rinse-off wash that suits an oily, blemish-prone look and is the gentlest benzoyl peroxide option."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free ceramide moisturizer to keep the skin comfortable and hydrated, since the moisture score is on the lower side."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, rinse well, and follow with the moisturizer morning and night. While you are trying for a baby, it is best to skip retinoid serums, adapalene and strong acid peels, and to check your full routine with your doctor or midwife."
+  }
+}

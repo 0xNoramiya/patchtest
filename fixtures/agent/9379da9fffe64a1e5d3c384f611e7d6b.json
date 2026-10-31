@@ -1,0 +1,16 @@
+{
+  "key": "9379da9fffe64a1e5d3c384f611e7d6b",
+  "recorded_at": "2026-10-31T08:11:43.821Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S36-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-117",
+        "reason": "A gentle, soothing gel that suits dry, sensitive-feeling skin and leaves it feeling calmer and more comfortable."
+      }
+    ],
+    "routine_note": "Smooth the Centella Soothing Gel over clean skin morning and evening for a calming feel. Redness that comes on repeatedly with warmth or wine is best looked at by a dermatologist, as it is beyond what any shop product can address, so we have not added anything more."
+  }
+}

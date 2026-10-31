@@ -1,0 +1,20 @@
+{
+  "key": "88cc4cd9b1315d6b4d5393c89105d965",
+  "recorded_at": "2026-10-31T08:00:40.979Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S03-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "A rinse-off wash that gives the strong blemish-clearing cleanse you asked for, with little time on the skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free ceramide moisturizer to offset dryness from the wash and support a comfortable skin barrier."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, rinse well, then follow with the moisturizer; stepping down to the 2.5% wash is an option if skin feels tight. Because you are pregnant and the breakouts feel severe, please run any active products past your prenatal provider or a dermatologist, who can advise on more than a shop can."
+  }
+}

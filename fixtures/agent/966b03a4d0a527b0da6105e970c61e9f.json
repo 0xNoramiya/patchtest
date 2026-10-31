@@ -1,0 +1,16 @@
+{
+  "key": "966b03a4d0a527b0da6105e970c61e9f",
+  "recorded_at": "2026-10-31T08:02:06.689Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S06-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-124",
+        "reason": "A 2% salicylic acid spray is a low-strength option made for chest skin, to help clear the look of spots on the chest and shoulders."
+      }
+    ],
+    "routine_note": "Use it once a day on a small area of chest and shoulders, keeping it away from the breast and nipple area, and wash your hands and let it dry fully before feeding. If the spots stay, spread or feel sore, a dermatologist can advise on options that suit breastfeeding, and I would not add more products for that."
+  }
+}

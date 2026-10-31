@@ -1,0 +1,28 @@
+{
+  "key": "630b18a3a42539e27bc78f9cc5daaef9",
+  "recorded_at": "2026-10-31T08:04:46.887Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S15-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "A once-nightly gel aimed at the clogged-looking spots on the chin and jaw, in a strength made for teens."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the routine kind to skin while the gel settles in."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer helps cushion dryness and tightness from the gel without feeling heavy."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is needed every morning because the gel can make skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, apply a pea-sized amount of the gel to the chin and jaw every second night at first, follow with moisturizer, and use the SPF every morning. If the spots are painful, widespread or not improving after a couple of months, a dermatologist is better placed to help than anything we sell, and it is worth sharing your routine with a parent or guardian."
+  }
+}

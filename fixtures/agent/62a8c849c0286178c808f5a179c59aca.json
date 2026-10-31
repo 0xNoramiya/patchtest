@@ -1,0 +1,20 @@
+{
+  "key": "62a8c849c0286178c808f5a179c59aca",
+  "recorded_at": "2026-10-31T08:07:54.376Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S24-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free ceramide moisturizer that supports the skin's moisture barrier and eases the look of tightness and dryness."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser that cleans without stripping, which suits skin that feels tight."
+      }
+    ],
+    "routine_note": "Cleanse gently morning and night, then apply the moisturizer while skin is still slightly damp. Your moisturizer is a good fit as it is, and I added only a gentle cleanser so the routine stays simple."
+  }
+}

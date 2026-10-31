@@ -1,0 +1,28 @@
+{
+  "key": "f604abebbad1ecc62ff2b66da706c118",
+  "recorded_at": "2026-10-31T08:05:07.167Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S16-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser that won't strip skin that already looks dry."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A milder 0.3% retinol to start with, to help skin look smoother and more even without overdoing it."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide cream to support comfort and moisture on dry-looking skin."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Tinted mineral SPF with iron oxides to protect skin and keep dark patches from looking deeper, and it's needed alongside retinol."
+      }
+    ],
+    "routine_note": "The 30% peel and the 1% retinol were left out because using them together is likely to irritate, and harsh exfoliation can leave deeper skin tones looking more uneven, so start with the 0.3% retinol two to three nights a week and wear the tinted SPF every morning. If the dark patches on your cheeks persist, spread or bother you, a dermatologist is the right person to ask rather than a stronger product from a shop."
+  }
+}

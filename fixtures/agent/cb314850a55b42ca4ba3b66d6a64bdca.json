@@ -1,0 +1,24 @@
+{
+  "key": "cb314850a55b42ca4ba3b66d6a64bdca",
+  "recorded_at": "2026-10-31T08:10:19.512Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S32-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a sensible starting point for visible fine lines."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol makes daily sunscreen important, and this mineral SPF 50 is a simple morning step."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your scan shows low moisture, and this barrier moisturizer helps skin feel comfortable while it adjusts to retinol."
+      }
+    ],
+    "routine_note": "Start the retinol serum 2 to 3 nights a week on dry skin, followed by the moisturizer, and build up slowly as skin feels comfortable. Apply the mineral SPF every morning and reapply when outdoors."
+  }
+}

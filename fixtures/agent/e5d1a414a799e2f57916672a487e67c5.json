@@ -1,0 +1,16 @@
+{
+  "key": "e5d1a414a799e2f57916672a487e67c5",
+  "recorded_at": "2026-10-31T08:04:04.857Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S13-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free style cleanser with no active ingredients suits a young shopper's first face-washing routine."
+      }
+    ],
+    "routine_note": "Wash your face with a small amount of LL-101 and lukewarm water once or twice a day, then pat dry; that is all a young skin routine needs. Skip strong actives and exfoliants at this age, and if you have any worries about your skin, ask a parent or carer to check in with a doctor or dermatologist."
+  }
+}

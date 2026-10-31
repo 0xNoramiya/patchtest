@@ -1,0 +1,20 @@
+{
+  "key": "3255ea176d6cb1c711a65b76b4a5d9f6",
+  "recorded_at": "2026-10-31T08:12:33.760Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S39-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "A once-nightly leave-on gel that suits an adult who wants to work on the look of uneven texture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daytime, since adapalene can leave skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Since three months of chemist products have made no visible difference, we'd suggest seeing a dermatologist or doctor, as that is beyond what a shop can help with, so we haven't added more products. Meanwhile, use the gel at night on dry skin, starting every second night, and wear the SPF every morning."
+  }
+}

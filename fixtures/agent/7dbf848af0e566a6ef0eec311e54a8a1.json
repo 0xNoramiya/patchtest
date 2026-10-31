@@ -1,0 +1,24 @@
+{
+  "key": "7dbf848af0e566a6ef0eec311e54a8a1",
+  "recorded_at": "2026-10-31T08:07:42.925Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S23-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "Your pick for the look of breakouts, and nothing in your answers rules it out."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Adapalene can make skin more sun-sensitive, so a daily mineral SPF 50 goes with it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps skin feel comfortable and less dry while it adjusts to adapalene."
+      }
+    ],
+    "routine_note": "Use a pea-sized amount of the gel on clean, dry skin at night, starting every second or third night, then follow with the moisturizer. Apply the SPF every morning and skip other exfoliating products for now to keep skin from feeling irritated."
+  }
+}

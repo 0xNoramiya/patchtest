@@ -159,6 +159,14 @@ can and dropping the sentence when it cannot.
 
 ## Eval honesty
 
+There are three arms, not two. `runBaselineAgent` is asked to recommend a
+routine, which means it has no mechanism for removing or commenting on an item
+it did not propose, so its worst numbers measure a task nobody set it.
+`runReviewAgent` is the fair comparison: the same model, handed the shopper's
+cart and told to review it for safety. Report its numbers whichever way they
+fall. On the current bank it is nearly as safe as the engine and much less
+consistent, and that is the finding.
+
 `eval/gold.json` labels are written from clinical intent, not from the engine's
 behaviour, so a gap between the two shows as a miss rather than hiding. Entries
 that want a second look are flagged in the file and named on `/eval`. Do not edit

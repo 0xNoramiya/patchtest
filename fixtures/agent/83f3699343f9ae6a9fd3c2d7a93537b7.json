@@ -1,0 +1,24 @@
+{
+  "key": "83f3699343f9ae6a9fd3c2d7a93537b7",
+  "recorded_at": "2026-10-31T08:06:34.383Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S20-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a sensible starting point for softening the look of fine lines on sensitive-leaning skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol makes daily sunscreen important, and a mineral SPF 50 is a gentle choice for sensitive skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer helps keep skin comfortable and supports the look of a smooth barrier while you get used to retinol."
+      }
+    ],
+    "routine_note": "Start with a pea-sized amount of retinol 2 nights a week after cleansing, then moisturizer, and build up slowly as your skin feels comfortable. Apply the mineral SPF every morning and reapply when outdoors."
+  }
+}

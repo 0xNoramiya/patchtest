@@ -1,0 +1,20 @@
+{
+  "key": "8a5dda6da94a6c14c9c4dbe2c4b47abe",
+  "recorded_at": "2026-10-31T08:09:23.360Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S29-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-116",
+        "reason": "Gentle niacinamide mattifying gel that gives the shine-free finish you asked for, with no ingredient concerns for you."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Your scan shows low moisture and a dry skin type label, so a light hyaluronic serum adds hydration without a shiny finish."
+      }
+    ],
+    "routine_note": "After cleansing, smooth on the hydrating serum while skin is slightly damp, then follow with the mattifying gel morning and night. Your scan describes appearance only, and the low texture and moisture scores suggest keeping the routine simple and hydrating."
+  }
+}

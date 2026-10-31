@@ -1,0 +1,24 @@
+{
+  "key": "694ef397b4c26f4e01338ada5111bf5e",
+  "recorded_at": "2026-10-31T08:12:51.587Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S40-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser suits an everyday routine for skin that looks oily."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports a comfortable, balanced look since moisture scored mid-range."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is a simple daily step to protect the look of skin in the morning."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, then moisturize, and finish with the SPF each morning. I added a moisturizer and sunscreen to keep this simple, and skipped actives since you asked for nothing fancy."
+  }
+}

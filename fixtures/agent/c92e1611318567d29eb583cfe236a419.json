@@ -1,0 +1,24 @@
+{
+  "key": "c92e1611318567d29eb583cfe236a419",
+  "recorded_at": "2026-10-31T08:02:50.294Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S08-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, no-active cleanser keeps the face clean without adding to dryness."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a comfortable skin barrier for skin that looks dry."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 gives daily sun protection that suits deeper skin tones and dry-looking skin."
+      }
+    ],
+    "routine_note": "I removed the facial wax strips because waxing pulls at the top layer of skin, and skin is often more fragile while on isotretinoin, so please check with your prescriber or dermatologist about safe hair removal options. Until then, cleanse gently, moisturize morning and night, and wear sunscreen every morning."
+  }
+}

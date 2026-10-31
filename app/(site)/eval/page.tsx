@@ -123,11 +123,37 @@ export default function EvalPage() {
             take anything out of the cart the shopper already filled, or say a word about it.
           </p>
           <p>
-            <span className="font-medium">Two numbers below are structural, not earned.</span> The
-            baseline&rsquo;s unflagged-caveat rate is near total because it has no mechanism for
-            commenting on an item it did not itself recommend. That is the finding rather than a
-            trick, but it should not be read as the model performing badly at something it was asked
-            to do.
+            <span className="font-medium">
+              The plain advisor&rsquo;s numbers measure a task it was never set.
+            </span>{" "}
+            It is asked to recommend a routine, so it has no mechanism for commenting on, or
+            removing, an item it did not itself propose. Reporting that as a safety gap would be
+            scoring it on someone else&rsquo;s job, which is why there is a third arm.
+          </p>
+          <p>
+            <span className="font-medium">The third arm is the fair comparison.</span> Same model,
+            same catalogue, same shopper, handed the cart and told in as many words to review it for
+            safety. It is the honest version of the question &ldquo;do you need a rules engine for
+            this?&rdquo; and it answers most of it: the unsafe rate falls from{" "}
+            <span className="tnum font-medium">{b.unsafe_item_rate}%</span> to{" "}
+            <span className="tnum font-medium">{r ? r.unsafe_item_rate : "n/a"}%</span>. Asked
+            directly, the model is nearly as safe as the engine. We would rather publish that than
+            keep a headline that rested on a task nobody gave it.
+          </p>
+          <p>
+            <span className="font-medium">What the third arm costs instead.</span> It removes things
+            our labels say are fine in{" "}
+            <span className="tnum font-medium">{r ? r.over_block_rate : "n/a"}%</span> of runs, drops
+            required sunscreen in{" "}
+            <span className="tnum font-medium">{r ? r.missing_spf_rate : "n/a"}%</span>, and gives
+            the same shopper the same cart only{" "}
+            <span className="tnum font-medium">
+              {results.cart_stability_across_runs.review ?? "n/a"}%
+            </span>{" "}
+            of the time, against {results.cart_stability_across_runs.guarded}% here. It is safe by
+            being erratic and over-cautious: it strips the cart to{" "}
+            <span className="tnum font-medium">{r ? r.mean_cart_size : "n/a"}</span> items where the
+            engine keeps {g.mean_cart_size}. And it cites nothing, so none of it can be checked.
           </p>
           <p>
             <span className="font-medium">The gold labels are {results.gold_status.toLowerCase()}.</span>{" "}
@@ -207,13 +233,19 @@ export default function EvalPage() {
 
         <div className="mt-4 space-y-2 rounded-lg bg-surface p-4 text-sm leading-relaxed text-muted">
           <p>
-            <span className="font-medium text-ink">What actually separates the two.</span> Apart
-            from the items the guardrail removes, both arms propose near-identical carts. The rest
-            of the difference is what the shopper is told about what stays.
-            The plain advisor sold an item that needed a usage caveat without giving one in{" "}
+            <span className="font-medium text-ink">What actually separates them.</span> Apart
+            from the items each arm removes, all three propose near-identical carts. The rest of the
+            difference is what the shopper is told about what stays. An item needing a usage caveat
+            went out without one in{" "}
             <span className="tnum font-medium text-ink">{b.unflagged_adjust_rate}%</span> of
-            applicable runs, against{" "}
+            applicable runs for the plain advisor and{" "}
+            <span className="tnum font-medium text-ink">
+              {r ? r.unflagged_adjust_rate : "n/a"}%
+            </span>{" "}
+            for the arm asked to review, against{" "}
             <span className="tnum font-medium text-ink">{g.unflagged_adjust_rate}%</span> here.
+            Telling the model to check the cart roughly halves that. It does not close it, and it
+            does not make any of it checkable.
           </p>
           <p>
             <span className="font-medium text-ink">And consistency.</span> The plain advisor gave the

@@ -1,0 +1,24 @@
+{
+  "key": "c7451c07f8d7b6c6ca727500785abc5b",
+  "recorded_at": "2026-10-31T08:04:02.169Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S12-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps a young shopper's routine simple and comfortable."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the skin's moisture, which scored a moderate 59 out of 100 in appearance."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is an easy daily step for a young shopper and keeps the routine short."
+      }
+    ],
+    "routine_note": "We removed the retinol, vitamin C and 30% peel because strong anti-aging actives and peels are not right for someone under 13, and the scan scores show nothing that calls for them. Use the cleanser and moisturizer morning and evening with sunscreen in the morning, and ask a parent or guardian to bring any skin worries to a dermatologist."
+  }
+}

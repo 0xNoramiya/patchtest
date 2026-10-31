@@ -1,0 +1,24 @@
+{
+  "key": "c54dd1ae7d4a621c481a81538c0964e7",
+  "recorded_at": "2026-10-31T08:11:34.968Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S36-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-117",
+        "reason": "A fragrance-free soothing gel that suits dry, sensitive skin and the calming finish you asked for."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the skin barrier and add comfort, since your moisture score is on the lower side."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A gentle mineral SPF to shield skin from sun and heat exposure, which can make skin look redder."
+      }
+    ],
+    "routine_note": "Apply the gel then the moisturizer morning and night, and finish with the SPF in the morning, skipping exfoliating acids and retinoids for now. Because you go red with warmth and wine and your redness score is low, please also see a dermatologist, as cosmetics can only soften the look of redness."
+  }
+}

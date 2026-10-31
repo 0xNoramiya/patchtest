@@ -1,0 +1,24 @@
+{
+  "key": "3b652d878f1eab3070b0467ed5f72d77",
+  "recorded_at": "2026-10-31T08:06:43.693Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S20-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A gentle-strength retinol is a sensible starting point for softening the look of fine lines."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol makes skin more sun-sensitive, so a mineral SPF 50 each morning is a good match for fair, sensitive-feeling skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps keep skin feeling comfortable while it adjusts to retinol."
+      }
+    ],
+    "routine_note": "Start by using the retinol 2 nights a week after cleansing, adding a night only as your skin feels comfortable, and follow with moisturizer. Apply the SPF every morning and avoid layering other exfoliating products with it at first."
+  }
+}

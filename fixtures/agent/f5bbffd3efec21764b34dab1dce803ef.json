@@ -1,0 +1,24 @@
+{
+  "key": "f5bbffd3efec21764b34dab1dce803ef",
+  "recorded_at": "2026-10-31T08:01:49.504Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S05-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-125",
+        "reason": "A lightweight hydrating serum that helps skin look smoother and more supple without strong actives."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A gentle ceramide moisturizer that suits oily, sensitive-looking skin and supports a comfortable, even-looking surface."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection that is gentle on sensitive-looking skin."
+      }
+    ],
+    "routine_note": "I removed the 15% lactic acid serum because a high-strength leave-on exfoliating acid isn't a good fit during pregnancy, so it's best to check with your prenatal provider before using one. In the meantime, use the hydrating serum and moisturizer morning and night, and finish with the mineral SPF each morning to help skin look smoother and more even."
+  }
+}

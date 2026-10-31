@@ -1,0 +1,24 @@
+{
+  "key": "84d76e64707c7aebcfb8705ab0a64b79",
+  "recorded_at": "2026-10-31T08:04:18.486Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S14-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser keeps the face feeling clean without stripping or over-drying oilier skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light barrier moisturizer helps the skin feel comfortably hydrated and balanced."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 is the simplest way to protect the look of young skin over the years."
+      }
+    ],
+    "routine_note": "I removed the Vitamin C serum and Peptide Firming Cream because anti-aging products are made for mature skin and aren't needed at 15, and your scan shows a smooth-looking appearance; cleanse, moisturize and apply sunscreen every morning, and moisturize again at night. If you have any skin concerns that bother you, a dermatologist is the best person to ask."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "e11b69f6afbbb4cc5e11b11bb429d7d3",
+  "recorded_at": "2026-10-31T08:07:22.981Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S22-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "A low-strength 2.5% rinse-off wash that suits a morning step, kept apart from your evening tretinoin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Tretinoin makes skin more sun-sensitive, so a daily mineral SPF 50 is needed alongside it."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple ceramide moisturizer to help skin feel comfortable while using a wash and a retinoid together."
+      }
+    ],
+    "routine_note": "Use the benzoyl peroxide wash in the morning only, rinse well, then moisturizer and SPF, and keep your tretinoin at night as your dermatologist directed. If skin feels very dry or irritated, check with your dermatologist before changing how you use either one."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "498b14cdd8e5ef25f274750d3737925b",
+  "recorded_at": "2026-10-31T08:04:30.777Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S14-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps a daily routine simple and comfortable for oily-looking skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports the look of a smooth, hydrated skin surface without anti-aging actives."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is the most useful everyday step for keeping skin looking its best over the long run."
+      }
+    ],
+    "routine_note": "I removed the Vitamin C serum and Peptide Firming Cream because they are anti-aging formulas made for adult skin, and at 15 a simple cleanse, moisturize and sunscreen routine is the better fit. Use the cleanser and moisturizer morning and night, and apply the sunscreen every morning and again if you are outdoors for long."
+  }
+}

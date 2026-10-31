@@ -1,0 +1,32 @@
+{
+  "key": "a1673d905e73405a01727b2c3922f450",
+  "recorded_at": "2026-10-31T08:08:34.563Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S26-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-113",
+        "reason": "Niacinamide is a gentle first active that suits skin that looks a little shiny and works well in the morning."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser keeps the routine simple without stripping skin that is already moderately hydrated."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports the look of skin comfort and moisture, which scanned in the middle range."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is needed every morning, especially if you add a retinol at night."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A low-strength 0.3% retinol is a gentle second active for smoother-looking skin over time."
+      }
+    ],
+    "routine_note": "Morning: cleanser, niacinamide, moisturizer, then SPF. At night: cleanser, retinol on only 2 nights a week at first (moisturizer after), and build up slowly as your skin gets used to it."
+  }
+}

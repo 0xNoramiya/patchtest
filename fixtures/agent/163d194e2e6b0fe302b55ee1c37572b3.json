@@ -1,0 +1,20 @@
+{
+  "key": "163d194e2e6b0fe302b55ee1c37572b3",
+  "recorded_at": "2026-10-31T08:11:28.706Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S35-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that keeps dry, sensitive-looking skin comfortable."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support the look of a calm, comfortable skin barrier."
+      }
+    ],
+    "routine_note": "Flushing that lingers, little bumps and gritty eyes are better assessed in person by a dermatologist (and an eye professional for the eye discomfort) than by anything we sell, so I have not suggested anything stronger. I removed the glycolic toner and the 5% benzoyl peroxide wash because strong exfoliating and drying actives are likely to sting and aggravate easily irritated, reddened skin; for now, cleanse gently and moisturize."
+  }
+}

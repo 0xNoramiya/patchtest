@@ -1,0 +1,16 @@
+{
+  "key": "acdddb3635ebf1094036cf2998d40c9b",
+  "recorded_at": "2026-10-31T08:04:09.139Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S13-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser with no active ingredients is a good fit for a young person starting a simple face-washing habit."
+      }
+    ],
+    "routine_note": "Wash your face gently with lukewarm water once or twice a day and pat dry; you don't need anything else right now. We left out exfoliating acids, retinoids and scrubs because they aren't suited to younger skin, and a grown-up can help you choose if you want to add a product later."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "fb317b5eb8f8a7e7ce1f55c925b0c7df",
+  "recorded_at": "2026-10-31T08:06:29.759Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S19-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser keeps oily, sensitive-looking skin clean without stripping it."
+      },
+      {
+        "sku": "LL-109",
+        "reason": "A milder 10% glycolic toner can help smooth the look of uneven texture with less intensity than a 30% peel."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a comfortable, balanced look and cushions skin between exfoliating nights."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is gentle on sensitive-looking skin and is needed daily alongside exfoliating acids."
+      }
+    ],
+    "routine_note": "I've left out the 30% peel because it is a very high strength for Oily & Sensitive skin that isn't already using acids, and I've swapped in a gentler glycolic toner to use one night a week at first, building up slowly if skin stays comfortable. Use the cleanser and moisturizer morning and night, apply the SPF every morning, and if texture or sensitivity worries you, a dermatologist is the best person to ask."
+  }
+}

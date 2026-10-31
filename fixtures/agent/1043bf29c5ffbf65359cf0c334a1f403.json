@@ -1,0 +1,28 @@
+{
+  "key": "1043bf29c5ffbf65359cf0c334a1f403",
+  "recorded_at": "2026-10-31T08:04:53.985Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S15-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "A gentle-strength, once-nightly gel that suits a teen who wants to keep chin and jaw spots looking clearer."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that cleans without stripping or adding to dryness."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer to keep skin comfortable and support the barrier while using the gel."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for every morning, since the gel can make skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Start by using a pea-sized amount of the gel on dry skin 2 to 3 nights a week, then moisturize, and build up only if skin stays comfortable. Wear SPF every morning, and if the spots feel painful or stay stubborn, a dermatologist can help with more than a shop can offer."
+  }
+}

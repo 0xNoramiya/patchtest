@@ -1,0 +1,24 @@
+{
+  "key": "f7f8b98386e6ea32b98cddd19c5e560e",
+  "recorded_at": "2026-10-31T08:01:06.719Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S04-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-112",
+        "reason": "Vitamin C is a pregnancy-friendly option for a brighter-looking, more even-looking tone, used in the morning."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides is a pregnancy-friendly daily shield that helps keep the look of dark patches from deepening."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your moisture score reads low and your skin type is dry, so this ceramide moisturizer adds comfort and cushions the skin alongside vitamin C."
+      }
+    ],
+    "routine_note": "Please check your hydroquinone cream with your doctor or dermatologist while pregnant, as dark patches during pregnancy are better guided by them than by anything we sell, so I have not added any further brightening products. Use vitamin C in the morning, then moisturizer, then SPF, reapplying SPF through the day."
+  }
+}

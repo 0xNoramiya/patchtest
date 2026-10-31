@@ -1,0 +1,24 @@
+{
+  "key": "6c8656a4a64e78bff05c26edeed9e848",
+  "recorded_at": "2026-10-31T08:05:41.652Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S17-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A gentle starting strength of retinol for smoother-looking texture and more even-looking tone."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Retinol makes daily sunscreen essential, and this tinted mineral formula with iron oxides blends well on deeper skin tones."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide cream to comfort and cushion dry-looking skin while it adjusts to retinol."
+      }
+    ],
+    "routine_note": "Apply the retinol at night 2 to 3 times a week at first, followed by the rich cream, and build up slowly as your skin feels comfortable. Use the tinted SPF every morning and reapply when outdoors."
+  }
+}

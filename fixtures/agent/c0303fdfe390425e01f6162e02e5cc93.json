@@ -1,0 +1,24 @@
+{
+  "key": "c0303fdfe390425e01f6162e02e5cc93",
+  "recorded_at": "2026-10-31T08:08:10.464Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S25-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free-style cleanse that won't strip dry, sensitive-looking skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support a comfortable skin barrier and add moisture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection, since fair skin can look redder after sun exposure."
+      }
+    ],
+    "routine_note": "We removed the vitamin C serum and glycolic toner because strong acids can sting and make dry, sensitive skin look redder, so a gentle cleanser, moisturizer and mineral sunscreen is a calmer start. Because you say your face is always red, a dermatologist is the right person to look at it, and we would rather not sell more actives in the meantime."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "5d7c80be8b42e851933f60effa1e7f6a",
+  "recorded_at": "2026-10-31T08:03:54.244Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S12-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free style cleanser keeps a simple routine easy to follow."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a comfortable skin barrier and adds moisture."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is a simple daytime step for everyday sun protection."
+      }
+    ],
+    "routine_note": "Retinol, vitamin C and the 30% peel are strong, high-strength products that are not right for someone under 13, so we removed them; anti-aging products are not needed at this age, and the scan scores here look healthy. Cleanse gently, moisturize, and use sunscreen in the morning, and if you have skin concerns, please ask a parent or guardian to check in with a pediatrician or dermatologist."
+  }
+}

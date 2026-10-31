@@ -1,0 +1,24 @@
+{
+  "key": "457fa49d1cc71adc6ce80424d60533f6",
+  "recorded_at": "2026-10-31T08:01:24.479Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S04-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-112",
+        "reason": "A morning vitamin C serum is a gentle-enough brightening step to keep for a cosmetic routine."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer adds comfort and softness to skin that looks dry."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Tinted mineral SPF 50 with iron oxides gives daily cover and helps keep the look of dark patches from deepening."
+      }
+    ],
+    "routine_note": "Dark patches during pregnancy are best reviewed with your prenatal provider or a dermatologist, including whether to keep using your hydroquinone cream, so we have not added any more brightening or exfoliating products. Use the vitamin C in the morning, then moisturizer and the tinted mineral SPF, and pause the serum if skin feels stinging or tight."
+  }
+}

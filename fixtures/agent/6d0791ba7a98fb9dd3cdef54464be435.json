@@ -1,0 +1,20 @@
+{
+  "key": "6d0791ba7a98fb9dd3cdef54464be435",
+  "recorded_at": "2026-10-31T08:00:57.077Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S03-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "Rinse-off wash that targets the look of breakouts and stays on the skin only briefly, which suits the strong wash you asked for."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A gentle ceramide moisturizer to offset dryness from the wash, since your moisture score is only mid-range."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, rinse well, and follow with the moisturizer, building up only if your skin stays comfortable. Because you are pregnant and describe the breakouts as severe, please check with your prenatal provider or a dermatologist before adding anything stronger, as that is beyond what a shop can address."
+  }
+}

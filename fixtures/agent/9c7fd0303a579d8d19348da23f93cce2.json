@@ -1,0 +1,28 @@
+{
+  "key": "9c7fd0303a579d8d19348da23f93cce2",
+  "recorded_at": "2026-10-31T08:05:15.345Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S16-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A gentler retinol strength to start with, in place of the 1% serum, since this is your first retinol and your skin looks dry."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser that won't add to dryness."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to support a skin surface that looks low in moisture and to cushion the retinol."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides, needed daily with retinol and helpful for keeping the look of uneven tone from deepening."
+      }
+    ],
+    "routine_note": "I removed the 30% peel and the 1% retinol because pairing them is likely to irritate dry skin, and irritation can leave deeper skin tones looking darker and more uneven. Start the 0.3% retinol at night two or three evenings a week over moisturizer, wear the SPF every morning, and if the dark patches on your cheeks persist or change, a dermatologist is the right person to look at them."
+  }
+}

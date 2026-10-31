@@ -1,0 +1,16 @@
+{
+  "key": "5c9ea73c7d997c27f5d4d06a01ed653d",
+  "recorded_at": "2026-10-31T08:07:57.074Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S24-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free ceramide moisturizer that suits skin that feels tight and dry, and is gentle on sensitive-looking skin."
+      }
+    ],
+    "routine_note": "Smooth a small amount of the moisturizer over clean face morning and night, and keep the rest of your routine simple with a gentle cleanser if you need one. Nothing in your cart needs to be removed, so there is nothing else to add for your request."
+  }
+}

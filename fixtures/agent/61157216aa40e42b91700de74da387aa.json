@@ -1,0 +1,28 @@
+{
+  "key": "61157216aa40e42b91700de74da387aa",
+  "recorded_at": "2026-10-31T08:11:03.635Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S34-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser suits oily skin and keeps the routine simple."
+      },
+      {
+        "sku": "LL-105",
+        "reason": "A single night-time gel aimed at the occasional spots and uneven texture you mentioned."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light barrier moisturizer helps offset dryness from the gel and supports your moisture score."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 is needed alongside the night gel, and it helps keep marks from darkening on deeper skin tones."
+      }
+    ],
+    "routine_note": "Cleanse morning and night, apply SPF in the morning, and use a pea-sized amount of the gel at night every second night at first, followed by moisturizer. I kept this to four steps so it stays easy to follow, and if spots become painful, deep or leave marks, a dermatologist is the better person to ask."
+  }
+}

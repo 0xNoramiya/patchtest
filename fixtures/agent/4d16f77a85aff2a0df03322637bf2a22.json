@@ -1,0 +1,28 @@
+{
+  "key": "4d16f77a85aff2a0df03322637bf2a22",
+  "recorded_at": "2026-10-31T08:06:53.554Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S21-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a sensible way to start for smoother-looking texture."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser keeps the routine comfortable while your skin adjusts to retinol."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a smoother-looking, more comfortable skin surface and buffers retinol dryness."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol makes skin more sun-sensitive, so a daily mineral SPF 50 is needed alongside it."
+      }
+    ],
+    "routine_note": "Use the retinol at night just 2 to 3 times a week at first, with the gentle cleanser and moisturizer, and apply SPF every morning; results from a retinol build over weeks, so faster is not safer. I left out the glycolic toner and benzoyl peroxide wash because using all three together with retinol is likely to leave skin dry and irritated, and your scan's acne score already looks clear, so you can add the toner on a separate night later once your skin is comfortable."
+  }
+}

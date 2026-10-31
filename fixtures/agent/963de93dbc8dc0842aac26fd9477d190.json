@@ -1,0 +1,24 @@
+{
+  "key": "963de93dbc8dc0842aac26fd9477d190",
+  "recorded_at": "2026-10-31T08:05:56.672Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S18-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "The 5% wash you asked for suits oily skin and helps clear the look of breakouts along the jaw."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps offset dryness from the wash, since your moisture score is only middling."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides protects the skin each morning and blends well on deeper skin tones."
+      }
+    ],
+    "routine_note": "Start by using the 5% wash once a day, rinse it off after a short contact time, and move to twice daily only if skin stays comfortable, then follow with the moisturizer and, in the morning, the SPF. If breakouts along the jaw keep returning or feel painful, a dermatologist is the right person to ask rather than adding more products."
+  }
+}

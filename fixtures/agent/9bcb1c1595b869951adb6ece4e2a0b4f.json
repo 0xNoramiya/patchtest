@@ -1,0 +1,24 @@
+{
+  "key": "9bcb1c1595b869951adb6ece4e2a0b4f",
+  "recorded_at": "2026-10-31T08:03:02.088Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S09-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the routine comfortable for oily-feeling skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the skin's moisture barrier without adding any strong actives."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 protects skin and helps keep the look of marks from deepening."
+      }
+    ],
+    "routine_note": "I removed the 30% peel because it is too strong for skin that finished isotretinoin under six months ago, so please check with your dermatologist or prescriber before using any peel, acid, retinoid or waxing. Until then, use the cleanser and moisturizer morning and night, and apply the SPF every morning."
+  }
+}

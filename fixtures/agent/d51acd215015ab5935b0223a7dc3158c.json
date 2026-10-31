@@ -1,0 +1,32 @@
+{
+  "key": "d51acd215015ab5935b0223a7dc3158c",
+  "recorded_at": "2026-10-31T08:08:28.686Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S26-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-113",
+        "reason": "Niacinamide is a gentle active that suits the oilier feel of your skin and is easy to start with."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser keeps the routine simple and leaves your skin comfortable."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer supports a moisture level in the middle of the range and cushions the skin while you add actives."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily mineral SPF 50 protects your skin from sun exposure and should go with any retinol."
+      },
+      {
+        "sku": "LL-106",
+        "reason": "A low-strength retinol is a gentle second active for a smoother-looking, more even appearance."
+      }
+    ],
+    "routine_note": "Mornings: cleanse, niacinamide, moisturizer, then sunscreen. At night: cleanse, retinol 2 nights a week, then moisturizer, adding a night only if your skin stays comfortable."
+  }
+}

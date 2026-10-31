@@ -1,0 +1,20 @@
+{
+  "key": "36042d32de7d97ea3653aa52b99892d7",
+  "recorded_at": "2026-10-31T08:02:28.468Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S07-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-103",
+        "reason": "A low-strength rinse-off wash that suits oily-looking skin and the breakouts you mentioned, and it stays on the skin only briefly."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer to support comfort and moisture, which scored on the lower side, while using a benzoyl peroxide wash."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, rinse well, then follow with the moisturizer, and since you are trying for a baby it is worth checking any skincare with your doctor or midwife. If breakouts feel painful, deep or persistent, a dermatologist is a better next step than adding more products."
+  }
+}

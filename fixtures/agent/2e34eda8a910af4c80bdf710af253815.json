@@ -1,0 +1,28 @@
+{
+  "key": "2e34eda8a910af4c80bdf710af253815",
+  "recorded_at": "2026-10-31T08:04:37.189Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S15-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "A leave-on gel made for the face that is used at night to help keep the look of breakouts on the chin and jaw in check."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser that keeps the routine mild alongside the gel."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light, mattifying gel moisturizer that suits oily-looking skin and cushions the dryness the gel can cause."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for mornings, since the gel makes skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Cleanse and use SPF in the morning, then at night apply a thin layer of the gel on dry skin only on the chin and jaw every second night before moisturizer, building up slowly if skin feels comfortable. If spots become painful, widespread or leave marks, a dermatologist is the right person to ask rather than adding more products."
+  }
+}

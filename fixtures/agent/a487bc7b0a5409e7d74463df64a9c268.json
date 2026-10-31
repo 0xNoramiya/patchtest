@@ -1,0 +1,24 @@
+{
+  "key": "a487bc7b0a5409e7d74463df64a9c268",
+  "recorded_at": "2026-10-31T08:03:57.406Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S12-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free style cleanser keeps a simple routine easy to follow for young skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the skin's comfort and moisture, which is a little low in the scan."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 offers daily sun protection that suits young skin and is gentle on the face."
+      }
+    ],
+    "routine_note": "Retinol, vitamin C and the 30% peel were removed because strong anti-aging actives and high-strength peels are not right for a child under 13, and the scan scores show nothing that needs them. Cleanse, moisturize and wear sunscreen each morning, and if you have any skin concerns, a pediatrician or dermatologist is the best person to ask."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "dbdbfed6c490b650a51f4a8890674412",
+  "recorded_at": "2026-10-31T08:09:49.985Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S31-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-108",
+        "reason": "A lower-strength retinal that suits a first retinoid and gives the smoothing, firming step you asked for."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to cushion the skin, since your scan shows a low moisture appearance score."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A daily mineral SPF 50 is needed, since retinoids make skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "We removed the 1% retinol serum because it is high strength for someone new to retinoids and would double up with the retinal cream, which tends to cause dryness and irritation; start the retinal cream 2 nights a week at night, moisturize after, and wear the SPF every morning. If your skin stays comfortable after a couple of months, you can revisit a gentler retinol."
+  }
+}

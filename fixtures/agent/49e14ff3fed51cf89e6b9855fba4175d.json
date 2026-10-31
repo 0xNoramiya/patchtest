@@ -1,0 +1,28 @@
+{
+  "key": "49e14ff3fed51cf89e6b9855fba4175d",
+  "recorded_at": "2026-10-31T08:05:24.420Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S16-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser suits skin that currently looks dry and low in moisture."
+      },
+      {
+        "sku": "LL-111",
+        "reason": "A gentle brightening cream that helps the look of uneven tone on the cheeks without the irritation of a strong peel."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a smoother, more comfortable-looking skin barrier."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF with iron oxides helps keep the look of dark patches from deepening in sun and visible light."
+      }
+    ],
+    "routine_note": "I removed the 30% peel and the 1% retinol because starting two very strong products together tends to irritate, and irritation on deeper skin tones can leave patches looking darker. Use the cleanser, azelaic cream and moisturizer morning and evening with the tinted SPF every morning, consider a gentler retinol once skin feels comfortable, and see a dermatologist if the patches change, spread or persist."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "key": "d55a976b325d5d25978d5a5de84b26f4",
+  "recorded_at": "2026-10-31T08:04:12.119Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S13-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that suits a simple first face-washing routine."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A basic ceramide moisturizer to follow cleansing and keep the skin feeling comfortable."
+      }
+    ],
+    "routine_note": "Wash your face gently with LL-101 morning and night using lukewarm water, then pat dry and apply a thin layer of moisturizer. Active products like acids, retinoids and scrubs are not needed at this age, so we left them out, and for any skin worries it's best to chat with your mum and a pharmacist or dermatologist."
+  }
+}

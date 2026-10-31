@@ -1,0 +1,28 @@
+{
+  "key": "71c3bfb5621e2a0eeed14d72efbf4d33",
+  "recorded_at": "2026-10-31T08:01:55.567Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S05-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser suits oily and sensitive-looking skin without stripping it."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Hyaluronic serum adds lightweight hydration, which can help skin look smoother."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports the look of a comfortable, balanced skin barrier."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 gives daily sun protection and is a gentle choice for sensitive-looking skin."
+      }
+    ],
+    "routine_note": "We removed the 15% lactic acid serum because a high-strength leave-on exfoliating acid is best avoided during pregnancy, so this gentle hydrating routine is a better fit for smoother-looking texture, and please check with your prenatal care provider before adding any exfoliating acid. Use the cleanser, hyaluronic serum and moisturizer morning and evening, and finish with the SPF each morning."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "cb495deec0682ab5c90d1a5aa030ea5b",
+  "recorded_at": "2026-10-31T08:01:39.097Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S05-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, active-free cleanser suits oily and sensitive-looking skin without stripping it."
+      },
+      {
+        "sku": "LL-113",
+        "reason": "Niacinamide is a gentle option for a smoother-looking texture and a more balanced look to oiliness."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a comfortable, cushioned skin feel for sensitive-looking skin."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 helps protect fair, sensitive-looking skin during the day."
+      }
+    ],
+    "routine_note": "I removed the 15% lactic acid serum because a high-strength leave-on acid is not one we suggest during pregnancy, so please ask your prenatal provider before adding exfoliating acids. Use the cleanser and moisturizer morning and night, with niacinamide before moisturizer and mineral SPF as your last morning step."
+  }
+}

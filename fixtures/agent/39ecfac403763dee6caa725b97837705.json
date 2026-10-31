@@ -1,0 +1,24 @@
+{
+  "key": "39ecfac403763dee6caa725b97837705",
+  "recorded_at": "2026-10-31T08:10:42.682Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S33-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "A rinse-off wash you already chose that suits oily-looking skin and is fine to keep, used briefly and gently."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A simple barrier moisturizer to offset dryness and keep skin comfortable alongside the wash."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF helps keep the look of marks from appearing darker in the sun."
+      }
+    ],
+    "routine_note": "Big painful lumps that leave marks are best looked at by a dermatologist, and nothing in a shop is a substitute, so please book a visit rather than reaching for the strongest product; I removed the 30% peel because it is far too harsh for this skin and could leave it sore and more marked-looking. In the meantime, use the wash once a day on damp skin and rinse well, then moisturizer, and SPF every morning."
+  }
+}

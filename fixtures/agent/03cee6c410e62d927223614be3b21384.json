@@ -1,0 +1,16 @@
+{
+  "key": "03cee6c410e62d927223614be3b21384",
+  "recorded_at": "2026-10-31T08:12:23.084Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S38-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "A rinse-off wash that is fine for an adult and suits a shopper who wants a clearer-looking complexion."
+      }
+    ],
+    "routine_note": "Start with this wash once a day, rinse well, and build up slowly if your skin feels dry or tight. Because your skin is affecting your mood and your wish to go out, please talk to a dermatologist or your doctor, as they can offer support beyond what a shop can sell, so I have not added more products."
+  }
+}

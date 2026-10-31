@@ -128,7 +128,7 @@ numbers.
 | The engine. A pure function, no model in the loop | [`lib/rules/engine.ts`](lib/rules/engine.ts) |
 | Thresholds, every one marked heuristic | [`rules/thresholds.json`](rules/thresholds.json) |
 | 81 tests, a positive and a negative case per rule | [`lib/rules/engine.test.ts`](lib/rules/engine.test.ts) |
-| The agent loop and the fair baseline | [`lib/agent/run.ts`](lib/agent/run.ts) |
+| The agent loop and the two comparison arms | [`lib/agent/run.ts`](lib/agent/run.ts) |
 | Claim linter, build-time and runtime | [`lib/claims.ts`](lib/claims.ts) |
 | Product title to actives, for carts outside our catalogue | [`lib/match.ts`](lib/match.ts) |
 | The browser extension | [`extension/`](extension/) |

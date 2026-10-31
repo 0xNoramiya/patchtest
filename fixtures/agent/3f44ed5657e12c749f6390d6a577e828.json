@@ -1,0 +1,28 @@
+{
+  "key": "3f44ed5657e12c749f6390d6a577e828",
+  "recorded_at": "2026-10-31T08:07:09.911Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S21-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A gentle-strength retinol night serum suits visible texture smoothing and is a sensible place to start."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser keeps the routine light so skin tolerates the retinol."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer supports a comfortable skin barrier and helps with the moderate moisture score."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol makes skin more sun-sensitive, so a daily mineral SPF 50 is needed alongside it."
+      }
+    ],
+    "routine_note": "I removed the glycolic toner and benzoyl peroxide wash because using both with retinol is likely to leave skin dry and irritated, and stacking them will not make results come faster. Start the retinol 2 nights a week after cleansing and build up slowly, moisturize after, and wear the SPF every morning."
+  }
+}

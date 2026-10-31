@@ -1,0 +1,20 @@
+{
+  "key": "723f69bf7d961ed246349878a8cd17ba",
+  "recorded_at": "2026-10-31T08:12:40.148Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S39-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "A once-nightly gel that suits adult skin and supports a smoother, clearer-looking complexion."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily mineral sunscreen is needed alongside adapalene, which makes skin more sun-sensitive."
+      }
+    ],
+    "routine_note": "Apply a thin layer of the gel at night, starting every second or third night, and wear the SPF every morning. Because three months of shop-bought products have not changed how your skin looks, a dermatologist is the better next step than adding more products from us."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "key": "c76d8616065d1ac98b19bd5b6c08ad4d",
+  "recorded_at": "2026-10-31T08:08:56.929Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S27-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-118",
+        "reason": "A gentle peptide cream that suits starting a smoothing, firming routine at 24."
+      },
+      {
+        "sku": "LL-108",
+        "reason": "A low-strength retinal eye cream is a mild way to begin a night-time anti-aging step."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinal makes skin more sun-sensitive, so a lightweight mineral SPF 50 fluid is added for daily morning use."
+      }
+    ],
+    "routine_note": "Use the retinal eye cream at night, starting every second or third night and building up as your skin feels comfortable, with the peptide cream on other nights or over it. Apply the mineral SPF every morning, as sunscreen is what keeps an anti-aging routine working."
+  }
+}

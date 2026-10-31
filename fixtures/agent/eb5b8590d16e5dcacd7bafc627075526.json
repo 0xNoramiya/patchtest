@@ -1,0 +1,20 @@
+{
+  "key": "eb5b8590d16e5dcacd7bafc627075526",
+  "recorded_at": "2026-10-31T08:09:28.719Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S29-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-116",
+        "reason": "A light mattifying gel that suits your wish to keep shine down, with no ingredients that conflict with anything you've told us."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Your scan shows lower surface moisture and your skin type reads dry, so a light hydrating serum under the gel helps skin feel comfortable without adding shine."
+      }
+    ],
+    "routine_note": "Apply the hydrating serum to clean skin, then the mattifying gel on top, morning and evening. Nothing in this routine needs added sunscreen, though a daily SPF is a good habit for any routine."
+  }
+}

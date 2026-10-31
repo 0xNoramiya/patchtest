@@ -1,0 +1,28 @@
+{
+  "key": "8f5249eec9114a2dc48862b401cc0ef1",
+  "recorded_at": "2026-10-31T08:10:57.343Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S34-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free cleanser is a good base for a simple routine and suits oily-looking skin."
+      },
+      {
+        "sku": "LL-103",
+        "reason": "A low-strength 2.5% wash used in the evening helps skin look clearer without needing a long routine."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A lightweight, mattifying moisturizer with niacinamide keeps shine in check while adding comfort."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF each morning protects skin and helps keep the look of marks from lingering."
+      }
+    ],
+    "routine_note": "Mornings: rinse with the gentle cleanser, then apply the oil control gel and sunscreen; evenings: use the benzoyl peroxide wash on damp skin, rinse well, then apply the gel (start every second evening and keep it away from towels and fabrics that can bleach). If the spots feel painful, widespread or persistent, a dermatologist is the right person to ask rather than adding more products."
+  }
+}

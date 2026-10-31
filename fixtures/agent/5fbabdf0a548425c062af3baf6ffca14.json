@@ -1,0 +1,16 @@
+{
+  "key": "5fbabdf0a548425c062af3baf6ffca14",
+  "recorded_at": "2026-10-31T08:11:39.156Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S36-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-117",
+        "reason": "A fragrance-free soothing gel suits skin that looks flushed and feels dry and sensitive."
+      }
+    ],
+    "routine_note": "Smooth the Centella Soothing Gel over clean skin morning and evening, and keep the rest of your routine simple. Because you notice redness whenever you are warm or after wine, it is worth showing a dermatologist, as that is beyond what a cosmetic product can address."
+  }
+}

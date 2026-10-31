@@ -1,0 +1,24 @@
+{
+  "key": "bf756e4a532108cd1e780da4d9d32281",
+  "recorded_at": "2026-10-31T08:04:24.174Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S14-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, fragrance-free style cleanser keeps an oily-looking T-zone feeling fresh without stripping."
+      },
+      {
+        "sku": "LL-116",
+        "reason": "A light mattifying gel moisturizer adds hydration while keeping shine in check."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Daily mineral SPF 50 is the most useful habit for keeping skin looking its best long term."
+      }
+    ],
+    "routine_note": "We left out the Vitamin C serum and Peptide Firming Cream because anti-aging products are not designed for skin at 15, and your scan shows nothing that calls for them. Cleanse and moisturize morning and night, and wear sunscreen every morning; if you have worries about your skin, a dermatologist or pharmacist is a good person to ask."
+  }
+}

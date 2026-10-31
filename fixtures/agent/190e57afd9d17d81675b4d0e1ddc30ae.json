@@ -1,0 +1,16 @@
+{
+  "key": "190e57afd9d17d81675b4d0e1ddc30ae",
+  "recorded_at": "2026-10-31T08:10:33.227Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S33-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "A rinse-off wash that helps keep the look of the jaw area clear without a long routine."
+      }
+    ],
+    "routine_note": "Big, painful lumps that leave marks are best looked at by a dermatologist, so we are not adding anything stronger, and we removed the 30% peel because it is too harsh for skin like this and may leave it looking redder and more irritated. Start with the wash once a day on damp skin, rinse well, and cut back if skin feels tight or sore."
+  }
+}

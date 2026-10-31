@@ -1,0 +1,24 @@
+{
+  "key": "9380814b07ee8545263fa80d3087ac7e",
+  "recorded_at": "2026-10-31T08:05:36.323Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S17-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A lower-strength retinol is a sensible starting point for smoother-looking texture and more even-looking tone."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your scan shows low moisture on dry-looking skin, and a ceramide moisturizer helps keep skin comfortable while it adjusts to retinol."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "Retinol calls for daily sunscreen, and this tinted mineral SPF with iron oxides suits deeper skin tones without a chalky look."
+      }
+    ],
+    "routine_note": "Start by using the retinol 2 nights a week after cleansing, followed by moisturizer, and build up slowly as your skin feels comfortable. Apply the sunscreen every morning, since retinol makes skin more sun-sensitive."
+  }
+}

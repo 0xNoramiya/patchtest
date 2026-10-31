@@ -1,0 +1,24 @@
+{
+  "key": "c45355425566f6766857af0eba2e9b25",
+  "recorded_at": "2026-10-31T08:06:03.149Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S18-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "The 5% wash is a fine choice for an adult who wants help with the look of jawline breakouts and oily-looking skin."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps offset the dryness a stronger wash can cause, as your moisture score is mid-range."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF in the morning helps keep the skin tone looking even and is a gentle option for deeper skin tones."
+      }
+    ],
+    "routine_note": "Start by using the wash once a day, or every other day if skin feels tight, lathering briefly on damp skin and rinsing well, then follow with moisturizer and SPF in the morning. It can bleach towels and pillowcases, so rinse thoroughly and let skin dry before bed."
+  }
+}

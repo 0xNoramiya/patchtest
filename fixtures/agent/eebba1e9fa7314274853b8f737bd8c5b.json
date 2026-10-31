@@ -1,0 +1,24 @@
+{
+  "key": "eebba1e9fa7314274853b8f737bd8c5b",
+  "recorded_at": "2026-10-31T08:03:17.509Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S10-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A fragrance-free, active-free cleanser that suits skin that feels dry and flaky."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer to help skin feel more comfortable and support the look of a smooth surface."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 for daily protection that blends better on deeper skin tones than a plain zinc fluid."
+      }
+    ],
+    "routine_note": "I removed the glycolic toner and the vitamin C serum because strong exfoliating acids and high-strength actives can sting and worsen the look of flaking while you are on isotretinoin, so please ask your prescriber or a dermatologist about the flaking and about when to add them. Use the cleanser and moisturizer morning and night, and finish your morning routine with the SPF."
+  }
+}

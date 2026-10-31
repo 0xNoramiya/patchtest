@@ -1,0 +1,24 @@
+{
+  "key": "4ca96db54c2561f64e47569e47fd14bf",
+  "recorded_at": "2026-10-31T08:10:05.132Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S31-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-107",
+        "reason": "The retinol 1% night serum is the one retinoid kept, for the fine-line and texture goals you asked about."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "Your scan shows low moisture, so a ceramide moisturizer helps cushion the skin while a strong retinol settles in."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol makes skin more sun-sensitive, so a mineral SPF 50 is needed each morning."
+      }
+    ],
+    "routine_note": "I left out the Retinal Firming Eye Cream because using two retinoids together often causes dryness and irritation, so choose one at a time. Use the retinol at night, starting 2 nights a week, build up slowly, and wear the SPF every morning."
+  }
+}

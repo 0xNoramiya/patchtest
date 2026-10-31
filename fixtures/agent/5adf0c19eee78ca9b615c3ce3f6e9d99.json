@@ -1,0 +1,24 @@
+{
+  "key": "5adf0c19eee78ca9b615c3ce3f6e9d99",
+  "recorded_at": "2026-10-31T08:09:18.124Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S29-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-116",
+        "reason": "This is the mattifying gel you asked for, and it helps keep shine down through the day."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "Your scan shows lower surface moisture, so a light hydrating serum under the gel keeps skin looking comfortable without adding shine."
+      },
+      {
+        "sku": "LL-101",
+        "reason": "A gentle, non-active cleanser keeps skin looking fresh without stripping it, which can make skin look dry and tight."
+      }
+    ],
+    "routine_note": "Cleanse, then apply the hydrating serum and finish with the mattifying gel, morning and evening. Nothing here is a strong active, so you can use all three daily and add a sunscreen if you like."
+  }
+}

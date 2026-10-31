@@ -1,0 +1,24 @@
+{
+  "key": "0df68a426473f2fc8214254ba766bb33",
+  "recorded_at": "2026-10-31T08:00:49.606Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S03-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "A rinse-off wash that targets the look of breakouts and stays on the skin only briefly."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A fragrance-free ceramide moisturizer to offset dryness from a benzoyl peroxide wash."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "A mineral SPF 50 for daily protection, and a gentle choice for a pregnancy routine."
+      }
+    ],
+    "routine_note": "Use the wash once a day at first, work up slowly if your skin is comfortable, then follow with moisturizer, and SPF in the morning. I left out retinoids and strong peels because they are not suited to pregnancy, so please ask your prenatal provider or a dermatologist about the breakouts if they persist or feel painful."
+  }
+}

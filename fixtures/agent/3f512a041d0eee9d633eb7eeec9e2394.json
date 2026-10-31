@@ -1,0 +1,16 @@
+{
+  "key": "3f512a041d0eee9d633eb7eeec9e2394",
+  "recorded_at": "2026-10-31T08:10:26.852Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S33-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "A rinse-off wash that helps keep oily skin looking clearer on the surface, used gently while you wait to see a professional."
+      }
+    ],
+    "routine_note": "I removed the 30% peel because it is too strong for skin with painful, deep lumps and marks, and nothing we sell, including our strongest products, is the right answer for that, so please see a dermatologist or doctor about it. Until then, use the wash once a day and rinse well, and don't pick at the area."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "key": "b62a4b8de8d4fdb53a0e0702e5834620",
+  "recorded_at": "2026-10-31T08:12:47.603Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S39-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-105",
+        "reason": "A gentle-to-start nightly gel that suits adult skin and is fine for you to keep in your cart."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinoid-type ingredients make skin more sun-sensitive, so a daily mineral SPF is needed alongside the gel."
+      }
+    ],
+    "routine_note": "Because three months of shop-bought products hasn't changed how your skin looks, we'd suggest seeing a dermatologist rather than adding more products from us. Meanwhile, use the gel at night, starting every second night, and apply the SPF every morning."
+  }
+}

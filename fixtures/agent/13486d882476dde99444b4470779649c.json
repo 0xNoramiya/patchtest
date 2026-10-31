@@ -1,0 +1,28 @@
+{
+  "key": "13486d882476dde99444b4470779649c",
+  "recorded_at": "2026-10-31T08:07:02.311Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S21-r1",
+  "run": 1,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-106",
+        "reason": "A gentle-strength retinol to use at night for smoother-looking texture."
+      },
+      {
+        "sku": "LL-103",
+        "reason": "The lower-strength 2.5% wash suits oily-looking skin and is rinse-off, so it is less likely to irritate."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A ceramide moisturizer helps buffer dryness and tightness while skin adjusts to retinol."
+      },
+      {
+        "sku": "LL-121",
+        "reason": "Retinol can make skin more sun-sensitive, so a daily mineral SPF 50 is needed alongside it."
+      }
+    ],
+    "routine_note": "We left out the glycolic toner because layering it with retinol and a benzoyl peroxide wash from day one is likely to leave skin dry and irritated, and visible change takes weeks, not days. Use the wash in the morning followed by SPF, and apply the retinol over moisturizer 2 to 3 nights a week, building up slowly."
+  }
+}

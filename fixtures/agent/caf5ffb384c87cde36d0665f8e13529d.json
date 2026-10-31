@@ -1,0 +1,20 @@
+{
+  "key": "caf5ffb384c87cde36d0665f8e13529d",
+  "recorded_at": "2026-10-31T08:05:48.600Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S18-r0",
+  "run": 0,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-104",
+        "reason": "The 5% wash is suitable for an adult and fits the oily skin and jaw-area breakouts you described."
+      },
+      {
+        "sku": "LL-114",
+        "reason": "A light ceramide moisturizer helps offset dryness from the wash, since your moisture score is on the lower side."
+      }
+    ],
+    "routine_note": "Start with the wash once a day, rinsing after a minute or two, and follow with the moisturizer, as the wash can bleach towels and fabrics. If skin feels tight or irritated, switch to every other day or ask for the 2.5% wash, and see a dermatologist if breakouts persist or feel painful."
+  }
+}

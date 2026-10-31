@@ -1,0 +1,28 @@
+{
+  "key": "c415e97e2da86eca425c0babd6083931",
+  "recorded_at": "2026-10-31T08:03:29.840Z",
+  "model": "claude-sonnet-5-5",
+  "label": "S10-r2",
+  "run": 2,
+  "response": {
+    "items": [
+      {
+        "sku": "LL-101",
+        "reason": "A gentle cleanser with no actives that cleans without adding to the dry, flaky look."
+      },
+      {
+        "sku": "LL-125",
+        "reason": "A simple hydrating serum to help dry-looking skin feel more comfortable, with the scan showing low moisture."
+      },
+      {
+        "sku": "LL-115",
+        "reason": "A rich ceramide cream to cushion the skin barrier and soften the look of flaking."
+      },
+      {
+        "sku": "LL-122",
+        "reason": "A tinted mineral SPF 50 for daily sun protection, with iron oxides that blend well on deeper skin tones."
+      }
+    ],
+    "routine_note": "I removed the glycolic toner and the vitamin C serum because exfoliating and strongly acidic leave-on products are too harsh for skin while you are taking isotretinoin, so please ask your prescriber or a dermatologist about the flakiness and when to add actives. Cleanse gently morning and night, apply the hydrating serum then the cream, and finish with sunscreen in the morning."
+  }
+}
