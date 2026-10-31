@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { evaluate, type EvaluationInput } from "./engine";
+import { evaluate, evaluateFinal, type EvaluationInput } from "./engine";
 import { makeIntake, makeScan, STRONG_LEAVE_ON_AHA, withExtraProduct } from "./fixtures";
 import { loadCatalog, loadRules, loadThresholds } from "./load";
 import type { Intake } from "../intake";
@@ -29,6 +29,20 @@ function run({ cart, intake, scan, fitzpatrick = null, catalogOverride }: RunOpt
     fitzpatrick,
   };
   return evaluate(input);
+}
+
+/** The same options, judged the way the shopper sees it: after removals. */
+function runFinal(opts: RunOpts): Evaluation {
+  const { cart, intake, scan, fitzpatrick = null, catalogOverride } = opts;
+  return evaluateFinal({
+    intake: makeIntake(intake),
+    scan: scan === undefined ? makeScan() : scan,
+    cart,
+    catalog: catalogOverride ?? catalog,
+    rules,
+    thresholds,
+    fitzpatrick,
+  });
 }
 
 /** Did a specific rule land on a specific SKU? */
@@ -493,5 +507,34 @@ describe("demo fixtures are paired coherently", () => {
         expect(MALE_FACES, `${s.id} uses ${s.scan}`).not.toContain(s.scan);
       }
     }
+  });
+});
+
+describe("the cart is judged after removals, not before", () => {
+  const stackingOn = (result: Evaluation, sku: string) =>
+    result.items.find((i) => i.sku === sku)?.findings.filter((f) => f.ruleId.startsWith("R-STACK-")) ?? [];
+
+  it("stops telling a survivor it is stacking with an item that was removed", () => {
+    const opts = { cart: ["LL-107", "LL-110", "LL-101"], intake: { ageBand: "under_13" as const } };
+    const before = run(opts);
+    const after = runFinal(opts);
+
+    expect([...after.blocked].sort()).toStrictEqual([...before.blocked].sort());
+    for (const sku of opts.cart.filter((s) => !after.blocked.includes(s))) {
+      expect(stackingOn(after, sku), sku).toStrictEqual([]);
+    }
+  });
+
+  it("still gives a removed item the findings that removed it", () => {
+    const result = runFinal({ cart: ["LL-105"], intake: { pregnancy: "pregnant" as const } });
+    expect(result.blocked).toStrictEqual(["LL-105"]);
+    const item = result.items.find((i) => i.sku === "LL-105");
+    expect(item?.findings.some((f) => f.verdict === "BLOCK")).toBe(true);
+  });
+
+  it("keeps every item in the cart's own order", () => {
+    const cart = ["LL-105", "LL-101", "LL-110"];
+    const result = runFinal({ cart, intake: { pregnancy: "pregnant" as const } });
+    expect(result.items.map((i) => i.sku)).toStrictEqual(cart);
   });
 });

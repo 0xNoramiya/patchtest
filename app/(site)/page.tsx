@@ -16,7 +16,7 @@ const TOOL_LINE: Record<string, string> = {
 
 const STEPS = [
   { n: "1", title: "A 30 second intake", body: "Age band, pregnancy, medication, and the signs you have noticed. You tell us. We never read it off your face." },
-  { n: "2", title: "One selfie, two scans", body: "YouCam AI Skin Analysis measures eight concerns. YouCam AI Fitzpatrick Skin Type Analysis reads your skin tone." },
+  { n: "2", title: "One selfie, two scans", body: "YouCam AI Skin Analysis scores seven concerns and reads your skin type. YouCam AI Fitzpatrick Skin Type Analysis reads your skin tone." },
   { n: "3", title: "Every item gets a verdict", body: "An AI proposes a routine. A rules engine with cited sources decides what you should actually be allowed to buy." },
 ];
 

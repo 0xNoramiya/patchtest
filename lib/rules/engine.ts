@@ -254,6 +254,44 @@ function intakeTrigger(rule: Rule, intake: Intake, fitzpatrick: string | null): 
 }
 
 /**
+ * `evaluate()` over the cart the shopper will actually leave with.
+ *
+ * Cart-scope rules read the whole cart, so on the first pass they see items
+ * that a block is about to take out. That produced advice about a conflict that
+ * no longer existed: a retinol told it was stacking with a peel that had
+ * already been removed. So the cart is re-evaluated once the blocked items are
+ * gone, and again if that removes more, which terminates because the cart only
+ * ever shrinks.
+ *
+ * Blocked items keep the findings from the pass that blocked them. Those
+ * findings are the reason the item is out, and the shopper still needs to read
+ * them.
+ */
+export function evaluateFinal(input: EvaluationInput): Evaluation {
+  let pass = evaluate(input);
+  const removed = new Map<string, ItemEvaluation>();
+  let cart = input.cart;
+
+  while (pass.blocked.length > 0) {
+    for (const item of pass.items) {
+      if (pass.blocked.includes(item.sku) && !removed.has(item.sku)) removed.set(item.sku, item);
+    }
+    const survivors = cart.filter((sku) => !removed.has(sku));
+    if (survivors.length === cart.length) break;
+    cart = survivors;
+    pass = evaluate({ ...input, cart });
+  }
+
+  // Back into the order the shopper sees, blocked items included.
+  const survivorItems = new Map(pass.items.map((i) => [i.sku, i]));
+  const items = input.cart
+    .map((sku) => survivorItems.get(sku) ?? removed.get(sku))
+    .filter((i): i is ItemEvaluation => Boolean(i));
+
+  return { ...pass, items, blocked: [...removed.keys()] };
+}
+
+/**
  * Pure function. Same inputs, same verdicts, every time. The LLM never reaches
  * in here, and nothing here reads ui_score or skin_age.
  */

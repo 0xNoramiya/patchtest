@@ -10,7 +10,28 @@ const ORIGIN_LABEL: Record<string, string> = {
   added_by_rule: "Added for safety",
 };
 
-function TriggerNote({ finding }: { finding: Finding }) {
+const HUMAN = (field: string, value: string): string => {
+  const words = value.replace(/_/g, " ");
+  switch (field) {
+    case "pregnancy":
+      return { pregnant: "you are pregnant", trying: "you are trying to conceive", breastfeeding: "you are breastfeeding" }[value] ?? words;
+    case "isotretinoin":
+      return value === "now"
+        ? "you are taking isotretinoin"
+        : "you stopped isotretinoin within the last six months";
+    case "age":
+      return value === "under_13" ? "you are under 13" : `you are ${words.replace(/^(\d+) (\d+)$/, "$1 to $2")}`;
+    case "currently_using":
+      return `you already use ${words}`;
+    case "symptoms":
+      return `you reported ${words}`;
+    default:
+      return words;
+  }
+};
+
+/** Says which answer or measurement made a rule fire, in the shopper's words. */
+function TriggerNote({ finding, fitzFromScan }: { finding: Finding; fitzFromScan: boolean }) {
   const t = finding.trigger;
   if (!t) return null;
 
@@ -32,13 +53,20 @@ function TriggerNote({ finding }: { finding: Finding }) {
     );
   }
   if (t.kind === "intake") {
+    // Fitzpatrick normally comes off the photo, not the intake form, so saying
+    // "what you told us" about it is simply wrong unless the shopper set it.
+    if (t.field === "fitzpatrick") {
+      return (
+        <p className="mt-1.5 text-xs text-faint">
+          Triggered by {fitzFromScan ? "the scan reading" : "the Fitzpatrick type you set,"}{" "}
+          <span className="font-medium text-muted">type {t.value}</span>.
+        </p>
+      );
+    }
     return (
       <p className="mt-1.5 text-xs text-faint">
         Triggered by what you told us:{" "}
-        <span className="font-medium text-muted">
-          {t.field.replace(/_/g, " ")} is {t.value.replace(/_/g, " ")}
-        </span>
-        .
+        <span className="font-medium text-muted">{HUMAN(t.field, t.value)}</span>.
       </p>
     );
   }
@@ -48,9 +76,11 @@ function TriggerNote({ finding }: { finding: Finding }) {
 function FindingRow({
   finding,
   catalogIndex,
+  fitzFromScan,
 }: {
   finding: Finding;
   catalogIndex: AdviseResult["catalogIndex"];
+  fitzFromScan: boolean;
 }) {
   const swap = finding.swapHint ? catalogIndex[finding.swapHint] : undefined;
   return (
@@ -63,7 +93,7 @@ function FindingRow({
         ) : null}
       </div>
       <p className="mt-2 text-sm leading-relaxed">{finding.message}</p>
-      <TriggerNote finding={finding} />
+      <TriggerNote finding={finding} fitzFromScan={fitzFromScan} />
       {finding.sourceQuote ? (
         <blockquote className="mt-2 border-l-2 border-line-strong pl-3 text-xs italic leading-relaxed text-muted">
           &ldquo;{finding.sourceQuote}&rdquo;
@@ -98,7 +128,13 @@ function FindingRow({
 
 export function CartList({ result }: { result: AdviseResult }) {
   const byS = new Map(result.evaluation.items.map((i) => [i.sku, i]));
-  const kept = result.lines.filter((l) => (byS.get(l.sku)?.verdict ?? "OK") !== "BLOCK");
+  // `blocked` is the only thing that decides whether an item leaves. The
+  // headline verdict cannot: VERDICT_RANK puts UNNECESSARY above BLOCK so the
+  // least alarming label leads, which means a removed item can head its card
+  // with "you don't need this". Reading the total off that label charged the
+  // shopper for items that had already been struck through.
+  const isOut = new Set(result.evaluation.blocked);
+  const kept = result.lines.filter((l) => !isOut.has(l.sku));
   const total = kept.reduce((sum, l) => sum + l.product.price, 0);
   const removed = result.lines.length - kept.length;
 
@@ -115,9 +151,13 @@ export function CartList({ result }: { result: AdviseResult }) {
       <ul>
         {result.lines.map((line, index) => {
           const item = byS.get(line.sku);
-          const verdict: Verdict = item?.verdict ?? "OK";
-          const findings = item?.findings ?? [];
-          const struck = findings.some((f) => f.verdict === "BLOCK");
+          const struck = isOut.has(line.sku);
+          // An item that is out leads with why it is out. Everything else it
+          // picked up is advice for using it, and there is no using it.
+          const findings = struck
+            ? (item?.findings ?? []).filter((f) => f.verdict === "BLOCK")
+            : (item?.findings ?? []);
+          const verdict: Verdict = struck ? "BLOCK" : (item?.verdict ?? "OK");
 
           return (
             <li
@@ -157,6 +197,7 @@ export function CartList({ result }: { result: AdviseResult }) {
                         key={`${finding.ruleId}-${i}`}
                         finding={finding}
                         catalogIndex={result.catalogIndex}
+                        fitzFromScan={result.fitzpatrick.source === "api"}
                       />
                     ))}
                   </ul>

@@ -237,7 +237,8 @@ Stated at greater length on the Methods page in the app.
 - **Fitzpatrick from a photo is a proxy.** The real scale is about how skin
   responds to sun. The shopper can override it and their answer wins.
 - **Scan scores are not clinical grades,** and the seven scales are not comparable
-  to each other. On our bank, acne only ever used the top fifth of its range.
+  to each other. On our bank, acne ran 61.2 to 100 with eight of nine faces above
+  81, so a cutoff that looks generous on one scale is meaningless on another.
 - **The gold labels come from one clinician** and have no external validation.
 - **Thresholds were calibrated on nine AI generated faces.** A generated face is
   not a sample of real skin.

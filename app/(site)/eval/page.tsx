@@ -127,8 +127,8 @@ export default function EvalPage() {
             to do.
           </p>
           <p>
-            <span className="font-medium">The gold labels are drafted by one physician</span> and are
-            marked {results.gold_status.toLowerCase()}. There is no external validation.
+            <span className="font-medium">The gold labels are {results.gold_status.toLowerCase()}.</span>{" "}
+            One author, no second reader, no external validation.
           </p>
         </div>
       </section>

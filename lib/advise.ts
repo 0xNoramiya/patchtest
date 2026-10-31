@@ -4,7 +4,7 @@ import { runBaselineAgent, runGuardedAgent } from "./agent/run";
 import { fixtureSearchPath } from "./scan-runner";
 import { config, hasSecret } from "./env";
 import { EMPTY_INTAKE, effectiveFitzpatrick, type Intake } from "./intake";
-import { evaluate } from "./rules/engine";
+import { evaluateFinal } from "./rules/engine";
 import { loadCatalog, loadRules, loadThresholds, productBySku, type Product } from "./rules/load";
 import type { Evaluation } from "./rules/types";
 import type { ScanSummary } from "./youcam/parse";
@@ -33,7 +33,11 @@ export type AdviseResult = {
   fitzpatrick: { value: string | null; source: "self_reported" | "api" | "none" };
   lines: CartLine[];
   evaluation: Evaluation;
-  routineNote: string;
+  /**
+   * The model's usage note, or null when it described a cart the rules did not
+   * end up with. See where it is set.
+   */
+  routineNote: string | null;
   revisionRounds: number;
   claimsFiltered: boolean;
   source: "live" | "replay";
@@ -119,8 +123,14 @@ export async function advise(req: AdviseRequest): Promise<AdviseResult> {
     agentReason: agentReasons.get(sku),
   }));
 
-  // One evaluation over everything the shopper will see.
-  const evaluation = evaluate({ ...input, cart: lines.map((l) => l.sku) });
+  // One evaluation over everything the shopper will see, re-run after removals
+  // so a cart-scope rule never describes a conflict with an item that is out.
+  const evaluation = evaluateFinal({ ...input, cart: lines.map((l) => l.sku) });
+
+  const surviving = new Set(lines.map((l) => l.sku).filter((sku) => !evaluation.blocked.includes(sku)));
+  const proposed = new Set(guarded.finalCart);
+  const sameCart =
+    surviving.size === proposed.size && [...surviving].every((sku) => proposed.has(sku));
 
   return {
     scanLabel: req.scanLabel,
@@ -130,7 +140,13 @@ export async function advise(req: AdviseRequest): Promise<AdviseResult> {
     fitzpatrick: fitz,
     lines,
     evaluation,
-    routineNote: guarded.routineNote,
+    // The note is written from the routine the model proposed. The engine
+    // evaluates the merged cart, so an item the model dropped can survive with
+    // an ADJUST, and then the note says it left out something that is sitting
+    // in the cart below it. Withheld rather than shown against a cart it does
+    // not describe. Generating it from the final verdicts instead would mean a
+    // prompt change, which re-records every agent fixture.
+    routineNote: sameCart ? guarded.routineNote : null,
     revisionRounds: guarded.revisionRounds,
     claimsFiltered: guarded.claimsFiltered,
     source: guarded.source === "live" || baseline.source === "live" ? "live" : "replay",

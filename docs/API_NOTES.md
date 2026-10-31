@@ -130,7 +130,7 @@ comparison is now a substring test.
 
 ## 12. The concern scales are not comparable to each other
 
-From the 8 scan bank:
+From the 9 scan bank:
 
 | Concern | Range observed | Usable? |
 |---|---|---|
@@ -138,15 +138,18 @@ From the 8 scan bank:
 | wrinkle | 1.1 to 92.8 | Yes, tracked intended face age closely |
 | texture | 17.6 to 90.1 | Yes |
 | oiliness | 32.9 to 95.1 | Yes |
-| acne | 81.7 to 100.0 | Compressed into the top fifth |
+| acne | 61.2 to 100.0 | Bunched: 8 of 9 faces sit above 81 |
 | age_spot | 74.4 to 97.3 | Narrow |
 | moisture | 20.6 to 59.2 | Never reached 70 on any face |
 
 Two of these changed our thresholds. A face with clearly visible pustules scored
-`acne` 81.7 while the clearest face scored 96.9, so a threshold of 80 called every
-face healthy and would have marked every acne product "you don't need this". And
-`moisture` never reaches 70, so a moisturizer is never called unnecessary on
-moisture grounds. We left that as it is, because it fails in the safe direction.
+`acne` 81.7 while the clearest face scored 96.9, so our first cutoff of 80 called
+both of them healthy and would have marked every acne product "you don't need
+this". The ninth face, added after this table was first written, scored 61.2 and
+is the only one below 81 — so the scale is not quite as compressed as eight faces
+suggested, and the cutoff was still in the wrong place. And `moisture` never
+reaches 70, so a moisturizer is never called unnecessary on moisture grounds. We
+left that as it is, because it fails in the safe direction.
 
 A single number out of 100 reads as if the seven scales mean the same thing. They
 do not. The UI shows the raw score next to each verdict for that reason.

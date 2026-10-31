@@ -2,7 +2,7 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { generateText, Output } from "ai";
 import { sanitizeClaims } from "../claims";
 import type { Intake } from "../intake";
-import { evaluate } from "../rules/engine";
+import { evaluate, evaluateFinal } from "../rules/engine";
 import type { Catalog, Product, Thresholds } from "../rules/load";
 import { productBySku } from "../rules/load";
 import type { Rule } from "../rules/types";
@@ -129,7 +129,7 @@ export async function runGuardedAgent(input: AgentInput): Promise<AgentResult & 
     ...cart.filter((sku) => !evaluation.blocked.includes(sku)),
     ...evaluation.additions.map((a) => a.sku),
   ];
-  const finalEvaluation = evaluate({ ...input, cart: finalCart });
+  const finalEvaluation = evaluateFinal({ ...input, cart: finalCart });
 
   return {
     arm: "guarded",

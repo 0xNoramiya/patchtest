@@ -10,7 +10,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { EMPTY_INTAKE, type Intake } from "../lib/intake";
 import { runBaselineAgent, runGuardedAgent, AGENT_MODEL } from "../lib/agent/run";
-import { evaluate } from "../lib/rules/engine";
+import { evaluate, evaluateFinal } from "../lib/rules/engine";
 import { loadCatalog, loadRules, loadThresholds, productBySku } from "../lib/rules/load";
 import type { ScanSummary } from "../lib/youcam/parse";
 import { ADJUST_CUES, rate, REFERRAL_CUES, scoreArm, UNNECESSARY_CUES, type GoldExpectation, type ScenarioScore } from "../eval/score";
@@ -92,7 +92,7 @@ async function main() {
       const wanted = scenario.wantedSkus.filter((sku) => productBySku(catalog, sku));
       const baselineCart = [...new Set([...wanted, ...baseline.finalCart])];
       const guardedUnion = [...new Set([...wanted, ...guarded.finalCart])];
-      const unionEval = evaluate({ ...input, cart: guardedUnion });
+      const unionEval = evaluateFinal({ ...input, cart: guardedUnion });
       const guardedBlocked = unionEval.items
         .filter((i) => i.findings.some((f) => f.verdict === "BLOCK"))
         .map((i) => i.sku);
@@ -269,7 +269,7 @@ async function main() {
     runs_per_scenario: RUNS,
     scenarios: scenarios.length,
     total_runs: n,
-    gold_status: "DRAFT, not yet reviewed by a clinician",
+    gold_status: "draft, written by one physician and not independently reviewed",
     metrics: { guarded: agg("guarded"), baseline: agg("baseline") },
     mean_revision_rounds:
       Math.round((allRuns.reduce((a, r) => a + r.revisionRounds, 0) / n) * 100) / 100,

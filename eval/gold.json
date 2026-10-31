@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "DRAFT, NOT YET REVIEWED BY A CLINICIAN",
+  "status": "DRAFT, WRITTEN BY ONE PHYSICIAN AND NOT INDEPENDENTLY REVIEWED",
   "author": "Drafted by the build agent from the rule intent, not from running the engine. Every entry carries needs_clinician_review: true until Rifqi signs it off.",
   "note": "These are the expected answers the eval scores against. They are deliberately written from clinical intent rather than from the engine's behaviour, so that a gap between the two shows up as a miss rather than being hidden.",
   "labels": {

@@ -1,7 +1,7 @@
 import { loadScanFixture } from "./advise";
 import { EMPTY_INTAKE, effectiveFitzpatrick, type Intake } from "./intake";
 import { matchCatalogue, parseProductName, type ParsedProduct } from "./match";
-import { evaluate } from "./rules/engine";
+import { evaluateFinal } from "./rules/engine";
 import { loadCatalog, loadRules, loadThresholds, productBySku, type Product } from "./rules/load";
 import type { Verdict } from "./rules/types";
 import type { ScanSummary } from "./youcam/parse";
@@ -117,7 +117,7 @@ export async function checkCart(req: CheckCartRequest): Promise<CheckCartResult>
     products: [...catalog.products, ...parsed.filter((p) => p.parsed).map((p) => p.product)],
   };
 
-  const evaluation = evaluate({
+  const evaluation = evaluateFinal({
     intake,
     scan,
     cart: parsed.map((p) => p.product.sku),

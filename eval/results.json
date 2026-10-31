@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-30T17:36:00.751Z",
+  "generated_at": "2026-10-31T07:33:14.616Z",
   "model": "claude-sonnet-5-5",
   "runs_per_scenario": 3,
   "scenarios": 40,
   "total_runs": 120,
-  "gold_status": "DRAFT, not yet reviewed by a clinician",
+  "gold_status": "draft, written by one physician and not independently reviewed",
   "metrics": {
     "guarded": {
       "unsafe_item_rate": 0,

@@ -103,8 +103,14 @@ export function CheckFlow() {
     (async () => {
       const res = await fetch("/api/presets");
       const { presets } = (await res.json()) as { presets: Preset[] };
+      if (cancelled) return;
       const preset = presets.find((p) => p.id === presetId);
-      if (!preset || cancelled) return;
+      if (!preset) {
+        // Otherwise an unknown id leaves the page spinning on "working" for ever.
+        setError(`There is no preset called "${presetId}". Pick one from the home page.`);
+        setStep("consent");
+        return;
+      }
       const presetIntake: Intake = { ...EMPTY_INTAKE, ...preset.intake, goal: preset.goal };
       setIntake(presetIntake);
       setWanted(preset.wantedSkus);
@@ -132,17 +138,26 @@ export function CheckFlow() {
         <div className="mt-6 space-y-5">
           <Referrals result={result} />
           <CartList result={result} />
-          {result.routineNote ? (
-            <section className="rounded-xl border border-line bg-surface p-4 shadow-card sm:p-6">
-              <h2 className="font-display text-lg">How to use it</h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted">{result.routineNote}</p>
-              {result.claimsFiltered ? (
-                <p className="mt-2 text-xs text-faint">
-                  Part of what the model wrote was rewritten or removed by our claim filter.
-                </p>
-              ) : null}
-            </section>
-          ) : null}
+          <section className="rounded-xl border border-line bg-surface p-4 shadow-card sm:p-6">
+            <h2 className="font-display text-lg">How to use it</h2>
+            {result.routineNote ? (
+              <>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">{result.routineNote}</p>
+                {result.claimsFiltered ? (
+                  <p className="mt-2 text-xs text-faint">
+                    Part of what the model wrote was rewritten or removed by our claim filter.
+                  </p>
+                ) : null}
+              </>
+            ) : (
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                The usage note is written by the model, from the routine it proposed. This time the
+                rules ended up with a different cart to the one it described, so it is withheld
+                rather than shown next to a cart it does not match. The verdicts above are the
+                engine&rsquo;s and are unaffected.
+              </p>
+            )}
+          </section>
           <ScanPanel result={result} />
           <BaselineCompare result={result} />
 
