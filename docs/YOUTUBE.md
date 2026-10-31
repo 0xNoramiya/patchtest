@@ -1,11 +1,18 @@
 # YouTube upload
 
+**Uploaded: https://youtu.be/gih0cIAdp7E**
+
 The rendered file is `video/patchtest-trailer.mp4` (1920x1080, 2:53). It is not in
 the repo — `.gitignore` keeps rendered video out, because the copy that matters is
 the one on YouTube.
 
-Upload it **unlisted or public**, not private. A private video cannot be opened by
-a judge, and that is the single most common way a submission loses its demo.
+It is up as "PatchTest Demo" and opens without a login, which is the thing that
+matters: a private video cannot be opened by a judge, and that is the single most
+common way a submission loses its demo.
+
+The title and description below are what was written for it. The title actually on
+YouTube is the shorter one; paste the longer one over it if you would rather the
+listing read as a pitch than as a label.
 
 ## Title
 
@@ -63,6 +70,6 @@ Statistic in the opening: Hales M, Rigali S, Paller A, Liszewski W, Lagu T.
 
 ## After uploading
 
-1. Paste the URL into the "YouTube demo" row of `SUBMISSION_CHECKLIST.md`.
+1. ~~Paste the URL into the "YouTube demo" row of `SUBMISSION_CHECKLIST.md`.~~ Done.
 2. Paste it into the Devpost submission form.
-3. Open it in a logged-out browser to confirm it actually plays.
+3. ~~Confirm it actually plays without a login.~~ Done — oEmbed answers 200.

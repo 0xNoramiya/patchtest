@@ -5,6 +5,8 @@ checkout that knows when not to sell.
 
 **Live app: https://patchtest.fly.dev**
 
+**Demo video: https://youtu.be/gih0cIAdp7E**
+
 ## Inspiration
 
 I am a physician. The thing that gets me is not people buying the wrong

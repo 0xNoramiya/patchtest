@@ -54,7 +54,7 @@ before running it.
 
 ## For judges, in 60 seconds
 
-**Live app: https://patchtest.fly.dev**
+**Live app: https://patchtest.fly.dev** &middot; **[Demo video, 2:53](https://youtu.be/gih0cIAdp7E)**
 
 **Start here.** The landing page has five one-click presets. Each replays a scan
 that really was run through both YouCam APIs, paired with a declared intake:
