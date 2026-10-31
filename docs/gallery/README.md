@@ -52,3 +52,9 @@ handwriting, and invented text on a submission cover is worse than a slightly
 softer one. And the first cover was a pretty still life that said nothing &mdash;
 it could have belonged to any skincare brand. A gallery cover has about one second
 to land the pitch, which is why this one carries the headline.
+
+The type is sized for the card, not for the file. A gallery grid renders these at
+roughly 460px, a quarter of their real width, so anything under about 26px at full
+size is texture rather than copy. That is why the sub-line is one sentence: the
+fewer words there are, the bigger they can be. Checked by rendering the cover down
+to 460px and again to 300px, where the headline and the URL both still read.

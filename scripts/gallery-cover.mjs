@@ -71,32 +71,36 @@ const html = `<!doctype html>
   .art { position: absolute; inset: 0; }
   .art img { width: 100%; height: 100%; display: block; }
 
-  .copy { position: absolute; left: 96px; top: 104px; width: 830px; }
+  /* Sized for the gallery grid, not for this file. At the ~460px a Devpost card
+     renders, everything here is quartered, so anything under about 26px at full
+     size is decoration rather than copy. That is the whole reason the sub-line
+     is one sentence: the fewer words, the bigger they can be. */
+  .copy { position: absolute; left: 92px; top: 92px; width: 860px; }
 
   .wordmark {
-    font-family: "Source Serif 4", Georgia, serif; font-size: 38px; font-weight: 600;
-    letter-spacing: -0.01em; color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif; font-size: 48px; font-weight: 600;
+    letter-spacing: -0.012em; color: var(--ink);
   }
   .wordmark span { color: var(--accent); }
 
   h1 {
     font-family: "Source Serif 4", Georgia, serif; font-weight: 400;
-    font-size: 76px; line-height: 1.04; letter-spacing: -0.018em;
-    margin-top: 34px; text-wrap: balance;
+    font-size: 100px; line-height: 1.02; letter-spacing: -0.022em;
+    margin-top: 30px; text-wrap: balance;
   }
   h1 em { font-style: normal; color: var(--accent); }
 
   .thesis {
-    margin-top: 28px; font-size: 27px; line-height: 1.5; color: var(--muted);
-    max-width: 700px; text-wrap: pretty;
+    margin-top: 32px; font-size: 36px; line-height: 1.35; color: var(--muted);
+    text-wrap: pretty;
   }
 
   /* One row, so the four verdicts read as the set they are rather than as three
      and a straggler. */
-  .chips { display: flex; gap: 9px; margin-top: 36px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
   .chip {
-    font-size: 18px; font-weight: 500; padding: 9px 14px; border-radius: 999px;
-    border: 1px solid; line-height: 1; white-space: nowrap;
+    font-size: 27px; font-weight: 500; padding: 13px 22px; border-radius: 999px;
+    border: 1.5px solid; line-height: 1; white-space: nowrap;
   }
   .b-block { color: var(--block); background: var(--block-soft); border-color: rgb(165 52 43 / 0.3); }
   .b-adjust { color: var(--adjust); background: var(--adjust-soft); border-color: rgb(138 90 20 / 0.3); }
@@ -104,20 +108,17 @@ const html = `<!doctype html>
   .b-refer { color: var(--refer); background: var(--refer-soft); border-color: rgb(43 85 121 / 0.3); }
 
   .foot {
-    position: absolute; left: 96px; bottom: 92px; font-size: 22px; line-height: 1.6;
+    position: absolute; left: 92px; bottom: 84px; font-size: 28px; line-height: 1.5;
     color: var(--muted);
   }
-  .foot b { color: var(--ink); font-weight: 600; }
+  .foot b { color: var(--ink); font-weight: 600; font-size: 34px; }
 </style></head>
 <body>
   <div class="art"><img src="art.png" alt=""></div>
   <div class="copy">
     <p class="wordmark">Patch<span>Test</span></p>
     <h1>An AI skincare advisor that knows when <em>not</em> to sell</h1>
-    <p class="thesis">
-      The model proposes the cart. A deterministic engine over 24&nbsp;cited rules decides, and
-      every verdict shows the source behind it.
-    </p>
+    <p class="thesis">The model proposes the cart. 24&nbsp;cited rules decide.</p>
     <div class="chips">
       <span class="chip b-block">Not for you right now</span>
       <span class="chip b-adjust">Adjust</span>
